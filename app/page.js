@@ -1,7 +1,11 @@
 import Image from "next/image";
+import { ParticleBg } from "./_Components/ParticleBg.js";
+import Link from "next/link.js";
 
 export default function Home() {
   return (
+    <>
+     <ParticleBg/>
     <main className="flex min-h-screen flex-col items-center p-10 w-full gap-[10vw]">
       <div className="flex justify-between w-full">
         <div>LOGO</div>
@@ -10,24 +14,32 @@ export default function Home() {
           <div className="hover:text-white">Discord</div>
           <div className="hover:text-white">Medium</div>
           <div className="hover:text-white">Docs</div>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-[12px] text-black">
+          <Link href="/Trade">
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-full text-black">
             Launch App
           </button>
+          </Link>
         </div>
       </div>
       <div className="flex flex-col ">
         <div className="flex flex-col items-center justify-center gap-10">
-          <div className="rounded-full w-[40vw] h-[20vw] bg-gradient-to-r from-teal-900 from-10% via-cyan-800 via-30% to--500 to-90% blur-3xl relative"></div>
-          <div className="absolute flex flex-col gap-10">
-            <h1 className="text-7xl font-extrabold">LEVEL UP YOUR TRADING</h1>
-            <div className="text-xl font-extralight tracking-wide flex flex-col items-center">
+         
+          {/* <div className="rounded-full w-[40vw] absolute z-[-1] h-[10vw] bg-gradient-to-r from-teal-900 from-10% via-cyan-800 via-30% to--500 to-90% blur-5xl"></div> */}
+         <div className="relative flex justify-center items-center">
+          <div className="rounded-full w-[35vw] absolute z-[-1] h-[12vw] bg-gradient-to-r from-[#296BFC] from-10% to-[#61AEE1] to-90% blur-[120px]"></div>
+          <h1 className="text-7xl font-[900]">LEVEL UP YOUR TRADING</h1>
+         </div>
+          <div className=" relative flex flex-col gap-5">
+            <div className="text-2xl font-extralight tracking-wide flex flex-col items-center text-slate-100">
               <p>The first-ever gamified perp DEX</p>
               <p>Trade, level up, and unlock instant rewards</p>
             </div>
           </div>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-[12px] text-black">
+          <Link href="/Trade">
+          <button class="mt-5 mb-20 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 border border-blue-700 rounded-[12px] text-xl text-black">
             Trade now
           </button>
+          </Link>
         </div>
         <div className="flex items-center justify-center">
           <Image
@@ -44,24 +56,24 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex items-center justify-center">
-        <div className="rounded-full w-[40vw] h-[20vw] bg-gradient-to-r from-teal-900 from-10% via-cyan-800 via-30% to--500 to-90% blur-3xl relative"></div>
-        <div className="flex gap-[8vw] absolute">
-          <div className="flex flex-col items-center justify-center gap-[1vw]">
-            <h3 className="text-lg text-stone-400 ">Total Volume</h3>
-            <h2 className="font-bold text-4xl">$4.29B</h2>
+      <div className="flex items-center justify-center m-20">
+        <div className="flex relative items-center justify-center">
+          <div className="rounded-full w-[35vw] absolute z-[-1] h-[8vw] bg-gradient-to-r from-[#296BFC] from-10% to-[#61AEE1] to-90% blur-[120px]"></div>
+          <div className="flex flex-col items-center border-r-2 px-20 justify-center gap-4">
+            <h3 className="text-xl text-stone-400 ">Total Volume</h3>
+            <h2 className="font-extrabold text-4xl">$4.29B</h2>
           </div>
-          <div className="flex flex-col items-center justify-center gap-[1vw]">
-            <h3 className="text-lg text-stone-400 ">Total Value Locked</h3>
-            <h2 className="font-bold text-4xl">$1.68 M</h2>
+          <div className="flex flex-col items-center justify-center border-r-2 px-20 gap-4 ">
+            <h3 className="text-xl text-stone-400 ">Total Value Locked</h3>
+            <h2 className="font-extrabold text-4xl">$1.68 M</h2>
           </div>
-          <div className="flex flex-col items-center justify-center gap-[1vw]">
-            <h3 className=" text-lg text-stone-400 ">Total Trades</h3>
-            <h2 className="font-bold text-4xl">1,062,153</h2>
+          <div className="flex flex-col items-center justify-center px-20 gap-4">
+            <h3 className=" text-xl text-stone-400 ">Total Trades</h3>
+            <h2 className="font-extrabold text-4xl">1,062,153</h2>
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-[3vw] items-center justify-center">
+      <div className="flex flex-col gap-[3vw] items-center m-10 justify-center">
         <div className="flex flex-col gap-[1vw] items-center justify-center">
           <h2 className="font-bold text-4xl">GAMIFIED TRADING</h2>
           <p className="text-xl font-extralight tracking-wide">
@@ -74,19 +86,19 @@ export default function Home() {
             src="/Images/sshot-gamified-inventory.webp"
             width={400}
             height={200}
-            className="border-solid border-8 border-zinc-700 rounded-3xl relative left-[10vw] w-[25vw] h-[30vw] z-0"
+            className="border-solid border-8 border-zinc-700 rounded-3xl relative left-[10vw] w-[20vw] h-[20vw] z-0"
           />
           <Image
             src="/Images/sshot-gamified-missions.webp"
             width={400}
             height={200}
-            className="border-solid border-8 border-zinc-700 rounded-3xl w-[35vw] h-[35vw] z-50"
+            className="border-solid border-8 border-zinc-700 rounded-3xl w-[25vw] h-[25vw] z-50"
           />
           <Image
             src="/Images/sshot-gamified-reward.webp"
             width={500}
             height={300}
-            className="border-solid border-8 border-zinc-700 rounded-3xl relative right-[10vw] w-[25vw] h-[30vw] z-0"
+            className="border-solid border-8 border-zinc-700 rounded-3xl relative right-[10vw] w-[20vw] h-[20vw] z-0"
           />
         </div>
       </div>
@@ -98,18 +110,18 @@ export default function Home() {
             all
           </p>
         </div>
-        <div className="grid  grid-cols-4 grid-rows-3 gap-[2vw]">
-          <div className="flex flex-col col-start-1 col-end-4 row-start-1 row-end-3 bg-zinc-900 items-center justify-center p-[1vw] rounded-xl">
-            <div className="flex flex-col justify-start">
-              <h2 className="text-4xl">Trade Crypto, Forex, and </h2>
-              <h2 className="text-4xl">Commodities with up to </h2>
-              <h2 className="text-4xl">1000x Leverage</h2>
+        <div className="grid  grid-cols-4 grid-rows-3 gap-[2vw] ">
+          <div className="flex flex-col col-start-1 col-end-4 row-start-1 relative row-end-3 bg-zinc-900 items-center justify-start py-20 rounded-xl">
+            <div className="flex flex-col gap-2 justify-start px-20">
+              <h1 className="text-5xl font-[800]">Trade Crypto, Forex, and </h1>
+              <h1 className="text-5xl font-[800]">Commodities with up to </h1>
+              <h1 className="text-5xl font-[800]">1000x Leverage</h1>
             </div>
             <Image
               src="/Images/coins.svg"
-              width={350}
-              height={300}
-              className="self-end"
+              width={450}
+              height={400}
+              className="self-end p-0 absolute bottom-0"
             />
           </div>
           <div className="flex flex-col gap-[1vw] bg-zinc-900 items-center justify-center p-[2vw] rounded-xl">
@@ -186,5 +198,6 @@ export default function Home() {
         </div>
       </div>
     </main>
+    </>
   );
 }
