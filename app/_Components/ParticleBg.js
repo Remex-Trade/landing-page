@@ -5,11 +5,6 @@ import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim"; // if you are going to use `loadSlim`, install the "tsparticles-slim" package too.
 
 export const ParticleBg = () => {
-    const [value,setValue] = useState(1);
-    document.addEventListener(scroll,()=>{
-      console.log(window.scrollY);
-        setValue(window.scrollY);
-    })
     const particlesInit = useCallback(async engine => {
         console.log(engine);
         // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
