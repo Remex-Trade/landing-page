@@ -15,6 +15,11 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 0px;
+  }
+}
 
 body {
   color: rgb(var(--foreground-rgb));
