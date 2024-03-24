@@ -35,7 +35,7 @@ export default function Home() {
               <p>Trade, level up, and unlock instant rewards</p>
             </div>
           </div>
-          <Link href="/Trade">
+          <Link href="/site/Trade">
           <button class="mt-5 mb-20 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 border border-blue-700 rounded-[12px] text-xl text-black">
             Trade now
           </button>
