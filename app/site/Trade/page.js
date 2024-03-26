@@ -1,13 +1,13 @@
 import React from "react";
-
+import Sidebar from "../../_Components/Sidebar"
 const page = () => {
   return (
     <div className="flex w-[100vw]">
       <div
         id="sidebar"
-        className="h-[100vh] mb-10 rounded-b-xl w-[20vw] bg-[#151415] border-[#2C2D2D] border-[1px]"
+        className="h-full mb-10 rounded-b-xl w-[20vw] bg-[#151415] border-[#2C2D2D] border-[1px]"
       >
-        Sidebar
+        <Sidebar/>
       </div>
       <div className="w-[60vw] h-[100vh]">
         <div className="w-[80vw] h-[4vh] bg-[#151415] border-[#2C2D2D] border-[1px]">
