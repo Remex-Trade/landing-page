@@ -76,7 +76,7 @@ const page = () => {
 
               </div>
               <div>
-                <Chart/>
+                <Chart symbol="IBM"/>
               </div>
             </div>
             <div
