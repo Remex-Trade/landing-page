@@ -31,7 +31,7 @@ export const particleConfig ={
   "duration": 0,
   "fpsLimit": 120,
   "interactivity": {
-    "detectsOn": "window",
+    
     "events": {
       "onClick": {
         "enable": false,

@@ -56,7 +56,6 @@ export const ParticleBg = () => {
               "duration": 0,
               "fpsLimit": 120,
               "interactivity": {
-                "detectsOn": "window",
                 "events": {
                   "onClick": {
                     "enable": false,
