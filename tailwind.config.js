@@ -15,6 +15,15 @@ module.exports = {
       fontFamily:{
         heading:['Nunito Sans'],
         body:['DM Sans']
+      },
+      keyframes:{
+        move:{
+          '0%':{transform:'translate(0px,300px)'},
+          '100%':{transform:'translate(1500px,300px)'}
+        }
+      },
+      animation:{
+        move : 'move 5s infinite ease-in-out',
       }
     },
   },

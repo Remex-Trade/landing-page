@@ -1,8 +1,11 @@
+
 import React from "react";
-import { FaFire } from "react-icons/fa";
+import { FaBox, FaFire } from "react-icons/fa";
 import Image from "next/image";
 import Chart from "@/app/_Components/Chart";
 import Sidebar from "../../_Components/Sidebar"
+import MiddleBottom from "@/app/_Components/MiddleBottom";
+
 const page = () => {
   return (
     <div className="flex">
@@ -38,7 +41,7 @@ const page = () => {
 
         <div className="flex">
 
-          <div className="flex flex-col h-[92vh] justify-center items-start m-8 gap-10 ">
+          <div className="flex flex-col h-full justify-center items-start m-8 gap-10 ">
             <div
               id="middle-top"
               className=" rounded-xl flex gap-2 flex-col bg-[#151415] border-[#2C2D2D] border-[1px] w-[55vw] h-full"
@@ -81,8 +84,10 @@ const page = () => {
             </div>
             <div
               id="middle-bottom"
-              className="rounded-xl bg-[#151415] border-[#2C2D2D] border-[1px] w-[55vw] h-[46vh]"
-            ></div>
+              className="flex flex-col gap-5 justify-center rounded-xl bg-[#151415] border-[#2C2D2D] border-[1px] w-[55vw] h-[50vh]"
+            >
+               <MiddleBottom/>
+            </div>
           </div>
           <div id="right-order fixed inset-y-0">
             <div className="mt-10 bg-[#151415] border-[#2C2D2D] rounded-xl border-[1px] h-[70vh] sticky w-[20vw]">
