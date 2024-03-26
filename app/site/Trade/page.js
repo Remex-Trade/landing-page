@@ -2,14 +2,15 @@ import React from "react";
 import { FaFire } from "react-icons/fa";
 import Image from "next/image";
 import Chart from "@/app/_Components/Chart";
+import Sidebar from "../../_Components/Sidebar"
 const page = () => {
   return (
     <div className="flex">
       <div
         id="sidebar"
-        className="h-[100vh] mb-10 rounded-b-xl w-[20vw] bg-[#151415] border-[#2C2D2D] border-[1px]"
+        className="h-full mb-10 rounded-b-xl w-[20vw] bg-[#151415] border-[#2C2D2D] border-[1px]"
       >
-        Sidebar
+        <Sidebar/>
       </div>
       <div className="w-[80vw] h-[100vh]">
         <div className="w-full flex h-[4vh] px-4 gap-10 items-center py-4 bg-[#151415] border-[#2C2D2D] border-[1px]">
