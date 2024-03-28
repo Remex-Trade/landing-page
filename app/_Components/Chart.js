@@ -18,7 +18,7 @@ const Chart = () => {
       },
 
       width: chartContainer.current.clientWidth,
-      height: 400,
+      height: 300,
     });
     const newSeries = chart.addCandlestickSeries()
     newSeries.applyOptions({
@@ -1081,7 +1081,23 @@ const Chart = () => {
       chart.remove();
     };
   }, []);
-  return <div ref={chartContainer}></div>;
+
+  const buttons = ["1m","15m","1D","1W"]
+  return(
+    <>
+    <div className="flex gap-6 h-10 items-center px-4 mb-2">
+        <div className="text-sm text-white">Time</div>
+        {buttons.map((button)=>{
+            return(
+                <>
+                    <button className="text-sm text-white hover:bg-[#2C2D2D]  focus:bg-[#2C2D2D] px-4 py-2 rounded-xl">{button}</button>
+                </>
+            )
+        })}
+    </div>
+   <div ref={chartContainer}></div>
+    </>
+  )
 };
 
 export default Chart;

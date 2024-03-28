@@ -4,8 +4,8 @@ import {CiWallet} from "react-icons/ci";
 
 const Navbar = () => {
   return (
-    <div className="bg-[#151415] text-white font-light border-[#2C2D2D] border-[1px]">
-      <div className="flex gap-[4vw] justify-between items-center w-full px-[2vw] py-3 text-md">
+    <div className="bg-[#151415] sticky z-10 top-0 w-full text-white font-light border-[#2C2D2D] border-[1px]">
+      <div className="flex gap-[4vw] justify-between items-center w-full px-[2vw] py-1 text-md">
         <div>LOGO</div>
         <div className="flex gap-20">
           <div>Trade</div>
