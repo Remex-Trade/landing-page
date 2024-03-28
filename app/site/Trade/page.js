@@ -1,5 +1,5 @@
-
-import React from "react";
+"use client"
+import React, { useState } from 'react';
 import { FaBox, FaFire } from "react-icons/fa";
 import Image from "next/image";
 import dynamic from "next/dynamic";
@@ -8,15 +8,27 @@ import Sidebar from "../../_Components/Sidebar"
 import MiddleBottom from "@/app/_Components/MiddleBottom";
 import RightOrder from "@/app/_Components/RightOrder";
 
+import { RxHamburgerMenu } from "react-icons/rx";
 const page = () => {
+  const [show,setShow]=useState(true);
+  const getShow=(data)=>{
+      console.log(data)
+      setShow(data)
+  }
   return (
     <div className="flex">
-      <div
+      {show?<div
         id="sidebar"
         className="h-[100vh] overflow-hidden mb-10 rounded-b-xl w-[20vw] bg-[#151415] border-[#2C2D2D] border-[1px]"
       >
-        <Sidebar/>
-      </div>
+        <Sidebar getShow={getShow}/>
+      </div>:
+      <div className='mt-[4vw] bg-[#151415] border-[#2C2D2D] border-[1px] w-[5vw] h-[2vw] rounded-r-lg'>
+          <div className='flex gap-3 mt-2 ml-2 mr-2' onClick={()=>setShow(true)}>
+            <div>Pairs</div>
+            <RxHamburgerMenu className='mt-1'/>
+          </div>
+      </div>}
       <div className="w-[80vw] h-[100vh]">
         <div className="w-full sticky top-[50px] flex h-[5vh] px-4 gap-10 items-center py-4 bg-[#151415] border-[#2C2D2D] border-[1px]">
           <FaFire color="orange" />
