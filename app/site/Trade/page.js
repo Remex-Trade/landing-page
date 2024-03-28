@@ -2,7 +2,8 @@
 import React from "react";
 import { FaBox, FaFire } from "react-icons/fa";
 import Image from "next/image";
-import Chart from "@/app/_Components/Chart";
+import dynamic from "next/dynamic";
+import Charts from "@/app/_Components/Chart";
 import Sidebar from "../../_Components/Sidebar"
 import MiddleBottom from "@/app/_Components/MiddleBottom";
 
@@ -79,7 +80,9 @@ const page = () => {
 
               </div>
               <div>
-                <Chart symbol="IBM"/>
+              
+                <Charts/>
+              
               </div>
             </div>
             <div
