@@ -16,8 +16,12 @@
   }
 }
 @layer utilities {
-  .scrollbar::-webkit-scrollbar {
-    width: 0px;
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar{
+    scrollbar-width: none;
+    -ms-overflow-style: none;;
   }
 }
 
@@ -53,20 +57,19 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
-	width: 5px;
-  height: 5px;
+  display:none
 }
 
 /* Track */
-::-webkit-scrollbar-track {
+/* ::-webkit-scrollbar-track {
 	background: #151415;
 	border-radius: 5px;
-}
+} */
 
 /* Handle */
-::-webkit-scrollbar-thumb {
+/* ::-webkit-scrollbar-thumb {
 	background: #535353;
 	border-radius: 5px;
-}
+} */
 
 

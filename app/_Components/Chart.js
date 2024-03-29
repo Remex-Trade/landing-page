@@ -1,10 +1,16 @@
 "use client";
 
+import { chart } from "highcharts";
 import { ColorType, createChart } from "lightweight-charts";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const Chart = () => {
   const chartContainer = useRef();
+  const [resize,setResize] = useState(false);
+window.addEventListener('resize',()=>{
+setResize(!resize);
+
+})
   // const data = [{ value: 0, time: 1642425322 }, { value: 8, time: 1642511722 }, { value: 10, time: 1642598122 }, { value: 20, time: 1642684522 }, { value: 3, time: 1642770922 }, { value: 43, time: 1642857322 }, { value: 41, time: 1642943722 }, { value: 43, time: 1643030122 }, { value: 56, time: 1643116522 }, { value: 46, time: 1643202922 }];
   useEffect(() => {
     const chart = createChart(chartContainer.current, {
@@ -1080,7 +1086,7 @@ const Chart = () => {
     return () => {
       chart.remove();
     };
-  }, []);
+  }, [resize]);
 
   const buttons = ["1m","15m","1D","1W"]
   return(

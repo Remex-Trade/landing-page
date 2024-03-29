@@ -23,13 +23,13 @@ const page = () => {
       >
         <Sidebar getShow={getShow}/>
       </div>:
-      <div className='mt-[4vw] bg-[#151415] border-[#2C2D2D] border-[1px] w-[5vw] h-[2vw] rounded-r-lg'>
+      <div className='mt-[4vw] bg-[#151415] border-[#2C2D2D] border-[1px] w-[5vw] h-[2vw] absolute  rounded-r-lg'>
           <div className='flex gap-3 mt-2 ml-2 mr-2' onClick={()=>setShow(true)}>
             <div>Pairs</div>
             <RxHamburgerMenu className='mt-1'/>
           </div>
       </div>}
-      <div className="w-[80vw] h-[100vh]">
+      <div className="w-full h-[100vh]">
         <div className="w-full sticky top-[50px] flex h-[5vh] px-4 gap-10 items-center py-4 bg-[#151415] border-[#2C2D2D] border-[1px]">
           <FaFire color="orange" />
           <div>
@@ -55,10 +55,10 @@ const page = () => {
 
         <div className="flex w-full h-full">
 
-          <div className="flex flex-col h-full justify-start items-start m-8 gap-4">
+          <div className="flex flex-col mr-[18vw] h-full w-full justify-start items-start my-8 mx-4 gap-4">
             <div
               id="middle-top"
-              className=" rounded-xl flex gap-2 flex-col bg-[#151415] border-[#2C2D2D] border-[1px] w-[60vw] h-[48vh] "
+              className=" rounded-xl flex gap-2 flex-col bg-[#151415] border-[#2C2D2D] border-[1px] w-full h-[48vh] "
             >
               <div className="h-[20%] px-8 py-2 flex gap-8 justify-start items-center">
                 <Image src="/Images/SOL.svg" width={70} height={70} className="rounded-full h-100 w-100" />
@@ -100,12 +100,12 @@ const page = () => {
             </div>
             <div
               id="middle-bottom"
-              className="flex flex-col gap-1 justify-center rounded-xl bg-[#151415] border-[#2C2D2D] border-[1px] w-[60vw] h-[42vh]"
+              className="flex flex-col gap-1 justify-center rounded-xl bg-[#151415] border-[#2C2D2D] border-[1px] w-full h-[42vh]"
             >
                <MiddleBottom/>
             </div>
           </div>
-          <div id="right-order"className="h-[100vh] fixed right-0 px-6">
+          <div id="right-order" className="h-[100vh] fixed right-0 mr-6">
             <div className=" mt-10 bg-[#151415] border-[#2C2D2D] rounded-xl border-[1px] h-[77vh] w-[15vw]">
                 <RightOrder/>
             </div>

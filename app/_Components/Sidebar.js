@@ -48,7 +48,7 @@ const Sidebar=({getShow})=>{
     }
     return(
         <div>
-            <div className="flex flex-col gap-[1vw] p-[2vw]">
+            <div className="flex flex-col no-scrollbar gap-[1vw] px-2 py-[2vw] text-[13px]">
             <div class="relative flex">
                 <input
                     type="search"
@@ -81,7 +81,7 @@ const Sidebar=({getShow})=>{
                 <div className={Favorites && "border-b-white"}><button onClick={()=>setFavorites(true)} className={Favorites && "text-white border-b-2 border-b-white pb-2"}>Favorites</button></div>
                 <div className={Favorites || "border-b-white"}><button onClick={()=>setFavorites(false)} className={Favorites || "text-white border-b-2 border-b-white pb-2"}>All Perpetual</button></div>
             </div>
-            <div className="flex justify-between text-zinc-400">
+            <div className="flex justify-between text-zinc-400 px-3">
                 <div>Pairs</div>
                 <div className="flex gap-[2vw]">
                     <div>Price</div>
@@ -89,14 +89,14 @@ const Sidebar=({getShow})=>{
                 </div>
             </div>
             <div className='h-[100vh] overflow-y-auto '>
-                <div className={Favorites?"hidden":'flex flex-col gap-[2vw] mr-4 mb-3'}>
+                <div className={Favorites?"hidden":'flex flex-col gap-1 mr-4 mb-3'}>
                     {(Data.filter(e=>e.Pairs.includes(search))).map((Pair,index)=>{
                         return(
-                            <div className="flex justify-between">
-                                <div className='flex gap-[1vw]'>
+                            <div className="flex justify-between w-full hover:bg-[#2c2d2d] px-4 py-4 rounded-xl">
+                                <div className='flex gap-[1vw] '>
                                     {/* {Starred ? (Pair.stared = true) : (Pair.stared = false)}
                                     <div>{Pair.stared?<FaStar style={{color: 'yellow'}} size={20} onClick={()=>setStarred(false)}/> : <CiStar size={20} onClick={()=>setStarred(true)}/>}</div> */}
-                                <div>{FavArr.some(item => item.id === Pair.id)?<FaStar style={{color: 'yellow'}} size={20} onClick={()=>{
+                                <div>{FavArr.some(item => item.id === Pair.id)?<FaStar style={{color: '#FFA500'}} size={20} onClick={()=>{
                                             const newFavorite = FavArr.filter(e=>e!==Pair)
                                             setFavArr(prevFavArr => prevFavArr.filter(e => e.id !== Pair.id));
                                             console.log(FavArr)
@@ -115,12 +115,12 @@ const Sidebar=({getShow})=>{
                     })}
                 </div>
             
-            <div className={Favorites?'flex flex-col gap-[2vw] mr-4':"hidden"}>
+            <div className={Favorites?'flex flex-col gap-1 mr-4':"hidden"}>
                 {(FavArr.filter(e=>e.Pairs.includes(search))).map((Pair)=>{
                         return(
-                            <div className="flex justify-between">
+                            <div className="flex justify-between w-full hover:bg-[#2c2d2d] px-4 py-4 rounded-xl">
                                 <div className='flex gap-[1vw]'>
-                                    <FaStar style={{color: 'yellow'}} size={20} onClick={()=>{
+                                    <FaStar style={{color: '#FFA500'}} size={20} onClick={()=>{
                                         const newFavorite = FavArr.filter(e=>e!==Pair)
                                         setFavArr(newFavorite)
                                     }}/>
