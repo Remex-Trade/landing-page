@@ -17,13 +17,14 @@ module.exports = {
         body:['DM Sans']
       },
       keyframes:{
-        move:{
-          '0%':{transform:'translate(0px,300px)'},
-          '100%':{transform:'translate(1500px,300px)'}
+        float:{
+          '0%':{transform:'translateY(-20px)'},
+          '50%':{transform:'translateY(20px)'},
+          '100%':{transform:'translateY(-20px)'}
         }
       },
       animation:{
-        move : 'move 5s infinite ease-in-out',
+        float : 'float 5s infinite ease-in-out',
       }
     },
   },

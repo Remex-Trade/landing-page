@@ -23,7 +23,6 @@ export default function Home() {
         </div>
         <div className="flex flex-col ">
           <div className="flex flex-col items-center justify-center gap-10">
-            {/* <div className="rounded-full w-[40vw] absolute z-[-1] h-[10vw] bg-gradient-to-r from-teal-900 from-10% via-cyan-800 via-30% to--500 to-90% blur-5xl"></div> */}
             <div className="relative flex justify-center items-center">
               <div className="rounded-full w-[35vw] absolute z-[-1] h-[12vw] bg-gradient-to-r from-[#296BFC] from-10% to-[#61AEE1] to-90% blur-[120px]"></div>
               <h1 className="text-7xl font-[900]">LEVEL UP YOUR TRADING</h1>
@@ -34,23 +33,25 @@ export default function Home() {
                 <p>Trade, level up, and unlock instant rewards</p>
               </div>
             </div>
-            <div className="flex gap-0">
+            <div className="flex items-start w-full gap-0 justify-center">
             <Link href="/site/Trade">
-              <button class="mt-5 mb-20 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 border border-blue-700 rounded-[12px] text-xl text-black">
+              <button class="relative z-10 animate animate-float mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-[12px] text-xl text-black">
                 Trade now
               </button>
             </Link>
-            <Image
+           
+            </div>
+          </div>
+          <div className=" flex flex-col items-center justify-center relative bottom-56">
+          <Image
               src="/Images/sonic.png"
               alt="fantom image"
               width={200}
               height={200}
-              className="absolute right-[38%] bottom-[23%] z-[-1]"
+              className="relative m-0 left-28 top-20 "
+              // absolute right-[38%] bottom-[23%] z-[-1]
             />
-            </div>
-          </div>
-          <div className="relative flex items-center justify-center">
-           
+            <div className="relative flex items-center justify-center">
             <Image
               src="/Images/sshot.webp"
               width={800}
@@ -61,8 +62,9 @@ export default function Home() {
               src="/Images/sshot_mobile.webp"
               width={300}
               height={200}
-              className="border-solid border-8 border-zinc-700 rounded-3xl relative right-20 z-10"
+              className="border-solid border-8 border-zinc-700 rounded-3xl relative right-20 z-1"
             />
+            </div>
           </div>
         </div>
         <div className="flex items-center justify-center m-20">
@@ -197,24 +199,7 @@ export default function Home() {
             <p className="text-xl text-stone-400">Audited and Secured By</p>
             <h2 className="text-5xl font-bold">MOVEBIT</h2>
           </div>
-          <div className=" absolute bottom-0 right-[5%]">
-            <div className="relative">
-              <Image
-                src="/Images/sonic.png"
-                alt="fantom image"
-                width={300}
-                height={300}
-                className="absolute z-0"
-              />
-              <Image
-                src="/Images/SOL.svg"
-                width={100}
-                height={100}
-                alt="upbutton"
-                className="abslute z-10 "
-              />
-            </div>
-          </div>
+        
         </div>
 
         <div className="flex justify-between w-full">
