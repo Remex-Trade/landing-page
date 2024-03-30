@@ -106,7 +106,7 @@ const page = () => {
             </div>
           </div>
           <div id="right-order" className="h-[100vh] fixed right-0 mr-6">
-            <div className=" mt-10 bg-[#151415] border-[#2C2D2D] rounded-xl border-[1px] h-[77vh] w-[15vw]">
+            <div className=" overflow-y-auto scrollable mt-10 bg-[#151415] border-[#2C2D2D] rounded-xl border-[1px] h-[77vh] w-[15vw]">
                 <RightOrder/>
             </div>
           </div>
