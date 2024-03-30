@@ -108,7 +108,7 @@ const Sidebar=({getShow})=>{
                                 </div>
                                 <div className="flex gap-[2vw]">
                                     <div>{Pair.Price}</div>
-                                    <div className='text-green-600'>{Pair.Change}</div>
+                                    <div className='text-[#0cf3c4]'>{Pair.Change}</div>
                                 </div>
                             </div>
                         )

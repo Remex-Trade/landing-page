@@ -4,7 +4,7 @@ import {CiWallet} from "react-icons/ci";
 
 const Navbar = () => {
   return (
-    <div className="bg-[#151415] sticky z-10 top-0 w-full text-white font-light border-[#2C2D2D] border-[1px]">
+    <div className="bg-[#0F0E0E] sticky z-10 top-0 w-full text-white font-light border-[#2C2D2D] border-[1px]">
       <div className="flex gap-[4vw] justify-between items-center w-full px-[2vw] py-1 text-md">
         <div>LOGO</div>
         <div className="flex gap-20">
@@ -21,7 +21,7 @@ const Navbar = () => {
           <div>Toggle</div>
           <div>BLOB</div>
           <div>
-            <button className="bg-blue-500 text-white px-4 py-2 rounded-lg flex gap-2"><CiWallet color="white" size={25}/>Connect Wallet</button>
+            <button className="bg-[#0cf3c4] text-black px-4 py-2 rounded-lg flex gap-2"><CiWallet color="black" size={25}/>Connect Wallet</button>
           </div>
         </div>
       </div>

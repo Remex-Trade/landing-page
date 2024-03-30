@@ -15,8 +15,8 @@ const RightOrder = () => {
             <button
               className={`w-full px-4 py-2 text-lg font-bold ${
                 (button==="Long"&& selected==="Long")
-                  ? "bg-[#122720] text-[#0A9C72] border-b-4 border-b-[#0A9C72]"
-                  : (button==="Short" && selected==="Short")?"text-red-700 bg-[#291B1A] border-b-2 border-b-red-700":"text-[#4F4F4F] bg-[#151415] border-[#2C2D2D] border-b-2"
+                  ? "bg-[#022921] text-[#0CF3C4] border-b-4 border-b-[#0cf3c4]"
+                  : (button==="Short" && selected==="Short")?"text-red-700 bg-[#291B1A] border-b-4 border-b-red-700":"text-[#4F4F4F] bg-[#0F0E0E] border-[#2C2D2D] border-b-2"
               }`}
               onClick={() => {
                 setSelected(button);
@@ -27,7 +27,7 @@ const RightOrder = () => {
           );
         })}
       </div>
-      <div className="sticky top-12 bg-[#151415] h-31 px-4 w-full text-[0.8rem] h-100 text-[#4F4F4F] border-b-2 border-b-[#2C2D2D] flex gap-6 ">
+      <div className="sticky top-12 bg-[#0F0E0E] h-31 px-4 w-full text-[0.8rem] h-100 text-[#4F4F4F] border-b-2 border-b-[#2C2D2D] flex gap-6 ">
         {options.map((option) => {
           return (
             <button
