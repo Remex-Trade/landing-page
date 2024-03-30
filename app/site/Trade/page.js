@@ -52,8 +52,8 @@ const page = () => {
           </div>
         </div>
 
-        <div className="flex w-full h-full">
-          <div className="flex flex-col mr-[18vw] h-full w-full justify-start items-start my-8 mx-4 gap-4">
+        <div className="flex w-full h-full gap-2">
+          <div className="flex flex-col mr-[18vw] h-full w-full justify-start items-start my-4 mx-4 gap-4">
             <div
               id="middle-top"
               className=" rounded-xl flex gap-2 flex-col bg-[#0F0E0E] border-[#2C2D2D]  border-[1px] w-full  h-[48vh] "

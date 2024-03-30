@@ -19,10 +19,10 @@
       });
       const newSeries = chart.addCandlestickSeries()
       newSeries.applyOptions({
-          wickUpColor: 'rgb(225, 50, 85)',
-          upColor: 'rgb(225, 50, 85)',
-          wickDownColor: 'rgb(12,243,196)',
-          downColor: 'rgb(12,243,196)',
+          wickUpColor: 'rgb(12,243,196)',
+          upColor: 'rgb(12,243,196)',
+          wickDownColor: 'rgb(225, 50, 85)',
+          downColor: 'rgb(225, 50, 85)',
           borderVisible: false,
       
       });
