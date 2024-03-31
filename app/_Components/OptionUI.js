@@ -14,11 +14,11 @@ const OptionUI = ({ option }) => {
   };
   console.log(percentage);
   return (
-    <div className="hover:cursor-pointer overflow-hidden">
+    <div className="bg-white dark:bg-[#0f0e0f] hover:cursor-pointer overflow-hidden">
       
         <div className="flex flex-col px-6 py-8 w-full h-content gap-4 overflow-hidden ">
           {/* Leverage */}
-          <div className="bg-[#2C2D2D] w-full rounded-xl h-content py-2 px-4">
+          <div className="dark:bg-[#2C2D2D] bg-[#F7F7F8] text-gray-500 dark:text-white w-full rounded-xl h-content py-2 px-4">
             <div className="w-full flex justify-between">
               <div className="flex gap-3 items-center jusitfy-center w-[30%] h-full">
                 <Image
@@ -39,7 +39,7 @@ const OptionUI = ({ option }) => {
           </div>
           {option==="Conditional" &&(
             <>
-            <div className="bg-[#2C2D2D] px-4 py-2 w-full rounded-xl h-content flex justify-start gap-4 items-center">
+            <div className="dark:bg-[#2C2D2D] bg-[#F7F7F8] text-gray-500 dark:text-white px-4 py-2 w-full rounded-xl h-content flex justify-start gap-4 items-center">
             <Image
               src="/Images/right2.svg"
               alt="trade"
@@ -63,7 +63,7 @@ const OptionUI = ({ option }) => {
           
           {option==="Limit" &&(
             <>
-               <div className="bg-[#2C2D2D] px-4 py-2 w-full rounded-xl h-content flex justify-start gap-4 items-center">
+               <div className="dark:bg-[#2C2D2D] bg-[#F7F7F8] text-gray-500 dark:text-white px-4 py-2 w-full rounded-xl h-content flex justify-start gap-4 items-center">
             <Image
               src="/Images/right2.svg"
               alt="trade"
@@ -82,7 +82,7 @@ const OptionUI = ({ option }) => {
             </>
           )}
           {/* Trade */}
-          <div className="bg-[#2C2D2D] px-4 py-2 w-full rounded-xl h-content flex justify-start gap-4 items-center">
+          <div className="dark:bg-[#2C2D2D] bg-[#F7F7F8] text-gray-500 dark:text-white px-4 py-2 w-full rounded-xl h-content flex justify-start gap-4 items-center">
             <Image
               src="/Images/right2.svg"
               alt="trade"
@@ -102,7 +102,7 @@ const OptionUI = ({ option }) => {
           {/* Slider */}
           <div className="flex justify-center w-full gap-4">
             <div className="flex flex-col justify-center w-full gap-2 ">
-              <div className="w-full flex justify-between relative items-center h-2 rounded-lg mt-5 bg-[#2c2d2d]">
+              <div className="w-full flex justify-between relative items-center h-2 rounded-lg mt-5 dark:bg-[#2C2D2D] bg-[#F7F7F8] text-gray-500 dark:text-white">
                 <input
                   className="slider z-10 relative"
                   type="range"
@@ -134,7 +134,7 @@ const OptionUI = ({ option }) => {
               </div>
             </div>
 
-            <div className="w-[30%] rounded-md border-[1px] justify-center items-center flex border-gray-800 h-10 bg-[#171716] ">
+            <div className="w-[30%] rounded-md border-[1px] justify-center items-center flex dark:border-gray-800 h-10 dark:bg-[#171716] bg-[#F7F8F7] dark:text-white text-gray-700">
               {`${percentage}x`}
             </div>
           </div>
@@ -149,40 +149,40 @@ const OptionUI = ({ option }) => {
               onClick={() => {
                 setIsTp(!isTp)
               }}
-              className="bg-gray-500 text-[#Ocf334]"
+              className="dark:bg-gray-500 dark:text-[#Ocf334]"
             />
-            <label htmlFor="TP/SL" className="font-sm">
+            <label htmlFor="TP/SL" className="text-sm dark:text-white text-gray-600">
               TP/SL
             </label>
           </div>
           {isTp &&
           <div className="flex flex-col gap-4">
             <div className="flex flex-col justify-start gap-1">
-              <p className="text-sm text-white">Take Profit</p>
+              <p className="text-sm text-gray-600 dark:text-white">Take Profit</p>
               <div className="flex gap-2 justify-between">
                 {tp.map((button) => {
                   return (
-                    <button className="px-1 rounded-lg text-[12px] focus:bg-[#262626] hover:bg-[#262626] text-gray-500 focus:text-white ">
+                    <button className="px-1 rounded-lg text-[12px] focus:bg-[#F7F7F8] focus:shadow-md hover:bg-[#F7F8F7] dark:focus:bg-[#262626] dark:hover:bg-[#262626] text-gray-500 dark:focus:text-white ">
                       {button}%
                     </button>
                   );
                 })}
-                <button className="px-2 py-1 rounded-lg text-[12px] bg-[#262626] text-gray-500 ">
+                <button className="px-2 py-1 rounded-lg text-[12px] bg-[#F7F8F8] text-gray-600 dark:bg-[#262626] dark:text-gray-500 ">
                   Price
                 </button>
               </div>
             </div>
             <div className="flex flex-col justify-start gap-1">
-              <p className="text-sm text-white">Stop Loss</p>
+              <p className="text-sm dark:text-white text-gray-600">Stop Loss</p>
               <div className="flex gap-2">
                 {sl.map((button) => {
                   return (
-                    <button className="px-1 rounded-lg text-[13px] focus:bg-[#262626] hover:bg-[#262626] text-gray-500 focus:text-white ">
+                    <button className="px-1 rounded-lg text-[12px] focus:bg-[#F7F7F8] focus:shadow-md hover:bg-[#F7F8F7] dark:focus:bg-[#262626] dark:hover:bg-[#262626] text-gray-500 dark:focus:text-white ">
                       {button}
                     </button>
                   );
                 })}
-                <button className="px-2 py-1 rounded-lg text-[12px] bg-[#262626] text-gray-500 ">
+                <button className="px-2 py-1 rounded-lg text-[12px] bg-[#F7F8F8] text-gray-600 dark:bg-[#262626] dark:text-gray-500">
                   Price
                 </button>
               </div>

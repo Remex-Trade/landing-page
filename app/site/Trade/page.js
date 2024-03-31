@@ -14,26 +14,29 @@ const page = () => {
   const getShow=(data)=>{
       setShow(data)
   }
+  
   return (
     <div className="flex">
+      <div className=''>
       {show?<div
         id="sidebar"
-        className="h-[100vh] overflow-hidden mb-10 rounded-b-xl w-[20vw] bg-[#0F0E0E] border-[#2C2D2D] border-[1px]"
+        className="h-[100vh] bg-[#F7F7F8] text-black overflow-hidden rounded-b-xl w-[20vw] dark:bg-[#0F0E0E] dark:border-[#2C2D2D] shadow-xl dark:border-[1px]"
       >
         <Sidebar getShow={getShow}/>
       </div>:
-      <div className='mt-[4vw] bg-[#0F0E0E] border-[#2C2D2D] border-[1px] w-[5vw] h-[2vw] absolute  rounded-r-lg'>
+      <div className='bg-white mt-[4vw] bg-[#F7F7F8] dark:bg-[#0F0E0E] text-black dark:text-white dark:border-[#2C2D2D] border-[1px] w-[5vw] h-[2vw] absolute  rounded-r-lg'>
           <div className='flex gap-3 mt-2 ml-2 mr-2' onClick={()=>setShow(true)}>
             <div>Pairs</div>
             <RxHamburgerMenu className='mt-1'/>
           </div>
       </div>}
-      <div className="w-full h-[100vh]">
-        <div className="w-full sticky top-[50px] flex h-[5vh] px-4 gap-10 items-center py-4 bg-[#0F0E0E] border-[#2C2D2D] border-[1px]">
+      </div>
+      <div className=" w-full h-[100vh]">
+        <div className="bg-white dark:bg-[#0f0e0e] w-full sticky top-[50px] text-black dark:text-white flex h-[5vh] px-4 gap-10 items-center py-4 dark:bg-[#0F0E0E] dark:border-[#2C2D2D] shadow-sm dark:border-[1px]">
           <FaFire color="orange" />
           <div>
             BTC/USD
-            <span className="text-[#0cf3c4]">+0.15%</span>
+            <span className="text-green-600 dark:text-[#0cf3c4]">+0.15%</span>
           </div>
 
           <div>
@@ -48,45 +51,45 @@ const page = () => {
 
           <div>
             TIA/USD
-            <span className="text-[#0cf3c4]">+0.15%</span>
+            <span className="text-green-600 dark:text-[#0cf3c4]">+0.15%</span>
           </div>
         </div>
 
-        <div className="flex w-full h-full gap-2">
-          <div className="flex flex-col mr-[18vw] h-full w-full justify-start items-start my-4 mx-4 gap-4">
+        <div className="flex w-full h-full gap-2 bg-[#F7F7F8] dark:bg-black">
+          <div className="flex flex-col mr-[18vw] h-full w-full justify-start  items-start m-8 gap-4">
             <div
               id="middle-top"
-              className=" rounded-xl flex gap-2 flex-col bg-[#0F0E0E] border-[#2C2D2D]  border-[1px] w-full  h-[48vh] "
+              className=" w-full rounded-xl flex gap-2 flex-col  bg-white text-black dark:text-white dark:bg-[#0F0E0E] dark:border-[#2C2D2D]  dark:border-[1px] shadow-md h-[48vh] "
             >
-              <div className="h-[20%] px-8 py-2 flex gap-8 justify-start items-center">
-                <Image src="/Images/SOL.svg" width={70} height={70} className="rounded-full h-100 w-100" />
+              <div className="w-full h-[20%] px-8 py-2 flex gap-8 justify-start items-center">
+                <Image src="/Images/SOL.svg" width={50} height={50} className="rounded-full h-100 w-100" />
                 <div className="flex flex-col gap-1">
-                  <span className="text-white text-md">SQL/USD</span>
-                  <span className="text-green-400 font-bold text-lg">192.73</span>
+                  <span className="text-black text-[0.8rem] dark:text-white ">SQL/USD</span>
+                  <span className="text-green-600  font-bold text-md">192.73</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="text-white text-md">24h Change</span>
-                  <span className="text-green-400 text-md">+18.866%</span>
+                  <span className="ext-black text-[0.8rem] dark:text-white ">24h Change</span>
+                  <span className="text-green-600  text-[0.8rem]">+18.866%</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="text-white text-md underline">Open Interest(I)</span>
-                  <span className="text-md">161,897/507,020</span>
+                  <span className="ext-black text-[0.8rem] dark:text-white  underline">Open Interest(I)</span>
+                  <span className="text-s[0.8rem]">161,897/507,020</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="text-white text-md underline">Open Interest(II)</span>
-                  <span className="text-md">38,349/628,079</span>
+                  <span className="text-black text-[0.8rem]  dark:text-white underline">Open Interest(II)</span>
+                  <span className="text-[0.8rem]">38,349/628,079</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="text-white text-md underline">Funding</span>
-                  <span className="text-green-400 text-md">0.0030%</span>
+                  <span className="ext-black text-[0.8rem] dark:text-white underline">Funding</span>
+                  <span className="text-green-600  text-[0.8rem]">0.0030%</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="text-white text-md underline">Borrowing Rate</span>
-                  <span className="text-green-400 text-md">0.0021%</span>
+                  <span className="text-black text-[0.8rem]  dark:text-white underline">Borrowing Rate</span>
+                  <span className="text-green-600  text-[0.8rem]">0.0021%</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="text-white text-md">24h volume(USDT)</span>
-                  <span className="text-sm">3,039,440.17</span>
+                  <span className="text-black text-[0.8rem]  dark:text-white">24h volume(USDT)</span>
+                  <span className="text-[0.8rem]">3,039,440.17</span>
                 </div>
 
               </div>
@@ -98,13 +101,13 @@ const page = () => {
             </div>
             <div
               id="middle-bottom"
-              className="flex flex-col gap-1 justify-center rounded-xl bg-[#0F0E0E] border-[#2C2D2D] border-[1px] w-full h-[42vh]"
+              className="flex flex-col gap-1 justify-center rounded-xl dark:bg-[#0F0E0E] bg-white dark:border-[#2C2D2D] shadow-lg border-[1px] w-full h-[42vh]"
             >
                <MiddleBottom/>
             </div>
           </div>
-          <div id="right-order" className="h-[100vh] fixed right-0 mr-6">
-            <div className=" overflow-y-auto scrollable mt-10 bg-[#0F0E0E] border-[#2C2D2D] rounded-xl border-[1px] h-[77vh] w-[16vw]">
+          <div id="right-order" className="h-[100vh] fixed right-4">
+            <div className=" overflow-y-auto scrollable mt-10 dark:bg-[#0F0E0E] dark:border-[#2C2D2D] shadow-lg rounded-xl border-[1px] h-[77vh] w-[16vw]">
                 <RightOrder/>
             </div>
           </div>

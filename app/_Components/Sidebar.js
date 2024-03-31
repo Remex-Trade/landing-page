@@ -47,16 +47,16 @@ const Sidebar=({getShow})=>{
         
     }
     return(
-        <div>
+        <div className='dark:bg-[#0F0C0F] bg-white dark:text-white text-black'>
             <div className="flex flex-col gap-[1vw]  px-4 py-[2vw] text-[13px]">
             <div class="flex w-full justify-between items-center px-2">
                 <input
                     type="search"
-                    class="relative m-0 block rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-2 py-1 text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
+                    className="relative m-0 block rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-2 py-1 text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
                     placeholder="Search"
-                    aria-label="Search"
+                    ariaLabel="Search"
                     id="exampleFormControlInput2"
-                    aria-describedby="button-addon2"
+                    ariaDescribedby="button-addon2"
                     onChange={searchPair}
                     />
                
@@ -64,8 +64,8 @@ const Sidebar=({getShow})=>{
                 {getShow(show)}
             </div>
             <div className="flex gap-[1vw] text-zinc-400">
-                <div className={Favorites && "border-b-white"}><button onClick={()=>setFavorites(true)} className={Favorites && "text-white border-b-2 border-b-white pb-2"}>Favorites</button></div>
-                <div className={Favorites || "border-b-white"}><button onClick={()=>setFavorites(false)} className={Favorites || "text-white border-b-2 border-b-white pb-2"}>All Perpetual</button></div>
+                <div className={Favorites && "border-b-white"}><button onClick={()=>setFavorites(true)} className={Favorites && "dark:text-white text-black border-b-2 border-b-white pb-2"}>Favorites</button></div>
+                <div className={Favorites || "border-b-white"}><button onClick={()=>setFavorites(false)} className={Favorites || "dark:text-white text-black border-b-2 border-b-white pb-2"}>All Perpetual</button></div>
             </div>
             <div className="flex justify-between text-zinc-400 px-3">
                 <div>Pairs</div>
@@ -78,7 +78,7 @@ const Sidebar=({getShow})=>{
                 <div className={Favorites?"hidden":'flex flex-col gap-1 mr-4 mb-3'}>
                     {(Data.filter(e=>e.Pairs.includes(search))).map((Pair,index)=>{
                         return(
-                            <div className="flex justify-between w-full hover:bg-[#2c2d2d] px-4 py-4 rounded-xl">
+                            <div className="flex justify-between w-full dark:text-white text-black hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-4 py-4 rounded-xl">
                                 <div className='flex gap-[1vw] '>
                                     {/* {Starred ? (Pair.stared = true) : (Pair.stared = false)}
                                     <div>{Pair.stared?<FaStar style={{color: 'yellow'}} size={20} onClick={()=>setStarred(false)}/> : <CiStar size={20} onClick={()=>setStarred(true)}/>}</div> */}
@@ -104,7 +104,7 @@ const Sidebar=({getShow})=>{
             <div className={Favorites?'flex flex-col gap-1 mr-4':"hidden"}>
                 {(FavArr.filter(e=>e.Pairs.includes(search))).map((Pair)=>{
                         return(
-                            <div className="flex justify-between w-full hover:bg-[#2c2d2d] px-4 py-4 rounded-xl">
+                            <div className="flex justify-between w-full hover:bg-[#f7f8f8] dark:hover:bg-[#2c2d2d] px-4 py-4 rounded-xl">
                                 <div className='flex gap-[1vw]'>
                                     <FaStar style={{color: '#FFA500'}} size={20} onClick={()=>{
                                         const newFavorite = FavArr.filter(e=>e!==Pair)

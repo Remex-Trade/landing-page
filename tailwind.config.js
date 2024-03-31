@@ -17,6 +17,9 @@ module.exports = {
         body:['DM Sans']
       },
       keyframes:{
+        move:{
+          '100%':{transform:'translateX(100%)'}
+        },
         float:{
           '0%':{transform:'translateY(-20px)'},
           '50%':{transform:'translateY(20px)'},
@@ -24,6 +27,7 @@ module.exports = {
         }
       },
       animation:{
+        move: 'move 1s ease-in-out  ',
         float : 'float 5s infinite ease-in-out',
       }
     },
@@ -32,4 +36,5 @@ module.exports = {
     require('tailwind-scrollbar'),
     require('tailwind-scrollbar-hide')
   ],
+  darkMode:'class'
 };

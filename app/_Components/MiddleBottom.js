@@ -1,10 +1,12 @@
 "use client"
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaBox } from "react-icons/fa";
+import { theme } from "../site/layout";
 
 const MiddleBottom = () => {
   const [selected, setSelected] = useState(0);
   const arr1 = ["Position(0)", "Open Orders(0)", "Order history(0)"];
+  const {darkMode} = useContext(theme);
   const arr2 = [
     [
       "Symbol",
@@ -42,12 +44,12 @@ const MiddleBottom = () => {
   ];
   return (
     <>
-      <div className="flex w-full gap-10 p-8 py-6">
+      <div className="flex w-full gap-10 p-8 py-6 text-black">
         {arr1.map((value, index) => {
           return (
             <button
-              className={`text-sm text-slate-100 px-3 py-2 rounded-lg ${
-                index == selected && "bg-[#2c2d2d] text-white font-bold"
+              className={`text-sm dark:text-slate-100 px-3 py-2 rounded-lg ${
+                index == selected && "dark:bg-[#2c2d2d] bg-[#F4F5F4] dark:text-white font-bold"
               }`}
               onClick={() => setSelected(index)}
             >
@@ -57,14 +59,14 @@ const MiddleBottom = () => {
         })}
       </div>
       <div className="h-[90%] w-full px-8 text-center">
-        <div className="grid gap-4 grid-cols-9 border-b-2 border-b-[#2c2d2d]">
+        <div className="grid gap-4 grid-cols-9 border-b-2 dark:border-b-[#2c2d2d]">
       {arr2[selected].map((value) => {
-        return <div className="text-[0.9rem]">{value}</div>;
+        return <div className="text-[0.9rem] text-black dark:text-white">{value}</div>;
       })}
     </div>
       <div className="h-full w-full flex flex-col gap-4 justify-center items-center">
-        <FaBox size={50} />
-        <div>No Data</div>
+        <FaBox size={50} color={`${darkMode?'white':'grey'}`} />
+        <div className="text-black dark:text-white">No Data</div>
       </div>
       </div>
     </>
