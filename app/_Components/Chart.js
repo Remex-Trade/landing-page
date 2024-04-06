@@ -21,7 +21,7 @@
             horzLines: { color: "#F4F5F4" },
           },
           width:chartContainer.current.offsetWidth,
-          height: 300,
+          height: 280,
         });
       }else{
         chart = createChart(chartContainer.current, {
