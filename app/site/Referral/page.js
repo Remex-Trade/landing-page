@@ -5,11 +5,15 @@ import Link from "next/link";
 import { CiWallet } from "react-icons/ci";
 import { GoTrophy } from "react-icons/go";
 import { HiSpeakerphone } from "react-icons/hi";
+import { IoPeopleOutline } from "react-icons/io5";
+import { RiCoupon3Line } from "react-icons/ri";
+
+
 const page = () => {
   const [selected, setSelected] = useState(0);
   const [time, setTime] = useState(0);
-  const [code,setCode] = useState("zi7uc68j")
-  const [wallet,setWaller] = useState(true);
+  const [code, setCode] = useState("zi7uc68j");
+  const [wallet, setWallet] = useState(false);
 
   return (
     <div>
@@ -50,23 +54,34 @@ const page = () => {
             <span className="text-yellow-400">$4539.00</span>
           </div>
         </div>
-        {wallet &&
-        <div className="bg-[#262626] rounded-xl w-[25%]">
+        {wallet && (
+          <div className="bg-[#262626] rounded-xl w-[25%]">
             <div className="px-4 py-4 text-center border-b-2 border-b-[#373636]">
-            Create Invitation Code and Get up to 30% Referral Commission
+              Create Invitation Code and Get up to 30% Referral Commission
             </div>
             <div id="referral code" className="p-8 flex gap-4 flex-col">
-                <input type="text" className="px-4 py-4 bg-[#373636] rounded-xl w-full focus:border focus:border-blue-500 outline-none" value={code} onChange={(e)=>setCode(e.target.value)}/>
-                <p className="text-[0.7rem] px-4 text-gray-300 text-left">Generate referral codes using only lowercase letters and numbers (no uppercase letters and symbols), up to 20 characters long and can be created only once.</p>
-                <button className="bg-[#0CF3C4] flex justify-center items-center gap-2 text-black text-md rounded-md px-3 py-2">
-                  Create Now
-                </button>
+              <input
+                type="text"
+                className="px-4 py-4 bg-[#373636] rounded-xl w-full focus:border focus:border-blue-500 outline-none"
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
+              />
+              <p className="text-[0.7rem] px-4 text-gray-300 text-left">
+                Generate referral codes using only lowercase letters and numbers
+                (no uppercase letters and symbols), up to 20 characters long and
+                can be created only once.
+              </p>
+              <button className="bg-[#0CF3C4] flex justify-center items-center gap-2 text-black text-md rounded-md px-3 py-2">
+                Create Now
+              </button>
             </div>
-        </div>}
+          </div>
+        )}
       </div>
       <div>
         <div className="w-[100vw] flex flex-col items-center justify-center  py-2">
           <div className="flex justify-start border-b-[2px] border-b-[#141515] items-center w-1/2 gap-10 text-gray-600 font-bold">
+            <Link href="#Dashboard"  >
             <button
               className={`hover:text-white ${
                 selected == 0 && "border-b-2 border-b-white h-full text-white"
@@ -77,12 +92,14 @@ const page = () => {
             >
               Dashboard
             </button>
-            
-            {wallet&&
-            <>
-                  <button
+            </Link>
+            {wallet && (
+              <>
+              <Link href="#Referrals"  >
+                <button
                   className={`hover:text-white ${
-                    selected == 1 && "border-b-2 border-b-white h-full text-white"
+                    selected == 2 &&
+                    "border-b-2 border-b-white h-full text-white"
                   }`}
                   onClick={() => {
                     setSelected(2);
@@ -90,18 +107,23 @@ const page = () => {
                 >
                   Referrals
                 </button>
-                  <button
+                </Link>
+                <Link href="#Commission"  >
+                <button
                   className={`hover:text-white ${
-                    selected == 1 && "border-b-2 border-b-white h-full text-white"
+                    selected == 3 &&
+                    "border-b-2 border-b-white h-full text-white"
                   }`}
                   onClick={() => {
                     setSelected(3);
                   }}
                 >
-                 Commission Rebate
+                  Commission Rebate
                 </button>
-                </>
-            }
+                </Link>
+              </>
+            )}
+            <Link href="#Leaderboard" >
             <button
               className={`hover:text-white ${
                 selected == 1 && "border-b-2 border-b-white h-full text-white"
@@ -112,79 +134,209 @@ const page = () => {
             >
               Leaderboard
             </button>
+            </Link>
           </div>
           <div className="w-1/2 px-4 m-10">
             <div className="flex justify-start flex-col items-start gap-8">
-              <div className="text-2xl font-bold  flex items-center gap-4">
+              <div id="Dashboard" className="text-2xl font-bold  flex items-center gap-4">
                 {" "}
                 <CiWallet color="#0CF3C4" size={40} />
                 Dashboard
               </div>
               <div className="w-full h-full bg-[#141515] flex items-center justify-center p-8 rounded-xl">
-                {wallet?
+                {wallet ? (
+                  <div className="flex items-start justify-center w-full flex-col gap-6">
                     <div className="flex items-start justify-center w-full flex-col gap-6">
-                        <div className="flex items-start justify-center w-full flex-col gap-6">
-                        <span className="text-sm underline decoration-dashed">Pending</span>
-                        <span className="text-4xl font-bold">$0.0000</span>
-                        </div>
-                        <div className="flex gap-4">
-                            <div className="rounded-xl bg-[#262626] gap-4 px-4 py-3 flex">
-                                <Image src="/Images/dashboard1.svg" height={35} width={35} alt="token"/>
-                                <div className="flex flex-col justify-center items-start">
-                                    <span className="font-bold text-sm text-white">$0.0000</span>
-                                    <span className="text-sm text-gray-300 ">opBNB</span>
-                                </div>
-                                <button disabled className="rounded-xl border border-gray-500 text-sm text-gray-500 px-3">Claim</button>
-                            </div>
-                            <div className="rounded-xl bg-[#262626] gap-4 px-4 py-3 flex">
-                                <Image src="/Images/dashboard2.svg" height={35} width={35} alt="token"/>
-                                <div className="flex flex-col justify-center items-start">
-                                    <span className="font-bold text-sm text-white">$0.0000</span>
-                                    <span className="text-sm text-gray-300 ">Manta</span>
-                                </div>
-                                <button disabled className="rounded-xl border border-gray-500 text-sm text-gray-500 px-3">Claim</button>
-                            </div>
-                            <div className="rounded-xl bg-[#262626] gap-4 px-4 py-3 flex">
-                                <Image src="/Images/dashboard3.svg" height={35} width={35} alt="token"/>
-                                <div className="flex flex-col justify-center items-start">
-                                    <span className="font-bold text-sm text-white">$0.0000</span>
-                                    <span className="text-sm text-gray-300 ">BNB</span>
-                                </div>
-                                <button disabled className="rounded-xl border border-gray-500 text-sm text-gray-500 px-3">Claim</button>
-                            </div>
-                        </div> 
-                        <div className="w-full">
-                            <div className="flex gap-4">
-                                <span className="text-sm font-bold">Claimed</span>
-                                <span className="text-sm font-bold">$0.0000</span>
-                                <span className="text-sm font-bold text-gray-600">{'('}</span>
-                                <span className="text-sm font-bold text-gray-600 flex gap-2">
-                                    <Image src="/Images/dashboard1.svg" width={20} height={20}/>
-                                    <span>$0.0000</span>
-                                </span>
-                                <span className="text-sm font-bold text-gray-600 flex gap-2">
-                                    <Image src="/Images/dashboard2.svg" width={20} height={20}/>
-                                    <span>$0.0000</span>
-                                </span><span className="text-sm font-bold text-gray-600 flex gap-2">
-                                    <Image src="/Images/dashboard3.svg" width={20} height={20}/>
-                                    <span>$0.0000</span>
-                                </span>
-                                <span className="text-sm font-bold text-gray-600">
-                                    {')'}
-                                </span>
-                            </div>
-                        </div>
+                      <span className="text-sm underline decoration-dashed">
+                        Pending
+                      </span>
+                      <span className="text-4xl font-bold">$0.0000</span>
                     </div>
-                :<button className="bg-[#0CF3C4] flex items-center gap-2 text-black text-[0.8rem] rounded-md px-3 py-2">
-                  <CiWallet color="black" size={20} />
-                  Connect Wallet
-                </button>}
+                    <div className="flex gap-4">
+                      <div className="rounded-xl bg-[#262626] gap-4 px-4 py-3 flex">
+                        <Image
+                          src="/Images/dashboard1.svg"
+                          height={35}
+                          width={35}
+                          alt="token"
+                        />
+                        <div className="flex flex-col justify-center items-start">
+                          <span className="font-bold text-sm text-white">
+                            $0.0000
+                          </span>
+                          <span className="text-sm text-gray-300 ">opBNB</span>
+                        </div>
+                        <button
+                          disabled
+                          className="rounded-xl border border-gray-500 text-sm text-gray-500 px-3"
+                        >
+                          Claim
+                        </button>
+                      </div>
+                      <div className="rounded-xl bg-[#262626] gap-4 px-4 py-3 flex">
+                        <Image
+                          src="/Images/dashboard2.svg"
+                          height={35}
+                          width={35}
+                          alt="token"
+                        />
+                        <div className="flex flex-col justify-center items-start">
+                          <span className="font-bold text-sm text-white">
+                            $0.0000
+                          </span>
+                          <span className="text-sm text-gray-300 ">Manta</span>
+                        </div>
+                        <button
+                          disabled
+                          className="rounded-xl border border-gray-500 text-sm text-gray-500 px-3"
+                        >
+                          Claim
+                        </button>
+                      </div>
+                      <div className="rounded-xl bg-[#262626] gap-4 px-4 py-3 flex">
+                        <Image
+                          src="/Images/dashboard3.svg"
+                          height={35}
+                          width={35}
+                          alt="token"
+                        />
+                        <div className="flex flex-col justify-center items-start">
+                          <span className="font-bold text-sm text-white">
+                            $0.0000
+                          </span>
+                          <span className="text-sm text-gray-300 ">BNB</span>
+                        </div>
+                        <button
+                          disabled
+                          className="rounded-xl border border-gray-500 text-sm text-gray-500 px-3"
+                        >
+                          Claim
+                        </button>
+                      </div>
+                    </div>
+                    <div className="w-full">
+                      <div className="flex gap-4">
+                        <span className="text-sm font-bold">Claimed</span>
+                        <span className="text-sm font-bold">$0.0000</span>
+                        <span className="text-sm font-bold text-gray-600">
+                          {"("}
+                        </span>
+                        <span className="text-sm font-bold text-gray-600 flex gap-2">
+                          <Image
+                            src="/Images/dashboard1.svg"
+                            width={20}
+                            height={20}
+                          />
+                          <span>$0.0000</span>
+                        </span>
+                        <span className="text-sm font-bold text-gray-600 flex gap-2">
+                          <Image
+                            src="/Images/dashboard2.svg"
+                            width={20}
+                            height={20}
+                          />
+                          <span>$0.0000</span>
+                        </span>
+                        <span className="text-sm font-bold text-gray-600 flex gap-2">
+                          <Image
+                            src="/Images/dashboard3.svg"
+                            width={20}
+                            height={20}
+                          />
+                          <span>$0.0000</span>
+                        </span>
+                        <span className="text-sm font-bold text-gray-600">
+                          {")"}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <button
+                    className="bg-[#0CF3C4] flex items-center gap-2 text-black text-[0.8rem] rounded-md px-3 py-2"
+                    onClick={() => setWallet(true)}
+                  >
+                    <CiWallet color="black" size={20} />
+                    Connect Wallet
+                  </button>
+                )}
               </div>
             </div>
           </div>
+          {wallet && (
+            <>
+              <div id="Referrals" className="w-1/2 px-4 m-10 ">
+                <div className="flex justify-start flex-col items-start gap-8">
+                  <div className="text-2xl font-bold  flex items-center gap-4">
+                    <IoPeopleOutline color="gold" size={40} />
+                    Referral
+                  </div>
+                  <div className="w-full h-full bg-[#141515] flex flex-col items-center justify-center py-8 rounded-xl">
+                    <div className="bg-[#262626] rounded-xl w-[50%]">
+                      <div className="px-4 py-4 text-center border-b-2 border-b-[#373636]">
+                        Create Invitation Code and Get up to 30% Referral
+                        Commission
+                      </div>
+                      <div
+                        id="referral code"
+                        className="p-8 flex gap-4 flex-col"
+                      >
+                        <input
+                          type="text"
+                          className="px-4 py-4 bg-[#373636] rounded-xl w-full focus:border focus:border-blue-500 outline-none"
+                          value={code}
+                          onChange={(e) => setCode(e.target.value)}
+                        />
+                        <p className="text-[0.7rem] px-4 text-gray-300 text-left">
+                          Generate referral codes using only lowercase letters
+                          and numbers (no uppercase letters and symbols), up to
+                          20 characters long and can be created only once.
+                        </p>
+                        <button className="bg-[#0CF3C4] flex justify-center items-center gap-2 text-black text-md rounded-md px-3 py-2">
+                          Create Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="Commission" className="w-1/2 px-4 m-10 ">
+                <div className="flex justify-start flex-col items-start gap-8">
+                  <div className="text-2xl font-bold  flex items-center gap-4">
+                    <RiCoupon3Line color="#0CF3C4" size={40} />
+                    Commission Rebate
+                  </div>
+                  <div className="w-full h-full bg-[#141515] flex flex-col items-center justify-center py-8 rounded-xl">
+                    <div className="bg-[#262626] rounded-xl w-[50%]">
+                      <div className="px-4 py-4 text-center border-b-2 border-b-[#373636]">
+                      Bind Invitation Code and Enjoy 5% ~ 20% Fee Rebate
+                      </div>
+                      <div
+                        id="referral code"
+                        className="p-8 flex gap-4 flex-col"
+                      >
+                        <input
+                          type="text"
+                          className="px-4 py-4 bg-[#373636] rounded-xl w-full focus:border focus:border-blue-500 outline-none"
+                          onChange={(e) => setCode(e.target.value)}
+                          placeholder="Enter Referral Code"
+                        />
+                        <p className="text-[0.7rem] px-4 text-gray-300 text-left">
+                        You can use the referrer's invitation code or use KiloEx invitation Code
+                        </p>
+                        <button className="bg-[#0CF3C4] flex justify-center items-center gap-2 text-black text-md rounded-md px-3 py-2">
+                          Confirm
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
           <div className="w-1/2 px-4 m-10 ">
             <div className="flex justify-start flex-col items-start gap-8">
-              <div className="text-2xl font-bold  flex items-center gap-4">
+              <div id="Leaderboard" className="text-2xl font-bold  flex items-center gap-4">
                 <GoTrophy color="gold" size={40} />
                 Leaderboard
               </div>
@@ -220,22 +372,32 @@ const page = () => {
                   <div className="basis-3/4 underline decoration-dashed">
                     Referral Income
                   </div>
+                  <div className="basis-2/4 px-2"> 
+                      Claim 
+                  </div>
                 </div>
                 <div className="w-[95%]  px-2 py-4 text-md text-white border-b-[1px] border-b-gray-800 gap-8">
                   {leaderboardData.map((data, index) => {
                     return (
                       <div className="w-full flex flex-col gap-2">
                         <div className="flex items-center justify-start px-4 py-2 hover:bg-neutral-800 rounded-lg">
-                        <div className="basis-1/4">{((index+1)>3)?index+1:
-                            <Image src={`/Images/trophy${index+1}.png`} width={20} height={20} alt="rank"/>
-                        }</div>
-                        <div className="basis-3/4">{data.trader}</div>
-                        <div className="basis-3/4">{data.tradingInvites}</div>
-                        <div className="basis-3/4 ">
-                        {data.referral}
+                          <div className="basis-1/4">
+                            {index + 1 > 3 ? (
+                              index + 1
+                            ) : (
+                              <Image
+                                src={`/Images/trophy${index + 1}.png`}
+                                width={20}
+                                height={20}
+                                alt="rank"
+                              />
+                            )}
+                          </div>
+                          <div className="basis-3/4">{data.trader}</div>
+                          <div className="basis-3/4">{data.tradingInvites}</div>
+                          <div className="basis-3/4 ">{data.referral}</div>
+                          <button className="basis-2/4 bg-[#0CF3C4] rounded-lg text-black text-sm px-2 py-2 ">Claim</button>
                         </div>
-                        </div>
-                        
                       </div>
                     );
                   })}

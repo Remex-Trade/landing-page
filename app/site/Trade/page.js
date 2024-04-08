@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 import { FaBox, FaFire } from "react-icons/fa";
 import Image from "next/image";
-import dynamic from "next/dynamic";
-import Charts from "@/app/_Components/Chart";
 import Sidebar from "../../_Components/Sidebar"
-import MiddleBottom from "@/app/_Components/MiddleBottom";
-import RightOrder from "@/app/_Components/RightOrder";
+import MiddleBottom from "../../_Components/MiddleBottom";
+import RightOrder from "../../_Components/RightOrder";
+import Chart from "../../_Components/Chart";
+
 
 import { RxHamburgerMenu } from "react-icons/rx";
 const page = () => {
@@ -95,7 +95,7 @@ const page = () => {
               </div>
               <div>
               
-                <Charts show={show}/>
+                <Chart show={show}/>
               
               </div>
             </div>
