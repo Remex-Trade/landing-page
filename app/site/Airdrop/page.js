@@ -210,7 +210,19 @@ const page = () => {
         </div>
         <div className="text-lg text-gray-600">Royalty NFTs are now live with a special $LOGX allocation</div>
       </div>
-      <div className="rounded-4xl w-1/2  bg-auto bg-[url('/Images/nftbg.webp')] bg-no-repeat h-60">
+      <div className="rounded-xl flex flex-col justify-between items-start p-8 w-1/2 h-56 bg-no-repeat bg-cover mb-20 p-0 bg-[url('/Images/nftbg.png')]">
+          <div className="w-1/2 flex flex-col gap-2">
+              <div className="text-white font-bold text-xl">
+                    Royalty Free NFTs
+              </div>
+              <div className="text-md text-gray-500">
+              Earn Black, Gold and Silver NFTs that can be
+redeemed for $LOGX at token launch.
+              </div>
+          </div>
+          <div className="text-[#0Cf3c4] text-md hover:underline cursor-pointer">
+              Win Them Now!{'>'}
+          </div>
       </div>
     </div>
   );
