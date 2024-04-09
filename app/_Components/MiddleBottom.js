@@ -1,7 +1,7 @@
 "use client"
 import React, { useContext, useState } from "react";
 import { FaBox } from "react-icons/fa";
-import { theme } from "../site/layout";
+import theme from "../_context/theme";
 
 const MiddleBottom = () => {
   const [selected, setSelected] = useState(0);

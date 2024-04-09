@@ -1,7 +1,7 @@
   "use client";
   import {  createChart } from "lightweight-charts";
   import React, { useContext, useEffect, useRef, useState } from "react";
-  import { theme } from "../site/layout";
+  import theme from "../_context/theme";
 
   const Chart = ({show}) => {
     const chartContainer = useRef();

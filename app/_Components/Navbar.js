@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { FaFire } from "react-icons/fa";
 import {CiWallet} from "react-icons/ci";
 import ToggleButton from "./ToggleButton";
-import { theme } from "../site/layout";
+import theme from "../_context/theme";
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const Navbar = () => {
