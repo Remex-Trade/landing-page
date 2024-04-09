@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaTrophy } from "react-icons/fa";
+import Image from 'next/image'
 const page = () => {
   const Leaderboard=[
     {
@@ -425,7 +426,16 @@ const page = () => {
             return(
                 <div className='flex font-normal text-center items-center justify-center text-sm hover:bg-neutral-800 w-full px-4 py-2 rounded-xl'>
                   <div className='flex w-1/2'>
-                    {index+1}
+                  {index + 1 > 3 ? (
+                              index + 1
+                            ) : (
+                              <Image
+                                src={`/Images/trophy${index + 1}.png`}
+                                width={20}
+                                height={20}
+                                alt="rank"
+                              />
+                            )}
                   </div>
                   <div className='w-full'>{data.Trading}</div>
                   <div className='w-full'>{data.Margin}</div>
