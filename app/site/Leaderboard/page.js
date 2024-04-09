@@ -404,35 +404,36 @@ const page = () => {
     }
   ]
   return (
-    <div className='flex flex-col justify-center items-center gap-[1vw] m-[3vw]'>
-      <h1 className='text-white font-extrabold text-2xl self-start ml-[7vw]'>KiloEx Trading Leaderboard</h1>
-      <div className='flex flex-col gap-[1vw] bg-neutral-950 p-[2vw] rounded-xl'>
-        <div className='flex gap-[7vw] text-zinc-500 font-semibold text-md'>
-          <div>Rank</div>
-          <div>Trader</div>
-          <div>Margin USDT</div>
-          <div>PNL USDT</div>
-          <div>PNL%</div>
-          <div>Winrate</div>
-          <div className='border-dotted border-zinc-500 border-b-2'>Trades</div>
-          <div>Claim</div>
+    <div className='w-full flex justify-center items-center'>
+    <div className='flex flex-col justify-center items-center gap-[1vw] m-[3vw] w-3/5'>
+      <h1 className='text-white font-extrabold text-2xl self-start '>KiloEx Trading Leaderboard</h1>
+      <div className='flex flex-col gap-[1vw] bg-[#141414] p-[2vw] rounded-xl w-full'>
+        <div className='flex text-zinc-500 items-center text-center jusitfy-center font-semibold text-md w-full'>
+          <div className=' w-1/2'>Rank</div>
+          <div className=' w-full'>Trader</div>
+          <div className=' w-full'>Margin USDT</div>
+          <div className=' w-full'>PNL USDT</div>
+          <div className=' w-full'>PNL%</div>
+          <div className=' w-full'>Winrate</div>
+          <div className=' w-full'>Trades</div>
+          <div className=' w-full'>Claim</div>
         </div>
-        <hr className='h-px bg-gray-200 border-0 dark:bg-gray-700 w-[80vw]'/>
-        <div className='flex flex-col'>
+        {/* <hr className='h-px bg-gray-200 border-0 dark:bg-gray-700 w-[80vw]'/> */}
+        <div className='flex flex-col gap-3'>
         {
           Leaderboard.map((data,index)=>{
             return(
-                <div className='flex gap-[7vw] font-normal p-[1vw] text-md hover:bg-neutral-800'>
-                  <div>
+                <div className='flex font-normal text-center items-center justify-center text-sm hover:bg-neutral-800 w-full px-4 py-2 rounded-xl'>
+                  <div className='flex w-1/2'>
                     {index+1}
                   </div>
-                  <div>{data.Trading}</div>
-                  <div>{data.Margin}</div>
-                  <div>{data.USDT}</div>
-                  <div>{data.PNL}</div>
-                  <div>{data.Winrate}</div>
-                  <div>{data.Trades}</div>
-                  <div><button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Claim now</button></div>
+                  <div className='w-full'>{data.Trading}</div>
+                  <div className='w-full'>{data.Margin}</div>
+                  <div className='w-full'>{data.USDT}</div>
+                  <div className='w-full'>{data.PNL}</div>
+                  <div className='w-full'>{data.Winrate}</div>
+                  <div className='w-full'>{data.Trades}</div>
+                  <div className='w-full flex items-center justify-center'><button type="button" class="bg-[#0cf3c4] text-black rounded-lg text-[0.8rem] text-center px-2 py-1.5">Claim now</button></div>
                 </div>
             )
           })
@@ -440,6 +441,7 @@ const page = () => {
       </div>
       </div>
       
+    </div>
     </div>
   )
 }
