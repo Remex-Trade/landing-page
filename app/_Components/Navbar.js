@@ -5,7 +5,7 @@ import { FaFire } from "react-icons/fa";
 import {CiWallet} from "react-icons/ci";
 import ToggleButton from "./ToggleButton";
 import theme from "../_context/theme";
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import WalletsProvider from "../_Components/Wallet";
 
 const Navbar = () => {
   const {darkMode,setDarkMode} = useContext(theme);
@@ -28,7 +28,9 @@ const Navbar = () => {
           <div><ToggleButton darkMode={darkMode} setDarkMode={setDarkMode}/></div>
           <div>BLOB</div>
           <div>
-            <button className="bg-[#0cf3c4] text-black px-4 py-2 rounded-lg flex gap-2">Connect wallet</button>
+            <div>
+            <WalletsProvider />
+              </div>
           </div>
         </div>
       </div>
