@@ -21,6 +21,14 @@ export const CHART_PERIODS = {
   "1d": 60 * 60 * 24,
 };
 
+export const CHART_PERIODS_MAP = {
+  "5m": 5,
+  "15m": 15,
+  "1h": 60,
+  "4h":60 * 4,
+  "1d":  "D",
+};
+
 export const formatAmount = (
   amount,
   tokenDecimals,
@@ -99,6 +107,96 @@ export function numberWithCommas(x) {
 export const chainlinkClient = createClient(
   "https://api.thegraph.com/subgraphs/name/deividask/chainlink"
 );
+
+const PYTH_FEED_ID_MAP = {
+
+  FTM_USD: "0x5c6c0d2386e3352356c3ab84434fafb5ea067ac2678a38a338c4a69ddc4bdb0c", 
+}
+// https://benchmarks.pyth.network/v1/shims/tradingview/history?symbol=FTM%2FUSD&resolution=15&from=1712715047&to=1712801447
+
+export async function getChartPricesFromStats(symbol, period) {
+  if (["WBTC", "WETH", "WFTM"].includes(symbol)) {
+    symbol = symbol.substr(1);
+  } else if (symbol === "BTC.b") {
+    symbol = "BTC";
+  }
+
+  const _symbol = "FTM/USD"
+  // const _symbol = getNormalizedAxlTokenSymbol(symbol);
+
+  const timeDiff = CHART_PERIODS[period] * 3000;
+  const from = Math.floor(Date.now() / 1000 - timeDiff);
+  const to = Math.floor(Date.now() / 1000);
+  const url = `https://benchmarks.pyth.network/v1/shims/tradingview/history?symbol=${_symbol}&resolution=${CHART_PERIODS_MAP[period]}&from=${from}&to=${to}`
+  // const url = `${GMX_STATS_API_URL}/candles/${_symbol}?preferableChainId=${chainId}&period=${period}&from=${from}&preferableSource=fast`;
+
+  const TIMEOUT = 30000;
+  const res = await new Promise(async (resolve, reject) => {
+    let done = false;
+    setTimeout(() => {
+      done = true;
+      reject(new Error(`request timeout ${url}`));
+    }, TIMEOUT);
+
+    let lastEx;
+    for (let i = 0; i < 3; i++) {
+      if (done) return;
+      try {
+        const res = await fetch(url);
+        resolve(res);
+        return;
+      } catch (ex) {
+        await sleep(300);
+        lastEx = ex;
+      }
+    }
+    reject(lastEx);
+  });
+  if (!res.ok) {
+    throw new Error(`request failed ${res.status} ${res.statusText}`);
+  }
+  const json = await res.json();
+  const length = json?.t?.length || 0;
+  let prices = Array.from({ length: length }, (v, i) => {
+    return {
+      t: json.t[i] ,
+      o: json.o[i] ,
+      c: json.c[i],
+      h: json.h[i],
+      l: json.l[i],
+    };
+  });
+
+  console.log("p1",prices)
+
+
+  // let prices = json?.prices;
+  if (!prices || prices.length < 10) {
+    throw new Error(`not enough prices data: ${prices?.length}`);
+  }
+
+  const OBSOLETE_THRESHOLD = Date.now() / 1000 - 60 * 30; // 30 min ago
+  // const updatedAt = json?.updatedAt || 0;
+  // if (updatedAt < OBSOLETE_THRESHOLD) {
+  //   throw new Error(
+  //     "chart data is obsolete, last price record at " +
+  //       new Date(updatedAt * 1000).toISOString() +
+  //       " now: " +
+  //       new Date().toISOString()
+  //   );
+  // }
+
+  prices = prices.map(({ t, o: open, c: close, h: high, l: low }) => ({
+    time: t + timezoneOffset,
+    open,
+    close,
+    high,
+    low,
+  }));
+
+  console.log("p2",prices)
+  return prices;
+}
 
 const FEED_ID_MAP = {
   BTC_USD: "0xdbe1941bfbe4410d6865b9b7078e0b49af144d2d",
@@ -220,7 +318,7 @@ export function useChartPrices(
   let { data: prices, mutate: updatePrices } = useSWR(swrKey, {
     fetcher: async (...args) => {
       try {
-        return await getChainlinkChartPricesFromGraph(symbol, period);
+        return await getChartPricesFromStats(symbol, period);
       } catch (ex) {
         // eslint-disable-next-line no-console
         console.warn(ex);

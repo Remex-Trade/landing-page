@@ -53,6 +53,8 @@ const Chart = ({ show }) => {
     // currentAveragePrice
   );
 
+
+  console.log("priceData", priceData);
   // const [priceData, updatePriceData] = useChartPrices(
   //   chainId,
   //   chartToken.symbol,
