@@ -18,11 +18,9 @@ const Navbar = () => {
         <div className="flex gap-20">
           {names.map((name)=>{
             return(
-              <>
-              <Link href={`${name}`}>
+              <Link key={name} href={`${name}`}>
                 <div className={`text-white flex gap-2 items-center hover:bg-[#373636] font-bold rounded-lg px-3 py-1 ${selected===name && 'bg-[#373636] '}`} onClick={()=>setSelected(name)}>{name==="Airdrop" && <FaFire color="orange"/>}{name}</div>
               </Link>
-              </>
             )
           })}
         </div>
