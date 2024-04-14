@@ -167,7 +167,7 @@ export async function getChartPricesFromStats(symbol, period) {
     };
   });
 
-  console.log("p1",prices)
+
 
 
   // let prices = json?.prices;
@@ -194,7 +194,7 @@ export async function getChartPricesFromStats(symbol, period) {
     low,
   }));
 
-  console.log("p2",prices)
+
   return prices;
 }
 
