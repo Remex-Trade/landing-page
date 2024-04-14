@@ -306,6 +306,35 @@ function getCandlesFromPrices(prices, period) {
   }));
 }
 
+export function getCandlesFromPricesPyth(lastCandle, newPrice, period) {
+  const periodTime = CHART_PERIODS[period];
+  const prevTsGroup = lastCandle?.time;
+  const tsGroup = (Math.floor(newPrice.time / periodTime) * periodTime)+ timezoneOffset;
+  const price = newPrice.value
+
+  if (!lastCandle || prevTsGroup !== tsGroup) {
+    return {
+      time: tsGroup,
+      open: price,
+      high: price,
+      low: price,
+      close: price,
+    }
+  }
+
+  let o = lastCandle.open;
+  let h = Math.max(lastCandle.high, price);
+  let l = Math.min(lastCandle.low, price);
+  
+  return {
+    time: tsGroup,
+    open: o,
+    high: h,
+    low: l,
+    close: price,
+  } 
+}
+
 export function useChartPrices(
   chainId,
   symbol,

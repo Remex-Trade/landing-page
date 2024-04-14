@@ -1,9 +1,11 @@
 "use client";
 import { createChart } from "lightweight-charts";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
 import theme from "../_context/theme";
 
-import { useChartPrices } from "./chart-helper";
+import { getCandlesFromPricesPyth, useChartPrices } from "./chart-helper";
+import {EvmPriceServiceConnection} from "@pythnetwork/pyth-evm-js"
+
 
 const Chart = ({ show }) => {
   const chartContainer = useRef();
@@ -37,6 +39,43 @@ const Chart = ({ show }) => {
     return () => clearInterval(interval);
   }, [updatePriceData]);
 
+  const updateFeedData = useCallback((chartPrice) => {
+    let newCandleData;
+    if (priceData && priceData.length){
+      newCandleData = getCandlesFromPricesPyth(priceData?.[priceData.length - 1], chartPrice, "5m")
+    } else{
+      newCandleData = getCandlesFromPricesPyth(null, chartPrice, "5m")
+    }
+    currentSeries.update(newCandleData)
+  }, [currentSeries, priceData])
+
+  useEffect(() => {
+    const connection = new EvmPriceServiceConnection(
+      "https://hermes.pyth.network"
+    );
+
+    const priceIds = [
+      "0x5c6c0d2386e3352356c3ab84434fafb5ea067ac2678a38a338c4a69ddc4bdb0c",
+    ];
+    if (updateFeedData) {
+      connection.subscribePriceFeedUpdates(priceIds, (priceFeed) => {
+        const updatedPrice = priceFeed.getPriceNoOlderThan(60);
+        if (updatedPrice) {
+          const chartPrice = {
+            time: updatedPrice.publishTime,
+            value: updatedPrice.price * Math.pow(10, updatedPrice.expo),
+          };
+          updateFeedData(chartPrice);
+        }
+      });
+
+      return () => {
+        connection.closeWebSocket();
+      };
+    }
+  }, [updateFeedData]);
+
+
   useEffect(() => {
     let chart;
 
@@ -67,7 +106,11 @@ const Chart = ({ show }) => {
         height: 300,
       });
     }
-    const newSeries = chart.addCandlestickSeries();
+    const newSeries = chart.addCandlestickSeries({ priceFormat: {
+      type: 'price',
+      precision: 4,
+      minMove: 0.0001,
+  },});
     newSeries.applyOptions({
       wickUpColor: "rgb(12,243,196)",
       upColor: "rgb(12,243,196)",
