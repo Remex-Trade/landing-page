@@ -7,9 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 const WalletsProvider = () => {
   return (
     <Web3Provider>
-
-          <ConnectKitButton />
-
+          <ConnectKitButton/>
     </Web3Provider>
   );
 };

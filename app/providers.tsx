@@ -2,22 +2,23 @@
 
 import * as React from "react";
 import {
-    RainbowKitProvider,
-    getDefaultWallets,
-    connectorsForWallets,
+  RainbowKitProvider,
+  getDefaultWallets,
+  connectorsForWallets,
 } from "@rainbow-me/rainbowkit";
 import {
-    argentWallet,
-    trustWallet,
-    ledgerWallet,
+  argentWallet,
+  trustWallet,
+  ledgerWallet,
 } from "@rainbow-me/rainbowkit/wallets";
-import { createConfig, http, WagmiProvider } from 'wagmi'
-import { polygonMumbai } from 'wagmi/chains'
-import { createClient } from 'viem'
+import { createConfig, http, WagmiProvider } from "wagmi";
+import { polygonMumbai } from "wagmi/chains";
+import { createClient } from "viem";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
-import { metaMask } from 'wagmi/connectors'
-import { walletConnect } from 'wagmi/connectors'
+import { metaMask } from "wagmi/connectors";
+import { walletConnect } from "wagmi/connectors";
+
 // const config = createConfig({
 //     chains: [polygonMumbai],
 //     connectors: [metaMask()],
@@ -27,17 +28,19 @@ import { walletConnect } from 'wagmi/connectors'
 //   })
 
 const config = createConfig({
-    chains: [polygonMumbai],
-    // connectors: [
-    //     walletConnect({
-    //       projectId: 'de79ccb05a7f1f12b1b9333a5dd5bbfa',
-    //     }),
-    //   ],
-    
-    transports: {
-      [polygonMumbai.id]: http('https://polygon-mumbai.g.alchemy.com/v2/Jl0asyFZmfuW_3WWuq4lVrjZmU2k2nom'),
-    },
-  })
+  chains: [polygonMumbai],
+  // connectors: [
+  //     walletConnect({
+  //       projectId: 'de79ccb05a7f1f12b1b9333a5dd5bbfa',
+  //     }),
+  //   ],
+
+  transports: {
+    [polygonMumbai.id]: http(
+      "https://polygon-mumbai.g.alchemy.com/v2/Jl0asyFZmfuW_3WWuq4lVrjZmU2k2nom"
+    ),
+  },
+});
 
 // const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
 // const projectId = `85a616505f219621a73d1af8a208fd14`;
@@ -72,7 +75,6 @@ const config = createConfig({
 // });
 const queryClient = new QueryClient();
 
-
 // export function Providers({ children }: { children: React.ReactNode }) {
 //     const [mounted, setMounted] = React.useState(false);
 //     React.useEffect(() => setMounted(true), []);
@@ -86,11 +88,18 @@ const queryClient = new QueryClient();
 // }
 
 export const Web3Provider = ({ children }) => {
-    return (
-      <WagmiProvider config={config}>
-        <QueryClientProvider client={queryClient}>
-          <ConnectKitProvider>{children}</ConnectKitProvider>
-        </QueryClientProvider>
-      </WagmiProvider>
-    );
-  };
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <ConnectKitProvider
+          customTheme={{
+            "--ck-accent-color": "#0CF3C4",
+            "--ck-accent-text-color": "#ffffff",
+          }}
+        >
+          {children}
+        </ConnectKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+};

@@ -4,7 +4,8 @@ import React, { useEffect, useState } from "react";
 import Draggable from "react-draggable";
 
 import { IoIosArrowDown } from "react-icons/io";
-const OptionUI = ({ option }) => {
+import WalletsProvider from "./Wallet";
+const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
   const [percentage, setPercentage] = useState(0); // Initial percentage
   const [isTp, setIsTp] = useState(false);
   const tp = [100, 200, 300, 500];
@@ -18,7 +19,9 @@ const OptionUI = ({ option }) => {
       
         <div className="flex flex-col px-6 py-8 w-full h-content gap-4 overflow-hidden ">
           {/* Leverage */}
-          <div className="dark:bg-[#2C2D2D] bg-[#F7F7F8] text-gray-500 dark:text-white w-full rounded-xl h-content py-2 px-4">
+          <div className="dark:bg-[#2C2D2D] bg-[#F7F7F8] text-gray-500 dark:text-white w-full rounded-xl h-content py-2 px-4" 
+          onClick={()=>setShowPopup(true)}
+          >
             <div className="w-full flex justify-between">
               <div className="flex gap-3 items-center jusitfy-center w-[30%] h-full">
                 <Image
@@ -27,7 +30,7 @@ const OptionUI = ({ option }) => {
                   height={200}
                   width={200}
                 />
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1" >
                   <span className="text-sm">Leverage</span>
                   <span className="text-xl font-bold">20X</span>
                 </div>
@@ -120,7 +123,7 @@ const OptionUI = ({ option }) => {
                   <div className="rounded-full bg-gray-400 h-1 w-1"></div>
                 </div>
                 <div
-                  className={`absolute z-0 bg-[#0CF3C4] h-2 rounded-lg `}
+                  className={`absolute z-0 bg-[#0CF3C4] h-2 rounded-lg`}
                   style={{ width: `${percentage * 5}%` }}
                 ></div>
               </div>
@@ -191,8 +194,11 @@ const OptionUI = ({ option }) => {
           }
 
           {/* Connect wallet */}
-          <div className="w-full mt-2">
-              <button className="w-full rounded-lg bg-[#0CF3C4] text-[#004679] text-md h-12 "> Connect wallet </button>
+          <div className="w-full mt-2 flex items-center justify-center">
+          <div >
+            <WalletsProvider />
+          </div>
+              {/* <button className={`w-full rounded-lg  text-md h-12 ${topOption==="Short"?'bg-red-500 text-white':'bg-[#0CF3C4] text-[#004679]'}`}> Connect wallet </button> */}
           </div>
 
           {/* Details */}

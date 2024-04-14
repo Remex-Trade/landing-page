@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import OptionUI from "./OptionUI";
 
-const RightOrder = () => {
+const RightOrder = ({showPopup, setShowPopup}) => {
   const [selected, setSelected] = useState("Long");
   const [selectedOption, setSelectedOption] = useState("Market");
   const buttons = ["Long", "Short"];
@@ -43,7 +43,7 @@ const RightOrder = () => {
           );
         })}
       </div>
-      <OptionUI option={selectedOption}/>
+      <OptionUI showPopup={showPopup} setShowPopup={setShowPopup} option={selectedOption} topOption={selected}/>
     </>
   );
 };

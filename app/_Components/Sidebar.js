@@ -40,7 +40,7 @@ const Sidebar=({getShow})=>{
     ]
     let Pairs=Data;
     const searchPair=(e)=>{
-        setSearch(e.target.value)
+        setSearch(e.target.value.toUpperCase())
     }
     const hideSideBar=()=>{
         setShow(false)
