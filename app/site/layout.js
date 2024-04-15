@@ -7,7 +7,10 @@ import userContext from "../_context/userContext";
 const layout = ({ children }) => {
   const [darkMode, setDarkMode] = useState(true);
   const [user, setUser] = useState({});
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    token:"BTC",
+    leverage:0
+  });
   return (
     <div className={`relative scroll-smooth ${darkMode && "dark"}`}>
       <theme.Provider value={{ darkMode, setDarkMode }}>

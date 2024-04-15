@@ -1,13 +1,15 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { CiStar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
+import userContext from '../_context/userContext';
 const Sidebar=({getShow})=>{
     const [Favorites,setFavorites]=useState(false);
     const [FavArr,setFavArr]=useState([])
     const [search,setSearch]=useState("")
     const [show,setShow]=useState(true)
+    const {data,setData} = useContext(userContext); 
     let Data=[
         {"id":1,"Pairs":"BTC/USD","Price":"70367.4","Change":"+4.67","stared":false},
         {"id":2,"Pairs":"ETH/USD","Price":"70367.4","Change":"+4.67","stared":false},
@@ -38,6 +40,7 @@ const Sidebar=({getShow})=>{
         {"id":27,"Pairs":"JUP/USD","Price":"70367.4","Change":"+4.67","stared":false},
         {"id":28,"Pairs":"DYM/USD","Price":"70367.4","Change":"+4.67","stared":false}
     ]
+
     let Pairs=Data;
     const searchPair=(e)=>{
         setSearch(e.target.value.toUpperCase())
@@ -78,7 +81,7 @@ const Sidebar=({getShow})=>{
                 <div className={Favorites?"hidden":'flex flex-col gap-1 mr-4 mb-3'}>
                     {(Data.filter(e=>e.Pairs.includes(search))).map((Pair,index)=>{
                         return(
-                            <div className="flex justify-between w-full dark:text-white text-black hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl">
+                            <div className="flex justify-between w-full dark:text-white text-black hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl" onClick={()=>setData({...data,token:Pair.Pairs.split("/")[0]})}>
                                 <div className='flex gap-[1vw] '>
                                     {/* {Starred ? (Pair.stared = true) : (Pair.stared = false)}
                                     <div>{Pair.stared?<FaStar style={{color: 'yellow'}} size={20} onClick={()=>setStarred(false)}/> : <CiStar size={20} onClick={()=>setStarred(true)}/>}</div> */}

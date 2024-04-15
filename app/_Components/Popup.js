@@ -1,14 +1,21 @@
 "use client"
-import React from 'react'
+import React, { useContext } from 'react'
 import { FaCross } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
 import { useState } from 'react';
+import userContext from '../_context/userContext';
 
 const Popup = ({showPopup,setShowPopup}) => {
   const [percentage, setPercentage] = useState(0);
+  const {data,setData} = useContext(userContext);
+
   const handleInputChange = (e) => {
     setPercentage(e.target.value);
   };
+  const handleSubmit = ()=>{
+    setData({...data,leverage:percentage});
+    setShowPopup(false);
+  }
   return (
     <>
     <div className='z-[1000] absolute  flex items-center justify-center w-[100vw] h-[100vh] bg-gray-700 opacity-25' onClick={()=>setShowPopup(false)}>
@@ -21,7 +28,7 @@ const Popup = ({showPopup,setShowPopup}) => {
           </div>
           <div className='flex flex-col p-4  gap-4'> 
             <div>Leverage</div>
-            <div><input type='text' value={0} className='w-[20vw] h-[5vh] rounded-md bg-[#3B3A3D] text-center'/></div>
+            <div><input type='text' value={percentage} className='w-[20vw] h-[5vh] rounded-md bg-[#3B3A3D] text-center'/></div>
             <div className="flex justify-center w-full gap-4">
             <div className="flex flex-col justify-center w-full gap-2 ">
               <div className="w-full flex justify-between relative items-center h-2 rounded-lg mt-5 dark:bg-[#2C2D2D] bg-[#F7F7F8] text-gray-500 dark:text-white">
@@ -60,7 +67,7 @@ const Popup = ({showPopup,setShowPopup}) => {
               {`${percentage}x`}
             </div>
           </div>
-            <button className='px-6 py-2 bg-[#0Cf3c4] rounded-lg text-green-900'>Confirm</button>
+            <button className='px-6 py-2 bg-[#0Cf3c4] rounded-lg text-green-900' onClick={handleSubmit}>Confirm</button>
           </div>
     </div>
 </div>

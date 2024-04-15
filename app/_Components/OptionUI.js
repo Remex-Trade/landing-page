@@ -1,12 +1,14 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Draggable from "react-draggable";
-
 import { IoIosArrowDown } from "react-icons/io";
 import WalletsProvider from "./Wallet";
+import userContext from "../_context/userContext";
+
 const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
   const [percentage, setPercentage] = useState(0); // Initial percentage
+  const {user,data} = useContext(userContext);
   const [isTp, setIsTp] = useState(false);
   const tp = [100, 200, 300, 500];
   const sl = ["None", "-25%", "-30%", "-75%"];
@@ -32,7 +34,7 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
                 />
                 <div className="flex flex-col gap-1" >
                   <span className="text-sm">Leverage</span>
-                  <span className="text-xl font-bold">20X</span>
+                  <span className="text-xl font-bold">{data.leverage}X</span>
                 </div>
               </div>
               <div className="mt-auto mb-auto">
@@ -196,7 +198,12 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
           {/* Connect wallet */}
           <div className="w-full mt-2 flex items-center justify-center">
           <div >
-            <WalletsProvider />
+            {!user.length>0?
+
+            <WalletsProvider />:
+            <button className={`rounded-lg px-20 py-2 text-lg text-slate-100 font-bold ${topOption==="Long"?'bg-[#0cf3c4]':'bg-red-500'}`}>{topOption==="Long"?
+              "Buy/Long":"Sell/Short"}</button>
+          }
           </div>
               {/* <button className={`w-full rounded-lg  text-md h-12 ${topOption==="Short"?'bg-red-500 text-white':'bg-[#0CF3C4] text-[#004679]'}`}> Connect wallet </button> */}
           </div>

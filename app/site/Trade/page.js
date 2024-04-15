@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaBox, FaFire } from "react-icons/fa";
 import Image from "next/image";
 import Sidebar from "../../_Components/Sidebar"
@@ -9,10 +9,12 @@ import Chart from "../../_Components/Chart";
 import Popup from "../../_Components/Popup";
 
 import { RxHamburgerMenu } from "react-icons/rx";
+import userContext from '../../_context/userContext';
 const page = () => {
   const [show,setShow]=useState(true);
   const[showPopup, setShowPopup] = useState(false);
-
+  const {data,setData} = useContext(userContext);
+ 
   const handleClose = () => {
     setShowPopup(false);
   };
@@ -22,12 +24,11 @@ const page = () => {
   const getShow=(data)=>{
       setShow(data)
   }
-  
   return (
     <>{showPopup &&
         <Popup showPopup={showPopup} setShowPopup={setShowPopup}/>
     }
-    <div className="flex text-sm  ">
+    <div className="flex text-sm    ">
       <div className='basis-1/5'>
       {show?<div
         id="sidebar"
@@ -64,6 +65,7 @@ const page = () => {
             TIA/USD
             <span className="text-green-600 dark:text-[#0cf3c4]">+0.15%</span>
           </div>
+          
         </div>
 
         <div className="flex w-full h-full bg-[#F7F7F8] dark:bg-black">
