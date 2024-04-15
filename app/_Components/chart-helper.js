@@ -167,7 +167,7 @@ export async function getChartPricesFromStats(symbol, period) {
     };
   });
 
-  console.log("p1",prices)
+
 
 
   // let prices = json?.prices;
@@ -194,7 +194,7 @@ export async function getChartPricesFromStats(symbol, period) {
     low,
   }));
 
-  console.log("p2",prices)
+
   return prices;
 }
 
@@ -304,6 +304,35 @@ function getCandlesFromPrices(prices, period) {
     high,
     low,
   }));
+}
+
+export function getCandlesFromPricesPyth(lastCandle, newPrice, period) {
+  const periodTime = CHART_PERIODS[period];
+  const prevTsGroup = lastCandle?.time;
+  const tsGroup = (Math.floor(newPrice.time / periodTime) * periodTime)+ timezoneOffset;
+  const price = newPrice.value
+
+  if (!lastCandle || prevTsGroup !== tsGroup) {
+    return {
+      time: tsGroup,
+      open: price,
+      high: price,
+      low: price,
+      close: price,
+    }
+  }
+
+  let o = lastCandle.open;
+  let h = Math.max(lastCandle.high, price);
+  let l = Math.min(lastCandle.low, price);
+  
+  return {
+    time: tsGroup,
+    open: o,
+    high: h,
+    low: l,
+    close: price,
+  } 
 }
 
 export function useChartPrices(

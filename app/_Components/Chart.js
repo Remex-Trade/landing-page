@@ -1,7 +1,10 @@
 "use client";
 import { createChart } from "lightweight-charts";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
 import theme from "../_context/theme";
+
+import { getCandlesFromPricesPyth, useChartPrices } from "./chart-helper";
+import {EvmPriceServiceConnection} from "@pythnetwork/pyth-evm-js"
 
 import { useChartPrices } from "./chart-helper";
 import userContext from "../_context/userContext";
@@ -38,26 +41,26 @@ function getChartToken(swapOption, fromToken, toToken, chainId) {
 }
 
 const Chart = ({ show }) => {
-  const [chartToken, setChartToken] = useState({
-    maxPrice: null,
-    minPrice: null,
-  });
-
   const chartContainer = useRef();
   const { darkMode } = useContext(theme);
   const {data} = useContext(userContext);
   
   const chainId = 250;
   const [priceData, updatePriceData] = useChartPrices(
+    chainId, // send 250 always for now. 
+    "BTC", 
     chainId,
     data.token,
     false,
-    "1d"
+    "5m"
     // currentAveragePrice
   );
+  const [currentChart, setCurrentChart] = useState();
+  const [currentSeries, setCurrentSeries] = useState();
 
 
-  console.log("priceData", priceData);
+
+
   // const [priceData, updatePriceData] = useChartPrices(
   //   chainId,
   //   chartToken.symbol,
@@ -66,16 +69,49 @@ const Chart = ({ show }) => {
   //   currentAveragePrice
   // );
 
-  // useEffect(() => {
-  //   const tmp = getChartToken(swapOption, fromToken, toToken, chainId);
-  //   setChartToken(tmp);
-  // }, [swapOption, fromToken, toToken, chainId]);
   useEffect(() => {
     const interval = setInterval(() => {
       updatePriceData(undefined, true);
-    }, 60 * 1000);
+    },60 * 1000);
     return () => clearInterval(interval);
   }, [updatePriceData]);
+
+  const updateFeedData = useCallback((chartPrice) => {
+    let newCandleData;
+    if (priceData && priceData.length){
+      newCandleData = getCandlesFromPricesPyth(priceData?.[priceData.length - 1], chartPrice, "5m")
+    } else{
+      newCandleData = getCandlesFromPricesPyth(null, chartPrice, "5m")
+    }
+    currentSeries.update(newCandleData)
+  }, [currentSeries, priceData])
+
+  useEffect(() => {
+    const connection = new EvmPriceServiceConnection(
+      "https://hermes.pyth.network"
+    );
+
+    const priceIds = [
+      "0x5c6c0d2386e3352356c3ab84434fafb5ea067ac2678a38a338c4a69ddc4bdb0c",
+    ];
+    if (updateFeedData) {
+      connection.subscribePriceFeedUpdates(priceIds, (priceFeed) => {
+        const updatedPrice = priceFeed.getPriceNoOlderThan(60);
+        if (updatedPrice) {
+          const chartPrice = {
+            time: updatedPrice.publishTime,
+            value: updatedPrice.price * Math.pow(10, updatedPrice.expo),
+          };
+          updateFeedData(chartPrice);
+        }
+      });
+
+      return () => {
+        connection.closeWebSocket();
+      };
+    }
+  }, [updateFeedData]);
+
 
   useEffect(() => {
     let chart;
@@ -107,7 +143,11 @@ const Chart = ({ show }) => {
         height: 300,
       });
     }
-    const newSeries = chart.addCandlestickSeries();
+    const newSeries = chart.addCandlestickSeries({ priceFormat: {
+      type: 'price',
+      precision: 4,
+      minMove: 0.0001,
+  },});
     newSeries.applyOptions({
       wickUpColor: "rgb(12,243,196)",
       upColor: "rgb(12,243,196)",
@@ -117,6 +157,12 @@ const Chart = ({ show }) => {
     });
 
     chart.timeScale().fitContent();
+    setCurrentChart(chart);
+    setCurrentSeries(newSeries);
+
+    // if (priceData?.length){
+    //   newSeries.setData(priceData);
+    // }
 
 
     if (priceData?.length){
@@ -126,7 +172,13 @@ const Chart = ({ show }) => {
     return () => {
       chart.remove();
     };
-  }, [show, darkMode, priceData]);
+  }, [show, darkMode]);
+
+  useEffect(() => {
+    if (currentSeries && priceData && priceData.length) {
+      currentSeries.setData(priceData);
+    }
+  }, [priceData, currentSeries]);
 
   const buttons = ["1m", "15m", "1D", "1W"];
   return (
