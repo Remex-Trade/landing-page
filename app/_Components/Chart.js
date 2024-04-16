@@ -2,41 +2,9 @@
 import { createChart } from "lightweight-charts";
 import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
 import theme from "../_context/theme";
-
 import { getCandlesFromPricesPyth, useChartPrices } from "./chart-helper";
 import {EvmPriceServiceConnection} from "@pythnetwork/pyth-evm-js"
 import userContext from "../_context/userContext";
-function getChartToken(swapOption, fromToken, toToken, chainId) {
-  if (!fromToken || !toToken) {
-    return;
-  }
-
-  if (swapOption !== SWAP) {
-    return toToken;
-  }
-
-  if (fromToken.isUsdg && toToken.isUsdg) {
-    return getTokens(chainId).find((t) => t.isStable);
-  }
-  if (fromToken.isUsdg) {
-    return toToken;
-  }
-  if (toToken.isUsdg) {
-    return fromToken;
-  }
-
-  if (fromToken.isStable && toToken.isStable) {
-    return toToken;
-  }
-  if (fromToken.isStable) {
-    return toToken;
-  }
-  if (toToken.isStable) {
-    return fromToken;
-  }
-
-  return toToken;
-}
 
 const Chart = ({ show }) => {
   const chartContainer = useRef();
@@ -46,7 +14,7 @@ const Chart = ({ show }) => {
   const chainId = 250;
   const [priceData, updatePriceData] = useChartPrices(
     chainId, // send 250 always for now. 
-    "BTC", 
+    "BTC/USD", 
     false,
     "5m"
     // currentAveragePrice
@@ -155,16 +123,6 @@ const Chart = ({ show }) => {
     chart.timeScale().fitContent();
     setCurrentChart(chart);
     setCurrentSeries(newSeries);
-
-    // if (priceData?.length){
-    //   newSeries.setData(priceData);
-    // }
-
-
-    if (priceData?.length){
-
-      newSeries.setData(priceData);
-    }
     return () => {
       chart.remove();
     };
