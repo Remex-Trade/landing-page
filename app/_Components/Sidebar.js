@@ -4,12 +4,14 @@ import { CiStar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import userContext from '../_context/userContext';
+import { usePriceStore} from "../../store/priceStore"
 const Sidebar=({getShow})=>{
     const [Favorites,setFavorites]=useState(false);
     const [FavArr,setFavArr]=useState([])
     const [search,setSearch]=useState("")
     const [show,setShow]=useState(true)
     const {data,setData} = useContext(userContext); 
+    const latestPrice = usePriceStore(state  => state.latestPrice)
     let Data=[
         {"id":1,"icon":"","Pairs":"BTC/USD","Price":"70367.4","Change":"+4.67","stared":false},
         {"id":2,"icon":"","Pairs":"ETH/USD","Price":"70367.4","Change":"+4.67","stared":false},
@@ -25,8 +27,24 @@ const Sidebar=({getShow})=>{
     }
     const hideSideBar=()=>{
         setShow(false)
-        
     }
+
+    function formatPrice(price) {
+      if (!price) {
+        return "-";
+      }
+
+      const parts = price.toString().split(".");
+      const integerPart = parts[0];
+      const decimalPart = parts[1] || "";
+
+      const totalDigits = 6;
+      const integerDigits = integerPart.length;
+      const decimalDigits = Math.max(0, totalDigits - integerDigits);
+
+      return price.toFixed(decimalDigits);
+    }
+
     return(
         <div className='dark:bg-[#0F0C0F] h-full  bg-white dark:text-white text-black'>
             <div className="flex flex-col gap-[1vw]  px-4 py-[2vw] text-[13px]">
@@ -59,7 +77,7 @@ const Sidebar=({getShow})=>{
                 <div className={Favorites?"hidden":'flex flex-col gap-1 mr-4 mb-3'}>
                     {(Data.filter(e=>e.Pairs.includes(search))).map((Pair,index)=>{
                         return(
-                            <div className={`flex justify-between w-full dark:text-white text-black cursor-pointer hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl ${data.token===Pair.Pairs.split("/")[0]&&'dark:bg-[#2c2d2d] bg-[#F4F5F4] '} `} onClick={()=>setData({...data,token:Pair.Pairs.split("/")[0]})}>
+                            <div className="flex justify-between w-full dark:text-white text-black hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl" onClick={()=>setData({...data,token:Pair.Pairs})}>
                                 <div className='flex gap-[1vw] '>
                                     {/* {Starred ? (Pair.stared = true) : (Pair.stared = false)}
                                     <div>{Pair.stared?<FaStar style={{color: 'yellow'}} size={20} onClick={()=>setStarred(false)}/> : <CiStar size={20} onClick={()=>setStarred(true)}/>}</div> */}
@@ -74,7 +92,7 @@ const Sidebar=({getShow})=>{
                                     <div>{Pair.Pairs}</div>
                                 </div>
                                 <div className="flex gap-[2vw]">
-                                    <div>{Pair.Price}</div>
+                                    <div>{formatPrice(latestPrice[Pair.Pairs])}</div>
                                     <div className='text-[#0cf3c4]'>{Pair.Change}</div>
                                 </div>
                             </div>

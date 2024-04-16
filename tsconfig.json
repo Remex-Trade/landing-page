@@ -25,6 +25,6 @@
     "**/*.tsx",
     "app/_Components/Chart.js",
     "app/_Components/chart-helper.js"
-  ],
+, "store/priceStore.js"  ],
   "exclude": ["node_modules"]
 }
