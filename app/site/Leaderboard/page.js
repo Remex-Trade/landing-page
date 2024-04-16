@@ -6,399 +6,399 @@ const page = () => {
     {
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
     },{
       Trading:"0xc6cb...da2b",
       Margin:"478.03",
-      USDT:"4,682.36",
+      USD:"4,682.36",
       PNL:"979.49% ",
       Winrate:"100.00%",
       Trades:1
@@ -412,8 +412,8 @@ const page = () => {
         <div className='flex text-zinc-500 items-center text-center jusitfy-center font-semibold text-md w-full'>
           <div className=' w-1/2'>Rank</div>
           <div className=' w-full'>Trader</div>
-          <div className=' w-full'>Margin USDT</div>
-          <div className=' w-full'>PNL USDT</div>
+          <div className=' w-full'>Margin USD</div>
+          <div className=' w-full'>PNL USD</div>
           <div className=' w-full'>PNL%</div>
           <div className=' w-full'>Winrate</div>
           <div className=' w-full'>Trades</div>
@@ -439,7 +439,7 @@ const page = () => {
                   </div>
                   <div className='w-full'>{data.Trading}</div>
                   <div className='w-full'>{data.Margin}</div>
-                  <div className='w-full'>{data.USDT}</div>
+                  <div className='w-full'>{data.USD}</div>
                   <div className='w-full'>{data.PNL}</div>
                   <div className='w-full'>{data.Winrate}</div>
                   <div className='w-full'>{data.Trades}</div>

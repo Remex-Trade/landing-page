@@ -100,7 +100,7 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
                 <IoIosArrowDown />
               </div>
               <input type="number" className="text-xl font-bold bg-transparent outline-none" value={0}/>
-              <div className="text-sm text-[#4f4f4f]">Avbl: 0.00 USDT</div>
+              <div className="text-sm text-[#4f4f4f]">Avbl: 0.00 USD</div>
             </div>
           </div>
 
@@ -172,7 +172,7 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
                   </div>
                   <div className="flex w-3/5 gap-2 bg-[#2c2d2d]  rounded-md px-2 py-1">
                   <input type="number"  className="bg-transparent outline-none w-full" value={6754.999}/>
-                  <span>USDT</span>
+                  <span>USD</span>
                   </div>
                 </div>
               </div>
@@ -212,11 +212,11 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
           <div className="flex flex-col gap-2">
           <div className="flex w-full text-[12px] text-gray-400 items-center justify-between">
                 <span className="decoration-dotted underline font-bold">Margin</span>
-                <span>0.00USDT</span>
+                <span>0.00USD</span>
             </div>
             <div className="flex w-full text-[12px] text-gray-400 items-center justify-between">
                 <span className="decoration-dotted underline font-bold">Max Open Poisition</span>
-                <span>0.000USDT</span>
+                <span>0.000USD</span>
             </div>
             <div className="flex w-full text-[12px] text-gray-400 items-center justify-between">
                 <span className="decoration-dotted underline font-bold">Est. Execution Price</span>
@@ -228,11 +228,11 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
             </div>
             <div className="flex w-full text-[12px] text-gray-400 items-center justify-between">
                 <span className="decoration-dotted underline font-bold">Position Size</span>
-                <span>0.00USDT</span>
+                <span>0.00USD</span>
             </div>
             <div className="flex w-full text-[12px] text-gray-400 items-center justify-between">
                 <span className="">Fees</span>
-                <span>0.0000USDT</span>
+                <span>0.0000USD</span>
             </div>
             <div className="flex w-full text-[12px] text-gray-400 items-center justify-between">
                 <span className="">Execution Fee</span>

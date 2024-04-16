@@ -19,7 +19,7 @@ const page = () => {
   const[showPopup, setShowPopup] = useState(false);
   const {data,setData} = useContext(userContext);
   const setLatestPrice = usePriceStore((state) => state.setLatestPrice)
-
+  const latestPrice = usePriceStore(state  => state.latestPrice)
  
   const handleClose = () => {
     setShowPopup(false);
@@ -98,10 +98,10 @@ const page = () => {
               className=" w-full rounded-xl flex gap-2 flex-col bg-white text-black dark:text-white dark:bg-[#0F0E0E] dark:border-[#2C2D2D]  dark:border-[1px] shadow-md h-fit "
             >
               <div className="w-full h-[20%] px-8 py-4 flex gap-8  text-[0.7rem] justify-start items-center">
-                <Image src="/Images/SOL.svg" width={50} height={50} className="rounded-full h-100 w-100" />
+                <Image src={`/Images/${data.token.split("/")[0].toLowerCase()}.png`} width={50} height={50} className="rounded-full h-100 w-100" />
                 <div className="flex flex-col gap-1">
                   <span className="text-black dark:text-white ">{data.token}</span>
-                  <span className="text-green-600  font-bold">192.73</span>
+                  <span className="text-green-600  font-bold">{Math.round(latestPrice[data.token]*10)/10}</span>
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="ext-black  dark:text-white ">24h Change</span>
@@ -124,7 +124,7 @@ const page = () => {
                   <span className="text-green-600  text-[0.7rem]">0.0021%</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="text-black text-[0.7rem]  dark:text-white">24h volume(USDT)</span>
+                  <span className="text-black text-[0.7rem]  dark:text-white">24h volume(USD)</span>
                   <span className="text-[0.7rem]">3,039,440.17</span>
                 </div>
 

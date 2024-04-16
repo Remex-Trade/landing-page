@@ -8,7 +8,7 @@ const layout = ({ children }) => {
   const [darkMode, setDarkMode] = useState(true);
   const [user, setUser] = useState({});
   const [data, setData] = useState({
-    token:"BTC",
+    token:"BTC/USD",
     leverage:0
   });
   return (
