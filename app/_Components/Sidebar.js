@@ -5,6 +5,7 @@ import { FaStar } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import userContext from '../_context/userContext';
 import { usePriceStore} from "../../store/priceStore"
+import Image from 'next/image';
 const Sidebar=({getShow})=>{
     const [Favorites,setFavorites]=useState(false);
     const [FavArr,setFavArr]=useState([])
@@ -15,7 +16,7 @@ const Sidebar=({getShow})=>{
     let Data=[
         {"id":1,"icon":"","Pairs":"BTC/USD","Price":"70367.4","Change":"+4.67","stared":false},
         {"id":2,"icon":"","Pairs":"ETH/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":3,"icon":"","Pairs":"BNB/USD","Price":"70367.4","Change":"+4.67","stared":false},
+        {"id":3,"icon":"https://assets.coingecko.com/coins/images/825/small/binance-coin-logo.png","Pairs":"BNB/USD","Price":"70367.4","Change":"+4.67","stared":false},
         {"id":4,"icon":"","Pairs":"SOL/USD","Price":"70367.4","Change":"+4.67","stared":false},
         {"id":5,"icon":"","Pairs":"FTM/USD","Price":"70367.4","Change":"+4.67","stared":false},
         {"id":6,"icon":"","Pairs":"MATIC/USD","Price":"70367.4","Change":"+4.67","stared":false},
@@ -77,7 +78,8 @@ const Sidebar=({getShow})=>{
                 <div className={Favorites?"hidden":'flex flex-col gap-1 mr-4 mb-3'}>
                     {(Data.filter(e=>e.Pairs.includes(search))).map((Pair,index)=>{
                         return(
-                            <div className="flex justify-between w-full dark:text-white text-black hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl" onClick={()=>setData({...data,token:Pair.Pairs})}>
+                            <div className={`flex justify-between w-full dark:text-white text-black cursor-pointer hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl ${data.token===Pair.Pairs&&'dark:bg-[#2c2d2d] bg-[#F4F5F4] '} `} onClick={()=>setData({...data,token:Pair.Pairs})}>
+                            {/* <div className="flex justify-between w-full dark:text-white text-black hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl" onClick={()=>setData({...data,token:Pair.Pairs})}> */}
                                 <div className='flex gap-[1vw] '>
                                     {/* {Starred ? (Pair.stared = true) : (Pair.stared = false)}
                                     <div>{Pair.stared?<FaStar style={{color: 'yellow'}} size={20} onClick={()=>setStarred(false)}/> : <CiStar size={20} onClick={()=>setStarred(true)}/>}</div> */}
@@ -89,7 +91,8 @@ const Sidebar=({getShow})=>{
                                             setFavArr([...FavArr, Pair])
                                             console.log(FavArr)
                                     }}/>}</div>
-                                    <div>{Pair.Pairs}</div>
+                                    <div>
+                                        {Pair.Pairs}</div>
                                 </div>
                                 <div className="flex gap-[2vw]">
                                     <div>{formatPrice(latestPrice[Pair.Pairs])}</div>
