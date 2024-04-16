@@ -12,7 +12,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import userContext from '../../_context/userContext';
 import {EvmPriceServiceConnection} from "@pythnetwork/pyth-evm-js"
 
-import { priceIds } from "../../../helpers/price";
+import { idToToken, priceIds } from "../../../helpers/price";
 import {usePriceStore} from "../../../store/priceStore"
 const page = () => {
   const [show,setShow]=useState(true);
@@ -20,6 +20,8 @@ const page = () => {
   const {data,setData} = useContext(userContext);
   const setLatestPrice = usePriceStore((state) => state.setLatestPrice)
   const latestPrice = usePriceStore(state  => state.latestPrice)
+  const setLast24HourPrice = usePriceStore((state) => state.setLast24HourPrice)
+
  
   const handleClose = () => {
     setShowPopup(false);
@@ -30,7 +32,52 @@ const page = () => {
   const getShow=(data)=>{
       setShow(data)
   }
+  async function getLastDayData() {
+    const connection = new EvmPriceServiceConnection(
+      "https://hermes.pyth.network"
+    );
 
+    const now = parseInt(Date.now() / 1000);
+    const timeThreshold = now - 24 * 60 * 60;
+
+    const requests = Object.values(priceIds).map(async (priceId) => {
+      const last24HourPrice = await connection.getPriceFeed(
+        priceId,
+        timeThreshold
+      );
+
+      return last24HourPrice;
+    })
+
+    return Promise.all(requests)
+    .then((chunks) => {
+      const prices = {}
+      chunks.forEach((chunk) => {
+        const price = chunk.getPriceUnchecked()
+        
+        if (price) {
+          const token = idToToken["0x" + chunk.id]
+          prices[token] = price.getPriceAsNumberUnchecked();
+        }
+      })
+      setLast24HourPrice(prices)
+      return chunks;
+    })
+    .catch((err) => {
+   
+      console.error(err);
+    });
+  }
+
+  useEffect(() => {
+    
+    getLastDayData()
+
+    const interval = setInterval(() => {
+      getLastDayData()
+    }, 60 * 1000);
+    return () => clearInterval(interval);
+  }, []);
   useEffect(() => {
     const connection = new EvmPriceServiceConnection(
       "https://hermes.pyth.network"
