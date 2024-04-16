@@ -1,5 +1,5 @@
 "use client"
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { FaBox, FaFire } from "react-icons/fa";
 import Image from "next/image";
 import Sidebar from "../../_Components/Sidebar"
@@ -10,10 +10,16 @@ import Popup from "../../_Components/Popup";
 
 import { RxHamburgerMenu } from "react-icons/rx";
 import userContext from '../../_context/userContext';
+import {EvmPriceServiceConnection} from "@pythnetwork/pyth-evm-js"
+
+import { priceIds } from "../../../helpers/price";
+import {usePriceStore} from "../../../store/priceStore"
 const page = () => {
   const [show,setShow]=useState(true);
   const[showPopup, setShowPopup] = useState(false);
   const {data,setData} = useContext(userContext);
+  const setLatestPrice = usePriceStore((state) => state.setLatestPrice)
+
  
   const handleClose = () => {
     setShowPopup(false);
@@ -24,6 +30,23 @@ const page = () => {
   const getShow=(data)=>{
       setShow(data)
   }
+
+  useEffect(() => {
+    const connection = new EvmPriceServiceConnection(
+      "https://hermes.pyth.network"
+    );
+
+    connection.subscribePriceFeedUpdates( Object.values(priceIds), (priceFeed) => {
+      const updatedPrice = priceFeed.getPriceNoOlderThan(60);
+      if (updatedPrice) {
+        setLatestPrice(priceFeed.id, updatedPrice.getPriceAsNumberUnchecked())
+      }
+    });
+
+    return () => {
+      connection.closeWebSocket();
+    };
+  }, []);
   return (
     <>{showPopup &&
         <Popup showPopup={showPopup} setShowPopup={setShowPopup}/>

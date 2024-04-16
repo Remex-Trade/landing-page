@@ -120,14 +120,10 @@ export async function getChartPricesFromStats(symbol, period) {
   } else if (symbol === "BTC.b") {
     symbol = "BTC";
   }
-
-  const _symbol = "FTM/USD"
-  // const _symbol = getNormalizedAxlTokenSymbol(symbol);
-
   const timeDiff = CHART_PERIODS[period] * 500;
   const from = Math.floor(Date.now() / 1000 - timeDiff);
   const to = Math.floor(Date.now() / 1000);
-  const url = `https://benchmarks.pyth.network/v1/shims/tradingview/history?symbol=${_symbol}&resolution=${CHART_PERIODS_MAP[period]}&from=${from}&to=${to}`
+  const url = `https://benchmarks.pyth.network/v1/shims/tradingview/history?symbol=${symbol}&resolution=${CHART_PERIODS_MAP[period]}&from=${from}&to=${to}`
   // const url = `${GMX_STATS_API_URL}/candles/${_symbol}?preferableChainId=${chainId}&period=${period}&from=${from}&preferableSource=fast`;
 
   const TIMEOUT = 30000;

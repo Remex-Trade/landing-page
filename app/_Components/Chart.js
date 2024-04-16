@@ -5,6 +5,8 @@ import theme from "../_context/theme";
 import { getCandlesFromPricesPyth, useChartPrices } from "./chart-helper";
 import {EvmPriceServiceConnection} from "@pythnetwork/pyth-evm-js"
 import userContext from "../_context/userContext";
+import { priceIds } from "../../helpers/price";
+import {usePriceStore} from "../../store/priceStore"
 
 const Chart = ({ show }) => {
   const chartContainer = useRef();
@@ -14,16 +16,14 @@ const Chart = ({ show }) => {
   const chainId = 250;
   const [priceData, updatePriceData] = useChartPrices(
     chainId, // send 250 always for now. 
-    "BTC/USD", 
+    data.token, 
     false,
     "5m"
     // currentAveragePrice
   );
   const [currentChart, setCurrentChart] = useState();
   const [currentSeries, setCurrentSeries] = useState();
-
-
-
+  // const latestPrice = usePriceStore(state  => state.latestPrice)
 
   // const [priceData, updatePriceData] = useChartPrices(
   //   chainId,
@@ -51,15 +51,17 @@ const Chart = ({ show }) => {
   }, [currentSeries, priceData])
 
   useEffect(() => {
+    if (!data.token) return;
+    const priceId = priceIds[data.token]
+    if (!priceId) return
+
     const connection = new EvmPriceServiceConnection(
       "https://hermes.pyth.network"
     );
 
-    const priceIds = [
-      "0x5c6c0d2386e3352356c3ab84434fafb5ea067ac2678a38a338c4a69ddc4bdb0c",
-    ];
+
     if (updateFeedData) {
-      connection.subscribePriceFeedUpdates(priceIds, (priceFeed) => {
+      connection.subscribePriceFeedUpdates([priceId], (priceFeed) => {
         const updatedPrice = priceFeed.getPriceNoOlderThan(60);
         if (updatedPrice) {
           const chartPrice = {
@@ -74,7 +76,7 @@ const Chart = ({ show }) => {
         connection.closeWebSocket();
       };
     }
-  }, [updateFeedData]);
+  }, [updateFeedData, data.token]);
 
 
   useEffect(() => {
