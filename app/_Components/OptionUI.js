@@ -99,7 +99,7 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
                 Order By Value
                 <IoIosArrowDown />
               </div>
-              <span className="text-xl font-bold">0</span>
+              <input type="number" className="text-xl font-bold bg-transparent outline-none" value={0}/>
               <div className="text-sm text-[#4f4f4f]">Avbl: 0.00 USDT</div>
             </div>
           </div>

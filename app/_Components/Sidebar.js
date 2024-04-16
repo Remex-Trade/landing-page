@@ -11,34 +11,12 @@ const Sidebar=({getShow})=>{
     const [show,setShow]=useState(true)
     const {data,setData} = useContext(userContext); 
     let Data=[
-        {"id":1,"Pairs":"BTC/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":2,"Pairs":"ETH/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":3,"Pairs":"BNB/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":4,"Pairs":"SQL/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":5,"Pairs":"XRP/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":6,"Pairs":"DOGE/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":7,"Pairs":"AVAX/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":8,"Pairs":"ARB/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":9,"Pairs":"LTC/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":10,"Pairs":"FIL/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":11,"Pairs":"OP/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":12,"Pairs":"INJ/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":13,"Pairs":"RINDR/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":14,"Pairs":"TIA/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":15,"Pairs":"SEI/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":16,"Pairs":"SUI/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":17,"Pairs":"STRK/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":18,"Pairs":"ORDI/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":19,"Pairs":"AXL/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":20,"Pairs":"PYTH/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":21,"Pairs":"DYDX/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":22,"Pairs":"WLD/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":23,"Pairs":"CAKE/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":24,"Pairs":"MANTA/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":25,"Pairs":"BONK/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":26,"Pairs":"WIF/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":27,"Pairs":"JUP/USD","Price":"70367.4","Change":"+4.67","stared":false},
-        {"id":28,"Pairs":"DYM/USD","Price":"70367.4","Change":"+4.67","stared":false}
+        {"id":1,"icon":"","Pairs":"BTC/USD","Price":"70367.4","Change":"+4.67","stared":false},
+        {"id":2,"icon":"","Pairs":"ETH/USD","Price":"70367.4","Change":"+4.67","stared":false},
+        {"id":3,"icon":"","Pairs":"BNB/USD","Price":"70367.4","Change":"+4.67","stared":false},
+        {"id":4,"icon":"","Pairs":"SOL/USD","Price":"70367.4","Change":"+4.67","stared":false},
+        {"id":5,"icon":"","Pairs":"FTM/USD","Price":"70367.4","Change":"+4.67","stared":false},
+        {"id":6,"icon":"","Pairs":"MATIC/USD","Price":"70367.4","Change":"+4.67","stared":false},
     ]
 
     let Pairs=Data;

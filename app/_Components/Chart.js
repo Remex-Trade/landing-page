@@ -5,8 +5,6 @@ import theme from "../_context/theme";
 
 import { getCandlesFromPricesPyth, useChartPrices } from "./chart-helper";
 import {EvmPriceServiceConnection} from "@pythnetwork/pyth-evm-js"
-
-import { useChartPrices } from "./chart-helper";
 import userContext from "../_context/userContext";
 function getChartToken(swapOption, fromToken, toToken, chainId) {
   if (!fromToken || !toToken) {
@@ -44,13 +42,11 @@ const Chart = ({ show }) => {
   const chartContainer = useRef();
   const { darkMode } = useContext(theme);
   const {data} = useContext(userContext);
-  
+  const [period,setPeriod] = useState("1m");
   const chainId = 250;
   const [priceData, updatePriceData] = useChartPrices(
     chainId, // send 250 always for now. 
     "BTC", 
-    chainId,
-    data.token,
     false,
     "5m"
     // currentAveragePrice
@@ -188,7 +184,9 @@ const Chart = ({ show }) => {
         {buttons.map((button) => {
           return (
             <>
-              <button className="text-sm dark:text-white dark:hover:bg-[#2C2D2D]  dark:focus:bg-[#2C2D2D] text-black hover:bg-[#F7F4F7] focus:bg-[#F7F4F7] px-4 py-2 rounded-xl">
+              <button className="text-sm dark:text-white dark:hover:bg-[#2C2D2D]  dark:focus:bg-[#2C2D2D] text-black hover:bg-[#F7F4F7] focus:bg-[#F7F4F7] px-4 py-2 rounded-xl"
+                onClick={()=>setPeriod(button)}
+              >
                 {button}
               </button>
             </>
