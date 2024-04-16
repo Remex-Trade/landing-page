@@ -17,7 +17,7 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
   };
   console.log(percentage);
   return (
-    <div className="bg-white dark:bg-[#0f0e0f] hover:cursor-pointer overflow-hidden">
+    <div className="bg-white text-sm dark:bg-[#0f0e0f] hover:cursor-pointer overflow-hidden">
       
         <div className="flex flex-col px-6 py-8 w-full h-content gap-4 overflow-hidden ">
           {/* Leverage */}
@@ -165,13 +165,13 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
             <div className="flex flex-col justify-start gap-1">
               <p className="text-sm text-gray-600 dark:text-white">Take Profit</p>
               <div className="flex gap-2 justify-between">
-                <div className="flex gap-2 w-full text-[0.7rem]">
-                  <div className="flex gap-2 w-1/3  bg-[#2c2d2d] rounded-xl px-3 py-2">
-                  <input type="number"  className="bg-white w-full outline-none" value={300}/>
+                <div className="flex gap-4 w-full text-[0.8rem]">
+                  <div className="flex gap-2 w-1/5  bg-[#2c2d2d] rounded-md px-2 py-1">
+                  <input type="number"  className="bg-transparent w-full outline-none" value={300}/>
                   <span className="text-white">%</span>
                   </div>
-                  <div className="flex w-2/3 gap-2 bg-[#2c2d2d]  rounded-xl px-3 py-2">
-                  <input type="number"  className="bg-transparent w-full" value={6754.999}/>
+                  <div className="flex w-3/5 gap-2 bg-[#2c2d2d]  rounded-md px-2 py-1">
+                  <input type="number"  className="bg-transparent outline-none w-full" value={6754.999}/>
                   <span>USDT</span>
                   </div>
                 </div>

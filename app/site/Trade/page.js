@@ -77,7 +77,7 @@ const page = () => {
               <div className="w-full h-[20%] px-8 py-4 flex gap-8  text-[0.7rem] justify-start items-center">
                 <Image src="/Images/SOL.svg" width={50} height={50} className="rounded-full h-100 w-100" />
                 <div className="flex flex-col gap-1">
-                  <span className="text-black dark:text-white ">SQL/USD</span>
+                  <span className="text-black dark:text-white ">{data.token}</span>
                   <span className="text-green-600  font-bold">192.73</span>
                 </div>
                 <div className="flex flex-col gap-1">
