@@ -165,16 +165,16 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
             <div className="flex flex-col justify-start gap-1">
               <p className="text-sm text-gray-600 dark:text-white">Take Profit</p>
               <div className="flex gap-2 justify-between">
-                {tp.map((button) => {
-                  return (
-                    <button className="px-1 rounded-lg text-[12px] focus:bg-[#F7F7F8] focus:shadow-md hover:bg-[#F7F8F7] dark:focus:bg-[#262626] dark:hover:bg-[#262626] text-gray-500 dark:focus:text-white ">
-                      {button}%
-                    </button>
-                  );
-                })}
-                <button className="px-2 py-1 rounded-lg text-[12px] bg-[#F7F8F8] text-gray-600 dark:bg-[#262626] dark:text-gray-500 ">
-                  Price
-                </button>
+                <div className="flex gap-2 w-full text-[0.7rem]">
+                  <div className="flex gap-2 w-1/3  bg-[#2c2d2d] rounded-xl px-3 py-2">
+                  <input type="number"  className="bg-white w-full outline-none" value={300}/>
+                  <span className="text-white">%</span>
+                  </div>
+                  <div className="flex w-2/3 gap-2 bg-[#2c2d2d]  rounded-xl px-3 py-2">
+                  <input type="number"  className="bg-transparent w-full" value={6754.999}/>
+                  <span>USDT</span>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="flex flex-col justify-start gap-1">

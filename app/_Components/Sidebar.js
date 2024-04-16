@@ -59,7 +59,7 @@ const Sidebar=({getShow})=>{
                 <div className={Favorites?"hidden":'flex flex-col gap-1 mr-4 mb-3'}>
                     {(Data.filter(e=>e.Pairs.includes(search))).map((Pair,index)=>{
                         return(
-                            <div className="flex justify-between w-full dark:text-white text-black hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl" onClick={()=>setData({...data,token:Pair.Pairs.split("/")[0]})}>
+                            <div className={`flex justify-between w-full dark:text-white text-black cursor-pointer hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl ${data.token===Pair.Pairs.split("/")[0]&&'dark:bg-[#2c2d2d] bg-[#F4F5F4] '} `} onClick={()=>setData({...data,token:Pair.Pairs.split("/")[0]})}>
                                 <div className='flex gap-[1vw] '>
                                     {/* {Starred ? (Pair.stared = true) : (Pair.stared = false)}
                                     <div>{Pair.stared?<FaStar style={{color: 'yellow'}} size={20} onClick={()=>setStarred(false)}/> : <CiStar size={20} onClick={()=>setStarred(true)}/>}</div> */}
