@@ -22,7 +22,7 @@ const page = () => {
   const latestPrice = usePriceStore(state  => state.latestPrice)
   const last24HourChange = usePriceStore(state  => state.last24HourChange)
   const setLast24HourPrice = usePriceStore((state) => state.setLast24HourPrice)
-const percentageChange = last24HourChange[data.token]?.includes("+") || "-"
+const percentageChange = last24HourChange[data.token] || "-"
  
   const handleClose = () => {
     setShowPopup(false);
