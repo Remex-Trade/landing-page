@@ -13,6 +13,8 @@ const Sidebar=({getShow})=>{
     const [show,setShow]=useState(true)
     const {data,setData} = useContext(userContext); 
     const latestPrice = usePriceStore(state  => state.latestPrice)
+    const last24HourChange = usePriceStore(state  => state.last24HourChange)
+    
     let Data=[
         {"id":1,"icon":"","Pairs":"BTC/USD","Price":"70367.4","Change":"+4.67","stared":false},
         {"id":2,"icon":"","Pairs":"ETH/USD","Price":"70367.4","Change":"+4.67","stared":false},
@@ -94,7 +96,7 @@ const Sidebar=({getShow})=>{
             <div className='h-[100vh] overflow-y-auto '>
                 <div className={Favorites?"hidden":'flex flex-col gap-1 mr-4 mb-3'}>
                     {(Data.filter(e=>e.Pairs.includes(search))).map((Pair,index)=>{
-                        const percentage = getChangePercentage(Pair.Pairs)
+                        const percentage = last24HourChange?.[Pair.Pairs] || "-"
                         return(
                             <div className={`flex justify-between w-full dark:text-white text-black cursor-pointer hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl ${data.token===Pair.Pairs&&'dark:bg-[#2c2d2d] bg-[#F4F5F4] '} `} onClick={()=>setData({...data,token:Pair.Pairs})}>
                             {/* <div className="flex justify-between w-full dark:text-white text-black hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl" onClick={()=>setData({...data,token:Pair.Pairs})}> */}
@@ -123,6 +125,8 @@ const Sidebar=({getShow})=>{
             
             <div className={Favorites?'flex flex-col gap-1 mr-4':"hidden"}>
                 {(FavArr.filter(e=>e.Pairs.includes(search))).map((Pair)=>{
+                        const percentage = last24HourChange?.[Pair.Pairs] || "-"
+
                         return(
                             <div className="flex justify-between w-full hover:bg-[#f7f8f8] dark:hover:bg-[#2c2d2d] px-4 py-4 rounded-xl">
                                 <div className='flex gap-[1vw]'>
@@ -134,7 +138,7 @@ const Sidebar=({getShow})=>{
                                 </div>
                                 <div className="flex gap-[2vw]">
                                     <div>{Pair.Price}</div>
-                                    <div className='text-green-600'>{getChangePercentage(Pair.Pairs)}</div>
+                                    <div className='text-green-600'>{percentage}</div>
                                 </div>
                             </div>
                         )

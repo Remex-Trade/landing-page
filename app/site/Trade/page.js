@@ -20,8 +20,9 @@ const page = () => {
   const {data,setData} = useContext(userContext);
   const setLatestPrice = usePriceStore((state) => state.setLatestPrice)
   const latestPrice = usePriceStore(state  => state.latestPrice)
+  const last24HourChange = usePriceStore(state  => state.last24HourChange)
   const setLast24HourPrice = usePriceStore((state) => state.setLast24HourPrice)
-
+const percentageChange = last24HourChange[data.token]?.includes("+") || "-"
  
   const handleClose = () => {
     setShowPopup(false);
@@ -152,7 +153,7 @@ const page = () => {
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="ext-black  dark:text-white ">24h Change</span>
-                  <span className="text-green-600  ">+18.866%</span>
+                  <span className={percentageChange.includes("+") ?  'text-[#0cf3c4]' : "text-red-500"}>{percentageChange}</span>
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="ext-black  text-[0.7rem] dark:text-white  underline">Open Interest(I)</span>
