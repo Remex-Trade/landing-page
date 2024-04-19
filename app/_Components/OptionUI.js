@@ -15,7 +15,7 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
   const handleInputChange = (e) => {
     setPercentage(e.target.value);
   };
-  console.log(percentage);
+ 
   return (
     <div className="bg-white text-sm dark:bg-[#0f0e0f] hover:cursor-pointer overflow-hidden">
       

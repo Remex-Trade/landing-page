@@ -23,7 +23,8 @@ const layout = ({ children }) => {
   const [user, setUser] = useState({});
   const [data, setData] = useState({
     token:"BTC/USD",
-    leverage:0
+    leverage:0,
+    orderDetails:{}
   });
   return (
       <QueryClientProvider client={queryClient}>

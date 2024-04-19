@@ -103,25 +103,26 @@ const [chartStats, setChartStats] = useState({})
     fetchChartStats("0xf36abcb2b8c9cc51f6c57a7bc49a9d2f072aebc2").then(data => setChartStats(data)).catch(err => console.log(err))
   }, [])
   return (
-    <>{showPopup &&
+    <>
+    {showPopup &&
         <Popup showPopup={showPopup} setShowPopup={setShowPopup}/>
     }
-    <div className="flex text-sm    ">
-      <div className='basis-1/5 bg-white dark:bg-none'>
+    <div className={`flex text-sm w-full`}>
+      <div className=''>
       {show?<div
         id="sidebar"
         className="h-[100vh] bg-[#F7F7F8] text-black overflow-hidden rounded-b-xl w-full dark:bg-[#0F0E0E] dark:border-[#2C2D2D] shadow-xl dark:border-[1px]"
       >
         <Sidebar getShow={getShow}/>
       </div>:
-      <div className='bg-white mt-[4vw] bg-[#F7F7F8] dark:bg-[#0F0E0E] text-black dark:text-white dark:border-[#2C2D2D] border-[1px] w-[10%] h-[2vw] absolute  rounded-r-lg'>
+      <div className='bg-white mt-[4vw] bg-[#F7F7F8] dark:bg-[#0F0E0E] text-black dark:text-white dark:border-[#2C2D2D] border-[1px] w-[5%] h-[2vw] absolute  rounded-r-lg'>
           <div className='flex gap-3 mt-2 ml-2 mr-2' onClick={()=>setShow(true)}>
             <div>Pairs</div>
             <RxHamburgerMenu className='mt-1'/>
           </div>
       </div>}
       </div>
-      <div className=" basis-4/5  h-[100vh]">
+      <div className="w-full h-[100vh]">
         <div className="text-[0.8rem] bg-white dark:bg-[#0f0e0e] w-full sticky top-[50px] text-black dark:text-white flex h-fit px-4 gap-10 items-center py-2 dark:bg-[#0F0E0E] dark:border-[#2C2D2D] shadow-sm dark:border-[1px]">
           <FaFire color="orange" />
           <div>
@@ -147,7 +148,7 @@ const [chartStats, setChartStats] = useState({})
         </div>
 
         <div className="flex w-full h-full bg-[#F7F7F8] dark:bg-black">
-          <div className="flex flex-col h-full w-[68%]  m-8 mr-0 justify-start  items-start  gap-6">
+          <div className={`flex flex-col h-full   m-8 mr-0 justify-start  items-start  gap-6 ${show?'w-[68%]':'w-[74%]'}`}>
             <div
               id="middle-top"
               className=" w-full rounded-xl flex gap-2 flex-col bg-white text-black dark:text-white dark:bg-[#0F0E0E] dark:border-[#2C2D2D]  dark:border-[1px] shadow-md h-fit "

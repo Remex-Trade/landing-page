@@ -5,6 +5,9 @@ import { FaStar } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import userContext from '../_context/userContext';
 import { usePriceStore} from "../../store/priceStore"
+import { TiArrowSortedUp } from "react-icons/ti";
+import { TiArrowSortedDown } from "react-icons/ti";
+
 import Image from 'next/image';
 const Sidebar=({getShow})=>{
     const [Favorites,setFavorites]=useState(false);
@@ -12,6 +15,8 @@ const Sidebar=({getShow})=>{
     const [search,setSearch]=useState("")
     const [show,setShow]=useState(true)
     const {data,setData} = useContext(userContext); 
+    const [priceSort, setPriceSort] = useState(0);
+    const [changeSort,setChangeSort] = useState(0);
     const latestPrice = usePriceStore(state  => state.latestPrice)
     const last24HourChange = usePriceStore(state  => state.last24HourChange)
     
@@ -64,7 +69,7 @@ const Sidebar=({getShow})=>{
 
       return price.toFixed(decimalDigits);
     }
-
+    console.log(priceSort)
     return(
         <div className='dark:bg-[#0F0C0F] h-full  bg-white dark:text-white text-black'>
             <div className="flex flex-col gap-[1vw]  px-4 py-[2vw] text-[13px]">
@@ -86,11 +91,35 @@ const Sidebar=({getShow})=>{
                 <div className={Favorites && "border-b-white"}><button onClick={()=>setFavorites(true)} className={Favorites && "dark:text-white text-black border-b-2 border-b-white pb-2"}>Favorites</button></div>
                 <div className={Favorites || "border-b-white"}><button onClick={()=>setFavorites(false)} className={Favorites || "dark:text-white text-black border-b-2 border-b-white pb-2"}>All Perpetual</button></div>
             </div>
-            <div className="flex justify-between text-zinc-400 px-3">
-                <div>Pairs</div>
+            <div className="flex  gap-10 text-zinc-400 px-3">
+                <div className='w-[7vw]'>Pairs</div>
                 <div className="flex gap-[2vw]">
-                    <div>Price</div>
-                    <div>Change</div>
+                    <div className='flex gap-1 cursor-pointer' onClick={()=>{
+                        if(priceSort==2){
+                            setPriceSort(0);
+                        }else{
+                            setPriceSort(priceSort=>priceSort+=1);
+                        }
+                    }}>
+                        <div className='select-none'>Price</div>
+                        <div className='flex flex-col m-0'>
+                        <TiArrowSortedUp size={10} style={{margin: 0, padding: 0}} className={`${priceSort==1&&'text-blue-500'}`}/>
+                        <TiArrowSortedDown size={10} style={{margin: 0, padding: 0}}  className={`${priceSort==2&&'text-blue-500'}`}/>
+                        </div>
+                    </div>
+                    <div className='flex gap-1 cursor-pointer' onClick={()=>{
+                        if(changeSort==2){
+                            setChangeSort(0);
+                        }else{
+                            setChangeSort(changeSort=>changeSort+=1);
+                        }
+                    }}>
+                        <div className='select-none'>Change</div>
+                        <div className='flex flex-col m-0'>
+                        <TiArrowSortedUp size={11} style={{margin: 0, padding: 0}} className={`${changeSort==1&&'text-blue-500'}`}/>
+                        <TiArrowSortedDown size={11} className={`${changeSort==2&&'text-blue-500'}`}/>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className='h-[100vh] overflow-y-auto '>
@@ -98,9 +127,9 @@ const Sidebar=({getShow})=>{
                     {(Data.filter(e=>e.Pairs.includes(search))).map((Pair,index)=>{
                         const percentage = last24HourChange?.[Pair.Pairs] || "-"
                         return(
-                            <div className={`flex justify-between w-full dark:text-white text-black cursor-pointer hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl ${data.token===Pair.Pairs&&'dark:bg-[#2c2d2d] bg-[#F4F5F4] '} `} onClick={()=>setData({...data,token:Pair.Pairs})}>
+                            <div className={`flex text-[0.75rem]  gap-10 w-full dark:text-white text-black cursor-pointer hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl ${data.token===Pair.Pairs&&'dark:bg-[#2c2d2d] bg-[#F4F5F4] '} `} onClick={()=>setData({...data,token:Pair.Pairs})}>
                             {/* <div className="flex justify-between w-full dark:text-white text-black hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl" onClick={()=>setData({...data,token:Pair.Pairs})}> */}
-                                <div className='flex gap-[1vw] '>
+                                <div className='flex basis-1/2 gap-2'>
                                     {/* {Starred ? (Pair.stared = true) : (Pair.stared = false)}
                                     <div>{Pair.stared?<FaStar style={{color: 'yellow'}} size={20} onClick={()=>setStarred(false)}/> : <CiStar size={20} onClick={()=>setStarred(true)}/>}</div> */}
                                 <div>{FavArr.some(item => item.id === Pair.id)?<FaStar style={{color: '#FFA500'}} size={20} onClick={()=>{
@@ -111,12 +140,13 @@ const Sidebar=({getShow})=>{
                                             setFavArr([...FavArr, Pair])
                                             console.log(FavArr)
                                     }}/>}</div>
-                                    <div>
+                                    <Image src={`/Images/${Pair.Pairs.split("/")[0].toLowerCase()}.png`} className='rounded-full' width={20} height={5}/>
+                                <div className='w-[3vw]'>
                                         {Pair.Pairs}</div>
                                 </div>
-                                <div className="flex gap-[2vw]">
-                                    <div>{formatPrice(latestPrice[Pair.Pairs])}</div>
-                                    <div className={percentage.includes("+") ?  'text-[#0cf3c4]' : "text-red-500"}>{percentage}</div>
+                                <div className="flex gap-8 basis-1/2 text-left">
+                                    <div className='w-[2vw]'>{formatPrice(latestPrice[Pair.Pairs])}</div>
+                                    <div className={percentage.includes("+") ?  'text-[#0cf3c4]  basis-2/5' : "text-red-500 basis-2/5"}>{percentage}</div>
                                 </div>
                             </div>
                         )
