@@ -100,7 +100,7 @@ const percentageChange = last24HourChange[data.token] || "-"
     {showPopup &&
         <Popup showPopup={showPopup} setShowPopup={setShowPopup}/>
     }
-    <div className="flex text-sm w-[100vw]">
+    <div className={`flex text-sm w-full`}>
       <div className=''>
       {show?<div
         id="sidebar"
@@ -115,7 +115,7 @@ const percentageChange = last24HourChange[data.token] || "-"
           </div>
       </div>}
       </div>
-      <div className=" basis-4/5  h-[100vh]">
+      <div className="w-full h-[100vh]">
         <div className="text-[0.8rem] bg-white dark:bg-[#0f0e0e] w-full sticky top-[50px] text-black dark:text-white flex h-fit px-4 gap-10 items-center py-2 dark:bg-[#0F0E0E] dark:border-[#2C2D2D] shadow-sm dark:border-[1px]">
           <FaFire color="orange" />
           <div>
@@ -141,7 +141,7 @@ const percentageChange = last24HourChange[data.token] || "-"
         </div>
 
         <div className="flex w-full h-full bg-[#F7F7F8] dark:bg-black">
-          <div className={`flex flex-col h-full w-[68%]  m-8 mr-0 justify-start  items-start  gap-6 ${show?'w-[68%':'w-[94%]'}`}>
+          <div className={`flex flex-col h-full   m-8 mr-0 justify-start  items-start  gap-6 ${show?'w-[68%]':'w-[74%]'}`}>
             <div
               id="middle-top"
               className=" w-full rounded-xl flex gap-2 flex-col bg-white text-black dark:text-white dark:bg-[#0F0E0E] dark:border-[#2C2D2D]  dark:border-[1px] shadow-md h-fit "
