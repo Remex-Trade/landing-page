@@ -89,8 +89,8 @@ const queryClient = new QueryClient();
 
 export const Web3Provider = ({ children }) => {
   return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
+    // <WagmiProvider config={config}>
+      // <QueryClientProvider client={queryClient}>
         <ConnectKitProvider
           customTheme={{
             "--ck-accent-color": "#0CF3C4",
@@ -99,7 +99,7 @@ export const Web3Provider = ({ children }) => {
         >
           {children}
         </ConnectKitProvider>
-      </QueryClientProvider>
-    </WagmiProvider>
+      // </QueryClientProvider>
+    // </WagmiProvider>
   );
 };

@@ -42,7 +42,7 @@
     "tailwind-scrollbar-hide": "^1.1.7",
     "tsparticles": "^3.3.0",
     "tsparticles-slim": "^2.12.0",
-    "viem": "^2.9.16",
+    "viem": "^2.9.20",
     "wagmi": "^2.5.19",
     "zustand": "^4.5.2"
   },

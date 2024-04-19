@@ -14,6 +14,7 @@ import {EvmPriceServiceConnection} from "@pythnetwork/pyth-evm-js"
 
 import { idToToken, priceIds } from "../../../helpers/price";
 import {usePriceStore} from "../../../store/priceStore"
+import {fetchChartStats} from "../../../contracts-integration/utils"
 const page = () => {
   const [show,setShow]=useState(true);
   const[showPopup, setShowPopup] = useState(false);
@@ -23,6 +24,9 @@ const page = () => {
   const last24HourChange = usePriceStore(state  => state.last24HourChange)
   const setLast24HourPrice = usePriceStore((state) => state.setLast24HourPrice)
 const percentageChange = last24HourChange[data.token] || "-"
+
+const [chartStats, setChartStats] = useState({})
+
  
   const handleClose = () => {
     setShowPopup(false);
@@ -95,6 +99,9 @@ const percentageChange = last24HourChange[data.token] || "-"
       connection.closeWebSocket();
     };
   }, []);
+  useEffect(() => {
+    fetchChartStats("0xf36abcb2b8c9cc51f6c57a7bc49a9d2f072aebc2").then(data => setChartStats(data)).catch(err => console.log(err))
+  }, [])
   return (
     <>{showPopup &&
         <Popup showPopup={showPopup} setShowPopup={setShowPopup}/>
@@ -157,23 +164,23 @@ const percentageChange = last24HourChange[data.token] || "-"
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="ext-black  text-[0.7rem] dark:text-white  underline">Open Interest(I)</span>
-                  <span className="text-[0.7rem]">161,897/507,020</span>
+                  <span className="text-[0.7rem]">{chartStats.openInterestS ?? "-"}</span>
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="text-black text-[0.7rem]  dark:text-white underline">Open Interest(II)</span>
-                  <span className="text-[0.7rem]">38,349/628,079</span>
+                  <span className="text-[0.7rem]">{chartStats.openInterestL ?? "-"}</span>
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="ext-black text-[0.7rem] dark:text-white underline">Funding</span>
-                  <span className="text-green-600  text-[0.7rem]">0.0030%</span>
+                  <span className="text-green-600  text-[0.7rem]">{chartStats.funding ?? "-"}</span>
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="text-black text-[0.7rem]  dark:text-white underline">Borrowing Rate</span>
-                  <span className="text-green-600  text-[0.7rem]">0.0021%</span>
+                  <span className="text-green-600  text-[0.7rem]">{chartStats.borrowingRate ?? "-"}</span>
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="text-black text-[0.7rem]  dark:text-white">24h volume(USD)</span>
-                  <span className="text-[0.7rem]">3,039,440.17</span>
+                  <span className="text-[0.7rem]">{chartStats.volume24h ?? "-"}</span>
                 </div>
 
               </div>
