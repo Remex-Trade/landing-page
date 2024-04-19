@@ -99,8 +99,8 @@ const percentageChange = last24HourChange[data.token] || "-"
     <>{showPopup &&
         <Popup showPopup={showPopup} setShowPopup={setShowPopup}/>
     }
-    <div className="flex text-sm    ">
-      <div className='basis-1/5 bg-white dark:bg-none'>
+    <div className="flex text-sm ">
+      <div className='w-1/5'>
       {show?<div
         id="sidebar"
         className="h-[100vh] bg-[#F7F7F8] text-black overflow-hidden rounded-b-xl w-full dark:bg-[#0F0E0E] dark:border-[#2C2D2D] shadow-xl dark:border-[1px]"

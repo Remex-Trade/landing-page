@@ -86,8 +86,8 @@ const Sidebar=({getShow})=>{
                 <div className={Favorites && "border-b-white"}><button onClick={()=>setFavorites(true)} className={Favorites && "dark:text-white text-black border-b-2 border-b-white pb-2"}>Favorites</button></div>
                 <div className={Favorites || "border-b-white"}><button onClick={()=>setFavorites(false)} className={Favorites || "dark:text-white text-black border-b-2 border-b-white pb-2"}>All Perpetual</button></div>
             </div>
-            <div className="flex justify-between text-zinc-400 px-3">
-                <div>Pairs</div>
+            <div className="flex  gap-10 text-zinc-400 px-3">
+                <div className='w-[7vw]'>Pairs</div>
                 <div className="flex gap-[2vw]">
                     <div>Price</div>
                     <div>Change</div>
@@ -98,9 +98,9 @@ const Sidebar=({getShow})=>{
                     {(Data.filter(e=>e.Pairs.includes(search))).map((Pair,index)=>{
                         const percentage = last24HourChange?.[Pair.Pairs] || "-"
                         return(
-                            <div className={`flex justify-between w-full dark:text-white text-black cursor-pointer hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl ${data.token===Pair.Pairs&&'dark:bg-[#2c2d2d] bg-[#F4F5F4] '} `} onClick={()=>setData({...data,token:Pair.Pairs})}>
+                            <div className={`flex text-[0.75rem]  gap-10 w-full dark:text-white text-black cursor-pointer hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl ${data.token===Pair.Pairs&&'dark:bg-[#2c2d2d] bg-[#F4F5F4] '} `} onClick={()=>setData({...data,token:Pair.Pairs})}>
                             {/* <div className="flex justify-between w-full dark:text-white text-black hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl" onClick={()=>setData({...data,token:Pair.Pairs})}> */}
-                                <div className='flex gap-[1vw] '>
+                                <div className='flex basis-1/2 gap-4'>
                                     {/* {Starred ? (Pair.stared = true) : (Pair.stared = false)}
                                     <div>{Pair.stared?<FaStar style={{color: 'yellow'}} size={20} onClick={()=>setStarred(false)}/> : <CiStar size={20} onClick={()=>setStarred(true)}/>}</div> */}
                                 <div>{FavArr.some(item => item.id === Pair.id)?<FaStar style={{color: '#FFA500'}} size={20} onClick={()=>{
@@ -111,12 +111,12 @@ const Sidebar=({getShow})=>{
                                             setFavArr([...FavArr, Pair])
                                             console.log(FavArr)
                                     }}/>}</div>
-                                    <div>
+                                <div className='w-[3vw]'>
                                         {Pair.Pairs}</div>
                                 </div>
-                                <div className="flex gap-[2vw]">
-                                    <div>{formatPrice(latestPrice[Pair.Pairs])}</div>
-                                    <div className={percentage.includes("+") ?  'text-[#0cf3c4]' : "text-red-500"}>{percentage}</div>
+                                <div className="flex gap-8 basis-1/2 text-left">
+                                    <div className='w-[2vw]'>{formatPrice(latestPrice[Pair.Pairs])}</div>
+                                    <div className={percentage.includes("+") ?  'text-[#0cf3c4]  basis-2/5' : "text-red-500 basis-2/5"}>{percentage}</div>
                                 </div>
                             </div>
                         )
