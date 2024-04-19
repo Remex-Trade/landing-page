@@ -12,7 +12,7 @@ const Navbar = () => {
   const [selected,setSelected] = useState("Trade");
   const names = ["Trade","Airdrop","Referral","Leaderboard"]
   return (
-    <div className="dark:bg-[#0F0E0E] outline-none  border-none bg-white dark:text-white text-black sticky z-10 top-0 w-full font-light shadow-sm dark:shadow-none">
+    <div className="dark:bg-[#0F0E0E] outline-none  border-none bg-white dark:text-white text-black sticky z-10 top-0 w-[100vw] font-light shadow-sm dark:shadow-none">
       <div className="flex gap-[4vw] justify-between items-center w-full px-[2vw] py-1 text-md">
         <div>LOGO</div>
         <div className="flex gap-20">
