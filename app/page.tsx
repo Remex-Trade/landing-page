@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ParticleBg } from "./_Components/ParticleBg.js";
+import { ParticleBg } from "./_Components/Particle";
 import Link from "next/link.js";
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
             <div className="hover:text-white">Medium</div>
             <div className="hover:text-white">Docs</div>
             <Link href="/Trade">
-              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-full text-black">
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-full text-black">
                 Launch App
               </button>
             </Link>
@@ -35,7 +35,7 @@ export default function Home() {
             </div>
             <div className="flex items-start w-full gap-0 justify-center">
             <Link href="/site/Trade">
-              <button class="relative z-10 animate animate-float mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-[12px] text-xl text-black">
+              <button className="relative z-10 animate animate-float mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-[12px] text-xl text-black">
                 Trade now
               </button>
             </Link>
@@ -56,10 +56,12 @@ export default function Home() {
               src="/Images/sshot.webp"
               width={800}
               height={100}
+              alt="trade1"
               className="border-solid border-8 border-zinc-700 rounded-3xl relative left-[5vw] z-0"
             />
             <Image
               src="/Images/sshot_mobile.webp"
+              alt="trade2"
               width={300}
               height={200}
               className="border-solid border-8 border-zinc-700 rounded-3xl relative right-20 z-1"
@@ -94,18 +96,21 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-center">
             <Image
+              alt="trade3"
               src="/Images/sshot-gamified-inventory.webp"
               width={400}
               height={200}
               className="border-solid border-8 border-zinc-700 rounded-3xl relative left-[10vw] w-[20vw] h-[20vw] z-0"
             />
             <Image
+              alt="trade4"
               src="/Images/sshot-gamified-missions.webp"
               width={400}
               height={200}
               className="border-solid border-8 border-zinc-700 rounded-3xl w-[25vw] h-[25vw] z-50"
             />
             <Image
+              alt="trade4"
               src="/Images/sshot-gamified-reward.webp"
               width={500}
               height={300}
@@ -133,6 +138,7 @@ export default function Home() {
                 <h1 className="text-5xl font-[800]">1000x Leverage</h1>
               </div>
               <Image
+                alt="trade5"
                 src="/Images/coins.svg"
                 width={450}
                 height={400}
@@ -158,6 +164,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col bg-zinc-900 items-center justify-center p-[2vw] rounded-lg col-start-3 col-end-5">
               <Image
+                alt="trade6"
                 src="/Images/box.svg"
                 width={280}
                 height={280}

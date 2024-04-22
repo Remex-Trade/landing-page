@@ -6,6 +6,7 @@ import userContext from "../_context/userContext";
 import { fantom, fantomTestnet } from "wagmi/chains";
 import { createConfig, http, WagmiProvider } from "wagmi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import NextTopLoader from 'nextjs-toploader';
 
 const config = createConfig({
   chains: [fantomTestnet],
@@ -32,7 +33,8 @@ const layout = ({ children }) => {
         <div className={`relative scroll-smooth ${darkMode && "dark"}`}>
           <theme.Provider value={{ darkMode, setDarkMode }}>
             <userContext.Provider value={{ user, setUser, data, setData }}>
-              <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+              <Navbar/>
+              
               {children}
             </userContext.Provider>
           </theme.Provider>

@@ -23,8 +23,8 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "app/_Components/Chart.js",
-    "app/_Components/chart-helper.js"
+    "app/_Components/Chart.tsx",
+    "app/_Components/chart-helper.tsx"
 , "store/priceStore.js"  ],
   "exclude": ["node_modules"]
 }

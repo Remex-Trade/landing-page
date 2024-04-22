@@ -200,14 +200,13 @@ const Sidebar = ({ getShow }) => {
   return (
     <div className="dark:bg-[#0F0C0F] h-full  bg-white dark:text-white text-black">
       <div className="flex flex-col gap-[1vw]  px-4 py-[2vw] text-[13px]">
-        <div class="flex w-full justify-between items-center px-2">
+        <div className="flex w-full justify-between items-center px-2">
           <input
             type="search"
             className="relative m-0 block rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-2 py-1 text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
             placeholder="Search"
             aria-label="Search"
-            id="exampleFormControlInput2"
-            ariaDescribedby="button-addon2"
+            id="exampleFormControlInput2" 
             onChange={searchPair}
           />
 
@@ -226,11 +225,11 @@ const Sidebar = ({ getShow }) => {
               Favorites
             </button>
           </div>
-          <div className={Favorites || "border-b-white"}>
+          <div className={Favorites && "border-b-white"}>
             <button
               onClick={() => setFavorites(false)}
               className={
-                Favorites ||
+                !Favorites &&
                 "dark:text-white text-black border-b-2 border-b-white pb-2"
               }
             >
@@ -342,6 +341,7 @@ const Sidebar = ({ getShow }) => {
                         className="rounded-full"
                         width={20}
                         height={5}
+                        alt="sidebar1"
                       />
                       <div className="w-[3vw]">{Pair.Pairs}</div>
                     </div>

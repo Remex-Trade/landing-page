@@ -226,6 +226,7 @@ const page = () => {
                             src="/Images/dashboard1.svg"
                             width={20}
                             height={20}
+                            alt="referral1"
                           />
                           <span>$0.0000</span>
                         </span>
@@ -234,6 +235,7 @@ const page = () => {
                             src="/Images/dashboard2.svg"
                             width={20}
                             height={20}
+                            alt="referral2"
                           />
                           <span>$0.0000</span>
                         </span>
@@ -242,6 +244,7 @@ const page = () => {
                             src="/Images/dashboard3.svg"
                             width={20}
                             height={20}
+                            alt="referral3"
                           />
                           <span>$0.0000</span>
                         </span>

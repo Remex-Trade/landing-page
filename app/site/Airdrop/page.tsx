@@ -100,14 +100,14 @@ const page = () => {
               Trade on any chain listed below and earn $LOGX
             </div>
             <div className="flex gap-2">
-              <Image src="/Images/airdrop1.svg" width={25} height={25} />
-              <Image src="/Images/airdrop2.svg" width={25} height={25} />
-              <Image src="/Images/airdrop3.svg" width={25} height={25} />
-              <Image src="/Images/airdrop4.svg" width={25} height={25} />
-              <Image src="/Images/airdrop5.svg" width={25} height={25} />
-              <Image src="/Images/airdrop6.svg" width={25} height={25} />
-              <Image src="/Images/airdrop7.svg" width={25} height={25} />
-              <Image src="/Images/airdrop8.svg" width={25} height={25} />
+              <Image src="/Images/airdrop1.svg" alt="airdropImage1" width={25} height={25} />
+              <Image src="/Images/airdrop2.svg" alt="airdropImage2" width={25} height={25} />
+              <Image src="/Images/airdrop3.svg" alt="airdropImage3" width={25} height={25} />
+              <Image src="/Images/airdrop4.svg" alt="airdropImage4" width={25} height={25} />
+              <Image src="/Images/airdrop5.svg" alt="airdropImage5" width={25} height={25} />
+              <Image src="/Images/airdrop6.svg" alt="airdropImage6" width={25} height={25} />
+              <Image src="/Images/airdrop7.svg" alt="airdropImage7" width={25} height={25} />
+              <Image src="/Images/airdrop8.svg" alt="airdropImage8" width={25} height={25} />
             </div>
           </div>
         </div>
@@ -128,8 +128,8 @@ const page = () => {
               Trade on any chain listed below and earn $LOGX
             </div>
             <div className="flex gap-2">
-              <Image src="/Images/airdrop9.svg" width={25} height={25} />
-              <Image src="/Images/airdrop10.svg" width={25} height={25} />
+              <Image src="/Images/airdrop9.svg" alt="airdrop9" width={25} height={25} />
+              <Image src="/Images/airdrop10.svg" alt = "airdrop10" width={25} height={25} />
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ import { priceIds } from "../../helpers/price";
 import {usePriceStore} from "../../store/priceStore"
 
 const Chart = ({ show }) => {
-  const chartContainer = useRef();
+  const chartContainer = useRef<any>();
   const { darkMode } = useContext(theme);
   const {data} = useContext(userContext);
   const [period,setPeriod] = useState("1m");
@@ -22,7 +22,7 @@ const Chart = ({ show }) => {
     // currentAveragePrice
   );
   const [currentChart, setCurrentChart] = useState();
-  const [currentSeries, setCurrentSeries] = useState();
+  const [currentSeries, setCurrentSeries] = useState<any>();
   // const latestPrice = usePriceStore(state  => state.latestPrice)
 
   // const [priceData, updatePriceData] = useChartPrices(
@@ -47,7 +47,7 @@ const Chart = ({ show }) => {
     } else{
       newCandleData = getCandlesFromPricesPyth(null, chartPrice, "5m")
     }
-    currentSeries.update(newCandleData)
+    currentSeries??currentSeries.update(newCandleData)
   }, [currentSeries, priceData])
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const Chart = ({ show }) => {
         if (updatedPrice) {
           const chartPrice = {
             time: updatedPrice.publishTime,
-            value: updatedPrice.price * Math.pow(10, updatedPrice.expo),
+            value: parseFloat(updatedPrice.price) * Math.pow(10, updatedPrice.expo),
           };
           updateFeedData(chartPrice);
         }

@@ -150,7 +150,7 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
             <input
               type="checkbox"
               id="TP/SL"
-              value={isTp}
+              checked={isTp}
               onClick={() => {
                 setIsTp(!isTp)
               }}
@@ -198,7 +198,7 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
           {/* Connect wallet */}
           <div className="w-full mt-2 flex items-center justify-center">
           <div >
-            {!user.length>0?
+            {!(user.length>0)?
 
             <WalletsProvider />:
             <button className={`rounded-lg px-20 py-2 text-lg text-slate-100 font-bold ${topOption==="Long"?'bg-[#0cf3c4]':'bg-red-500'}`}>{topOption==="Long"?

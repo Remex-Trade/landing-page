@@ -15,6 +15,15 @@ import {EvmPriceServiceConnection} from "@pythnetwork/pyth-evm-js"
 import { idToToken, priceIds } from "../../../helpers/price";
 import {usePriceStore} from "../../../store/priceStore"
 import {fetchChartStats} from "../../../contracts-integration/utils"
+
+type chartData={
+    funding: any;
+    borrowingRate: any;
+    openInterestS: any;
+    openInterestL?: any;
+    volume24h: any;
+
+}
 const page = () => {
   const [show,setShow]=useState(true);
   const[showPopup, setShowPopup] = useState(false);
@@ -25,7 +34,7 @@ const page = () => {
   const setLast24HourPrice = usePriceStore((state) => state.setLast24HourPrice)
 const percentageChange = last24HourChange[data.token] || "-"
 
-const [chartStats, setChartStats] = useState({})
+const [chartStats, setChartStats] = useState<chartData>()
 
  
   const handleClose = () => {
@@ -42,7 +51,7 @@ const [chartStats, setChartStats] = useState({})
       "https://hermes.pyth.network"
     );
 
-    const now = parseInt(Date.now() / 1000);
+    const now = (Date.now() / 1000);
     const timeThreshold = now - 24 * 60 * 60;
 
     const requests = Object.values(priceIds).map(async (priceId) => {
@@ -154,7 +163,7 @@ const [chartStats, setChartStats] = useState({})
               className=" w-full rounded-xl flex gap-2 flex-col bg-white text-black dark:text-white dark:bg-[#0F0E0E] dark:border-[#2C2D2D]  dark:border-[1px] shadow-md h-fit "
             >
               <div className="w-full h-[20%] px-8 py-4 flex gap-8  text-[0.7rem] justify-start items-center">
-                <Image src={`/Images/${data.token.split("/")[0].toLowerCase()}.png`} width={50} height={50} className="rounded-full h-100 w-100" />
+                <Image src={`/Images/${data.token.split("/")[0].toLowerCase()}.png`} width={50} height={50} alt="cryptoImage" className="rounded-full h-100 w-100" />
                 <div className="flex flex-col gap-1">
                   <span className="text-black dark:text-white ">{data.token}</span>
                   <span className="text-green-600  font-bold">{Math.round(latestPrice[data.token]*10)/10}</span>
@@ -165,23 +174,23 @@ const [chartStats, setChartStats] = useState({})
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="ext-black  text-[0.7rem] dark:text-white  underline">Open Interest(I)</span>
-                  <span className="text-[0.7rem]">{chartStats.openInterestS ?? "-"}</span>
+                  <span className="text-[0.7rem]">{chartStats?.openInterestS ?? "-"}</span>
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="text-black text-[0.7rem]  dark:text-white underline">Open Interest(II)</span>
-                  <span className="text-[0.7rem]">{chartStats.openInterestL ?? "-"}</span>
+                  <span className="text-[0.7rem]">{chartStats?.openInterestL ?? "-"}</span>
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="ext-black text-[0.7rem] dark:text-white underline">Funding</span>
-                  <span className="text-green-600  text-[0.7rem]">{chartStats.funding ?? "-"}</span>
+                  <span className="text-green-600  text-[0.7rem]">{chartStats?.funding ?? "-"}</span>
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="text-black text-[0.7rem]  dark:text-white underline">Borrowing Rate</span>
-                  <span className="text-green-600  text-[0.7rem]">{chartStats.borrowingRate ?? "-"}</span>
+                  <span className="text-green-600  text-[0.7rem]">{chartStats?.borrowingRate ?? "-"}</span>
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="text-black text-[0.7rem]  dark:text-white">24h volume(USD)</span>
-                  <span className="text-[0.7rem]">{chartStats.volume24h ?? "-"}</span>
+                  <span className="text-[0.7rem]">{chartStats?.volume24h ?? "-"}</span>
                 </div>
 
               </div>

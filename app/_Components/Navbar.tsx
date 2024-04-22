@@ -5,7 +5,7 @@ import { FaFire } from "react-icons/fa";
 import {CiWallet} from "react-icons/ci";
 import ToggleButton from "./ToggleButton";
 import theme from "../_context/theme";
-import WalletsProvider from "../_Components/Wallet";
+import WalletsProvider from "./Wallet";
 
 const Navbar = () => {
   const {darkMode,setDarkMode} = useContext(theme);
