@@ -111,7 +111,7 @@ const [chartStats, setChartStats] = useState({})
       <div className=''>
       {show?<div
         id="sidebar"
-        className="h-[100vh] bg-[#F7F7F8] text-black overflow-hidden rounded-b-xl w-full dark:bg-[#0F0E0E] dark:border-[#2C2D2D] shadow-xl dark:border-[1px]"
+        className="h-[100vh] bg-[#F7F7F8] text-black overflow-hidden rounded-b-xl w-[20vw] dark:bg-[#0F0E0E] dark:border-[#2C2D2D] shadow-xl dark:border-[1px]"
       >
         <Sidebar getShow={getShow}/>
       </div>:
