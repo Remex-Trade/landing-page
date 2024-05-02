@@ -117,8 +117,17 @@ export default function Home() {
           )
         })}
         </div>
-        <div>
-          
+        <div className="flex flex-col">
+          <div className="flex w-[8vw] h-[6vw]">
+            <Image src="/Images/card1.svg" width={100} height={100} alt="card1"/>
+            <Image src="/Images/card2.svg" width={100} height={100} alt="card2"/>
+            <Image src="/Images/card3.svg" width={100} height={100} alt="card3"/>
+          </div>
+          <div className="flex">
+            <Image src="/Images/card4.svg" width={100} height={100} alt="card4"/>
+            <Image src="/Images/card5.svg" width={100} height={100} alt="card5"/>
+            <Image src="/Images/card6.svg" width={100} height={100} alt="card6"/>
+          </div>
         </div>
       </main>
     </>
