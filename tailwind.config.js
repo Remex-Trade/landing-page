@@ -14,7 +14,8 @@ module.exports = {
       },
       fontFamily:{
         heading:['Nunito Sans'],
-        body:['DM Sans']
+        body:['DM Sans'],
+        plusJakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
       },
       keyframes:{
         move:{
