@@ -5,12 +5,12 @@ import Link from "next/link.js";
 import { LuDatabase } from "react-icons/lu";
 import { FaChevronDown } from "react-icons/fa";
 import {useTypewriter,Cursor} from "react-simple-typewriter";
-import {useScroll,motion, AnimatePresence, useMotionValue} from "framer-motion";
-import useMeasure from "react-use-measure";
+import {useScroll,motion, AnimatePresence, useMotionValue, animate, useViewportScroll} from "framer-motion";
+
 
 export default function Home() {
   const data = [{ pair: "SOL", CNG: "-2.4507%" }, {}, {}, {}, {}];
-  const [ref,{width}] = useMeasure();
+ 
   const [text,textHelper] = useTypewriter({
     words:["Crypto"],
     loop:true,
@@ -27,12 +27,13 @@ export default function Home() {
         <AnimatePresence>
         <div className="w-[100vw] h-[100vh] relative">
           <Image src="/Images/cubes (1).png" fill alt="Backdrop" />
+      
           <div className="w-[100vw] h-[100vh] absolute">
             <Image src="/Images/Effect.png" fill alt="Backdrop" />
           </div>
           <div
             id="nav"
-            className="w-[100vw] absolute flex justify-center items-center p-[1vw] gap-[15vw] bg-[rgb(10,7,12)] bg-opacity-25 sticky top-0 absolute z-10 backdrop-blur"
+            className="w-[100vw] flex justify-center items-center p-[1vw] gap-[15vw] bg-[rgb(10,7,12)] bg-opacity-25 sticky top-0 absolute z-10 backdrop-blur"
           >
             <div className="font-extrabold text-3xl">remex</div>
             <div className="flex gap-[3vw]">
@@ -76,9 +77,9 @@ export default function Home() {
               {data.map((p) => {
                 return (
                   <motion.div
-                    style={{
-                      translateX:scrollYProgress,
-                    }}
+                    initial={{x:0}}
+                    animate={{x:`${scrollYProgress}%`}}
+                    transition={{ ease: "linear", duration: 10, repeat: Infinity }}
                     id="cards"
                     className="flex gap-[2vw] bg-[#0D0F14] w-[22vw] h-[4vw] items-center justify-center mt-[2vw] rounded-xl shadow-[2px_3px_1px_1px_#0C111B]"
                   >
@@ -285,7 +286,12 @@ export default function Home() {
               id="ellipse"
               className="w-[40vw] h-[40vw] absolute z-[0] rounded-full bg-gradient-to-b from-[#FF0A6C26] to-[#2D27FF26] -left-80 blur"
             ></div>
-            <div
+            <motion.div
+              whileHover={{
+                scale:1.3,
+              }}
+              transition={{ease:"easeInOut",duration:500}}
+              
               id="card1"
               className="w-1/5 relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 gap-4 flex-col border-[#1B2236] h-full bg-[#0D111C]"
             >
@@ -299,7 +305,7 @@ export default function Home() {
                   and self-custody
                 </span>
               </div>
-            </div>
+            </motion.div>
             <div
               id="card2"
               className="w-1/5 relative z-1  rounded-2xl border flex justify-start items-start px-8 py-10 gap-4 flex-col border-[#1B2236] h-full bg-[#0D111C]"
@@ -360,6 +366,41 @@ export default function Home() {
                   Learn More
                 </button>
               </div>
+            </div>
+          </div>
+          <div className="flex bg-[url('/Images/backdrop.png')]">
+          <div className="flex w-[100vw] h-[100vh] relative z-10 flex mt-[2vw] ">
+            <div className="flex flex-col gap-[1vw] w-[60%] z-0 overflow-hidden absolute h-full items-center justify-center">
+              <motion.div className="flex gap-[1vw] flex-nowrap " initial={{ x: 0 }}
+        animate={{ x: '-100%' }}
+        transition={{ ease: "linear", duration: 20, repeat: Infinity,repeatDelay:0 }}>
+                <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
+                <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
+                <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
+                <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
+                <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
+                <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
+              </motion.div>
+              <motion.div className="flex gap-[1vw]" initial={{ x: '-100%' }}
+        animate={{ x: '0%' }}
+        transition={{ ease: "linear", duration: 20, repeat: Infinity,repeatDelay:0}}>
+                <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
+                <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
+                <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
+                <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
+                <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
+                <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
+              </motion.div>
+            </div>
+            <div className="ml-[40vw] flex h-full items-center justify-start">
+                  <div className=" flex flex-col gap-[2vw] h-[90%] w-[80vw] items-center justify-center px-32 absolute z-20  h-[70vh] blur-[120px] bg-[#1C162B] rounded-full  p-[1vw] ">
+                   
+                  </div>
+                  <div className=" flex flex-col gap-[2vw] h-[70%] w-[50vw] items-center justify-center right-0 px-32 absolute z-30  h-[70vh]   rounded-full bg-opacity-15 p-[1vw] ">
+                  <h1 className="text-5xl font-bold">Lorem ipsum dolor sit amet consectetur adipiscing.</h1>
+                    <p className="text-3xl  p-[1vw]">Arcadia lets you discover all the possible areas in web 3 marketing. We are committed to provide the excellence to each of your requirements</p>
+                  </div>
+            </div>
             </div>
           </div>
           <div
@@ -581,6 +622,7 @@ export default function Home() {
                     <button className="px-6 py-2 rounded-full text-white bg-[#361D8B]">Get Started</button>
                 </div>
             </div>
+            
             <div id="stackedImages" className="w-[50%] h-[100vh] flex justify-center h-full items-center">
               <div className="relative w-full h-full flex items-center justify-center">
               <Image src="/Images/panel.png" width={750} height={100} alt="panel" className="absolute z-[10] bottom-56  right-0 shadow-2xl"/>
@@ -649,7 +691,13 @@ export default function Home() {
                 </div>
           </div>
         </div>
+          
+          
+          <div>
+            {/* <Image src="/Images/effect2.png" fill alt="gradient" className="absolute"/> */}
+          </div>
         </AnimatePresence>
+
       </main>
     </>
   );
