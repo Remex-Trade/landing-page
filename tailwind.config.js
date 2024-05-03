@@ -26,10 +26,35 @@ module.exports = {
           '50%':{transform:'translateY(20px)'},
           '100%':{transform:'translateY(-20px)'}
         }
+        ,
+          typing: {
+            "0%": {
+              width: "0%",
+              visibility: "hidden"
+            },
+            "50%":{
+                width:"50%",
+                visibility:"visible"
+
+            },
+            "100%": {
+              width: "100%",
+              visibility:"visible"
+            }  
+          },
+          blink: {
+            "50%": {
+              borderColor: "transparent"
+            },
+            "100%": {
+              borderColor: "white"
+            }  
+          }
       },
       animation:{
         move: 'move 1s ease-in-out  ',
         float : 'float 5s infinite ease-in-out',
+        typing: "typing 2s steps(20) infinite alternate, blink .7s infinite"
       }
     },
   },

@@ -113,3 +113,10 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance:textfield; 
 }
+
+#Strokeparteners{
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #4735A3;
+  
+}
