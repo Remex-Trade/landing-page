@@ -25,9 +25,21 @@ module.exports = {
           '0%':{transform:'translateY(-20px)'},
           '50%':{transform:'translateY(20px)'},
           '100%':{transform:'translateY(-20px)'}
+        },
+        'infinite-scroll': {
+          // from: { transform: 'translateX(0)' },
+          // to: { transform: 'translateX(100%)' }
+          '0%,100%':{transform:'translateX(0%)'},
+          '50%':{transform:'translateX(100%)'},
+        },
+        'infinite-scroll-reverse': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' }
         }
       },
       animation:{
+        'infinite-scroll': 'infinite-scroll 15s linear infinite',
+        'infinite-scroll-reverse': 'infinite-scroll-reverse 15s linear infinite',
         move: 'move 1s ease-in-out  ',
         float : 'float 5s infinite ease-in-out',
       }
