@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
       <NextTopLoader
-        color="#0CF3C4"
+        color="#371D8A"
       />
         {children}</body>
     </html>

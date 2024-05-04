@@ -4,6 +4,7 @@ import { FaChevronDown } from "react-icons/fa";
 import {useTypewriter,Cursor} from "react-simple-typewriter";
 import {useScroll,motion, AnimatePresence, MotionValue, useMotionValueEvent, useTransform} from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 
 
 export default function Home() {
@@ -38,14 +39,16 @@ export default function Home() {
             className="w-[100vw] flex justify-center items-center p-[1vw] gap-[15vw] bg-[rgb(10,7,12)] bg-opacity-25 sticky top-0 absolute z-10 backdrop-blur"
           >
             <div className="font-extrabold text-3xl">remex</div>
-            <div className="flex gap-[3vw]">
+            <div className="flex gap-[3vw] items-center justify-center">
               <div>Discord</div>
               <div>Medium</div>
               <div>Twitter</div>
               <div>Docs</div>
+              <Link href="/site/Trade">
               <button className="w-[7vw] h-[2.5vw] rounded-3xl bg-[#371D8A] text-[#FFFFFF]">
                 Launch App
               </button>
+              </Link>
             </div>
           </div>
 
@@ -59,12 +62,16 @@ export default function Home() {
               without compromising security.
             </p>
             <div className="flex gap-[2.5vw] justify-center items-start mt-[2.5vw] w-[18vw]">
-              <button className="w-[7vw] h-[2.5vw] rounded-3xl bg-[#371D8A] text-[#FFFFFF]">
+              <Link href="/site/Trade">
+              <button className="w-[7vw] h-[2.5vw] rounded-3xl bg-[#371D8A] text-[#FFFFFF] hover:bg-transparent hover:border-2 hover:border-[#371D8A] hover:text-[#371D8A]">
                 Launch App
               </button>
-              <button className="w-[7vw] h-[2.5vw] rounded-3xl bg-transparent text-[#371D8A] border border-2 border-[#371D8A]">
+              </Link>
+              <Link href="/site/Trade">
+              <button className="w-[7vw] h-[2.5vw] rounded-3xl bg-transparent text-[#371D8A] border border-2 border-[#371D8A] hover:bg-violet-800 hover:text-white">
                 Launch App
               </button>
+              </Link>
             </div>
           </div>
         </div>
