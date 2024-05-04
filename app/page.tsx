@@ -1,26 +1,28 @@
 "use client"
 import Image from "next/image";
-import { ParticleBg } from "./_Components/Particle";
-import Link from "next/link.js";
-import { LuDatabase } from "react-icons/lu";
 import { FaChevronDown } from "react-icons/fa";
 import {useTypewriter,Cursor} from "react-simple-typewriter";
-import {useScroll,motion, AnimatePresence, useMotionValue, animate, useViewportScroll} from "framer-motion";
+import {useScroll,motion, AnimatePresence, MotionValue, useMotionValueEvent, useTransform} from "framer-motion";
+import { useRef } from "react";
 
 
 export default function Home() {
-  const data = [{ pair: "SOL", CNG: "-2.4507%" }, {}, {}, {}, {}];
- 
+  const data = [{ pair: "SOL", CNG: "-2.4507%" }, { pair: "SOL", CNG: "-2.4507%" }, {}, {}, {},{},{},{},{}];
+  const ref = useRef(null);
+  const {scrollYProgress} = useScroll({target:ref});
+  const x = useParallax(scrollYProgress,300);
+  const x2 = useParallax(scrollYProgress,-300);
   const [text,textHelper] = useTypewriter({
     words:["Crypto"],
     loop:true,
     typeSpeed:150,
     deleteSpeed:50,
     delaySpeed:1000
-  })
-
-  const {scrollYProgress} = useScroll();
- 
+  })  
+  
+  function useParallax(value:MotionValue<number>,distance:number){
+    return useTransform(value,[0,1],[-distance,distance])
+  }
   return (
     <>
       <main className="max-w-[100vw] overflow-hidden">
@@ -77,9 +79,8 @@ export default function Home() {
               {data.map((p) => {
                 return (
                   <motion.div
-                    initial={{x:0}}
-                    animate={{x:`${scrollYProgress}%`}}
-                    transition={{ ease: "linear", duration: 10, repeat: Infinity }}
+                    ref={ref}
+                    style={{x}}
                     id="cards"
                     className="flex gap-[2vw] bg-[#0D0F14] w-[22vw] h-[4vw] items-center justify-center mt-[2vw] rounded-xl shadow-[2px_3px_1px_1px_#0C111B]"
                   >
@@ -122,6 +123,8 @@ export default function Home() {
               {data.map((p) => {
                 return (
                   <motion.div
+                    ref={ref}
+                    style={{x:x2}}
                     id="cards"
                     className="flex gap-[2vw] bg-[#0D0F14] w-[22vw] h-[5vw] items-center justify-center mt-[1vw] rounded-xl shadow-[2px_3px_1px_1px_#0C111B]"
                   >
@@ -162,7 +165,9 @@ export default function Home() {
             <div className="flex gap-[2vw] w-fit relative z-[2]">
               {data.map((p) => {
                 return (
-                  <div
+                  <motion.div
+                    ref={ref}
+                    style={{x}}
                     id="cards"
                     className="flex gap-[2vw] bg-[#0D0F14] w-[22vw] h-[5vw] items-center justify-center mt-[1vw] rounded-xl shadow-[2px_3px_1px_1px_#0C111B]"
                   >
@@ -196,7 +201,7 @@ export default function Home() {
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
@@ -638,7 +643,11 @@ export default function Home() {
                 </div>
                 <div className="absolute z-1 w-full h-[2vh] top-24 blur bg-[#16121D]">
                 </div>
-                <div className="absolute flex z-10 w-full h-fit top-32">
+                <motion.div className="absolute flex z-10 w-full h-fit top-32"
+                  initial={{ x: 0 }}
+                  animate={{ x: '-50%' }}
+                  transition={{ ease: "linear", duration: 20, repeat: Infinity,repeatDelay:0 }}
+                >
                     <Image src="/Images/partners.png" width={400} height={500} alt="partners"/>
                     <Image src="/Images/partners.png" width={400} height={500} alt="partners"/>
                     <Image src="/Images/partners.png" width={400} height={500} alt="partners"/>
@@ -646,7 +655,7 @@ export default function Home() {
                     <Image src="/Images/partners.png" width={400} height={500} alt="partners"/>
                     <Image src="/Images/partners.png" width={400} height={500} alt="partners"/>
                     <Image src="/Images/partners.png" width={400} height={500} alt="partners"/>
-                </div>
+                </motion.div>
               </div>
           </div>
           <div id="FAQ" className="flex flex-col items-center gap-10 justify-center w-full h-fit">
