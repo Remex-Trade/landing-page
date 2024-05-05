@@ -380,22 +380,27 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex bg-[url('/Images/backdrop.png')]">
+          <div className="flex ">
           <div className="flex w-[100vw] h-[100vh] relative z-10 flex mt-[2vw] ">
             <div className="flex flex-col gap-[1vw] w-[60%] z-0 overflow-hidden absolute h-full items-center justify-center">
               <motion.div className="flex gap-[1vw] flex-nowrap " initial={{ x: 0 }}
         animate={{ x: '-100%' }}
-        transition={{ ease: "linear", duration: 20, repeat: Infinity,repeatDelay:0 }}>
+        transition={{ ease: "linear", duration: 30, repeat: Infinity,repeatDelay:0 }}>
                 <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
                 <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
                 <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
                 <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
                 <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
                 <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
+                <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
+                <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
+                
               </motion.div>
               <motion.div className="flex gap-[1vw]" initial={{ x: '-100%' }}
         animate={{ x: '0%' }}
-        transition={{ ease: "linear", duration: 20, repeat: Infinity,repeatDelay:0}}>
+        transition={{ ease: "linear", duration: 30, repeat: Infinity,repeatDelay:0}}>
+                <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
+                <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
                 <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
                 <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
                 <Image src="/Images/card2.svg" width={450} height={100} alt="card2"/>
