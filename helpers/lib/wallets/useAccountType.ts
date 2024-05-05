@@ -6,18 +6,18 @@ export enum AccountType {
   EOA = "eoa",
 }
 
-export default function useAccountType() {
-  const { active, account, signer } = useWallet();
-  const [contractType, setContractType] = useState<AccountType | null>(null);
+// export default function useAccountType() {
+//   const { active, account, signer } = useWallet();
+//   const [contractType, setContractType] = useState<AccountType | null>(null);
 
-  useEffect(() => {
-    if (!active) return;
-    (async function () {
-      const code = await signer?.provider?.getCode(account as string);
-      const type = code === "0x" ? AccountType.EOA : AccountType.CONTRACT;
-      setContractType(type);
-    })();
-  }, [account, signer, active]);
+//   useEffect(() => {
+//     if (!active) return;
+//     (async function () {
+//       const code = await signer?.provider?.getCode(account as string);
+//       const type = code === "0x" ? AccountType.EOA : AccountType.CONTRACT;
+//       setContractType(type);
+//     })();
+//   }, [account, signer, active]);
 
-  return contractType;
-}
+//   return contractType;
+// }
