@@ -8,7 +8,20 @@ import Link from "next/link";
 
 
 export default function Home() {
-  const data = [{ pair: "SOL", CNG: "-2.4507%" }, { pair: "SOL", CNG: "-2.4507%" }, {}, {}, {},{},{},{},{}];
+  const data = [
+    { pair: "SOL", CHG: -2.084, price: 141.757, vol: 335.7 },
+    { pair: "ETH", CHG: -1.802, price: 3053.231, vol: 312.8 },
+    { pair: "FTM", CHG: -1.482, price: 0.701, vol:178.8 },
+    { pair: "BNB", CHG: -1.345, price: 555.820, vol: 102.1 },
+    { pair: "BTC", CHG: -2.179, price: 63694.000, vol: 384.8 },
+  ];
+  const data2 = [
+    { pair: "ENA", CHG: -3.063, price: 0.981, vol: 27.24 },
+    { pair: "WIF", CHG: -6.496, price: 2.756, vol: 254.6 },
+    { pair: "TON", CHG: -1.482, price: 0.701, vol:178.8 },
+    { pair: "", CHG: -1.345, price: 555.820, vol: 102.1 },
+    { pair: "", CHG: -2.179, price: 63694.000, vol: 384.8 },
+  ];
   const ref = useRef(null);
   const {scrollYProgress} = useScroll({target:ref});
   const x = useParallax(scrollYProgress,300);
@@ -89,83 +102,67 @@ export default function Home() {
                     ref={ref}
                     style={{x}}
                     id="cards"
-                    className="flex gap-[2vw] bg-[#0D0F14] w-[22vw] h-[4vw] items-center justify-center mt-[2vw] rounded-xl shadow-[2px_3px_1px_1px_#0C111B]"
+                    className="flex  gap-[2vw] bg-[#0D0F14] w-[23vw] h-[4vw] items-center justify-center mt-[2vw] rounded-xl py-11 px-8 shadow-lg shadow-black"
                   >
-                    <div className="flex ">
-                      <div>
-                        <Image
-                          src="/Images/sol.png"
-                          width={100}
-                          height={100}
-                          alt="SOL"
-                        />
-                      </div>
-                      <div className="flex flex-col gap-1">
-                        <p>SOL</p>
-                        <p>SOL</p>
-                      </div>
+                    <div id="Image" className="rounded-full items-center w-[20%] justify-center ">
+                      <Image src={`/Images/${p.pair.toLowerCase()}.png`} width={500} height={500} alt="crypto" />
                     </div>
-                    <div className="flex gap-3">
-                      <div className="flex flex-col">
-                        <p></p>
-                        <p>
-                          <span className="font-extralight">CNG</span>
-                          <span className="text-[#BD2738]">-2.054%</span>
-                        </p>
-                      </div>
-                      <div className="flex flex-col items-end">
-                        <p className="text-2xl font-thin">$141.567</p>
-                        <p>
-                          <span className="font-extralight">24HVOL </span>{" "}
-                          $335.7K
-                        </p>
-                      </div>
+                    <div id="name" className="flex flex-col ">
+                        <p>{p.pair}</p>
+                        <p>{p.pair}</p> 
+                    </div>
+                    <div id="data" className="flex flex-col gap-2 w-full">
+                        <div className="text-2xl font-extralight text-zinc-400 self-end">
+                            ${p.price}
+                        </div>
+                        <div className="flex text-[0.8rem] self-end text-zinc-400 gap-3">
+                          <div className="flex gap-1">
+                          <span>CHG</span>
+                          <span className={`${p.CHG<0?"text-red-500":"text-green-300"}`}>{p.CHG}%</span>
+                          </div>
+                          <div className="flex gap-1">
+                          <span>24H VOL</span>
+                          <span className="text-white">${p.vol}</span>
+                          </div>
+                        </div>
                     </div>
                   </motion.div>
                 );
               })}
             </div>
 
-            <div className="flex gap-[1vw] w-fit ml-[3vw] relative z-[2]">
+            <div className="flex gap-[2vw] w-fit ml-[3vw] relative z-[2]">
               {data.map((p) => {
                 return (
                   <motion.div
-                    ref={ref}
-                    style={{x:x2}}
-                    id="cards"
-                    className="flex gap-[2vw] bg-[#0D0F14] w-[22vw] h-[5vw] items-center justify-center mt-[1vw] rounded-xl shadow-[2px_3px_1px_1px_#0C111B]"
-                  >
-                    <div className="flex ">
-                      <div>
-                        <Image
-                          src="/Images/sol.png"
-                          width={100}
-                          height={100}
-                          alt="SOL"
-                        />
+                  ref={ref}
+                  style={{x:x2}}
+                  id="cards"
+                  className="flex  gap-[2vw] bg-[#0D0F14] w-[23vw] h-[4vw] items-center justify-center mt-[2vw] rounded-xl py-11 px-8 shadow-lg shadow-black"
+                >
+                  <div id="Image" className="rounded-full items-center w-[20%] justify-center ">
+                    <Image src={`/Images/${p.pair.toLowerCase()}.png`} width={500} height={500} alt="crypto" />
+                  </div>
+                  <div id="name" className="flex flex-col ">
+                      <p>{p.pair}</p>
+                      <p>{p.pair}</p> 
+                  </div>
+                  <div id="data" className="flex flex-col gap-2 w-full">
+                      <div className="text-2xl font-extralight text-zinc-400 self-end">
+                          ${p.price}
                       </div>
-                      <div className="flex flex-col gap-1">
-                        <p>SOL</p>
-                        <p>SOL</p>
+                      <div className="flex text-[0.8rem] self-end text-zinc-400 gap-3">
+                        <div className="flex gap-1">
+                        <span>CHG</span>
+                        <span className={`${p.CHG<0?"text-red-500":"text-green-300"}`}>{p.CHG}%</span>
+                        </div>
+                        <div className="flex gap-1">
+                        <span>24H VOL</span>
+                        <span className="text-white">${p.vol}</span>
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex gap-3">
-                      <div className="flex flex-col">
-                        <p></p>
-                        <p>
-                          <span className="font-extralight">CNG</span>
-                          <span className="text-[#BD2738]">-2.054%</span>
-                        </p>
-                      </div>
-                      <div className="flex flex-col items-end">
-                        <p className="text-2xl font-thin">$141.567</p>
-                        <p>
-                          <span className="font-extralight">24HVOL </span>{" "}
-                          $335.7K
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
+                  </div>
+                </motion.div>
                 );
               })}
             </div>
@@ -173,42 +170,35 @@ export default function Home() {
               {data.map((p) => {
                 return (
                   <motion.div
-                    ref={ref}
-                    style={{x}}
-                    id="cards"
-                    className="flex gap-[2vw] bg-[#0D0F14] w-[22vw] h-[5vw] items-center justify-center mt-[1vw] rounded-xl shadow-[2px_3px_1px_1px_#0C111B]"
-                  >
-                    <div className="flex ">
-                      <div>
-                        <Image
-                          src="/Images/sol.png"
-                          width={100}
-                          height={100}
-                          alt="SOL"
-                        />
+                  ref={ref}
+                  style={{x}}
+                  id="cards"
+                  className="flex  gap-[2vw] bg-[#0D0F14] w-[23vw] h-[4vw] items-center justify-center mt-[2vw] rounded-xl py-11 px-8 shadow-lg shadow-black"
+                >
+                  <div id="Image" className="rounded-full items-center w-[20%] justify-center ">
+                    <Image src={`/Images/${p.pair.toLowerCase()}.png`} width={500} height={500} alt="crypto" />
+                  </div>
+                  <div id="name" className="flex flex-col ">
+                      <p>{p.pair}</p>
+                      <p>{p.pair}</p> 
+                  </div>
+                  <div id="data" className="flex flex-col gap-2 w-full">
+                      <div className="text-2xl font-extralight text-zinc-400 self-end">
+                          ${p.price}
                       </div>
-                      <div className="flex flex-col gap-1">
-                        <p>SOL</p>
-                        <p>SOL</p>
+                      <div className="flex text-[0.8rem] self-end text-zinc-400 gap-3">
+                        <div className="flex gap-1">
+                        <span>CHG</span>
+                        <span className={`${p.CHG<0?"text-red-500":"text-green-300"}`}>{p.CHG}%</span>
+                        </div>
+                        <div className="flex gap-1">
+                        <span>24H VOL</span>
+                        <span className="text-white">${p.vol}</span>
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex gap-3">
-                      <div className="flex flex-col">
-                        <p></p>
-                        <p>
-                          <span className="font-extralight">CNG</span>
-                          <span className="text-[#BD2738]">-2.054%</span>
-                        </p>
-                      </div>
-                      <div className="flex flex-col items-end">
-                        <p className="text-2xl font-thin">$141.567</p>
-                        <p>
-                          <span className="font-extralight">24HVOL </span>{" "}
-                          $335.7K
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
+                  </div>
+                  
+                </motion.div>
                 );
               })}
             </div>
