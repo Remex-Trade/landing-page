@@ -5,7 +5,7 @@ import {useTypewriter,Cursor} from "react-simple-typewriter";
 import {useScroll,motion, AnimatePresence, MotionValue, useMotionValueEvent, useTransform} from "framer-motion";
 import { useRef, useState } from "react";
 import Link from "next/link";
-
+import Marquee from "react-fast-marquee";
 
 export default function Home() {
   const [open,setOpen] = useState(-1);
@@ -33,30 +33,31 @@ export default function Home() {
     { pair: "ENA", CHG: -3.063, price: 0.981, vol: 27.24 },
     { pair: "SOL", CHG: -2.084, price: 141.757, vol: 335.7 },
     { pair: "FTM", CHG: -1.482, price: 0.701, vol:178.8 },
-    { pair: "ETH", CHG: -1.802, price: 3053.231, vol: 312.8 },
-    { pair: "BTC", CHG: -2.179, price: 63694.000, vol: 384.8 },
-    { pair: "FTM", CHG: -1.482, price: 0.701, vol:178.8 },
     { pair: "BNB", CHG: -1.345, price: 555.820, vol: 102.1 },
-    { pair: "SOL", CHG: -2.084, price: 141.757, vol: 335.7 },
-    { pair: "ENA", CHG: -3.063, price: 0.981, vol: 27.24 },
     { pair: "WIF", CHG: -6.498, price: 2.756, vol: 254.6 },
+    { pair: "BTC", CHG: -2.179, price: 63694.000, vol: 384.8 },
+    { pair: "ETH", CHG: -1.802, price: 3053.231, vol: 312.8 },
+    { pair: "ENA", CHG: -3.063, price: 0.981, vol: 27.24 },
+    { pair: "SOL", CHG: -2.084, price: 141.757, vol: 335.7 },
+    { pair: "FTM", CHG: -1.482, price: 0.701, vol:178.8 },
   ];
   const data3 = [
-    { pair: "BNB", CHG: -1.345, price: 555.820, vol: 102.1 },
     { pair: "ENA", CHG: -3.063, price: 0.981, vol: 27.24 },
-    { pair: "ETH", CHG: -1.802, price: 3053.231, vol: 312.8 },
-    { pair: "BTC", CHG: -2.179, price: 63694.000, vol: 384.8 },
-    { pair: "SOL", CHG: -2.084, price: 141.757, vol: 335.7 },
-    { pair: "FTM", CHG: -1.482, price: 0.701, vol:178.8 },
     { pair: "BNB", CHG: -1.345, price: 555.820, vol: 102.1 },
     { pair: "ETH", CHG: -1.802, price: 3053.231, vol: 312.8 },
     { pair: "WIF", CHG: -6.498, price: 2.756, vol: 254.6 },
     { pair: "BTC", CHG: -2.179, price: 63694.000, vol: 384.8 },
     { pair: "SOL", CHG: -2.084, price: 141.757, vol: 335.7 },
     { pair: "FTM", CHG: -1.482, price: 0.701, vol:178.8 },
-    { pair: "WIF", CHG: -6.498, price: 2.756, vol: 254.6 },
     { pair: "ENA", CHG: -3.063, price: 0.981, vol: 27.24 },
+    { pair: "ETH", CHG: -1.802, price: 3053.231, vol: 312.8 },
+    { pair: "BNB", CHG: -1.345, price: 555.820, vol: 102.1 },
+    { pair: "BTC", CHG: -2.179, price: 63694.000, vol: 384.8 },
+    { pair: "SOL", CHG: -2.084, price: 141.757, vol: 335.7 },
+    { pair: "FTM", CHG: -1.482, price: 0.701, vol:178.8 },
+    { pair: "WIF", CHG: -6.498, price: 2.756, vol: 254.6 },
   ];
+  const dataSponsor = [{},{},{},{}]
   const ref = useRef(null);
   const {scrollYProgress} = useScroll({target:ref});
   const x = useParallax(scrollYProgress,300);
@@ -136,23 +137,24 @@ export default function Home() {
                 id="ellipse"
                 className="w-[40vw] h-[40vw] absolute z-[0] rounded-full bg-gradient-to-b from-[#FF0A6C26] to-[#2D27FF26] -right-60 blur"
               ></div>
-              <div className="flex gap-[2vw] w-fit relative z-[2] " style={{whiteSpace:"nowrap"}}>
+              <div className="flex gap-[2vw] w-fit relative z-[2]" style={{whiteSpace:"nowrap"}}>
+
+                <AnimatePresence>
+                  
                 {data.map((p) => {
                   return (
                     <motion.div
-                      // ref={ref}
-                      // style={{x}}
-                      initial={{ x: "0%" }}
-                      animate={{ x: "100%" }}
+                      initial={{x:0}}
+                      animate={{x:"200%"}}
                       transition={{
                         ease: "linear",
-                        duration: 5,
+                        duration:10,
                         repeat: Infinity,
                         repeatDelay: 0,
-                        repeatType:"loop"
                       }}
                       id="cards"
                       className="flex  gap-[2vw] bg-[#0D0F14] w-[23vw] h-[4vw] items-center justify-center mt-[2vw] rounded-xl py-11 px-8 shadow-lg shadow-black"
+                      
                     >
                       <div
                         id="Image"
@@ -196,6 +198,8 @@ export default function Home() {
                     </motion.div>
                   );
                 })}
+                
+                </AnimatePresence>
               </div>
 
               <div className="flex gap-[2vw] w-fit ml-[3vw] relative z-[2]">
@@ -205,10 +209,10 @@ export default function Home() {
                       // ref={ref}
                       // style={{x:x2}}
                       initial={{ x: "0" }}
-                      animate={{ x: "-100%" }}
+                      animate={{ x: "-200%" }}
                       transition={{
                         ease: "linear",
-                        duration: 5,
+                        duration: 10,
                         repeat: Infinity,
                         repeatDelay: 0,
                       }}
@@ -264,11 +268,11 @@ export default function Home() {
                     <motion.div
                       // ref={ref}
                       // style={{x}}
-                      initial={{ x: "0%" }}
-                      animate={{ x: "100%" }}
+                      initial={{ x: 0 }}
+                      animate={{ x: "200%" }}
                       transition={{
                         ease: "linear",
-                        duration: 5,
+                        duration: 10,
                         repeat: Infinity,
                         repeatDelay: 0,
                       }}
@@ -883,10 +887,12 @@ export default function Home() {
                   Partners
                 </div>
                 <div className="absolute z-1 w-full h-[2vh] top-24 blur bg-[#16121D]"></div>
+                <AnimatePresence>
                 <motion.div
-                  className="absolute flex z-10 w-full h-fit top-32"
+                  className="absolute flex z-10 w-full gap-16 h-fit top-32 py-18 items-center justify-center"
                   initial={{ x: 0 }}
-                  animate={{ x: "-50%" }}
+                  animate={{ x: "-100%" }}
+                  exit={{x:0}}
                   transition={{
                     ease: "linear",
                     duration: 20,
@@ -894,49 +900,50 @@ export default function Home() {
                     repeatDelay: 0,
                   }}
                 >
+                  {dataSponsor.map((p,index)=>{
+                  return(
                   <Image
-                    src="/Images/partners.png"
-                    width={400}
-                    height={500}
-                    alt="partners"
-                  />
+                  src={`/Images/sponsors/sponsor${index+1}.png`}
+                  width={200}
+                  height={50}
+                  alt="partners"
+                  className="w-full h-full"
+                />)
+                })}
+                {dataSponsor.map((p,index)=>{
+                  return(
                   <Image
-                    src="/Images/partners.png"
-                    width={400}
-                    height={500}
-                    alt="partners"
-                  />
+                  src={`/Images/sponsors/sponsor${index+1}.png`}
+                  width={200}
+                  height={50}
+                  alt="partners"
+                  className="w-full h-full"
+                />)
+                })}
+                {dataSponsor.map((p,index)=>{
+                  return(
                   <Image
-                    src="/Images/partners.png"
-                    width={400}
-                    height={500}
-                    alt="partners"
-                  />
+                  src={`/Images/sponsors/sponsor${index+1}.png`}
+                  width={200}
+                  height={50}
+                  alt="partners"
+                  className="w-full h-full"
+                />)
+                })}
+                {dataSponsor.map((p,index)=>{
+                  return(
                   <Image
-                    src="/Images/partners.png"
-                    width={400}
-                    height={500}
-                    alt="partners"
-                  />
-                  <Image
-                    src="/Images/partners.png"
-                    width={400}
-                    height={500}
-                    alt="partners"
-                  />
-                  <Image
-                    src="/Images/partners.png"
-                    width={400}
-                    height={500}
-                    alt="partners"
-                  />
-                  <Image
-                    src="/Images/partners.png"
-                    width={400}
-                    height={500}
-                    alt="partners"
-                  />
+                  src={`/Images/sponsors/sponsor${index+1}.png`}
+                  width={200}
+                  height={50}
+                  alt="partners"
+                  className="w-full h-full"
+                />)
+                })}
+                  
+                  
                 </motion.div>
+                </AnimatePresence>
               </div>
             </div>
             <div
