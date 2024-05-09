@@ -102,8 +102,8 @@ export default function Home() {
             </div>
 
             <div className="w-[60vw] h-[100vh] absolute flex flex-col pr-[10vw] pl-[10vw] absolute top-72 z-0">
-              <h1 className="text-8xl mb-[2vw] font-plusJakarta flex flex-col gap-4">
-                <div>
+              <h1 className="text-7xl mb-[2vw] font-plusJakarta flex flex-col gap-4">
+                <div className="">
                   Trade{" "}
                   <span className="text-[#7950AE] font-bold">
                     {text}
@@ -113,17 +113,17 @@ export default function Home() {
                 <div>like never before</div>
               </h1>
               <p className="font-plusJakarta text-2xl font-extralight text-[#918FA3] ">
-                remex lets you trade all your favourite assets at lightning
+                Remex lets you trade all your favourite assets at lightning
                 speed without compromising security.
               </p>
-              <div className="flex gap-[2.5vw] justify-center items-start mt-[2.5vw] w-[18vw]">
+              <div className="flex gap-[2.5vw] justify-center items-start mt-[2.5vw] w-[25vw]">
                 <Link href="/site/Trade">
-                  <button className="w-[7vw] h-[2.5vw] rounded-3xl bg-[#371D8A] text-[#FFFFFF] hover:bg-transparent hover:border-2 hover:border-[#371D8A] hover:text-[#371D8A]">
+                  <button className="w-full h-[2.5vw] px-6 py-1 rounded-3xl bg-[#371D8A] text-[#FFFFFF] hover:bg-transparent hover:border-2 hover:border-[#371D8A] hover:text-[#371D8A]">
                     Launch App
                   </button>
                 </Link>
                 <Link href="/site/Trade">
-                  <button className="w-[7vw] h-[2.5vw] rounded-3xl bg-transparent text-[#371D8A] border border-2 border-[#371D8A] hover:bg-violet-800 hover:text-white">
+                  <button className="w-full h-[2.5vw] px-6 rounded-3xl bg-transparent text-[#371D8A] border border-2 border-[#371D8A] hover:bg-violet-800 hover:text-white">
                     Launch App
                   </button>
                 </Link>
@@ -137,7 +137,7 @@ export default function Home() {
                 id="ellipse"
                 className="w-[40vw] h-[40vw] absolute z-[0] rounded-full bg-gradient-to-b from-[#FF0A6C26] to-[#2D27FF26] -right-60 blur"
               ></div>
-              <div className="flex gap-[2vw] w-fit relative z-[2]" style={{whiteSpace:"nowrap"}}>
+              <div className="flex gap-[2vw] w-full relative z-[2]" style={{whiteSpace:"nowrap"}}>
 
                 <AnimatePresence>
                   
@@ -153,29 +153,30 @@ export default function Home() {
                         repeatDelay: 0,
                       }}
                       id="cards"
-                      className="flex  gap-[2vw] bg-[#0D0F14] w-[23vw] h-[4vw] items-center justify-center mt-[2vw] rounded-xl py-11 px-8 shadow-lg shadow-black"
+                      className="flex  gap-4  bg-[#0D0F14] w-[80%] h-full items-center justify-center mt-[2vw] rounded-xl py-4 px-8 shadow-lg shadow-black"
                       
                     >
                       <div
                         id="Image"
-                        className="rounded-full items-center w-[20%] justify-center "
+                        className="rounded-full overflow-hidden items-center sc1:w-[20%]   justify-center "
                       >
                         <Image
                           src={`${
                             `/Images/crypto/${p.pair.toLowerCase()}.png`
                           }`}
-                          width={500}
-                          height={500}
+                          width={20}
+                          height={20}
+                          sizes="vw"
                           alt="crypto"
-                          className="rounded-full"
+                          className=" w-fit h-full"
                         />
                       </div>
-                      <div id="name" className="flex flex-col ">
+                      <div id="name" className="flex flex-col h-full">
                         <p>{p.pair}</p>
                         <p>{p.pair}</p>
                       </div>
                       <div id="data" className="flex flex-col gap-2 w-full">
-                        <div className="text-2xl font-extralight text-zinc-400 self-end">
+                        <div className="text-xl font-extralight text-zinc-400 self-end">
                           ${p.price}
                         </div>
                         <div className="flex text-[0.8rem] self-end text-zinc-400 gap-3">
@@ -634,7 +635,7 @@ export default function Home() {
             >
               <div
                 id="textContent"
-                className="w-[50%] flex justify-center gap-4 pl-80 flex-col"
+                className="w-[60%] flex justify-center gap-4 items-center flex-col"
               >
                 <div
                   id="heading"
@@ -643,7 +644,7 @@ export default function Home() {
                   <span className="text-[#9C4EFE] font-bold">Manage</span>
                   <span>Your Trading Account</span>
                 </div>
-                <div id="points" className="flex flex-col w-[100%] gap-8 my-10">
+                <div id="points" className="flex flex-col w-[50%] gap-8 my-10">
                   <div id="point1" className="flex gap-10">
                     <div className="w-[25%] flex items-start">
                       <svg
@@ -842,8 +843,8 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div id="getStarted" className="pl-8">
-                  <button className="px-6 py-2 rounded-full text-white bg-[#361D8B]">
+                <div id="getStarted" className=" w-[40%]">
+                  <button className="px-8 py-2 rounded-full text-white bg-[#361D8B]">
                     Get Started
                   </button>
                 </div>
