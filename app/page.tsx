@@ -85,16 +85,18 @@ export default function Home() {
             </div>
             <div
               id="nav"
-              className="w-[100vw] flex justify-center items-center p-[1vw] gap-[15vw] bg-[rgb(10,7,12)] bg-opacity-25 sticky top-0 absolute z-10 backdrop-blur"
+              className="w-[100vw] sticky  flex justify-center items-center p-[1vw] gap-[15vw] bg-[rgb(10,7,12)] bg-opacity-25 sticky top-0 absolute z-10 backdrop-blur"
             >
-              <div className="font-extrabold text-3xl">remex</div>
+              <div className="font-extrabold text-3xl flex items-center justify-center gap-0">
+                <Image src="/Images/logo.png" width={70} height={70} alt="logo" />
+                <span className="relative right-3 top-2">emex</span></div>
               <div className="flex gap-[3vw] items-center justify-center">
                 <div>Discord</div>
                 <div>Medium</div>
                 <div>Twitter</div>
                 <div>Docs</div>
                 <Link href="/site/Trade">
-                  <button className="w-[7vw] h-[2.5vw] rounded-3xl bg-[#371D8A] text-[#FFFFFF]">
+                  <button className="w-full px-4 h-[2.5vw] rounded-3xl bg-[#371D8A] text-[#FFFFFF]">
                     Launch App
                   </button>
                 </Link>
@@ -124,7 +126,7 @@ export default function Home() {
                 </Link>
                 <Link href="/site/Trade">
                   <button className="w-full h-[2.5vw] px-6 rounded-3xl bg-transparent text-[#371D8A] border border-2 border-[#371D8A] hover:bg-violet-800 hover:text-white">
-                    Launch App
+                    Learn More
                   </button>
                 </Link>
               </div>
@@ -158,7 +160,7 @@ export default function Home() {
                     >
                       <div
                         id="Image"
-                        className="rounded-full overflow-hidden items-center sc1:w-[20%]   justify-center "
+                        className="rounded-full overflow-hidden items-center sc1:w-[20%] w-[] justify-center "
                       >
                         <Image
                           src={`${
@@ -402,7 +404,7 @@ export default function Home() {
 
             <div
               id="animated cards"
-              className="w-full h-[30vh] relative flex items-center justify-center gap-8 my-28"
+              className="w-full h-[30vh] relative flex items-center px-14 sc1:px-56 justify-center gap-8 my-28"
             >
               <div
                 id="ellipse"
@@ -414,7 +416,7 @@ export default function Home() {
                 }}
                 transition={{ ease: "easeInOut", duration: 500 }}
                 id="card1"
-                className="w-1/5 relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 gap-4 flex-col border-[#1B2236] h-full bg-[#0D111C]"
+                className="w-2/5 relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 gap-4 flex-col border-[#1B2236] h-full bg-[#0D111C]"
               >
                 <div className="text-2xl font-bold text-white flex flex-col">
                   <span>Cefi Frontend,</span>
@@ -429,7 +431,7 @@ export default function Home() {
               </motion.div>
               <div
                 id="card2"
-                className="w-1/5 relative z-1  rounded-2xl border flex justify-start items-start px-8 py-10 gap-4 flex-col border-[#1B2236] h-full bg-[#0D111C]"
+                className="w-2/5 relative z-1  rounded-2xl border flex justify-start items-start px-8 py-10 gap-4 flex-col border-[#1B2236] h-full bg-[#0D111C]"
               >
                 <div className="text-2xl font-bold text-white flex flex-col">
                   <span>The most advanced market making vaults in DeFi,</span>
@@ -444,11 +446,11 @@ export default function Home() {
               </div>
               <div
                 id="card3"
-                className="w-1/5 relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 gap-4 flex-col border-[#1B2236] h-full bg-[#0D111C]"
+                className="w-2/5 relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 gap-4 flex-col border-[#1B2236] h-full bg-[#0D111C]"
               >
                 <div className="text-2xl font-bold text-white flex flex-col">
-                  <span>World class execution and security </span>
-                  <span>- Powered by the Fantom Network</span>
+                  <span>World class execution and security- Powered by the Fantom Network</span>
+                  
                 </div>
                 <div className="text-sm text-gray-500">
                   <span>
