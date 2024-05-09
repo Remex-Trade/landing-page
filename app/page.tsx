@@ -415,11 +415,11 @@ export default function Home() {
                 id="card1"
                 className="max-w-[100%] relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 sc1:py-12 gap-4 flex-col border-[#1B2236] h-[40vh] bg-[#0D111C] sc1:w-2/5 sc1:h-[35vh]"
               >
-                <div className="text-xl font-bold text-white flex flex-col sc1:text-3xl">
+                <div className="text-xl font-bold text-white flex flex-col sc1:text-2xl">
                   <span>Cefi Frontend,</span>
                   <span>Defi Frontend,</span>
                 </div>
-                <div className="text-sm text-gray-500 sc1:text-lg">
+                <div className="text-sm text-gray-500 sc1:text-md">
                   <span>
                     CEX like experience with fully onchain execution, settlement
                     and self-custody
@@ -430,10 +430,10 @@ export default function Home() {
                 id="card2"
                 className="max-w-[100%] relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 sc1:py-12 gap-4 flex-col border-[#1B2236] h-[40vh] bg-[#0D111C] sc1:w-2/5 sc1:h-[35vh]"
               >
-                <div className="text-xl font-bold text-white flex flex-col sc1:text-3xl">
+                <div className="text-xl font-bold text-white flex flex-col sc1:text-2xl">
                   <span>The most advanced market making vaults in DeFi,</span>
                 </div>
-                <div className="text-sm text-gray-500 sc1:text-lg">
+                <div className="text-sm text-gray-500 sc1:text-md">
                   <span>
                     Our USDC vaults offer liquidity providers a structured way
                     to earn real yields, while allowing them to control their
@@ -445,10 +445,10 @@ export default function Home() {
                 id="card3"
                 className="max-w-[100%] relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 sc1:py-12 gap-4 flex-col border-[#1B2236] h-[40vh] bg-[#0D111C] sc1:w-2/5 sc1:h-[35vh]"
               >
-                <div className="text-xl font-bold text-white flex sc1:text-3xl">
+                <div className="text-xl font-bold text-white flex sc1:text-2xl">
                   <span>World class execution and security - Powered by the Fantom Network</span>
                 </div>
-                <div className="text-sm text-gray-500 sc1:text-lg">
+                <div className="text-sm text-gray-500 sc1:text-md">
                   <span>
                     We’re building on the world’s most performant blockchains
                     secured by Ethereum
