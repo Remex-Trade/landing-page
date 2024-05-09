@@ -87,7 +87,9 @@ export default function Home() {
               id="nav"
               className="w-[100vw] flex justify-center items-center p-[1vw] gap-[30%] bg-[rgb(10,7,12)] bg-opacity-25 fixed top-0 z-50 backdrop-blur"
             >
-              <div className="font-extrabold text-3xl">remex</div>
+              <div className="font-extrabold text-3xl flex items-center justify-center gap-0">
+                <Image src="/Images/logo.png" width={70} height={70} alt="logo" />
+                <span className="relative right-3 top-2">emex</span></div>
               <div className="flex gap-[3vw] items-center justify-center">
                 <div className="hidden gap-[3vw] items-center justify-center lg:flex">
                   <div>Discord</div>
@@ -139,7 +141,7 @@ export default function Home() {
                 id="ellipse"
                 className="w-[40vw] h-[40vw] absolute z-[0] rounded-full bg-gradient-to-b from-[#FF0A6C26] to-[#2D27FF26] -right-60 blur"
               ></div>
-              <div className="flex gap-[2vw] w-fit relative z-[2]" style={{whiteSpace:"nowrap"}}>
+              <div className="flex gap-[2vw] w-full relative z-[2]" style={{whiteSpace:"nowrap"}}>
 
                 <AnimatePresence>
                   
@@ -160,16 +162,17 @@ export default function Home() {
                     >
                       <div
                         id="Image"
-                        className="rounded-full items-center w-[20%] justify-center "
+                        className="rounded-full overflow-hidden items-center sc1:w-[20%] w-[] justify-center "
                       >
                         <Image
                           src={`${
                             `/Images/crypto/${p.pair.toLowerCase()}.png`
                           }`}
-                          width={500}
-                          height={500}
+                          width={20}
+                          height={20}
+                          sizes="vw"
                           alt="crypto"
-                          className="rounded-full"
+                          className=" w-fit h-full"
                         />
                       </div>
                       <div id="name" className="flex flex-col text-sm lg:text-md">
@@ -656,7 +659,7 @@ export default function Home() {
                   <span className="text-[#9C4EFE] font-bold">Manage</span>
                   <span>Your Trading Account</span>
                 </div>
-                <div id="points" className="flex flex-col w-[100%] gap-8 my-10">
+                <div id="points" className="flex flex-col w-[50%] gap-8 my-10">
                   <div id="point1" className="flex gap-10">
                     <div className="w-[25%] flex items-start">
                       <svg
@@ -855,8 +858,8 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div id="getStarted" className="pl-8">
-                  <button className="px-6 py-2 rounded-full text-white bg-[#361D8B]">
+                <div id="getStarted" className=" w-[40%]">
+                  <button className="px-8 py-2 rounded-full text-white bg-[#361D8B]">
                     Get Started
                   </button>
                 </div>
