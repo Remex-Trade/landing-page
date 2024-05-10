@@ -1,15 +1,16 @@
 "use client";
 import React, { useState } from "react";
 import OptionUI from "./OptionUI";
+import { IoIosClose } from "react-icons/io";
 
-const RightOrder = ({showPopup, setShowPopup}) => {
+const RightOrder = ({showPopup, setShowPopup,setShowOption,showOption}) => {
   const [selected, setSelected] = useState("Long");
   const [selectedOption, setSelectedOption] = useState("Market");
   const buttons = ["Long", "Short"];
   const options = ["Market", "Limit", "Conditional"];
   return (
     <>
-      <div className="w-full flex h-100 sticky top-0 text-sm">
+      <div className="sc1:flex hidden w-full h-100 sticky top-0 text-sm">
         {buttons.map((button) => {
           return (
             <button
@@ -27,7 +28,7 @@ const RightOrder = ({showPopup, setShowPopup}) => {
           );
         })}
       </div>
-      <div className="sticky top-12 dark:bg-[#0F0E0E] bg-white text-black h-31 px-4 w-full text-[0.8rem] h-100 dark:text-[#4F4F4F] border-b-[1px] dark:boder-2 border-b-[#9CA3AF] dark:border-b-[#2C2D2D] flex gap-6 ">
+      <div className="flex items-center sticky top-12 dark:sc1:bg-[#0F0E0E] dark:bg-[#2B2A2A] bg-white text-black h-31 px-4 w-full text-[0.8rem] h-100 dark:text-[#4F4F4F] border-b-[1px] dark:boder-2 border-b-[#9CA3AF] dark:border-b-[#2C2D2D] gap-6 ">
         {options.map((option) => {
           return (
             <button
@@ -42,6 +43,7 @@ const RightOrder = ({showPopup, setShowPopup}) => {
             </button>
           );
         })}
+        <button ><IoIosClose size={30} onClick={()=>setShowOption(!showOption)}/></button>
       </div>
       <OptionUI showPopup={showPopup} setShowPopup={setShowPopup} option={selectedOption} topOption={selected}/>
     </>

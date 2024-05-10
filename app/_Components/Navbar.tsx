@@ -6,6 +6,7 @@ import {CiWallet} from "react-icons/ci";
 import ToggleButton from "./ToggleButton";
 import theme from "../_context/theme";
 import WalletsProvider from "./Wallet";
+import Image from "next/image";
 
 const Navbar = () => {
   const {darkMode,setDarkMode} = useContext(theme);
@@ -14,8 +15,11 @@ const Navbar = () => {
   return (
     <div className="dark:bg-[#0F0E0E] outline-none  border-none bg-white dark:text-white text-black sticky z-10 top-0 w-[100vw] font-light shadow-sm dark:shadow-none">
       <div className="flex gap-[4vw] justify-between items-center w-full px-[2vw] py-1 text-md">
-        <div>LOGO</div>
-        <div className="flex gap-20">
+      <div className="w-full flex items-center justify-start font-bold text-2xl text-white">
+          <Image src="/Images/logo.png" width={50} height={50} alt="logo" />
+          <span className="relative right-3 top-1 text-black dark:text-white">emex</span>
+        </div>
+        <div className="hidden sc1:flex gap-20">
           {names.map((name)=>{
             return(
               <Link key={name} href={`${name}`}>
@@ -25,7 +29,7 @@ const Navbar = () => {
           })}
         </div>
         <div className="flex gap-[2vw] items-center">
-          <div><ToggleButton darkMode={darkMode} setDarkMode={setDarkMode}/></div>
+          <div className="hidden sc1:block"><ToggleButton darkMode={darkMode} setDarkMode={setDarkMode}/></div>
           <div>BLOB</div>
           <div>
             <div>
