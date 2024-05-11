@@ -9,7 +9,7 @@ import { TiArrowSortedUp } from "react-icons/ti";
 import { TiArrowSortedDown } from "react-icons/ti";
 
 import Image from "next/image";
-const Sidebar = ({ getShow }) => {
+const Sidebar = ({ getShow,setSelectOption }) => {
   const [Favorites, setFavorites] = useState(false);
   const [FavArr, setFavArr] = useState([]);
   const [search, setSearch] = useState("");
@@ -26,7 +26,7 @@ const Sidebar = ({ getShow }) => {
       icon: "",
       Pairs: "BTC/USD",
       Price: `${formatPrice(latestPrice["BTC/USD"])}`,
-      Change: `${last24HourChange?.["BTC/USD"] || "-"}`,
+      Change: `${last24HourChange?.["BTC/USD"] ?? "-"}`,
       stared: false,
     },
     {
@@ -34,7 +34,7 @@ const Sidebar = ({ getShow }) => {
       icon: "",
       Pairs: "ETH/USD",
       Price: `${formatPrice(latestPrice["ETH/USD"])}`,
-      Change: `${last24HourChange?.["ETH/USD"] || "-"}`,
+      Change: `${last24HourChange?.["ETH/USD"] ?? "-"}`,
       stared: false,
     },
     {
@@ -42,7 +42,7 @@ const Sidebar = ({ getShow }) => {
       icon: "",
       Pairs: "BNB/USD",
       Price: `${formatPrice(latestPrice["BNB/USD"])}`,
-      Change: `${last24HourChange?.["BNB/USD"] || "-"}`,
+      Change: `${last24HourChange?.["BNB/USD"] ?? "-"}`,
       stared: false,
     },
     {
@@ -50,7 +50,7 @@ const Sidebar = ({ getShow }) => {
       icon: "",
       Pairs: "SOL/USD",
       Price: `${formatPrice(latestPrice["SOL/USD"])}`,
-      Change: `${last24HourChange?.["SOL/USD"] || "-"}`,
+      Change: `${last24HourChange?.["SOL/USD"] ?? "-"}`,
       stared: false,
     },
     {
@@ -58,7 +58,7 @@ const Sidebar = ({ getShow }) => {
       icon: "",
       Pairs: "FTM/USD",
       Price: `${formatPrice(latestPrice["FTM/USD"])}`,
-      Change: `${last24HourChange?.["FTM/USD"] || "-"}`,
+      Change: `${last24HourChange?.["FTM/USD"] ?? "-"}`,
       stared: false,
     },
     {
@@ -66,7 +66,7 @@ const Sidebar = ({ getShow }) => {
       icon: "",
       Pairs: "MATIC/USD",
       Price: `${formatPrice(latestPrice["MATIC/USD"])}`,
-      Change: `${last24HourChange?.["MATIC/USD"] || "-"}`,
+      Change: `${last24HourChange?.["MATIC/USD"] ?? "-"}`,
       stared: false,
     },
   ]);
@@ -178,6 +178,7 @@ const Sidebar = ({ getShow }) => {
   const searchPair = (e) => {
     setSearch(e.target.value.toUpperCase());
   };
+
   const hideSideBar = () => {
     setShow(false);
   };
@@ -237,11 +238,11 @@ const Sidebar = ({ getShow }) => {
             </button>
           </div>
         </div>
-        <div className="flex w-full text-[0.7rem] justify-between text-zinc-400 px-1">
+        <div className="flex w-[1/3] text-[0.7rem] justify-between text-zinc-400 px-1">
           <div className="">Pairs</div>
           <div className="flex gap-3 items-center">
             <div
-              className="flex gap-1 cursor-pointer items-start w-[4vw]"
+              className="flex gap-1 cursor-pointer items-start w-full sc1:w-[4vw]"
               onClick={() => {
                 if (priceSort == 2) {
                   setPriceSort(0);
@@ -303,10 +304,13 @@ const Sidebar = ({ getShow }) => {
                       data.token === Pair.Pairs &&
                       "dark:bg-[#2c2d2d] bg-[#F4F5F4] "
                     } `}
-                    onClick={() => setData({ ...data, token: Pair.Pairs })}
+                    onClick={() =>{
+                       setData({ ...data, token: Pair.Pairs });
+                       setSelectOption(false);
+                    }}
                   >
                     {/* <div className="flex justify-between w-full dark:text-white text-black hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl" onClick={()=>setData({...data,token:Pair.Pairs})}> */}
-                    <div className="flex basis-1/2 gap-2">
+                    <div className="flex w-full sc1:basis-1/2 gap-2">
                       {/* {Starred ? (Pair.stared = true) : (Pair.stared = false)}
                                     <div>{Pair.stared?<FaStar style={{color: 'yellow'}} size={20} onClick={()=>setStarred(false)}/> : <CiStar size={20} onClick={()=>setStarred(true)}/>}</div> */}
                       <div>
@@ -343,19 +347,20 @@ const Sidebar = ({ getShow }) => {
                         height={5}
                         alt="sidebar1"
                       />
-                      <div className="w-[3vw]">{Pair.Pairs}</div>
+                      <div className="w-[2/3] sc1:w-[3vw]">{Pair.Pairs}</div>
                     </div>
-                    <div className="flex gap-4 basis-1/2 text-left">
+                    <div className="flex sc1:gap-4 gap-8 sc1:basis-1/2  basis-1/3 text-left">
                       {/* <div className='w-[3vw]'>{formatPrice(latestPrice[Pair.Pairs])}</div> */}
-                      <div className="w-[4vw]">{Pair.Price}</div>
+                      <div className="w-[10vw] sc1:w-[4vw]">{Pair.Price}</div>
                       <div
                         className={
                           Pair.Change.includes("+")
-                            ? "text-[#0cf3c4]  basis-2/5"
-                            : "text-red-500 basis-2/5"
+                            ? "text-[#0cf3c4] basis-2/5"
+                            : "text-red-500  basis-2/5"
                         }
                       >
-                        {Pair.Change}
+                        {/* {Pair.Change} */}
+                        20
                       </div>
                       {/* <div className="">{Pair.Change}</div> */}
                     </div>

@@ -105,29 +105,29 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="w-[100vw] h-[100vh] absolute flex flex-col sc1:pl-[10vw] pr-[1vw] items-center absolute top-64 z-0 font-bold sc1:font-normal sc1:top-72 sc1:pl-[10vw] sc1:pr-[10vw] sc1:top-72 sc1:items-start sc1:w-[60vw]">
-              <h1 className="text-4xl mb-[2vw] font-plusJakarta flex flex-col gap-4 sc1:text-7xl sc2:text-8xl">
+            <div className="w-[100vw] h-[100vh] pl-[10vw] absolute flex flex-col sc1:pl-[10vw] pr-[1vw] items-center absolute top-64 z-0 font-bold sc1:font-normal sc1:top-72  sc1:pr-[10vw] sc1:top-72 sc1:items-start sc1:w-[60vw]">
+              <h1 className="text-4xl mb-[2vw] font-plusJakarta flex flex-col gap-4 w-full items-start sc1:text-7xl sc2:text-8xl">
                 <div>
                   Trade{" "}
                   <span className="text-[#7950AE] font-bold">
                     {text}
                     <Cursor />
-                  </span>{" "}
+                  </span>
                 </div>
                 <div>like never before</div>
               </h1>
-              <p className="pl-[10%] font-plusJakarta text-md font-thin w-full text-[#918FA3] sc1:text-2xl  sc1:font-extralight sc1:pl-0">
-                remex lets you trade all your favourite assets at lightning
+              <p className=" font-plusJakarta text-md font-thin w-[80%] self-start text-[#918FA3] sc1:text-2xl  sc1:font-extralight sc1:pl-0">
+                Remex lets you trade all your favourite assets at lightning
                 speed without compromising security.
               </p>
-              <div className="flex gap-[5%] justify-center items-start mt-[15%] w-[100vw] sc1:w-[25vw] sc1:gap-[2.5vw] sc1:mt-[2.5vw]">
+              <div className="flex gap-[5%] pl-4 items-start mt-[15%] w-[100vw] sc1:w-[25vw] sc1:gap-[2.5vw] sc1:mt-[2.5vw]">
                 <Link href="/site/Trade">
-                  <button className="w-[30vw] h-[10%] text-sm sc1:text-lg sc1:w-full sc1:h-[2.5vw] sc1:px-6 sc1:py-1 rounded-3xl bg-[#371D8A] text-[#FFFFFF] hover:bg-transparent hover:border-2 hover:border-[#371D8A] hover:text-[#371D8A] px-2 py-2">
+                  <button className="w-[40vw] h-[10%] text-sm sc1:text-lg sc1:w-full sc1:h-[2.5vw] sc1:px-6 sc1:py-1 rounded-3xl bg-[#371D8A] text-[#FFFFFF] hover:bg-transparent hover:border-2 hover:border-[#371D8A] hover:text-[#371D8A] px-2 py-2">
                     Launch App
                   </button>
                 </Link>
                 <Link href="/site/Trade">
-                  <button className="w-[30vw] h-[10%] text-sm sc1:text-lg sc1:w-full sc1:h-[2.5vw] sc1:px-6 sc1:py-1 rounded-3xl bg-transparent text-[#371D8A] border border-2 border-[#371D8A] hover:bg-violet-800 hover:text-white px-2 py-2">
+                  <button className="w-[40vw] h-[10%] text-sm sc1:text-lg sc1:w-full sc1:h-[2.5vw] sc1:px-6 sc1:py-1 rounded-3xl bg-transparent text-[#371D8A] border border-2 border-[#371D8A] hover:bg-violet-800 hover:text-white px-2 py-2">
                     Learn more
                   </button>
                 </Link>

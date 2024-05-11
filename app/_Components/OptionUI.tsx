@@ -59,9 +59,9 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
                 <input className="text-xl font-bold bg-transparent border-none focus:border-none outline-none" type="text"  value={192.58}/>
              </div>
             </div>
-             <div className="bg-red-200 ">
+             {/* <div className="bg-red-200 ">
               <button className="text-blue-200 text-md bg-transparent outline-none border-none">Last</button>
-             </div>
+             </div> */}
           </div>
             </>
           )}

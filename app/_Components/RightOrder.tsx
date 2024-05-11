@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import OptionUI from "./OptionUI";
 import { IoIosClose } from "react-icons/io";
 
-const RightOrder = ({showPopup, setShowPopup,setShowOption,showOption}) => {
-  const [selected, setSelected] = useState("Long");
+const RightOrder = ({showPopup, setShowPopup,setShowOption,showOption,option}) => {
+  const [selected, setSelected] = useState(option);
   const [selectedOption, setSelectedOption] = useState("Market");
   const buttons = ["Long", "Short"];
   const options = ["Market", "Limit", "Conditional"];
@@ -28,7 +28,8 @@ const RightOrder = ({showPopup, setShowPopup,setShowOption,showOption}) => {
           );
         })}
       </div>
-      <div className="flex items-center sticky top-12 dark:sc1:bg-[#0F0E0E] dark:bg-[#2B2A2A] bg-white text-black h-31 px-4 w-full text-[0.8rem] h-100 dark:text-[#4F4F4F] border-b-[1px] dark:boder-2 border-b-[#9CA3AF] dark:border-b-[#2C2D2D] gap-6 ">
+      <div className="flex items-center justify-between sticky top-12 dark:sc1:bg-[#0F0E0E] dark:bg-[#2B2A2A] bg-white text-black h-31 px-4 w-full text-[0.8rem] h-100 dark:text-[#4F4F4F] border-b-[1px] dark:boder-2 border-b-[#9CA3AF] dark:border-b-[#2C2D2D] gap-6 ">
+        <div className="flex items-center gap-6">
         {options.map((option) => {
           return (
             <button
@@ -43,7 +44,8 @@ const RightOrder = ({showPopup, setShowPopup,setShowOption,showOption}) => {
             </button>
           );
         })}
-        <button ><IoIosClose size={30} onClick={()=>setShowOption(!showOption)}/></button>
+        </div>
+        <button className="sc1:hidden"><IoIosClose size={30} onClick={()=>setShowOption(!showOption)}/></button>
       </div>
       <OptionUI showPopup={showPopup} setShowPopup={setShowPopup} option={selectedOption} topOption={selected}/>
     </>
