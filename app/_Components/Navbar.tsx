@@ -44,7 +44,7 @@ const Navbar = () => {
               <FaChevronDown color="white" size={10}/>
           </div>
           <div>
-            <div className="hidden sc1:flex">
+            <div className="flex">
             <WalletsProvider />
               </div>
           </div>
@@ -90,7 +90,6 @@ const Navbar = () => {
   </AnimatePresence>
   {menuOpen&&
   <div className="h-[95vh] w-full absolute z-50 right-0 bg-black flex flex-col gap-10 py-12 items-center">
-      <WalletsProvider/>
       <div className="w-full">
         {names.map((name)=>{
           return(

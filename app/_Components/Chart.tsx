@@ -93,7 +93,7 @@ const Chart = ({ show }) => {
           horzLines: { color: "#F4F5F4" },
         },
         width: chartContainer.current.offsetWidth,
-        height: 280,
+        height: 250,
       });
     } else {
       chart = createChart(chartContainer.current, {

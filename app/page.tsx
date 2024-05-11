@@ -63,7 +63,7 @@ export default function Home() {
   const x = useParallax(scrollYProgress,300);
   const x2 = useParallax(scrollYProgress,-300);
   const [text,textHelper] = useTypewriter({
-    words:["Crypto"],
+    words:["Crypto","Forex","Commodities"], 
     loop:true,
     typeSpeed:150,
     deleteSpeed:50,
@@ -105,8 +105,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="w-[100vw] h-[100vh] pl-[10vw] absolute flex flex-col sc1:pl-[10vw] pr-[1vw] items-center absolute top-64 z-0 font-bold sc1:font-normal sc1:top-72  sc1:pr-[10vw] sc1:top-72 sc1:items-start sc1:w-[60vw]">
-              <h1 className="text-4xl mb-[2vw] font-plusJakarta flex flex-col gap-4 w-full items-start sc1:text-7xl sc2:text-8xl">
+            <div className="w-[100vw] h-[100vh] pl-[10vw] absolute flex flex-col sc1:pl-[10vw] pr-[1vw] items-center absolute top-64 z-0 font-bold sc1:font-normal sc1:top-72  sc1:pr-[10vw] sc1:top-72 sc1:items-start sc1:w-[65vw]">
+              <h1 className="text-4xl mb-[2vw] font-plusJakarta flex flex-col gap-4 w-full items-start sc1:text-6xl sc2:text-8xl font-bold">
                 <div>
                   Trade{" "}
                   <span className="text-[#7950AE] font-bold">
@@ -120,7 +120,7 @@ export default function Home() {
                 Remex lets you trade all your favourite assets at lightning
                 speed without compromising security.
               </p>
-              <div className="flex gap-[5%] pl-4 items-start mt-[15%] w-[100vw] sc1:w-[25vw] sc1:gap-[2.5vw] sc1:mt-[2.5vw]">
+              <div className="flex gap-[5%]  items-start mt-[15%] w-[100vw] sc1:w-[25vw] sc1:gap-[2.5vw] sc1:mt-[2.5vw]">
                 <Link href="/site/Trade">
                   <button className="w-[40vw] h-[10%] text-sm sc1:text-lg sc1:w-full sc1:h-[2.5vw] sc1:px-6 sc1:py-1 rounded-3xl bg-[#371D8A] text-[#FFFFFF] hover:bg-transparent hover:border-2 hover:border-[#371D8A] hover:text-[#371D8A] px-2 py-2">
                     Launch App

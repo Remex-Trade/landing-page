@@ -170,45 +170,45 @@ const [chartStats, setChartStats] = useState<chartData>()
           <div className={`flex flex-col h-full m-0 sc1:m-8 mr-0 justify-start  items-start gap:0 sc1:gap-6 ${show?'sc1:w-[68%] w-[100vw]':'sc1:w-[74%] w-[100vw]'}`}>
             <div
               id="middle-top"
-              className=" w-full rounded-xl flex gap-2 flex-col bg-white text-black dark:text-white dark:bg-[#0F0E0E] dark:border-[#2C2D2D]  dark:border-[1px] shadow-md h-fit "
+              className=" w-full rounded-xl flex gap-6 sc1:gap-2 flex-col bg-white text-black dark:text-white dark:bg-[#0F0E0E] dark:border-[#2C2D2D]  dark:border-[1px] shadow-md h-fit "
             >
               <div className="w-full h-[20%] px-8 py-4 flex flex-col sc1:flex-row sc1:gap-8 gap-2  text-[0.7rem] justify-start items-start sc1:items-center">
                 <div className='flex gap-4 w-full sc1:w-fit items-center' onClick={()=>setSelectCrypto(true)}>
-                <Image src={`/Images/${data.token.split("/")[0].toLowerCase()}.png`} width={50} height={50} alt="cryptoImage" className="rounded-full h-100 w-100" />
+                <Image src={`/Images/${data.token.split("/")[0].toLowerCase()}.png`} width={30} height={30} alt="cryptoImage" className="rounded-full h-100 w-100" />
                 <div className='flex w-full justify-between items-center'>
                   <div className="flex flex-col gap-1">
                   <span className="text-black dark:text-white text-md sc1:text-[0.7rem] sc1:font-normal">{data.token}</span>
-                  <span className="text-green-600  font-bold text-lg sc1:text-[0.7rem]">{Math.round(latestPrice[data.token]*10)/10}</span>
+                  <span className="text-green-600  font-bold text-[0.9rem] sc1:text-[0.7rem]">{Math.round(latestPrice[data.token]*10)/10}</span>
                   </div>
                   <div className='sc1:hidden'>
-                    <FaChevronDown size={15}  />
+                    <FaChevronDown size={10}  />
                   </div>
                   
                 </div>
                 </div>
-                <div className='w-full gap-2 hidden sc1:flex sc1:gap-6'>
-                <div className="flex-col gap-1 hidden sc1:flex">
-                  <span className="ext-black  dark:text-white ">24h Change</span>
+                <div className='w-full gap-4 flex flex  sc1:gap-6'>
+                <div className=" gap-1 hidden sc1:flex">
+                  <span className="text-black  dark:text-white ">24h Change</span>
                   <span className={percentageChange.includes("+") ?  'text-[#0cf3c4]' : "text-red-500"}>{percentageChange}</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="ext-black  text-[0.7rem] dark:text-white  underline">Open Interest(I)</span>
+                  <span className="text-black text-[0.72rem] sc1:text-[0.7rem] dark:text-white  underline">Open Interest(I)</span>
                   <span className="text-[0.7rem]">{chartStats?.openInterestS ?? "-"}</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="text-black text-[0.7rem]  dark:text-white underline">Open Interest(II)</span>
+                  <span className="text-black text-[0.72rem] sc1:text-[0.7rem]  dark:text-white underline">Open Interest(II)</span>
                   <span className="text-[0.7rem]">{chartStats?.openInterestL ?? "-"}</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="ext-black text-[0.7rem] dark:text-white underline">Funding</span>
+                  <span className="text-black text-[0.72rem] sc1:text-[0.7rem] dark:text-white underline">Funding</span>
                   <span className="text-green-600  text-[0.7rem]">{chartStats?.funding ?? "-"}</span>
                 </div>
                 <div className="flex-col gap-1 hidden sc1:flex">
-                  <span className="text-black text-[0.7rem]  dark:text-white underline">Borrowing Rate</span>
+                  <span className="text-black text-[0.72rem] sc1:text-[0.7rem]  dark:text-white underline">Borrowing Rate</span>
                   <span className="text-green-600  text-[0.7rem]">{chartStats?.borrowingRate ?? "-"}</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="text-black text-[0.7rem]  dark:text-white">24h volume(USD)</span>
+                  <span className="text-black text-[0.72rem] sc1:text-[0.7rem]  dark:text-white">24h volume(USD)</span>
                   <span className="text-[0.7rem]">{chartStats?.volume24h ?? "-"}</span>
                 </div>
 
