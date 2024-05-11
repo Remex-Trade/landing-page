@@ -240,7 +240,7 @@ const [chartStats, setChartStats] = useState<chartData>()
             <motion.div
               initial={{y:100,opacity:0.5}}
               animate={{y:0,opacity:1}}
-              transition={{duration:0.4,ease:"linear"}}
+              transition={{duration:0.2,ease:"linear"}}
               exit={{y:100,opacity:0.5}}
               className='absolute bottom-0 z-50 w-full bg-[#2B2A2A] rounded-xl py-4'
             >
@@ -251,7 +251,7 @@ const [chartStats, setChartStats] = useState<chartData>()
             <motion.div
               initial={{y:100,opacity:0.5}}
               animate={{y:0,opacity:1}}
-              transition={{duration:0.4,ease:"linear"}}
+              transition={{duration:0.2,ease:"linear"}}
               exit={{y:100,opacity:0.5}}
               className='absolute bottom-0 z-50 w-full bg-[#2B2A2A] rounded-xl py-4'
             >

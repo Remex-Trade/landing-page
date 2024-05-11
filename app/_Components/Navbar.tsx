@@ -1,7 +1,7 @@
 "use client"
 import React, { useContext, useState } from "react";
 import Link from 'next/link'
-import { FaChevronDown, FaFire } from "react-icons/fa";
+import { FaChevronDown, FaChevronRight, FaFire } from "react-icons/fa";
 import {CiWallet} from "react-icons/ci";
 import ToggleButton from "./ToggleButton";
 import theme from "../_context/theme";
@@ -9,6 +9,7 @@ import WalletsProvider from "./Wallet";
 import Image from "next/image";
 import { IoIosClose } from "react-icons/io";
 import {motion,AnimatePresence} from "framer-motion";
+import { IoMenu } from "react-icons/io5";
 
 const Navbar = () => {
   const {darkMode,setDarkMode} = useContext(theme);
@@ -16,6 +17,7 @@ const Navbar = () => {
   const names = ["Trade","Airdrop","Referral","Leaderboard"]
   const networks = ["openBNB","Manta Pacific","BNB"]
   const [open,setOpen] = useState(false)
+  const [menuOpen,setMenuOpen] = useState(false);
   const [selectedNetwork,setSelectedNetwork] = useState("openBNB");
   return (
     <>
@@ -42,9 +44,17 @@ const Navbar = () => {
               <FaChevronDown color="white" size={10}/>
           </div>
           <div>
-            <div>
+            <div className="hidden sc1:flex">
             <WalletsProvider />
               </div>
+          </div>
+          <div className="w-10 h-full">
+            {menuOpen?
+            <IoIosClose size={30} onClick={()=>setMenuOpen(false)}/>
+            :
+            <IoMenu size={20} onClick={()=>setMenuOpen(true)}/>
+            }
+              
           </div>
         </div>
       </div>
@@ -78,6 +88,26 @@ const Navbar = () => {
   </>
   }
   </AnimatePresence>
+  {menuOpen&&
+  <div className="h-[95vh] w-full absolute z-50 right-0 bg-black flex flex-col gap-10 py-12 items-center">
+      <WalletsProvider/>
+      <div className="w-full">
+        {names.map((name)=>{
+          return(
+            <>
+            <Link key={name} href={`${name}`} >
+              <div className="flex justify-between w-full h-fit py-4 px-8 text-lg items-center border-b border-b-[#2D2D2C] bg-[#141515]" onClick={()=>setMenuOpen(false)}>
+                {name}
+                <FaChevronRight size={10} color="white"/>
+              </div>
+              </Link>
+            </>
+          )
+        })}
+      </div>
+
+  </div>
+  }
     </>
   );
 };
