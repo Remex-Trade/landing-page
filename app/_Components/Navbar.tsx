@@ -25,8 +25,7 @@ const Navbar = () => {
       <div className="flex gap-[4vw] justify-between items-center w-full px-[2vw] py-1 text-md">
       <div className="w-full flex items-center justify-start font-bold text-2xl text-white">
 
-          <Image src="/Images/logo.png" width={50} height={50} alt="logo" />
-          <span className="relative right-3 top-1 text-black dark:text-white">emex</span>
+                <Image src="/Images/Group 2.png" width={150} height={150} alt="logo" />
         </div>
         <div className="hidden sc1:flex gap-20">
           {names.map((name)=>{

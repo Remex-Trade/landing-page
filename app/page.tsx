@@ -88,8 +88,8 @@ export default function Home() {
               className="w-[100vw] flex justify-center items-center p-[1vw] gap-[30%] bg-[rgb(10,7,12)] bg-opacity-25 fixed top-0 z-50 backdrop-blur"
             >
               <div className="font-extrabold text-3xl flex items-center justify-center gap-0">
-                <Image src="/Images/logo.png" width={70} height={70} alt="logo" />
-                <span className="relative right-4 top-2">emex</span></div>
+                <Image src="/Images/Group 2.png" width={150} height={150} alt="logo" />
+                </div>
               <div className="flex gap-[3vw] items-center justify-center">
                 <div className="hidden gap-[3vw] items-center justify-center sc1:flex">
                   <div>Discord</div>
@@ -499,7 +499,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div id="learnmore" className="w-1/3">
-                  <button className="px-4 sc1:px-10 py-3 text-[0.6rem] hover:bg-white hover:text-black rounded-xl border border-white sc1:text-lg">
+                  <button className="px-4 sc1:px-15  py-3 text-[0.6rem] hover:bg-white hover:text-black rounded-xl border border-white sc1:text-lg">
                     Learn More
                   </button>
                 </div>
@@ -1155,8 +1155,7 @@ export default function Home() {
               className="w-full h-fit py-14 flex flex-col bg-black items-center gap-10"
             >
               <div className="w-full flex items-center justify-center font-bold text-4xl text-white">
-                <Image src="/Images/logo.png" width={70} height={70} alt="logo" />
-                <span className="relative right-4 top-1.5">emex</span>
+                <Image src="/Images/Group 2.png" width={150} height={150} alt="logo" />
               </div>
               <div className="w-full flex justify-center gap-10 sc1:justify-between flex-col sc1:flex-row text-zinc-400 sc1:w-[60%] items-center sc1:flex-row-reverse">
                 <div className="flex gap-2 flex-col sc1:gap-10 sc1:flex-row ">
