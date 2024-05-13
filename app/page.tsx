@@ -78,7 +78,7 @@ export default function Home() {
       <main className="max-w-[100vw] overflow-hidden">
         <AnimatePresence>
           <div className="w-[100vw] h-[100vh] relative ">
-            <Image src="/Images/cubes (1).png" fill objectFit="cover" alt="Backdrop" />
+            <Image src="/Images/cubes (1).png" fill objectFit="cover" alt="Backdrop" className="hidden sc1:flex"/>
 
             <div className="w-[100vw] h-[100vh] absolute">
               <Image src="/Images/Effect.png" fill alt="Backdrop" />
