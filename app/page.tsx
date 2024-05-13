@@ -106,7 +106,7 @@ export default function Home() {
             </div>
 
             <div className="w-[100vw] h-[100vh] pl-[10vw] absolute flex flex-col sc1:pl-[10vw] pr-[1vw] items-center absolute top-64 z-0 font-bold sc1:font-normal sc1:top-72  sc1:pr-[10vw] sc1:top-72 sc1:items-start sc1:w-[65vw]">
-              <h1 className="text-4xl mb-[2vw] font-plusJakarta flex flex-col gap-4 w-full items-start sc1:text-6xl sc2:text-8xl font-bold">
+              <h1 className="text-4xl mb-[2vw] font-plusJakarta flex flex-col gap-4 w-full items-start sc1:text-6xl sc2:text-7xl font-bold">
                 <div>
                   Trade{" "}
                   <span className="text-[#7950AE] font-bold">
