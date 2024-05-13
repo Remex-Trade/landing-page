@@ -408,12 +408,13 @@ export default function Home() {
               className="w-full h-[135vh] relative flex flex-col items-center px-14 py-20 sc1:px-56 justify-center gap-8 mt-20 sc1:flex-row sc1:h-[30vh] sc1:my-28"
             >
               <motion.div
-                 initial={{width:"40%",height:"35vh"}}
+                //  initial={{width:"40%",height:"35vh"}}
                  whileHover={{
-                   width:"50%",
-                   height:"45vh"
+                  //  width:"50%",
+                  //  height:"45vh"
+                  scale:1.1
                  }}
-                 transition={{ ease: "linear", duration: 0.7 }}
+                 transition={{ ease: "linear", duration: 0.2 }}
                  id="card1"
                 className="max-w-[100%] relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 sc1:py-12 gap-4 flex-col border-[#1B2236] h-[40vh] bg-[#0D111C] sc1:w-2/5 sc1:h-[35vh]"
               >
@@ -429,12 +430,14 @@ export default function Home() {
                 </div>
               </motion.div>
               <motion.div
-                 initial={{width:"40%",height:"35vh"}}
+                //  initial={{width:"40%",height:"35vh"}}
                  whileHover={{
-                   width:"50%",
-                   height:"45vh"
+                  //  width:"50%",
+                  //  height:"45vh"
+                  scale:1.1
+
                  }}
-                 transition={{ ease: "linear", duration: 0.7 }}
+                 transition={{ ease: "linear", duration: 0.2}}
                  id="card2"
                 className="max-w-[100%] relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 sc1:py-12 gap-4 flex-col border-[#1B2236] h-[40vh] bg-[#0D111C] sc1:w-2/5 sc1:h-[35vh]"
               >
@@ -450,12 +453,13 @@ export default function Home() {
                 </div>
               </motion.div>
               <motion.div
-                 initial={{width:"40%",height:"35vh"}}
+                //  initial={{width:"40%",height:"35vh"}}
                  whileHover={{
-                   width:"50%",
-                   height:"45vh"
+                  //  width:"50%",
+                  //  height:"45vh"
+                  scale:1.1
                  }}
-                 transition={{ ease: "linear", duration: 0.7 }}
+                 transition={{ ease: "linear", duration: 0.2 }}
                  id="card3"
                 className="max-w-[100%] relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 sc1:py-12 gap-4 flex-col border-[#1B2236] h-[40vh] bg-[#0D111C] sc1:w-2/5 sc1:h-[35vh]"
               >
