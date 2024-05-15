@@ -201,7 +201,7 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
             {!(user.length>0)?
 
             <WalletsProvider />:
-            <button className={`rounded-lg px-20 py-2 text-lg text-slate-100 font-bold ${topOption==="Long"?'bg-[#0cf3c4]':'bg-red-500'}`}>{topOption==="Long"?
+            <button className={`rounded-lg px-20 py-2 text-lg dark:text-slate-800 font-bold ${topOption==="Long"?'bg-[#0cf3c0]':'bg-red-500'}`}>{topOption==="Long"?
               "Buy/Long":"Sell/Short"}</button>
           }
           </div>

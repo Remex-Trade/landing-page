@@ -9,6 +9,7 @@ import { TiArrowSortedUp } from "react-icons/ti";
 import { TiArrowSortedDown } from "react-icons/ti";
 
 import Image from "next/image";
+import { FaX } from "react-icons/fa6";
 const Sidebar = ({ getShow,setSelectOption }) => {
   const [Favorites, setFavorites] = useState(false);
   const [FavArr, setFavArr] = useState([]);
@@ -211,7 +212,8 @@ const Sidebar = ({ getShow,setSelectOption }) => {
             onChange={searchPair}
           />
 
-          <RxHamburgerMenu className="text-lg" onClick={hideSideBar} />
+          <RxHamburgerMenu className="text-lg hidden sc1:flex" onClick={hideSideBar} />
+          <FaX className="text-lg flex sc1:hidden" onClick={()=>setSelectOption(false)}/>
           {getShow(show)}
         </div>
         <div className="flex gap-[1vw] text-zinc-400">

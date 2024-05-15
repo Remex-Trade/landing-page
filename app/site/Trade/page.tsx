@@ -135,7 +135,7 @@ const [chartStats, setChartStats] = useState<chartData>()
           </div>
       </div>}
       </div>
-      <div className="w-full h-[95vh] sc1:[100vh] ">
+      <div className="w-full h-full sc1:h-[100vh] ">
         <div className="text-[0.8rem] hidden sc1:flex bg-white dark:bg-[#0f0e0e] w-full sticky top-[50px] text-black dark:text-white  h-fit px-4 gap-10 items-center py-2 dark:bg-[#0F0E0E] dark:border-[#2C2D2D] shadow-sm dark:border-[1px]">
           <FaFire color="orange" />
           <div>
@@ -161,7 +161,7 @@ const [chartStats, setChartStats] = useState<chartData>()
         </div>
         <AnimatePresence>
         {selectCrypto &&
-          <motion.div initial={{y:-100}} animate={{y:0}} exit={{y:100}} transition={{duration:0.1,ease:"linear"}} className='absolute z-50 w-[100vw] h-[100vh] sc1:hidden '>
+          <motion.div initial={{y:-100}} animate={{y:0}} exit={{y:1000}} transition={{duration:0.3,ease:"linear"}} className='absolute z-50 w-[100vw] h-[100vh] sc1:hidden '>
               <Sidebar getShow={getShow} setSelectOption={setSelectCrypto} />
           </motion.div> 
         }
@@ -222,21 +222,24 @@ const [chartStats, setChartStats] = useState<chartData>()
             </div>
             <div
               id="middle-bottom"
-              className="pb-10 pt-3 sc1:py-0 flex flex-col gap-1 justify-center rounded-xl dark:bg-[#0F0E0E] bg-white dark:border-[#2C2D2D] shadow-lg border-[1px] w-full sc1:h-full h-fit"
+              className="pb-10 pt-3 hidden sc1:flex sc1:py-0  flex-col gap-1 justify-center rounded-xl dark:bg-[#0F0E0E] bg-white dark:border-[#2C2D2D] shadow-lg border-[1px] w-full sc1:h-full h-fit"
             >
                <MiddleBottom/>
             </div>
-          {user.length>0 ?
+            <div className='w-full h-full my-10 '>
+            <RightOrder showPopup={showPopup}  setShowPopup={setShowPopup} setShowOption={setShowOption} showOption={showOption} option={option}/>
+            </div>
+          {/* {user.length>0 ?
           <div id='mobile right-order' className='sc1:hidden h-[15vh] items-center justify-center bg-[#2B2A2A]  gap-8 flex w-full'>
             <button className='bg-[#0CF3C4] text-lg rounded-md px-12 py-2 text-white' onClick={()=>{setShowOption("Long"); setOption("Long")}}>Buy/Long</button>
             <button className='bg-[#E13255] text-lg rounded-md px-12 py-2 text-white' onClick={()=>{setShowOption("Short"); setOption("Short")}}>Sell/Short</button>
           </div>:
-          <div className='sc1:hidden w-full items-start py-10 justify-center flex h-full'>
-          <WalletsProvider/>
-          </div>
-          }
+          // <div className='sc1:hidden w-full items-start py-10 justify-center flex h-full'>
+          // <WalletsProvider/>
+          // </div>
+          } */}
           <AnimatePresence>
-          {showOption=="Long"&&
+          {/* {showOption=="Long"&&
             <motion.div
               initial={{y:100,opacity:0.5}}
               animate={{y:0,opacity:1}}
@@ -246,8 +249,8 @@ const [chartStats, setChartStats] = useState<chartData>()
             >
               <RightOrder showPopup={showPopup}  setShowPopup={setShowPopup} setShowOption={setShowOption} showOption={showOption} option={option}/>
             </motion.div>
-          }
-          {showOption=="Short"&&
+          } */}
+          {/* {showOption=="Short"&&
             <motion.div
               initial={{y:100,opacity:0.5}}
               animate={{y:0,opacity:1}}
@@ -257,7 +260,7 @@ const [chartStats, setChartStats] = useState<chartData>()
             >
               <RightOrder showPopup={showPopup}  setShowPopup={setShowPopup} setShowOption={setShowOption} showOption={showOption} option={option}/>
             </motion.div>
-          }
+          } */}
           </AnimatePresence>
           </div>
           <div id="right-order" className="h-[100vh] right-6 fixed  hidden sc1:flex w-[20%]">
