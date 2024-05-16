@@ -93,9 +93,9 @@ export const Web3Provider = ({ children }) => {
       // <QueryClientProvider client={queryClient}>
         <ConnectKitProvider
           customTheme={{
-            "--ck-connectbutton-background":"#2841CB",
+            "--ck-connectbutton-background":"#371C8B",
             "--ck-connectbutton-color":"#ffffff",
-            "--ck-connectbutton-hover-background":"#1DC8EC"
+            "--ck-connectbutton-hover-background":"#644290"
           }}
         >
           {children}

@@ -200,12 +200,12 @@ const Sidebar = ({ getShow,setSelectOption }) => {
     return price.toFixed(decimalDigits);
   }
   return (
-    <div className="dark:bg-[#0F0C0F] h-full  bg-white dark:text-white text-black">
-      <div className="flex flex-col gap-[1vw]  px-4 py-[2vw] text-[13px]">
-        <div className="flex w-full justify-between items-center px-2">
+    <div className="dark:bg-[#0F0C0F] h-full w-full  bg-white dark:text-white text-black">
+      <div className="flex flex-col gap-[1vw]  py-[2vw] text-[13px]">
+        <div className="flex w-full gap-4 justify-between items-center px-2">
           <input
             type="search"
-            className="relative m-0 block rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-2 py-1 text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
+            className="w-full relative m-0 block rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-2 py-1 text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
             placeholder="Search"
             aria-label="Search"
             id="exampleFormControlInput2" 
@@ -240,7 +240,7 @@ const Sidebar = ({ getShow,setSelectOption }) => {
             </button>
           </div>
         </div>
-        <div className="flex w-[1/3] text-[0.7rem] justify-between text-zinc-400 px-1">
+        {/* <div className="flex w-[1/3] text-[0.7rem] justify-between text-zinc-400 px-1">
           <div className="">Pairs</div>
           <div className="flex gap-3 items-center">
             <div
@@ -292,17 +292,17 @@ const Sidebar = ({ getShow,setSelectOption }) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="h-[100vh] overflow-y-auto ">
           <div
-            className={Favorites ? "hidden" : "flex flex-col gap-1 mr-4 mb-3"}
+            className={Favorites ? "hidden" : "flex flex-col gap-1 mb-3"}
           >
             {DataArr.filter((e) => e.Pairs.includes(search)).map(
               (Pair, index) => {
                 const percentage = last24HourChange?.[Pair.Pairs] || "-";
                 return (
                   <div
-                    className={`flex text-[0.75rem]  gap-12 w-full dark:text-white text-black cursor-pointer hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl ${
+                    className={`flex text-[0.75rem] justify-between w-full dark:text-white text-black cursor-pointer hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl ${
                       data.token === Pair.Pairs &&
                       "dark:bg-[#2c2d2d] bg-[#F4F5F4] "
                     } `}
@@ -312,10 +312,10 @@ const Sidebar = ({ getShow,setSelectOption }) => {
                     }}
                   >
                     {/* <div className="flex justify-between w-full dark:text-white text-black hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl" onClick={()=>setData({...data,token:Pair.Pairs})}> */}
-                    <div className="flex w-full sc1:basis-1/2 gap-2">
+                    <div className="flex w-full gap-2 items-center">
                       {/* {Starred ? (Pair.stared = true) : (Pair.stared = false)}
                                     <div>{Pair.stared?<FaStar style={{color: 'yellow'}} size={20} onClick={()=>setStarred(false)}/> : <CiStar size={20} onClick={()=>setStarred(true)}/>}</div> */}
-                      <div>
+                      <div className="flex items-start">
                         {FavArr.some((item) => item.id === Pair.id) ? (
                           <FaStar
                             style={{ color: "#FFA500" }}
@@ -332,7 +332,7 @@ const Sidebar = ({ getShow,setSelectOption }) => {
                           />
                         ) : (
                           <CiStar
-                            size={20}
+                            size={25}
                             onClick={() => {
                               setFavArr([...FavArr, Pair]);
                               console.log(FavArr);
@@ -340,25 +340,31 @@ const Sidebar = ({ getShow,setSelectOption }) => {
                           />
                         )}
                       </div>
+                      <div className="flex h-full gap-2 items-start ">
                       <Image
                         src={`/Images/${Pair.Pairs.split(
                           "/"
                         )[0].toLowerCase()}.png`}
-                        className="rounded-full"
-                        width={20}
-                        height={5}
+                        className="rounded-full w-8 h-8"
+                        width={30}
+                        height={20}
                         alt="sidebar1"
                       />
-                      <div className="w-[2/3] sc1:w-[3vw]">{Pair.Pairs}</div>
+                      <div className="w-fit text-white font-bold h-full flex flex-col items-start text-center text-[1rem]">
+                        <span>{Pair.Pairs}</span>
+                        <span className="text-[0.6rem] text-slate-300">Bitcoin to USD</span>
+                        </div>
                     </div>
-                    <div className="flex sc1:gap-4 gap-8 sc1:basis-1/2  basis-1/3 text-left">
+                    
+                    </div>
+                    <div className="flex flex-col items-end w-full px-2 text-left">
                       {/* <div className='w-[3vw]'>{formatPrice(latestPrice[Pair.Pairs])}</div> */}
-                      <div className="w-[10vw] sc1:w-[4vw]">{Pair.Price}</div>
+                      <div className="text-[0.9rem]">{Pair.Price}</div>
                       <div
                         className={
                           Pair.Change.includes("+")
-                            ? "text-[#0cf3c4] basis-2/5"
-                            : "text-red-500  basis-2/5"
+                            ? "text-[#0cf3c4] text-[0.6rem]"
+                            : "text-red-500  text-[0.6rem]"
                         }
                       >
                         {/* {Pair.Change} */}

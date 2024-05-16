@@ -5,6 +5,7 @@ import Draggable from "react-draggable";
 import { IoIosArrowDown } from "react-icons/io";
 import WalletsProvider from "./Wallet";
 import userContext from "../_context/userContext";
+import { FaChevronDown } from "react-icons/fa";
 
 const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
   const [percentage, setPercentage] = useState(0); // Initial percentage
@@ -17,102 +18,35 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
   };
   return (
     <div className="bg-white text-sm dark:bg-[#0f0e0f] hover:cursor-pointer overflow-hidden">
-      
         <div className="flex flex-col px-6 py-2 w-full h-content gap-4 overflow-hidden ">
-          {/* Leverage */}
-          <div className="dark:bg-[#2C2D2D] bg-[#F7F7F8] text-gray-500 dark:text-white w-full rounded-xl h-content py-2 px-4" 
-          onClick={()=>setShowPopup(true)}
-          >
-            <div className="w-full flex justify-between">
-              <div className="flex gap-3 items-center jusitfy-center w-[30%] h-full">
-                <Image
-                  src="/Images/right1.svg"
-                  alt="leverage"
-                  height={200}
-                  width={200}
-                />
-                <div className="flex flex-col gap-1" >
-                  <span className="text-sm">Leverage</span>
-                  <span className="text-xl font-bold">{data.leverage}X</span>
-                </div>
-              </div>
-              <div className="mt-auto mb-auto">
-                <IoIosArrowDown />
-              </div>
-            </div>
-          </div>
-          {option==="Conditional" &&(
-            <>
-            <div className="dark:bg-[#2C2D2D] bg-[#F7F7F8] text-gray-500 dark:text-white px-4 py-2 w-full rounded-xl h-content flex justify-start gap-4 items-center">
-            <Image
-              src="/Images/right2.svg"
-              alt="trade"
-              width={40}
-              height={40}
-            />
-            <div className="flex flex-col h-full gap-1 py-1">
-              <div className="flex text-sm items-center gap-2">
-                Trigger Price
-              </div>
-             <div>
-                <input className="text-xl font-bold bg-transparent border-none focus:border-none outline-none" type="text"  value={192.58}/>
-             </div>
-            </div>
-             {/* <div className="bg-red-200 ">
-              <button className="text-blue-200 text-md bg-transparent outline-none border-none">Last</button>
-             </div> */}
-          </div>
-            </>
-          )}
-          
-          {option==="Limit" &&(
-            <>
-               <div className="dark:bg-[#2C2D2D] bg-[#F7F7F8] text-gray-500 dark:text-white px-4 py-2 w-full rounded-xl h-content flex justify-start gap-4 items-center">
-            <Image
-              src="/Images/right2.svg"
-              alt="trade"
-              width={40}
-              height={40}
-            />
-            <div className="flex flex-col h-full gap-1 py-1">
-              <div className="flex text-sm items-center gap-2">
-                Order Price
-              </div>
-             <div>
-                <input className="text-xl font-bold bg-transparent border-none focus:border-none outline-none" type="text"  value={192.58}/>
-             </div>
-            </div>
-          </div>
-            </>
-          )}
-          {/* Trade */}
-          <div className="dark:bg-[#2C2D2D] bg-[#F7F7F8] text-gray-500 dark:text-white px-4 py-2 w-full rounded-xl h-content flex justify-start gap-4 items-center">
-            <Image
-              src="/Images/right2.svg"
-              alt="trade"
-              width={40}
-              height={40}
-            />
-            <div className="flex flex-col h-full gap-1 py-1">
-              <div className="flex text-sm items-center gap-2">
-                Order By Value
-                <IoIosArrowDown />
-              </div>
-              <input type="number" className="text-xl font-bold bg-transparent outline-none" value={0}/>
-              <div className="text-sm text-[#4f4f4f]">Avbl: 0.00 USD</div>
-            </div>
-          </div>
+          <div className="w-full h-full flex justify-center items-center">
 
+            {/* Collateral */}
+            <div className="w-full bg-black flex flex-col px-4 gap-2 py-3 rounded-xl border border-[#161623]  sc1:text-[0.7rem]">
+                <div className="flex w-full justify-between items-center">
+                  <div className="text-slate-300 ">Collateral<span className="text-slate-400">(33.4-1.03M)</span></div>
+                  <div className="text-slate-300">Get Collateral</div>
+                </div>
+                <div className="flex w-full justify-center items-center">
+                  <input type="number" className="text-3xl sc1:text-2xl h-full w-[70%] font-bold bg-transparent outline-none" value={33.5}/>
+                  <div className="flex justify-center sc1:w-[30%] w-[25%] items-center">
+                    <Image src="/Images/crypto/dai.svg" width={25} height={25} alt="collateral"/>
+                    <span className="w-full text-center text-lg font-bold">DAI</span>
+                    <FaChevronDown/>
+                  </div>
+                </div>
+            </div>
+          </div>
           {/* Slider */}
           <div className="flex justify-center w-full gap-4">
             <div className="flex flex-col justify-center w-full gap-2 ">
               <div className="w-full flex items-center justify-between">
                 <span className="text-sm text-slate-200">Leverage</span>
-            <div className="w-[30%] rounded-md border-[1px] justify-center items-center flex dark:border-gray-800 h-10 dark:bg-[#171716] bg-[#F7F8F7] dark:text-white text-gray-700">
+            <div className="w-[30%] rounded-md border-[1px] justify-center items-center flex dark:border-gray-800 h-10 dark:bg-black bg-[#F7F8F7] dark:text-white text-gray-700">
               {`${percentage}x`}
             </div>
             </div>
-              <div className="w-[90%] flex justify-between relative items-center h-2 rounded-lg mt-2 dark:bg-[#2C2D2D] bg-[#F7F7F8] text-gray-500 dark:text-white">
+              <div className="w-[90%] flex justify-between relative items-center h-3 rounded-lg mt-2 dark:bg-black border border-[#2c2d2d] bg-[#F7F7F8] text-gray-500 dark:text-white">
                 <input
                   className="slider z-10 relative transitiion duration-2"
                   id="slider"
@@ -149,7 +83,16 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
 
             
           </div>
-
+          {/*Price*/}
+          {option!='Market'&& 
+                <div className="w-full flex flex-col">
+                    <div className="w-full flex rounded-xl text-slate-300 text-[0.9rem] sc1:text-[0.8rem] justify-between items-center">
+                        <div>Price</div>
+                        <div>Mark 66634.1</div>
+                    </div>
+                    <input type="number" value={66634.1} className="w-full rounded-xl px-4 py-2 text-xl sc1:text-lg sc1:px-2 text-white bg-black border-2 border-[#161623]"/> 
+                </div>
+                }
           {/* Tp/SL */}
           <div className="flex gap-2 items-center">
             

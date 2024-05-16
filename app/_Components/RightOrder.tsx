@@ -35,7 +35,7 @@ const RightOrder = ({showPopup, setShowPopup,setShowOption,showOption,option}) =
             <button
               className={`${
                 option === selectedOption
-                  ? "h-full py-2 dark:text-white bg-[#171622] font-bold text-black dark:border-[#211E28] border-2 "
+                  ? "h-full py-2 dark:text-white bg-black font-bold text-black dark:border-[#211E28] border-2 "
                   : "h-full py-2 text-neutral-500 bg-[#0F0F12] dark:border-[#211E28] border-2"
               } px-4 rounded-lg my-2 w-full`}
               onClick={() => setSelectedOption(option)}
