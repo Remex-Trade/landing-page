@@ -199,26 +199,47 @@ const Sidebar = ({ getShow,setSelectOption }) => {
 
     return price.toFixed(decimalDigits);
   }
+  const [selectedProp,setSelectedProp] = useState("All");
   return (
     <div className="dark:bg-[#0F0C0F] h-full w-full  bg-white dark:text-white text-black">
       <div className="flex flex-col gap-[1vw]  py-[2vw] text-[13px]">
-        <div className="flex w-full gap-4 justify-between items-center px-2">
-          <input
-            type="search"
-            className="w-full relative m-0 block rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-2 py-1 text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
-            placeholder="Search"
-            aria-label="Search"
-            id="exampleFormControlInput2" 
-            onChange={searchPair}
-          />
+          <div className="flex w-full gap-4 justify-between items-center px-2">
+            <input
+              type="search"
+              className="w-full px-6 relative m-0 block rounded border border-solid border-neutral-200 bg-transparent bg-clip-padding px-2 py-1 text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none motion-reduce:transition-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
+              placeholder="Search"
+              aria-label="Search"
+              id="exampleFormControlInput2" 
+              onChange={searchPair}
+            />
 
-          <RxHamburgerMenu className="text-lg hidden sc1:flex" onClick={hideSideBar} />
-          <FaX className="text-lg flex sc1:hidden" onClick={()=>setSelectOption(false)}/>
-          {getShow(show)}
+            <RxHamburgerMenu className="text-lg hidden sc1:flex" onClick={hideSideBar} />
+            <FaX className="text-lg flex sc1:hidden" onClick={()=>setSelectOption(false)}/>
+            {getShow(show)}
+          </div>
+        <div className="flex gap-2 w-full px-4 flex-wrap text-[0.7rem] mb-3 mt-3 sc1:mt-0">
+          <div className={`bg-black border border-[#2c2d2d] rounded-lg px-4 py-1 ${selectedProp==="All"?"text-white bg-zinc-900":"text-zinc-500"}`} onClick={()=>setSelectedProp("All")}>
+              All
+          </div>
+          <div className={`bg-black border border-[#2c2d2d] rounded-lg px-4 py-1 ${selectedProp==="New"?"text-white bg-zinc-900":"text-zinc-500"}`} onClick={()=>setSelectedProp("New")}>
+              New
+          </div>
+          <div className={`bg-black border border-[#2c2d2d] rounded-lg px-4 py-1 ${selectedProp==="Crypto"?"text-white bg-zinc-900":"text-zinc-500"}`} onClick={()=>setSelectedProp("Crypto")}>
+              Crypto
+          </div>
+          <div className={`bg-black border border-[#2c2d2d] rounded-lg px-4 py-1 ${selectedProp==="Forex"?"text-white bg-zinc-900":"text-zinc-500"}`} onClick={()=>setSelectedProp("Forex")}>
+              Forex
+          </div>
+          <div className={`bg-black border border-[#2c2d2d] rounded-lg px-4 py-1 ${selectedProp==="Commodities"?"text-white bg-zinc-900":"text-zinc-500"}`} onClick={()=>setSelectedProp("Commodities")}>
+              Commodities
+          </div>
+          <div className={`bg-black border border-[#2c2d2d] rounded-lg px-4 py-1 ${selectedProp==="Meme"?"text-white bg-zinc-900":"text-zinc-500"}`} onClick={()=>setSelectedProp("Meme")}>
+              Meme
+          </div>
         </div>
-        <div className="flex gap-[1vw] text-zinc-400">
-          <div className={Favorites && "border-b-white"}>
-            <button
+        {/* <div className="flex gap-[1vw] text-zinc-400"> */}
+          {/* <div className={Favorites && "border-b-white"}>
+            {/* <button
               onClick={() => setFavorites(true)}
               className={
                 Favorites &&
@@ -226,10 +247,12 @@ const Sidebar = ({ getShow,setSelectOption }) => {
               }
             >
               Favorites
-            </button>
-          </div>
-          <div className={Favorites && "border-b-white"}>
-            <button
+            </button> */}
+            
+
+          {/* </div> */}
+          {/* <div className={Favorites && "border-b-white"}>
+            {/* <button
               onClick={() => setFavorites(false)}
               className={
                 !Favorites &&
@@ -237,9 +260,9 @@ const Sidebar = ({ getShow,setSelectOption }) => {
               }
             >
               All Perpetual
-            </button>
-          </div>
-        </div>
+            </button> */}
+          {/* </div> 
+        </div> */}
         {/* <div className="flex w-[1/3] text-[0.7rem] justify-between text-zinc-400 px-1">
           <div className="">Pairs</div>
           <div className="flex gap-3 items-center">
@@ -302,7 +325,7 @@ const Sidebar = ({ getShow,setSelectOption }) => {
                 const percentage = last24HourChange?.[Pair.Pairs] || "-";
                 return (
                   <div
-                    className={`flex text-[0.75rem] justify-between w-full dark:text-white text-black cursor-pointer hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl ${
+                    className={`flex text-[0.75rem] justify-between w-full dark:text-white text-black cursor-pointer hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 items-center py-2 rounded-xl ${
                       data.token === Pair.Pairs &&
                       "dark:bg-[#2c2d2d] bg-[#F4F5F4] "
                     } `}
