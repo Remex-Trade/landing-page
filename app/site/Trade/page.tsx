@@ -226,7 +226,7 @@ const [chartStats, setChartStats] = useState<chartData>()
             >
                <MiddleBottom/>
             </div>
-            <div className='w-full h-full my-10 '>
+            <div className='w-full h-full my-10 block sc1:hidden '>
             <RightOrder showPopup={showPopup}  setShowPopup={setShowPopup} setShowOption={setShowOption} showOption={showOption} option={option}/>
             </div>
           {/* {user.length>0 ?

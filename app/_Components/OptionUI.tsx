@@ -13,13 +13,12 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
   const tp = [100, 200, 300, 500];
   const sl = ["None", "-25%", "-30%", "-75%"];
   const handleInputChange = (e) => {
-    setPercentage(e.target.value);
+    setPercentage(Math.round(e.target.value));
   };
- 
   return (
     <div className="bg-white text-sm dark:bg-[#0f0e0f] hover:cursor-pointer overflow-hidden">
       
-        <div className="flex flex-col px-6 py-8 w-full h-content gap-4 overflow-hidden ">
+        <div className="flex flex-col px-6 py-2 w-full h-content gap-4 overflow-hidden ">
           {/* Leverage */}
           <div className="dark:bg-[#2C2D2D] bg-[#F7F7F8] text-gray-500 dark:text-white w-full rounded-xl h-content py-2 px-4" 
           onClick={()=>setShowPopup(true)}
@@ -107,41 +106,48 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
           {/* Slider */}
           <div className="flex justify-center w-full gap-4">
             <div className="flex flex-col justify-center w-full gap-2 ">
-              <div className="w-full flex justify-between relative items-center h-2 rounded-lg mt-5 dark:bg-[#2C2D2D] bg-[#F7F7F8] text-gray-500 dark:text-white">
-                <input
-                  className="slider z-10 relative"
-                  type="range"
-                  min="0"
-                  max="20"
-                  value={percentage}
-                  onChange={handleInputChange}
-                />
-                <div className="absolute z-0 flex w-full justify-between">
-                  <div className="rounded-full bg-gray-400 w-1 h-1 "></div>
-                  <div className="rounded-full bg-gray-400 w-1 h-1 "></div>
-                  <div className="rounded-full bg-gray-400 h-1 w-1"></div>
-                  <div className="rounded-full bg-gray-400 h-1 w-1"></div>
-                  <div className="rounded-full bg-gray-400 h-1 w-1"></div>
-                  <div className="rounded-full bg-gray-400 h-1 w-1"></div>
-                </div>
-                <div
-                  className={`absolute z-0 bg-[#0CF3C4] h-2 rounded-lg`}
-                  style={{ width: `${percentage * 5}%` }}
-                ></div>
-              </div>
-              <div className="w-full text-[12px] text-gray-500 gap-2 flex h-content justify-between">
-                <span>0x</span>
-                <span>4x</span>
-                <span>8x</span>
-                <span>12x</span>
-                <span>16x</span>
-                <span>20x</span>
-              </div>
-            </div>
-
+              <div className="w-full flex items-center justify-between">
+                <span className="text-sm text-slate-200">Leverage</span>
             <div className="w-[30%] rounded-md border-[1px] justify-center items-center flex dark:border-gray-800 h-10 dark:bg-[#171716] bg-[#F7F8F7] dark:text-white text-gray-700">
               {`${percentage}x`}
             </div>
+            </div>
+              <div className="w-[90%] flex justify-between relative items-center h-2 rounded-lg mt-2 dark:bg-[#2C2D2D] bg-[#F7F7F8] text-gray-500 dark:text-white">
+                <input
+                  className="slider z-10 relative transitiion duration-2"
+                  id="slider"
+                  type="range"
+                  step="1"
+                  value={percentage}
+                  onChange={handleInputChange}
+                />
+                
+                <div className="absolute z-0 flex w-full justify-between">
+                  
+                  <div className=" h-full"><div className="rounded-full bg-gray-400 w-1 h-1 "></div></div>
+                  <div className=" h-full"><div className="rounded-full bg-gray-400 w-1 h-1 "></div></div>
+                  <div className=" h-full"><div className="rounded-full bg-gray-400 w-1 h-1 "></div></div>
+                  <div className=" h-full"><div className="rounded-full bg-gray-400 w-1 h-1 "></div></div>
+                  <div className=" h-full"><div className="rounded-full bg-gray-400 w-1 h-1 "></div></div>
+                  <div className=" h-full"><div className="rounded-full bg-gray-400 w-1 h-1 "></div></div>
+                  
+                </div>
+                <div
+                  className={`absolute z-0 dark:bg-gradient-to-r dark:from-[#2ACCF6] dark:to-[#6EFECF] h-2 rounded-lg`}
+                  style={{ width: `${percentage}%` }}
+                ></div>
+              </div>
+              <div className="w-[95%] text-[0.7rem] mb-5 text-gray-500 flex h-fit justify-between">
+                <span className="">0x</span>
+                <span className="">20x</span>
+                <span className="">40x</span>
+                <span className="">60x</span>
+                <span className="">80x</span>
+                <span className="">100x</span>
+              </div>
+            </div>
+
+            
           </div>
 
           {/* Tp/SL */}
