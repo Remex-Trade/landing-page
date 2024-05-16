@@ -144,7 +144,7 @@ const Chart = ({ show }) => {
         {buttons.map((button) => {
           return (
             <>
-              <button className="text-sm my-10 dark:text-white dark:hover:bg-[#2C2D2D]  dark:focus:bg-[#2C2D2D] text-black hover:bg-[#F7F4F7] focus:bg-[#F7F4F7] px-4 py-2 rounded-xl"
+              <button className="text-sm sc1:my-10 dark:text-white dark:hover:bg-[#2C2D2D] dark:focus:bg-[#2C2D2D] text-black hover:bg-[#F7F4F7] focus:bg-[#F7F4F7] px-4 py-2 rounded-xl"
                 onClick={()=>setPeriod(button)}
               >
                 {button}

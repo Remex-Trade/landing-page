@@ -28,8 +28,8 @@ const RightOrder = ({showPopup, setShowPopup,setShowOption,showOption,option}) =
           );
         })}
       </div>
-      <div className="flex items-center justify-between sticky top-12 dark:sc1:bg-[#0F0E0E] dark:bg-[#2B2A2A] bg-white text-black h-31 px-4 w-full text-[0.85rem] h-100 dark:text-[#4F4F4F] gap-6 ">
-        <div className="flex items-center gap-2 py-2 ">
+      <div className="flex items-center justify-between sticky top-12 dark:bg-[#0F0E0E]  bg-white text-black h-31 px-4 w-full text-[0.85rem] h-100 dark:text-[#4F4F4F] gap-6 ">
+        <div className="flex items-center gap-2 py-2 w-full justify-center">
         {options.map((option) => {
           return (
             <button
@@ -37,7 +37,7 @@ const RightOrder = ({showPopup, setShowPopup,setShowOption,showOption,option}) =
                 option === selectedOption
                   ? "h-full py-2 dark:text-white bg-[#171622] font-bold text-black dark:border-[#211E28] border-2 "
                   : "h-full py-2 text-neutral-500 bg-[#0F0F12] dark:border-[#211E28] border-2"
-              } px-4 rounded-lg `}
+              } px-4 rounded-lg my-2 w-full`}
               onClick={() => setSelectedOption(option)}
             >
               {option}
