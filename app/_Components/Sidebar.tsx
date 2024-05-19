@@ -10,7 +10,7 @@ import { TiArrowSortedDown } from "react-icons/ti";
 
 import Image from "next/image";
 import { FaX } from "react-icons/fa6";
-const Sidebar = ({ getShow,setSelectOption }) => {
+const Sidebar = ({ getShow,setSelectOption,isRightOrder,setIsRightOrder }) => {
   const [Favorites, setFavorites] = useState(false);
   const [FavArr, setFavArr] = useState([]);
   const [search, setSearch] = useState("");
@@ -332,6 +332,7 @@ const Sidebar = ({ getShow,setSelectOption }) => {
                     onClick={() =>{
                        setData({ ...data, token: Pair.Pairs });
                        setSelectOption(false);
+                       setIsRightOrder(true);
                     }}
                   >
                     {/* <div className="flex justify-between w-full dark:text-white text-black hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 py-4 rounded-xl" onClick={()=>setData({...data,token:Pair.Pairs})}> */}
@@ -355,7 +356,7 @@ const Sidebar = ({ getShow,setSelectOption }) => {
                           />
                         ) : (
                           <CiStar
-                            size={25}
+                            size={20}
                             onClick={() => {
                               setFavArr([...FavArr, Pair]);
                               console.log(FavArr);
@@ -369,8 +370,8 @@ const Sidebar = ({ getShow,setSelectOption }) => {
                           "/"
                         )[0].toLowerCase()}.png`}
                         className="rounded-full w-8 h-8"
-                        width={30}
-                        height={20}
+                        width={32}
+                        height={32}
                         alt="sidebar1"
                       />
                       <div className="w-fit text-white font-bold h-full flex flex-col items-start text-center text-[1rem]">
