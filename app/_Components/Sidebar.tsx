@@ -318,16 +318,15 @@ const Sidebar = ({ getShow,setSelectOption,isRightOrder,setIsRightOrder }) => {
         </div> */}
         <div className="h-[100vh] overflow-y-auto ">
           <div
-            className={Favorites ? "hidden" : "flex flex-col gap-1 mb-3"}
+            className={Favorites ? "hidden" : "flex flex-col mb-3"}
           >
             {DataArr.filter((e) => e.Pairs.includes(search)).map(
               (Pair, index) => {
                 const percentage = last24HourChange?.[Pair.Pairs] || "-";
                 return (
                   <div
-                    className={`flex text-[0.75rem] justify-between w-full dark:text-white text-black cursor-pointer hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 items-center py-2 rounded-xl ${
-                      data.token === Pair.Pairs &&
-                      "dark:bg-[#2c2d2d] bg-[#F4F5F4] "
+                    className={`flex text-[0.75rem] justify-between w-full dark:text-white text-black cursor-pointer hover:bg-[#F4F5F4] dark:hover:bg-[#2c2d2d] px-2 items-center py-4 
+                      border border-[#2c2d2d] cursor-pointer
                     } `}
                     onClick={() =>{
                        setData({ ...data, token: Pair.Pairs });
@@ -361,6 +360,7 @@ const Sidebar = ({ getShow,setSelectOption,isRightOrder,setIsRightOrder }) => {
                               setFavArr([...FavArr, Pair]);
                               console.log(FavArr);
                             }}
+                            className="text-slate-500"
                           />
                         )}
                       </div>

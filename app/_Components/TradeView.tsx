@@ -1,12 +1,13 @@
 // TradingViewWidget.jsx
 import React, { useContext, useEffect, useRef } from "react";
 import userContext from "../_context/userContext";
+// import "./TradingView.css";
+
 let tvScriptLoadingPromise;
  
 export default function TradingViewWidget() { // Declare the extended Window type globally
     const {data} = useContext(userContext);
 const onLoadScriptRef = useRef<()=>void|undefined>();
-console.log(data.token.replace("/",""))
  
 useEffect(() => {
 onLoadScriptRef.current = createWidget;
@@ -33,18 +34,28 @@ return () => (onLoadScriptRef.current = null);
 function createWidget() {
 if (document.getElementById("tradingview") && "TradingView" in window) {
 new (window.TradingView as any).widget({
+// custom_css_url: "/TradingView.css",
 autosize: true,
 symbol: `PYTH:${data.token.replace("/","")}`,
 interval: "D",
 timezone: "Etc/UTC",
 theme: "dark",
 overrides: {
-    "paneProperties.background": "#0f0e0e",
-    "paneProperties.backgroundType": "solid"
+    "paneProperties.backgroundGradientStartColor": "#020024",
+        "paneProperties.backgroundGradientEndColor": "#4f485e",
+  "paneProperties.vertGridProperties.color": "rgb(54, 60, 78, 0.2)",
+  "paneProperties.horzGridProperties.color": "rgb(54, 60, 78, 0.2)",
+  "symbolWatermarkProperties.transparency": 90,
+  "scalesProperties.textColor": "#AAA",
+  "mainSeriesProperties.candleStyle.wickUpColor": "#34f5ae",
+  "mainSeriesProperties.candleStyle.wickDownColor": "#fa3c58",
+  "mainSeriesProperties.candleStyle.upColor": "#34f5ae",
+  "mainSeriesProperties.candleStyle.downColor": "#fa3c58",
+
 },
 style: "1",
 locale: "en",
-toolbar_bg: "#0F0E0E",
+toolbar_bg: "#ffffff",
 enable_publishing: false,
 allow_symbol_change: true,
 container_id: "tradingview",

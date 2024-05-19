@@ -247,16 +247,16 @@ const [chartStats, setChartStats] = useState<chartData>()
                     />
                         <div className="flex flex-col sc1:flex-row gap-1 sc1:gap-3 sc1:border-r sc1:border-r-[#2C2D2D] px-4 py-2  ">
                           <span className="text-black sc1:hidden dark:text-white text-xl font-bold sc1:text-[0.7rem] sc1:font-normal">
-                            ${data.token}
+                            {data.token}
                           </span>
                           <span className="text-green-600 sc1:w-fit sc1:h-full sc1:flex  sc1:text-xl sc1:text-white hidden sc1:block  font-bold text-[0.9rem]">
-                            {Math.round(latestPrice[data.token] * 10) / 10}
+                          {"$"+Math.round(latestPrice[data.token] * 10) / 10}
                           </span>
                           <span
                         className={
                           percentageChange.includes("+")
-                            ? "text-[#0cf3c4] text-lg"
-                            : "text-red-500 text-lg"
+                            ? "text-[#0cf3c4] text-lg hidden sc1:flex"
+                            : "text-red-500 text-lg hidden sc1:flex"
                         }
                       >
                         {percentageChange}
@@ -268,7 +268,7 @@ const [chartStats, setChartStats] = useState<chartData>()
                       </div>
                       <div className="sc1:hidden flex flex-col">
                         <span className="text-white font-bold text-[1rem] sc1:text-[0.7rem]">
-                          {Math.round(latestPrice[data.token] * 10) / 10}
+                        {"$"+Math.round(latestPrice[data.token] * 10) / 10}
                         </span>
                         {/* <span className={percentageChange.includes("+") ?  'text-[#0cf3c4]' : "text-red-500"}>{percentageChange}</span> */}
                       </div>
