@@ -405,18 +405,18 @@ const page = () => {
     }
   ]
   return (
-    <div className='w-full flex justify-center items-center'>
-    <div className='flex flex-col justify-center items-center gap-[1vw] m-[3vw] w-3/5'>
-      <h1 className='text-white font-extrabold text-2xl self-start '>KiloEx Trading Leaderboard</h1>
+    <div className='w-full flex justify-center items-center sc1:my-0 my-10'>
+    <div className='flex flex-col justify-center items-center gap-10 sc1:gap-[1vw] m-[3vw] w-[90%] sc1:w-3/5'>
+      <h1 className='text-white font-extrabold text-2xl self-start '>Remex Trading Leaderboard</h1>
       <div className='flex flex-col gap-[1vw] bg-[#141414] p-[2vw] rounded-xl w-full'>
-        <div className='flex text-zinc-500 items-center text-center jusitfy-center font-semibold text-md w-full'>
+        <div className='flex text-zinc-500 items-center text-center jusitfy-center font-semibold text-[0.6rem] sc1:text-[0.8rem] w-full'>
           <div className=' w-1/2'>Rank</div>
           <div className=' w-full'>Trader</div>
-          <div className=' w-full'>Margin USD</div>
+          <div className=' w-full justify-center hidden sc1:flex'>Margin USD</div>
           <div className=' w-full'>PNL USD</div>
-          <div className=' w-full'>PNL%</div>
-          <div className=' w-full'>Winrate</div>
-          <div className=' w-full'>Trades</div>
+          <div className=' w-full justify-center hidden sc1:flex'>PNL%</div>
+          <div className=' w-full hidden sc1:flex justify-center'>Winrate</div>
+          <div className=' w-full hidden sc1:flex justify-center'>Trades</div>
           <div className=' w-full'>Claim</div>
         </div>
         {/* <hr className='h-px bg-gray-200 border-0 dark:bg-gray-700 w-[80vw]'/> */}
@@ -424,7 +424,7 @@ const page = () => {
         {
           Leaderboard.map((data,index)=>{
             return(
-                <div className='flex font-normal text-center items-center justify-center text-sm hover:bg-neutral-800 w-full px-4 py-2 rounded-xl'>
+                <div className='flex font-normal text-center items-center justify-center text-[0.8rem] sc1:text-sm hover:bg-neutral-800 w-full px-4 py-2 rounded-xl'>
                   <div className='flex w-1/2'>
                   {index + 1 > 3 ? (
                               index + 1
@@ -438,12 +438,12 @@ const page = () => {
                             )}
                   </div>
                   <div className='w-full'>{data.Trading}</div>
-                  <div className='w-full'>{data.Margin}</div>
+                  <div className='w-full hidden sc1:flex justify-center'>{data.Margin}</div>
                   <div className='w-full'>{data.USD}</div>
-                  <div className='w-full'>{data.PNL}</div>
-                  <div className='w-full'>{data.Winrate}</div>
-                  <div className='w-full'>{data.Trades}</div>
-                  <div className='w-full flex items-center justify-center'><button type="button" className="bg-[#3B1A91] text-white rounded-lg text-[0.8rem] text-center px-2 py-1.5">Claim now</button></div>
+                  <div className='w-full hidden sc1:flex justify-center'>{data.PNL}</div>
+                  <div className='w-full hidden sc1:flex justify-center'>{data.Winrate}</div>
+                  <div className='w-full hidden sc1:flex justify-center'>{data.Trades}</div>
+                  <div className='w-full flex items-center justify-center '><button type="button" className="bg-[#3B1A91] text-white rounded-lg text-[0.8rem] text-center px-2 py-1.5">Claim now</button></div>
                 </div>
             )
           })
