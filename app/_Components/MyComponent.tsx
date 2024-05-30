@@ -5,7 +5,7 @@ import userContext from "../_context/userContext";
 // Make sure that this component is wrapped with ConnectKitProvider
 const MyComponent = () => {
   const {user,setUser} = useContext(userContext);
-  const { address} = useAccount();
+  const {address} = useAccount();
   if(address){
     setUser(address);
   }

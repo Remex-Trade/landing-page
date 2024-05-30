@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CiWallet } from "react-icons/ci";
@@ -7,14 +7,22 @@ import { GoTrophy } from "react-icons/go";
 import { HiSpeakerphone } from "react-icons/hi";
 import { IoPeopleOutline } from "react-icons/io5";
 import { RiCoupon3Line } from "react-icons/ri";
+// import usersProvider from "../../_Components/Wallet";
+import userContext from "../../_context/userContext";
+import { useAccount } from "wagmi";
+import WalletsProvider from "../../_Components/Wallet";
 
 
 const page = () => {
   const [selected, setSelected] = useState(0);
   const [time, setTime] = useState(0);
   const [code, setCode] = useState("zi7uc68j");
-  const [wallet, setWallet] = useState(false);
-
+  // const [user, setuser] = useState(false);
+  const {address} = useAccount();
+  const {user,setUser} = useContext(userContext);
+  if(address){
+    setUser(address);
+  }
   return (
     <div>
       <div
@@ -40,7 +48,7 @@ const page = () => {
           </div>
           <div className="text-sm font-light">
             <span>
-              Get up to 30% rebate when you invite friends to KiloEx!{" "}
+              Get up to 30% rebate when you invite friends to Remex!{" "}
             </span>
             <Link href="#" className="text-blue-400 hover:underline">
               View Rules
@@ -54,7 +62,7 @@ const page = () => {
             <span className="text-yellow-400">$4539.00</span>
           </div>
         </div>
-        {wallet && (
+        {user && (
           <div className="bg-[#262626] rounded-xl w-[25%]">
             <div className="px-4 py-4 text-center border-b-2 border-b-[#373636]">
               Create Invitation Code and Get up to 30% Referral Commission
@@ -71,7 +79,7 @@ const page = () => {
                 (no uppercase letters and symbols), up to 20 characters long and
                 can be created only once.
               </p>
-              <button className="bg-[#0CF3C4] flex justify-center items-center gap-2 text-black text-md rounded-md px-3 py-2">
+              <button className="bg-[#3B1A91] flex justify-center items-center gap-2 text-white text-md rounded-md px-3 py-2">
                 Create Now
               </button>
             </div>
@@ -93,7 +101,7 @@ const page = () => {
               Dashboard
             </button>
             </Link>
-            {wallet && (
+            {user && (
               <>
               <Link href="#Referrals"  >
                 <button
@@ -140,11 +148,11 @@ const page = () => {
             <div className="flex justify-start flex-col items-start gap-8">
               <div id="Dashboard" className="text-2xl font-bold  flex items-center gap-4">
                 {" "}
-                <CiWallet color="#0CF3C4" size={40} />
+                <CiWallet color="#3B1A91" size={40} />
                 Dashboard
               </div>
               <div className="w-full h-full bg-[#141515] flex items-center justify-center p-8 rounded-xl">
-                {wallet ? (
+                {user ? 
                   <div className="flex items-start justify-center w-full flex-col gap-6">
                     <div className="flex items-start justify-center w-full flex-col gap-6">
                       <span className="text-sm underline decoration-dashed">
@@ -254,19 +262,13 @@ const page = () => {
                       </div>
                     </div>
                   </div>
-                ) : (
-                  <button
-                    className="bg-[#0CF3C4] flex items-center gap-2 text-black text-[0.8rem] rounded-md px-3 py-2"
-                    onClick={() => setWallet(true)}
-                  >
-                    <CiWallet color="black" size={20} />
-                    Connect Wallet
-                  </button>
+                 : (
+                  <WalletsProvider/>
                 )}
               </div>
             </div>
           </div>
-          {wallet && (
+          {user && (
             <>
               <div id="Referrals" className="w-1/2 px-4 m-10 ">
                 <div className="flex justify-start flex-col items-start gap-8">
@@ -295,7 +297,7 @@ const page = () => {
                           and numbers (no uppercase letters and symbols), up to
                           20 characters long and can be created only once.
                         </p>
-                        <button className="bg-[#0CF3C4] flex justify-center items-center gap-2 text-black text-md rounded-md px-3 py-2">
+                        <button className="bg-[#3B1A91] flex justify-center items-center gap-2 text-white text-md rounded-md px-3 py-2">
                           Create Now
                         </button>
                       </div>
@@ -306,7 +308,7 @@ const page = () => {
               <div id="Commission" className="w-1/2 px-4 m-10 ">
                 <div className="flex justify-start flex-col items-start gap-8">
                   <div className="text-2xl font-bold  flex items-center gap-4">
-                    <RiCoupon3Line color="#0CF3C4" size={40} />
+                    <RiCoupon3Line color="#3B1A91" size={40} />
                     Commission Rebate
                   </div>
                   <div className="w-full h-full bg-[#141515] flex flex-col items-center justify-center py-8 rounded-xl">
@@ -325,9 +327,9 @@ const page = () => {
                           placeholder="Enter Referral Code"
                         />
                         <p className="text-[0.7rem] px-4 text-gray-300 text-left">
-                        You can use the referrer's invitation code or use KiloEx invitation Code
+                        You can use the referrer's invitation code or use Remex invitation Code
                         </p>
-                        <button className="bg-[#0CF3C4] flex justify-center items-center gap-2 text-black text-md rounded-md px-3 py-2">
+                        <button className="bg-[#3B1A91] flex justify-center items-center gap-2 text-white text-md rounded-md px-3 py-2">
                           Confirm
                         </button>
                       </div>
@@ -399,7 +401,7 @@ const page = () => {
                           <div className="basis-3/4">{data.trader}</div>
                           <div className="basis-3/4">{data.tradingInvites}</div>
                           <div className="basis-3/4 ">{data.referral}</div>
-                          <button className="basis-2/4 bg-[#0CF3C4] rounded-lg text-black text-sm px-2 py-2 ">Claim</button>
+                          <button className="basis-2/4 bg-[#3B1A91] rounded-lg text-white text-sm px-2 py-2 ">Claim</button>
                         </div>
                       </div>
                     );
