@@ -443,7 +443,7 @@ const page = () => {
                   <div className='w-full'>{data.PNL}</div>
                   <div className='w-full'>{data.Winrate}</div>
                   <div className='w-full'>{data.Trades}</div>
-                  <div className='w-full flex items-center justify-center'><button type="button" className="bg-[#0cf3c4] text-black rounded-lg text-[0.8rem] text-center px-2 py-1.5">Claim now</button></div>
+                  <div className='w-full flex items-center justify-center'><button type="button" className="bg-[#3B1A91] text-white rounded-lg text-[0.8rem] text-center px-2 py-1.5">Claim now</button></div>
                 </div>
             )
           })

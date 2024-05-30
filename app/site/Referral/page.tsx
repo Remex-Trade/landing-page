@@ -350,7 +350,7 @@ const page = () => {
                   <button
                     className={`hover:text-white text-sm ${
                       time == 0 &&
-                      "border-b-2 border-b-white h-full text-white transition transition-all  ease-linear"
+                      "border-b-2 border-b-white h-full text-white transition  ease-linear"
                     }`}
                     onClick={() => {
                       setTime(0);
@@ -361,7 +361,7 @@ const page = () => {
                   <button
                     className={`hover:text-white text-sm ${
                       time == 1 &&
-                      "border-b-2 border-b-white h-full text-white transition transition-all  ease-linear"
+                      "border-b-2 border-b-white h-full text-white transition  ease-linear"
                     }`}
                     onClick={() => {
                       setTime(1);
