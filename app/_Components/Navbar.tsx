@@ -47,7 +47,7 @@ const Navbar = () => {
             <WalletsProvider />
               </div>
           </div>
-          <div className="w-10 h-full">
+          <div className="w-10 h-full sc1:hidden flex">
             {menuOpen?
             <IoIosClose size={30} onClick={()=>setMenuOpen(false)}/>
             :
