@@ -127,7 +127,7 @@ export default function Home() {
                   </button>
                 </Link>
                 <Link href="/site/Trade">
-                  <button className="w-[40vw] h-[10%] text-sm sc1:text-lg sc1:w-full sc1:h-[2.5vw] sc1:px-6 sc1:py-1 rounded-3xl bg-transparent text-[#371D8A] border border-2 border-[#371D8A] hover:bg-violet-800 hover:text-white px-2 py-2">
+                  <button className="w-[40vw] h-[10%] text-sm sc1:text-lg sc1:w-full sc1:h-[2.5vw] sc1:px-6 sc1:py-1 rounded-3xl bg-transparent text-[#371D8A] border-2 border-[#371D8A] hover:bg-violet-800 hover:text-white px-2 py-2">
                     Learn more
                   </button>
                 </Link>

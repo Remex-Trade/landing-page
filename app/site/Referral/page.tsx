@@ -18,10 +18,14 @@ const page = () => {
   const [time, setTime] = useState(0);
   const [code, setCode] = useState("zi7uc68j");
   // const [user, setuser] = useState(false);
-  const {address} = useAccount();
+  const {address,isDisconnected} = useAccount();
   const {user,setUser} = useContext(userContext);
+  console.log(user);
   if(address){
     setUser(address);
+  }
+  if(isDisconnected){
+    setUser(null);
   }
   return (
     <div>
@@ -62,7 +66,7 @@ const page = () => {
             <span className="text-yellow-400">$4539.00</span>
           </div>
         </div>
-        {user && (
+        {!user && (
           <div className="bg-[#262626] rounded-xl w-[25%]">
             <div className="px-4 py-4 text-center border-b-2 border-b-[#373636]">
               Create Invitation Code and Get up to 30% Referral Commission
