@@ -141,41 +141,38 @@ export default function Home() {
                 id="ellipse"
                 className="w-[40vw] h-[40vw] absolute z-[0] rounded-full bg-gradient-to-b from-[#FF0A6C26] to-[#2D27FF26] -right-60 blur"
               ></div>
-              <div className="flex gap-[2vw] w-full relative z-[2]" style={{whiteSpace:"nowrap"}}>
-
-                <AnimatePresence>
-                  
+              <div className="flex gap-[2vw] w-fit ml-[3vw] relative z-[2]">
                 {data.map((p) => {
                   return (
                     <motion.div
-                      initial={{x:0}}
-                      animate={{x:"200%"}}
+                      // ref={ref}
+                      // style={{x:x2}}
+                      initial={{ x: "0" }}
+                      animate={{ x: "200%" }}
                       transition={{
                         ease: "linear",
-                        duration:10,
+                        duration: 10,
                         repeat: Infinity,
                         repeatDelay: 0,
                       }}
                       id="cards"
                       className="flex  gap-[2vw] bg-[#0D0F14] w-[70vw] sc1:w-[23vw] h-[4vw] items-center justify-center mt-[2vw] rounded-xl py-9 px-4 sc1:py-11 sc1:px-8 shadow-sc1 shadow-black"
-                      
                     >
                       <div
                         id="Image"
-                        className="rounded-full overflow-hidden items-center sc1:w-[20%] w-[] justify-center "
+                        className="rounded-full items-center w-[20%] justify-center "
                       >
                         <Image
                           src={`${
                             `/Images/crypto/${p.pair.toLowerCase()}.png`
                           }`}
-                          width={20}
-                          height={20}
-                          sizes="vw"
+                          width={500}
+                          height={500}
                           alt="crypto"
-                          className=" w-fit h-full"
+                          className="rounded-full"
                         />
                       </div>
-                      <div id="name" className="flex flex-col text-sm sc1:text-md">
+                      <div id="name" className="flex flex-col ">
                         <p>{p.pair}</p>
                         <p>{p.pair}</p>
                       </div>
@@ -183,7 +180,7 @@ export default function Home() {
                         <div className="text-lg sc1:text-2xl font-extralight text-zinc-400 self-end">
                           ${p.price}
                         </div>
-                        <div className="flex text-[0.6rem] sc1:text-[0.8rem] self-end text-zinc-400 gap-1 sc1:gap-3">
+                        <div className="flex text-[0.6rem] sc1:text-[0.8rem] self-end text-zinc-400 gap-3">
                           <div className="flex gap-1">
                             <span>CHG</span>
                             <span
@@ -203,9 +200,9 @@ export default function Home() {
                     </motion.div>
                   );
                 })}
-                
-                </AnimatePresence>
               </div>
+                
+           
 
               <div className="flex gap-[2vw] w-fit ml-[3vw] relative z-[2]">
                 {data2.map((p) => {
