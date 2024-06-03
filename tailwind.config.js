@@ -7,14 +7,11 @@ module.exports = {
   ],
   theme: {
     screens:{
-      "sc1":"1400px",
-      "sc2":"1500px",
+      "md":"768px",
+      "sc1":"1024px",
+      "sc2":"1440px",
     },
     extend: {
-      screens:{
-        "sc1":"1400px",
-        "sc2":"1500px"
-      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
