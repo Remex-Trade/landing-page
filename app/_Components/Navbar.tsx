@@ -61,10 +61,8 @@ const Navbar = () => {
     <AnimatePresence>
     {open &&
     <>
-    <div className="sc1:hidden w-[100vw] h-[95vh] bg-black absolute z-40 opacity-50">
-
-    </div>
-    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.2}} exit={{opacity:0}} className="sc1:hidden w-[100vw] h-[90vh] flex items-center justify-center absolute z-50 ">
+    <div className=" w-[100vw] h-[95vh] bg-black absolute z-40 opacity-50"> </div>
+    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.2}} exit={{opacity:0}} className=" w-[100vw] h-[90vh] sc1:w-[30vw] sc1:h-[25vh] flex items-center justify-center absolute z-50  ">
     <div className="w-[80vw] h-[70vw] bg-[#2B2B2B] rounded-xl flex flex-col">
           <div className="flex border-b border-b-slate-500 px-4 py-3 justify-between h-fit w-full">
               <span className="text-sm text-slate-200 font-bold">Select Network</span>
@@ -84,6 +82,7 @@ const Navbar = () => {
           </div>
     </div>
     </motion.div>
+          
   </>
   }
   </AnimatePresence>

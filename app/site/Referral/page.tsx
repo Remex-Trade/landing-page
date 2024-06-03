@@ -31,18 +31,19 @@ const page = () => {
     <div>
       <div
         id="heading"
-        className="bg-[#141515] w-[100vw] h-full py-16  gap-10 flex items-center justify-center"
+        className="bg-[#141515] w-[100vw] h-full py-16  gap-10 flex items-center justify-center flex-col sc1:flex-row"
       >
-        <div className="flex items-start flex-col gap-6">
-          <div>
+        <div className="flex items-start flex-col gap-6 p-10 sc1:p-0">
+          <div className="">
             <Image
               src="/Images/referral.svg"
               alt="Profile Picture"
               height={200}
               width={200}
+              className="w-[30vw] h-[30vw] sc1:w-[20vw] sc1:h-[10vw]"
             />
           </div>
-          <div className="flex flex-col text-7xl font-black ">
+          <div className="flex flex-col text-4xl font-black ">
             <span className="bg-gradient-to-tr from-[#39A2FA] via-[#33CBE2] to-[#37F6C9] text-transparent bg-clip-text">
               Refer Friends
             </span>
@@ -66,8 +67,8 @@ const page = () => {
             <span className="text-yellow-400">$4539.00</span>
           </div>
         </div>
-        {!user && (
-          <div className="bg-[#262626] rounded-xl w-[25%]">
+        {user && (
+          <div className="bg-[#262626] rounded-xl sc1:w-[30%] sc2:w-[25%] md:w-[60%] w-[90%]">
             <div className="px-4 py-4 text-center border-b-2 border-b-[#373636]">
               Create Invitation Code and Get up to 30% Referral Commission
             </div>
@@ -90,10 +91,10 @@ const page = () => {
           </div>
         )}
       </div>
-      <div>
-        <div className="w-[100vw] flex flex-col items-center justify-center  py-2">
-          <div className="flex justify-start border-b-[2px] border-b-[#141515] items-center w-1/2 gap-10 text-gray-600 font-bold">
-            <Link href="#Dashboard"  >
+      <div className="w-full">
+        <div className="w-[100%] sc1:w-[100vw] flex flex-col items-center justify-center  py-2">
+          <div className="flex text-[0.7em] md:text-[0.9rem] sc1:text-lg justify-start border-b-[2px] border-b-[#141515] items-center w-[90%] sc1:w-1/2 gap-5 sc1:gap-10 text-gray-600 font-bold">
+            <Link href="#Dashboard">
             <button
               className={`hover:text-white ${
                 selected == 0 && "border-b-2 border-b-white h-full text-white"
@@ -148,14 +149,14 @@ const page = () => {
             </button>
             </Link>
           </div>
-          <div className="w-1/2 px-4 m-10">
-            <div className="flex justify-start flex-col items-start gap-8">
+          <div className="sc1:w-1/2 md:w-[70%] w-[90%]  md:px-4 my-8">
+            <div className="flex justify-start flex-col items-start gap-8 w-full">
               <div id="Dashboard" className="text-2xl font-bold  flex items-center gap-4">
                 {" "}
                 <CiWallet color="#3B1A91" size={40} />
                 Dashboard
               </div>
-              <div className="w-full h-full bg-[#141515] flex items-center justify-center p-8 rounded-xl">
+              <div className="w-full h-full bg-[#141515] flex flex-col sc1:flex-row items-center justify-center p-8 rounded-xl">
                 {user ? 
                   <div className="flex items-start justify-center w-full flex-col gap-6">
                     <div className="flex items-start justify-center w-full flex-col gap-6">
@@ -164,59 +165,20 @@ const page = () => {
                       </span>
                       <span className="text-4xl font-bold">$0.0000</span>
                     </div>
-                    <div className="flex gap-4">
-                      <div className="rounded-xl bg-[#262626] gap-4 px-4 py-3 flex">
+                    <div className="flex gap-4 sc1:flex-row flex-col w-full md:w-[50%]">  
+                      <div className="rounded-xl bg-[#262626] gap-4 px-4 py-3 flex justify-between">
                         <Image
-                          src="/Images/dashboard1.svg"
+                          src="/Images/crypto/ftm.png"
                           height={35}
                           width={35}
                           alt="token"
+                          className="rounded-full"
                         />
                         <div className="flex flex-col justify-center items-start">
                           <span className="font-bold text-sm text-white">
                             $0.0000
                           </span>
-                          <span className="text-sm text-gray-300 ">opBNB</span>
-                        </div>
-                        <button
-                          disabled
-                          className="rounded-xl border border-gray-500 text-sm text-gray-500 px-3"
-                        >
-                          Claim
-                        </button>
-                      </div>
-                      <div className="rounded-xl bg-[#262626] gap-4 px-4 py-3 flex">
-                        <Image
-                          src="/Images/dashboard2.svg"
-                          height={35}
-                          width={35}
-                          alt="token"
-                        />
-                        <div className="flex flex-col justify-center items-start">
-                          <span className="font-bold text-sm text-white">
-                            $0.0000
-                          </span>
-                          <span className="text-sm text-gray-300 ">Manta</span>
-                        </div>
-                        <button
-                          disabled
-                          className="rounded-xl border border-gray-500 text-sm text-gray-500 px-3"
-                        >
-                          Claim
-                        </button>
-                      </div>
-                      <div className="rounded-xl bg-[#262626] gap-4 px-4 py-3 flex">
-                        <Image
-                          src="/Images/dashboard3.svg"
-                          height={35}
-                          width={35}
-                          alt="token"
-                        />
-                        <div className="flex flex-col justify-center items-start">
-                          <span className="font-bold text-sm text-white">
-                            $0.0000
-                          </span>
-                          <span className="text-sm text-gray-300 ">BNB</span>
+                          <span className="text-sm text-gray-300 ">FTM</span>
                         </div>
                         <button
                           disabled
@@ -226,62 +188,48 @@ const page = () => {
                         </button>
                       </div>
                     </div>
-                    <div className="w-full">
+                    <div className="w-full flex flex-col sc1:flex-row ">
                       <div className="flex gap-4">
                         <span className="text-sm font-bold">Claimed</span>
                         <span className="text-sm font-bold">$0.0000</span>
-                        <span className="text-sm font-bold text-gray-600">
+                        <span className="text-sm font-bold text-gray-600  sc1:flex hidden">
                           {"("}
                         </span>
-                        <span className="text-sm font-bold text-gray-600 flex gap-2">
+                        <span className="text-sm font-bold text-gray-600 gap-2 sc1:flex hidden">
                           <Image
-                            src="/Images/dashboard1.svg"
+                            src="/Images/crypto/ftm.png"
                             width={20}
                             height={20}
                             alt="referral1"
+                            className="rounded-full"
                           />
                           <span>$0.0000</span>
                         </span>
-                        <span className="text-sm font-bold text-gray-600 flex gap-2">
-                          <Image
-                            src="/Images/dashboard2.svg"
-                            width={20}
-                            height={20}
-                            alt="referral2"
-                          />
-                          <span>$0.0000</span>
-                        </span>
-                        <span className="text-sm font-bold text-gray-600 flex gap-2">
-                          <Image
-                            src="/Images/dashboard3.svg"
-                            width={20}
-                            height={20}
-                            alt="referral3"
-                          />
-                          <span>$0.0000</span>
-                        </span>
-                        <span className="text-sm font-bold text-gray-600">
+                       
+                        <span className="text-sm font-bold text-gray-600 sc1:flex hidden">
                           {")"}
                         </span>
                       </div>
                     </div>
                   </div>
                  : (
+                  <div className="w-fit flex items-center justify-center">
                   <WalletsProvider/>
+                  </div>
                 )}
               </div>
             </div>
           </div>
           {user && (
             <>
-              <div id="Referrals" className="w-1/2 px-4 m-10 ">
-                <div className="flex justify-start flex-col items-start gap-8">
+              <div id="Referrals" className=" sc1:w-1/2 md:w-[70%]  px-4 sc1:px-4  my-10">
+                <div className="flex justify-start w-full  flex-col items-start gap-8">
                   <div className="text-2xl font-bold  flex items-center gap-4">
                     <IoPeopleOutline color="gold" size={40} />
-                    Referral
+                Referral
                   </div>
-                  <div className="w-full h-full bg-[#141515] flex flex-col items-center justify-center py-8 rounded-xl">
-                    <div className="bg-[#262626] rounded-xl w-[50%]">
+                  <div className="w-full  h-full bg-[#141515] flex flex-col items-center justify-center py-8 rounded-xl">
+                    <div className="bg-[#262626] rounded-xl w-[90%] md:w-[70%] sc1:w-[70%] sc2:w-[60%]">
                       <div className="px-4 py-4 text-center border-b-2 border-b-[#373636]">
                         Create Invitation Code and Get up to 30% Referral
                         Commission
@@ -296,7 +244,7 @@ const page = () => {
                           value={code}
                           onChange={(e) => setCode(e.target.value)}
                         />
-                        <p className="text-[0.7rem] px-4 text-gray-300 text-left">
+                        <p className="text-[0.7rem] px-2 md:px-4 text-gray-300 text-left">
                           Generate referral codes using only lowercase letters
                           and numbers (no uppercase letters and symbols), up to
                           20 characters long and can be created only once.
@@ -309,14 +257,14 @@ const page = () => {
                   </div>
                 </div>
               </div>
-              <div id="Commission" className="w-1/2 px-4 m-10 ">
-                <div className="flex justify-start flex-col items-start gap-8">
+              <div id="Commission" className="sc1:w-1/2 md:w-[70%] w-full px-4 md:my-10 ">
+                <div className="flex justify-start flex-col items-start gap-8 w-full">
                   <div className="text-2xl font-bold  flex items-center gap-4">
                     <RiCoupon3Line color="#3B1A91" size={40} />
                     Commission Rebate
                   </div>
                   <div className="w-full h-full bg-[#141515] flex flex-col items-center justify-center py-8 rounded-xl">
-                    <div className="bg-[#262626] rounded-xl w-[50%]">
+                    <div className="bg-[#262626] rounded-xl w-[90%] md:w-[70%] sc2:w-[60%]">
                       <div className="px-4 py-4 text-center border-b-2 border-b-[#373636]">
                       Bind Invitation Code and Enjoy 5% ~ 20% Fee Rebate
                       </div>
@@ -343,7 +291,7 @@ const page = () => {
               </div>
             </>
           )}
-          <div className="w-1/2 px-4 m-10 ">
+          <div className="sc1:w-1/2 md:w-[70%] w-[90%] sc1:px-4 m-10 ">
             <div className="flex justify-start flex-col items-start gap-8">
               <div id="Leaderboard" className="text-2xl font-bold  flex items-center gap-4">
                 <GoTrophy color="gold" size={40} />
@@ -374,22 +322,22 @@ const page = () => {
                     Total
                   </button>
                 </div>
-                <div className="w-[95%] flex px-2 py-4 text-sm text-gray-400 border-b-[1px] border-b-gray-800">
-                  <div className="basis-1/4">Rank</div>
-                  <div className="basis-3/4">Traders</div>
-                  <div className="basis-3/4">Trading Invites</div>
-                  <div className="basis-3/4 underline decoration-dashed">
+                <div className="w-full flex px-2 py-4 text-sm text-gray-400 border-b-[1px] border-b-gray-800">
+                  <div className="basis-1/4 mr-2 flex justify-center">Rank</div>
+                  <div className="basis-3/4 flex justify-center">Traders</div>
+                  <div className="basis-3/4 flex justify-center">Trading Invites</div>
+                  <div className="basis-3/4 underline decoration-dashed flex justify-center">
                     Referral Income
                   </div>
-                  <div className="basis-2/4 px-2"> 
+                  <div className="basis-2/4 px-2 flex justify-center"> 
                       Claim 
                   </div>
                 </div>
-                <div className="w-[95%]  px-2 py-4 text-md text-white border-b-[1px] border-b-gray-800 gap-8">
+                <div className="w-full  px-2 py-4 text-md text-white border-b-[1px] border-b-gray-800 gap-8">
                   {leaderboardData.map((data, index) => {
                     return (
                       <div className="w-full flex flex-col gap-2">
-                        <div className="flex items-center justify-start px-4 py-2 hover:bg-neutral-800 rounded-lg">
+                        <div className="flex items-center justify-start md:px-4 px-1 py-2 hover:bg-neutral-800 rounded-lg">
                           <div className="basis-1/4">
                             {index + 1 > 3 ? (
                               index + 1
@@ -402,9 +350,9 @@ const page = () => {
                               />
                             )}
                           </div>
-                          <div className="basis-3/4">{data.trader}</div>
-                          <div className="basis-3/4">{data.tradingInvites}</div>
-                          <div className="basis-3/4 ">{data.referral}</div>
+                          <div className="basis-3/4 flex justify-center">{data.trader}</div>
+                          <div className="basis-3/4 flex justify-center">{data.tradingInvites}</div>
+                          <div className="basis-3/4 flex justify-center">{data.referral}</div>
                           <button className="basis-2/4 bg-[#3B1A91] rounded-lg text-white text-sm px-2 py-2 ">Claim</button>
                         </div>
                       </div>
