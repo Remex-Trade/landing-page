@@ -17,7 +17,7 @@ const OptionUI = ({ option,topOption,showPopup,setShowPopup}) => {
     setPercentage(Math.round(e.target.value));
   };
   return (
-    <div className="bg-white text-sm dark:bg-[#0f0e0f] hover:cursor-pointer overflow-hidden">
+    <div className="bg-white text-sm dark:bg-[#0f0e0f] hover:cursor-pointer overflow-hidden md:w-[60%] w-full sc1:w-full min-[450px]:w-[60%]">
         <div className="flex flex-col px-6 py-2 w-full h-content gap-4 overflow-hidden ">
           <div className="w-full h-full flex justify-center items-center">
 

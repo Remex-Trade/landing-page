@@ -141,7 +141,7 @@ const [chartStats, setChartStats] = useState<chartData>()
       <div className="w-full h-full flex items-start">
         <div
           id="right-order"
-          className="h-full hidden sc1:flex sc1:flex-col w-full sc1:w-[25%] items-start"
+          className="h-full hidden sc1:flex sc1:flex-col w-full md:w-[60%]  sc1:w-[35%] sc2:w-[25%] items-start"
         >
           <div onClick={()=>setIsRightOrder(!isRightOrder)} className="w-full relative z-30 h-full hidden sc1:flex justify-between items-center py-4 px-4 border border-[#2C2D2D] bg-[#0F0E0F]">
             <div className="flex gap-4 items-center">
@@ -221,12 +221,12 @@ const [chartStats, setChartStats] = useState<chartData>()
           <div className="flex w-full h-full bg-[#F7F7F8] dark:bg-black">
             <div
               className={`flex flex-col h-full m-0 sc1:m-0 mr-0 justify-start  items-start gap:0 sc1:gap-0 ${
-                show ? "sc1:w-[100%] w-[100vw]" : "sc1:w-[74%] w-[100vw]"
+                show ? "sc1:w-[100%] w-[100vw]" : "md:w-[70%] sc1:w-[60%] w-[100vw]"
               }`}
             >
               <div
                 id="middle-top"
-                className=" w-full  flex sc1:gap-2 flex-col bg-white text-black dark:text-white dark:bg-[#0F0E0E] dark:border-[#2C2D2D]  dark:border-[1px] shadow-md h-fit "
+                className=" w-full  flex sc1:gap-2 flex-col bg-white text-black dark:text-white dark:bg-[#0F0E0E] dark:border-[#2C2D2D]  dark:border-[1px] shadow-md h-full"
               >
                 <div className="w-full h-[10%] sc1:border-b sc1:border-b-[#2C2D2D] sc1:h-[20%] px-8 py-4 sc1:px-0 sc1:py-0 flex flex-col sc1:flex-row sc1:gap-2 gap-2  text-[0.7rem] justify-start items-start sc1:items-center">
                   <div
@@ -245,11 +245,9 @@ const [chartStats, setChartStats] = useState<chartData>()
                       alt="cryptoImage"
                       className="rounded-full h-100 w-100 flex sc1:hidden"
                     />
-                        <div className="flex flex-col sc1:flex-row gap-1 sc1:gap-3 sc1:border-r sc1:border-r-[#2C2D2D] px-4 py-2  ">
-                          <span className="text-black sc1:hidden dark:text-white text-xl font-bold sc1:text-[0.7rem] sc1:font-normal">
-                            {data.token}
-                          </span>
-                          <span className="text-green-600 sc1:w-fit sc1:h-full sc1:flex  sc1:text-xl sc1:text-white hidden sc1:block  font-bold text-[0.9rem]">
+                        <div className="flex flex-col sc1:flex-row gap-1 sc1:justify-between sc1:w-[200%] h-full sc1:border-r sc1:border-r-[#2C2D2D] px-4 py-2">
+                          
+                          <span className="text-green-600 sc1:h-full   sc1:text-xl sc1:text-white hidden sc1:flex  font-bold text-[0.9rem]">
                           {"$"+Math.round(latestPrice[data.token] * 10) / 10}
                           </span>
                           <span
@@ -276,7 +274,7 @@ const [chartStats, setChartStats] = useState<chartData>()
                   </div>
                   <div className="w-full gap-4 sc1:flex hidden  sc1:gap-0 text-lg">
                     <div className="flex flex-col gap-1 sc1:gap-0 h-[90%] sc1:border-r sc1:border-r-[#2c2d2d] px-4">
-                      <span className="text-black text-[0.72rem] sc1:text-[0.85rem] sc1:dark:text-neutral-400 dark:text-white  ">
+                      <span className="text-black text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 dark:text-white  ">
                         Open Interest(L)
                       </span>
                       <span className="text-[0.7rem] sc1:text-lg sc1:text-white">
@@ -284,7 +282,7 @@ const [chartStats, setChartStats] = useState<chartData>()
                       </span>
                     </div>
                     <div className="flex flex-col gap-1 sc1:gap-0 h-[90%] sc1:border-r sc1:border-r-[#2c2d2d] px-4">
-                      <span className="text-black text-[0.72rem] sc1:text-[0.85rem] sc1:dark:text-neutral-400 dark:text-white  ">
+                      <span className="text-black text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 dark:text-white  ">
                         Open Interest(S)
                       </span>
                       <span className="text-[0.7rem] sc1:text-lg sc1:text-white">
@@ -292,7 +290,7 @@ const [chartStats, setChartStats] = useState<chartData>()
                       </span>
                     </div>
                     <div className="flex flex-col gap-1 sc1:gap-0 h-[90%] sc1:border-r sc1:border-r-[#2c2d2d] px-4">
-                      <span className="text-black text-[0.72rem] sc1:text-[0.85rem] sc1:dark:text-neutral-400 dark:text-white  ">
+                      <span className="text-black text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 dark:text-white  ">
                         Market Sentiment
                       </span>
                       <span className="text-[0.7rem] sc1:text-lg sc1:text-white">
@@ -300,7 +298,7 @@ const [chartStats, setChartStats] = useState<chartData>()
                       </span>
                     </div>
                     <div className="flex flex-col gap-1 sc1:gap-0 h-[90%] sc1:border-r sc1:border-r-[#2c2d2d] px-4">
-                      <span className="text-black text-[0.72rem] sc1:text-[0.85rem] sc1:dark:text-neutral-400 dark:text-white  ">
+                      <span className="text-black text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 dark:text-white  ">
                         Margin Fee:Longs
                       </span>
                       <span className="text-[0.7rem] sc1:text-lg sc1:text-white">
@@ -308,7 +306,7 @@ const [chartStats, setChartStats] = useState<chartData>()
                       </span>
                     </div>
                     <div className="flex flex-col gap-1 sc1:gap-0 h-[90%] sc1:border-r sc1:border-r-[#2c2d2d] px-4">
-                      <span className="text-black text-[0.72rem] sc1:text-[0.85rem] sc1:dark:text-neutral-400 dark:text-white  ">
+                      <span className="text-black text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 dark:text-white  ">
                       Margin Fee:Shorts
                       </span>
                       <span className="text-[0.7rem] sc1:text-lg sc1:text-white">
@@ -384,7 +382,7 @@ const [chartStats, setChartStats] = useState<chartData>()
               >
                 <MiddleBottom />
               </div>
-              <div className="w-full h-full my-10 block sc1:hidden ">
+              <div className=" w-full flex justify-center items-center h-full my-10 flex-col sc1:hidden ">
                 <RightOrder
                   showPopup={showPopup}
                   setShowPopup={setShowPopup}
