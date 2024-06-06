@@ -10,6 +10,7 @@ module.exports = {
       "md":"768px",
       "sc1":"1024px",
       "sc2":"1440px",
+      "sc3":"2560px"
     },
     extend: {
       backgroundImage: {

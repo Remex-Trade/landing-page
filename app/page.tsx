@@ -77,7 +77,7 @@ export default function Home() {
     <>
       <main className="max-w-[100vw] overflow-hidden">
         <AnimatePresence>
-          <div className="w-[100vw] h-[100vh] relative ">
+          <div className="w-[100vw] h-[100vh] relative">
             <Image src="/Images/cubes (1).png" fill objectFit="cover" alt="Backdrop" className="hidden sc1:flex"/>
 
             <div className="w-[100vw] h-[100vh] absolute">
@@ -105,7 +105,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="w-[100vw] h-[100vh] pl-[10vw] absolute flex flex-col sc1:pl-[10vw] pr-[1vw] absolute top-64 z-0 font-bold sc1:font-normal sc1:top-72  sc1:pr-[10vw] sc1:top-72 sc1:items-start sc1:w-[80%] sc2:w-[70%] md:w-[80%]">
+            <div className="w-full h-full sc1:h-screen pl-6 sc1:pl-16  flex flex-col pr-10 relative justify-center z-0 font-bold sc1:font-normal  sc1:items-center sc1:w-[70%] sc2:w-[50%] sc2:pl-32 md:w-[80%]">
               <h1 className="text-4xl mb-[2vw] md:text-5xl font-plusJakarta flex flex-col gap-4 w-full  items-start sc1:text-6xl sc2:text-6xl font-bold">
                 <div>
                   Trade{" "}
@@ -156,7 +156,7 @@ export default function Home() {
                         repeatDelay: 0,
                       }}
                       id="cards"
-                      className="flex  gap-[2vw] bg-[#0D0F14] w-[70vw] md:w-[40vw] sc2:w-[30vw] h-[4vw] items-center justify-center mt-[2vw] rounded-xl py-9 px-4 sc1:py-11 sc1:px-8 shadow-sc1 shadow-black"
+                      className="flex  gap-2 sc1:gap-8 bg-[#0D0F14] w-[80%] md:w-[40%] sc1:w-[15%] sc3:w-[5%] h-[2%] items-center justify-center mt-[2vw] rounded-xl py-2 px-4 sc1:py-2 sc1:px-8 shadow-sc1 shadow-black"
                     >
                       <div
                         id="Image"
@@ -172,7 +172,7 @@ export default function Home() {
                           className="rounded-full"
                         />
                       </div>
-                      <div id="name" className="flex flex-col ">
+                      <div id="name" className="flex flex-col text-[0.8rem] sc1:text-lg">
                         <p>{p.pair}</p>
                         <p>{p.pair}</p>
                       </div>
@@ -342,20 +342,20 @@ export default function Home() {
 
             <div
               id="static cards"
-              className="w-full h-[30vh] sc2:h-[35vh]  flex items-center justify-center gap-8 sc1:gap-6 mt-24 flex-col sc1:flex-row"
+              className="w-full h-[30%] sc2:h-[35%]  flex items-center justify-center gap-8 sc1:gap-6 mt-16 flex-col sc1:flex-row"
             >
               <div
                 id="card1"
-                className="bg-[#131A2A] shadow-sc1  shadow-[#3335480A] max-w-[85%] md:max-w-[60%] sc2:max-w-[35%] h-full rounded-sc1 flex justify-center items-center sc1:max-w-[45%]"
+                className="bg-[#131A2A] shadow-lg  shadow-[#3335480A] w-[80%] h-64  md:w-[40%] sc1:w-[40%] sc2:w-[30%] sc3:w-[20%] rounded-lg flex justify-center items-center"
               >
                 <div
                   id="text"
-                  className="flex flex-col items-center justify-between px-6 py-4 h-full w-2/3  sc1:px-6 sc1:py-10"
+                  className="flex flex-col items-center justify-between px-4 gap-4 py-4 h-full w-2/3  sc1:px-6 sc1:py-10"
                 >
-                  <div id="heading" className="text-md md:text-lg sc1:text-xl">
+                  <div id="heading" className="text-md md:text-md sc2:text-xl">
                     Maximize your potential across crypto and RWAs
                   </div>
-                  <div id="textInside" className="text-[0.7rem] md:text-[0.8rem] sc1:text-[0.9rem] text-gray-500">
+                  <div id="textInside" className="text-[0.7rem] md:text-[0.8rem] sc2:text-[0.9rem] text-gray-500">
                     Our infrastructure provides traders access to upto 100x
                     leverage for major cryptocurrencies, forex and commodities
                     pairs.
@@ -374,16 +374,16 @@ export default function Home() {
               </div>
               <div
                 id="card2"
-                className="bg-[#131A2A] shadow-sc1  shadow-[#3335480A] max-w-[85%] sc2:max-w-[35%]  md:max-w-[60%] h-full rounded-sc1 flex justify-center items-center sc1:max-w-[45%]"
+                className="bg-[#131A2A] shadow-sc1  shadow-[#3335480A]  w-[80%] h-64 md:h-64 rounded-sc1 flex justify-center items-center md:w-[40%] sc1:w-[40%] sc3:w-[20%] sc2:w-[30%]"
               >
                 <div
                   id="text"
                   className="flex flex-col items-center justify-between px-6 py-4 h-full w-2/3 sc1:px-6 sc1:py-10"
                 >
-                  <div id="heading" className="text-md  md:text-lg sc1:text-xl">
+                  <div id="heading" className="text-md  md:text-md sc2:text-xl">
                     Trusted Collateral, Trustless settlement
                   </div>
-                  <div id="textInside" className="text-[0.7rem] md:text-[0.8rem] sc1:text-[0.9rem] text-gray-500">
+                  <div id="textInside" className="text-[0.7rem] md:text-[0.8rem] sc2:text-[0.9rem] text-gray-500">
                     All transactions are settled onchain, and powered by
                     Circle’s USDC, the most trusted digital dollar in the world
                   </div>
@@ -402,7 +402,7 @@ export default function Home() {
             </div>
             <div
               id="animated cards"
-              className="w-full h-[135vh] relative flex flex-col items-center px-14 py-20 justify-center gap-8 mt-20 sc1:flex-row sc1:h-[40vh] sc2:w-[80%] sc1:my-28 "
+              className="w-full h-full relative flex flex-col items-center px-14 py-20 justify-center gap-8 mt-20 sc1:flex-row sc1:h-[40%] sc2:w-[80%] sc1:my-16 "
             >
               <motion.div
                 //  initial={{width:"40%",height:"35vh"}}
@@ -413,9 +413,9 @@ export default function Home() {
                  }}
                  transition={{ ease: "linear", duration: 0.2 }}
                  id="card1"
-                className="max-w-[100%] md:w-[70%] relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 sc1:py-12 gap-4 flex-col border-[#1B2236] h-[40vh] bg-[#0D111C] sc1:w-2/5 sc1:h-[35vh] sc2:w-[30%]"
+                className="max-w-[100%] md:w-[70%] relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 sc1:py-8 gap-4 flex-col border-[#1B2236] h-64 bg-[#0D111C] sc1:w-2/5 sc1:h-64 sc2:w-[30%]"
               >
-                <div className="text-xl font-bold text-white flex flex-col sc1:text-2xl">
+                <div className="text-xl font-bold text-white flex flex-col sc1:text-xl">
                   <span>Cefi Frontend,</span>
                   <span>Defi Frontend,</span>
                 </div>
@@ -436,9 +436,9 @@ export default function Home() {
                  }}
                  transition={{ ease: "linear", duration: 0.2}}
                  id="card2"
-                className="max-w-[100%] md:w-[70%] relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 sc1:py-12 gap-4 flex-col border-[#1B2236] h-[40vh] bg-[#0D111C] sc1:w-2/5 sc1:h-[35vh] sc2:w-[30%]"
+                className="max-w-[100%] md:w-[70%] relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 sc1:py-8 gap-4 flex-col border-[#1B2236] h-64 bg-[#0D111C] sc1:w-2/5 sc1:h-64 sc2:w-[30%]"
               >
-                <div className="text-xl font-bold text-white flex flex-col sc1:text-2xl">
+                <div className="text-xl font-bold text-white flex flex-col sc1:text-xl">
                   <span>The most advanced market making vaults in DeFi,</span>
                 </div>
                 <div className="text-sm text-gray-500 sc1:text-md">
@@ -458,9 +458,9 @@ export default function Home() {
                  }}
                  transition={{ ease: "linear", duration: 0.2 }}
                  id="card3"
-                className="max-w-[100%] md:w-[70%] relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 sc1:py-12 gap-4 flex-col border-[#1B2236] h-[40vh] bg-[#0D111C] sc1:w-2/5 sc1:h-[35vh] sc2:w-[30%]"
+                className="max-w-[100%] md:w-[70%] relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 sc1:py-8 gap-4 flex-col border-[#1B2236] h-[40%] bg-[#0D111C] sc1:w-2/5 sc1:h-64 sc2:w-[30%]"
               >
-                <div className="text-xl font-bold text-white flex sc1:text-2xl">
+                <div className="text-xl font-bold text-white flex sc1:text-xl">
                   <span>World class security - Powered by the Fantom Network</span>
                 </div>
                 <div className="text-sm text-gray-500 sc1:text-md">
@@ -503,7 +503,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col">
-              <div className="flex w-[100vw] h-[70vh] relative z-10 flex mt-[2vw]">
+              <div className=" w-[100vw] h-[70vh] relative z-10 flex mt-[2vw]">
                 <div className="flex flex-col gap-[1vw] w-[60%] z-0 overflow-hidden absolute h-full items-center justify-center sc1:w-[60%]">
                   <motion.div
                     className="flex gap-[1vw] flex-nowrap "
@@ -643,9 +643,9 @@ export default function Home() {
                     />
                   </motion.div>
                 </div>
-                <div className="ml-[40vw] flex h-full items-center justify-start">
+                <div className="sc2:ml-[40vw] ml-56 flex h-full items-center justify-start">
                   <div className=" flex flex-col gap-[2vw] h-[90%] w-[90vw] sc1:w-[80vw] items-center justify-center px-32 absolute z-20  h-[30vh] blur-[40px] sc1:blur-[120px] bg-[#1C162B] rounded-full  p-[1vw] "></div>
-                  <div className=" flex flex-col gap-[4vw] h-[70%] w-[70vw] sc1:w-[70vw] sc2:w-[50vw] items-start justify-center right-0 px-0 absolute z-30  h-[70vh]  sc1:px-32 pl-10 rounded-full bg-opacity-15 p-[1vw] ">
+                  <div className=" flex flex-col gap-[4vw] h-[70%] w-[70vw] sc1:w-[70vw] sc2:w-[50vw] items-start justify-center right-0 px-0 absolute z-30  h-[70vh]  sc1:pl-32 sc1:pr-10 pl-10 rounded-full bg-opacity-15 p-[1vw] ">
                     <h1 className="text-xl font-bold md:text-3xl sc1:text-5xl">
                       The Best pricing across CeFi and DeFi
                     </h1>
@@ -661,7 +661,7 @@ export default function Home() {
             </div>
             <div
               id="StackedImageSection"
-              className="w-full h-[100vh] bg-[url('/Images/landingpagesection3.png')] bg-no-repeat bg-cover py-10 hidden sc1:hidden sc2:flex"
+              className="w-full h-[100vh] bg-[url('/Images/landingpagesection3.png')] bg-no-repeat bg-cover py-10 hidden sc2:flex"
             >
               <div
                 id="textContent"
@@ -914,7 +914,7 @@ export default function Home() {
                 id="Strokeparteners"
                 className="w-full flex items-start relative justify-start"
               >
-                <div className="text-7xl sc1:text-9xl w-full self-start font-extrabold px-8 sc1:px-56">
+                <div className="text-7xl sc1:text-9xl w-full self-start font-extrabold px-8  px-10 sc2:px-56">
                   Partners
                 </div>
                 <div className="absolute z-1 w-full h-[3vh] sc1:h-[2vh] top-10 sc1:top-24 blur bg-[#16121D]"></div>
