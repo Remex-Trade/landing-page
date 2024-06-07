@@ -2,7 +2,7 @@ import { getStorageContract } from "./contracts";
 import { storageABI } from "./abi/StoageABI";
 import { STORAGE_ADDRESS } from "./address";
 import { readContract } from "@wagmi/core";
-import { config } from "../helpers/lib/coreConfig";
+import { config } from "../helpers/coreConfig";
 
 /**
  * Get Open Trades Count on trading contract.

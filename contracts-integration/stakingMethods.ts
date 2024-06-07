@@ -2,7 +2,7 @@ import { readContract } from "@wagmi/core";
 import { parseEther } from "ethers/lib/utils";
 import { erc20Abi, maxUint256 } from "viem";
 
-import { config } from "../helpers/lib/coreConfig";
+import { config } from "../helpers/coreConfig";
 import { STAKE_TOKEN_ADDRESS, STAKING_ADDRESS } from "./address";
 import { getStakeTokenContract, getStakingContract } from "./contracts";
 import { stakingABI } from "./abi/stakingABI";

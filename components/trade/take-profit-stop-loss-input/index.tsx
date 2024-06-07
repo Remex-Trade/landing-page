@@ -21,7 +21,8 @@ export default function TakeProfitStopLossInput({
     const value = getTpValue(
       tradePrice,
       Number(tradeData.takeProfit),
-      Number(tradeData.leverage)
+      Number(tradeData.leverage),
+      tradeData.longOrShort
     );
     return new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 0,
@@ -42,7 +43,8 @@ export default function TakeProfitStopLossInput({
     const value = getSlValue(
       tradePrice,
       Number(tradeData.stopLoss),
-      Number(tradeData.leverage)
+      Number(tradeData.leverage),
+      tradeData.longOrShort
     );
     return new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 0,

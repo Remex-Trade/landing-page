@@ -56,7 +56,10 @@ const TradeAdjustSidebar = () => {
             tradeData={tradeData}
           />
 
-          <TradeStats />
+          <TradeStats
+            setTradeData={setTradeDataWithKey}
+            tradeData={tradeData}
+          />
         </div>
       </div>
     </>

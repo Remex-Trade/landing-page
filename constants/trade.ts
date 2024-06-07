@@ -13,3 +13,13 @@ export const stopLossOptions = [
 ];
 export const MIN_POSITION_VALUE = 1500;
 export const MAX_POSITION_VALUE = 75000;
+
+export const tradeContractErrors = {
+  MAX_TRADES_PER_PAIR: "Maximum of 3 pairs per trade allowed",
+  MAX_PENDING_ORDERS: "Maximum of 5 pending trades allowed",
+  ABOVE_MAX_POS: "DAI TOKEN limit exceeded (max 75000 with leverage)",
+  BELOW_MIN_POS: "DAI TOKEN insufficient (min 1500 with leverage)",
+  LEVERAGE_INCORRECT: "Leverage must be between 5 - 150",
+  WRONG_TP: "Take profit must be above/below open price for buy/sell orders",
+  WRONG_SL: "Stop loss must be below/above open price for buy/sell orders",
+};
