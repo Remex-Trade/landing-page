@@ -30,24 +30,11 @@ export default function LeverageInput({ tradeData, setTradeData }: Props) {
           />
 
           <div className="absolute z-0 flex w-full justify-between">
-            <div className=" h-full">
-              <div className="rounded-full bg-gray-400 w-1 h-1 "></div>
-            </div>
-            <div className=" h-full">
-              <div className="rounded-full bg-gray-400 w-1 h-1 "></div>
-            </div>
-            <div className=" h-full">
-              <div className="rounded-full bg-gray-400 w-1 h-1 "></div>
-            </div>
-            <div className=" h-full">
-              <div className="rounded-full bg-gray-400 w-1 h-1 "></div>
-            </div>
-            <div className=" h-full">
-              <div className="rounded-full bg-gray-400 w-1 h-1 "></div>
-            </div>
-            <div className=" h-full">
-              <div className="rounded-full bg-gray-400 w-1 h-1 "></div>
-            </div>
+            {leverageOptions.map((item) => (
+              <div key={item} className="h-full">
+                <div className="rounded-full bg-gray-400 w-1 h-1 "></div>
+              </div>
+            ))}
           </div>
           <div
             className={`absolute z-0 dark:bg-gradient-to-r dark:from-[#2ACCF6] dark:to-[#6EFECF] h-2 rounded-lg`}
@@ -60,29 +47,9 @@ export default function LeverageInput({ tradeData, setTradeData }: Props) {
           ></div>
         </div>
         <div className="w-[95%] text-[0.7rem] mb-5 text-gray-500 flex h-fit justify-between">
-          {/* {leverageOptions.map((option) => (
-            <span
-              style={{
-                left: `${((option - MIN_LEVERAGE) / MAX_LEVERAGE) * 100}%`,
-              }}
-              className="absolute"
-            >
-              {option}x
-            </span>
-          ))} */}
-           {leverageOptions.map((option) => (
-            <span
-             
-            >
-              {option}x
-            </span>
+          {leverageOptions.map((option) => (
+            <span key={option}>{option}x</span>
           ))}
-          {/* <span className="">5x</span>
-          <span className="">25x</span>
-          <span className="">50x</span>
-          <span className="">100x</span>
-          <span className="">125x</span>
-          <span className="">150x</span> */}
         </div>
       </div>
     </div>

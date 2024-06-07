@@ -15,6 +15,7 @@ const config = createConfig({
   transports: {
     [fantomTestnet.id]: http(),
   },
+  ssr: true
 });
 
 const queryClient = new QueryClient();

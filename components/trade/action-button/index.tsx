@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { SetTradeDataWithKey, TradeData } from "../types";
 import { useAccount } from "wagmi";

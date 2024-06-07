@@ -4,7 +4,7 @@ export type TradeType = (typeof tradeTypes)[number];
 export type LongShort = (typeof longShortOption)[number];
 export const MIN_LEVERAGE = 5;
 export const MAX_LEVERAGE = 150;
-export const leverageOptions = [5, 150] as const;
+export const leverageOptions = [5, 25, 50, 75, 100, 125, 150] as const;
 export const stopLossOptions = [
   { value: "10", label: "-10%" },
   { value: "25", label: "-25%" },
