@@ -7,10 +7,10 @@ import MyComponent from "./MyComponent";
 
 const WalletsProvider = () => {
   return (
-    <Web3Provider>
+    <>
           <ConnectKitButton/>
           <MyComponent/>
-    </Web3Provider>
+    </>
   );
 };
 

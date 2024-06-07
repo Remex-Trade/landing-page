@@ -17,6 +17,7 @@ import {usePriceStore} from "../../../store/priceStore"
 import {fetchChartStats} from "../../../contracts-integration/utils"
 import WalletsProvider from '../../_Components/Wallet';
 import TradingViewWidget from '../../_Components/TradeView';
+import TradeAdjustSidebar from '../../../components/trade/trade-adjust-sidebar';
 
 type chartData={
     funding: any;
@@ -24,8 +25,8 @@ type chartData={
     openInterestS: any;
     openInterestL?: any;
     volume24h: any;
-
 }
+
 const page = () => {
   const [show,setShow]=useState(true);
   const[showPopup, setShowPopup] = useState(false);
@@ -163,13 +164,14 @@ const [chartStats, setChartStats] = useState<chartData>()
           </div>
           {isRightOrder?
           <div className=" overflow-y-auto text-sm  dark:bg-[#0F0E0E]  dark:border-[#2C2D2D] shadow-lg  border-[1px] h-full w-full ">
-          <RightOrder
+          {/* <RightOrder
             showPopup={showPopup}
             setShowPopup={setShowPopup}
             setShowOption={setShowOption}
             showOption={showOption}
             option={option}
-          />
+          /> */}
+          <TradeAdjustSidebar />
         </div>:
           <div className="w-[100vw] h-[100vh] absolute z-20">
           <div className="absolute w-full h-full bg-black opacity-90 blur"></div>
