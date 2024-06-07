@@ -382,7 +382,7 @@ const [chartStats, setChartStats] = useState<chartData>()
               >
                 <MiddleBottom />
               </div>
-              <div className=" w-full flex justify-center items-center h-full my-10 flex-col sc1:hidden ">
+              <div className=" w-[100%] flex justify-center items-center h-full my-10 flex-col sc1:hidden ">
                 <RightOrder
                   showPopup={showPopup}
                   setShowPopup={setShowPopup}

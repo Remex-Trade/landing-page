@@ -406,7 +406,7 @@ const page = () => {
   ]
   return (
     <div className='w-full flex justify-center items-center sc1:my-0 my-10'>
-    <div className='flex flex-col justify-center items-center gap-10 sc1:gap-[1vw] m-[3vw] w-[90%] sc1:w-[70%]'>
+    <div className='flex flex-col justify-center items-center gap-10 sc1:gap-[1vw] m-[3vw] w-[90%] sc1:w-[85%]'>
       <h1 className='text-white font-extrabold text-2xl self-start '>Remex Trading Leaderboard</h1>
       <div className='flex flex-col gap-[1vw] bg-[#141414] p-[2vw] rounded-xl w-full'>
         <div className='flex text-zinc-500 items-center text-center jusitfy-center font-semibold text-[0.6rem] sc1:text-[0.8rem] w-full'>

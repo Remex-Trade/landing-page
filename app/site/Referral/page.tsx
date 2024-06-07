@@ -149,7 +149,7 @@ const page = () => {
             </button>
             </Link>
           </div>
-          <div className="sc1:w-1/2 md:w-[70%] w-[90%]  md:px-4 my-8">
+          <div className="sc1:w-[40rem] md:w-[90%] w-[90%]  md:px-4 my-8">
             <div className="flex justify-start flex-col items-start gap-8 w-full">
               <div id="Dashboard" className="text-2xl font-bold  flex items-center gap-4">
                 {" "}
@@ -291,14 +291,14 @@ const page = () => {
               </div>
             </>
           )}
-          <div className="sc1:w-1/2 md:w-[70%] w-[90%] sc1:px-4 m-10 ">
+          <div className="sc1:w-[40rem] md:w-[90%] w-[90%] sc1:px-4 m-10 ">
             <div className="flex justify-start flex-col items-start gap-8">
               <div id="Leaderboard" className="text-2xl font-bold  flex items-center gap-4">
                 <GoTrophy color="gold" size={40} />
                 Leaderboard
               </div>
               <div className="w-full h-full bg-[#141515] flex flex-col items-center justify-center py-8 rounded-xl">
-                <div className="w-[95%] border-b-[1px] border-b-gray-800 text-gray-400 py-1 flex gap-8">
+                <div className="w-[95%] md:w-[90%] border-b-[1px] border-b-gray-800 text-gray-400 py-1 flex gap-8">
                   <button
                     className={`hover:text-white text-sm ${
                       time == 0 &&

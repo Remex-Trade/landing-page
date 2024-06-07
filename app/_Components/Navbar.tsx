@@ -21,13 +21,13 @@ const Navbar = () => {
   const [selectedNetwork,setSelectedNetwork] = useState("openBNB");
   return (
     <>
-    <div className="dark:bg-[#0F0E0E] outline-none  border-none bg-white dark:text-white text-black sticky z-10 top-0 w-[100vw] font-light shadow-sm dark:shadow-none">
-      <div className="flex gap-[4vw] justify-between items-center w-full px-[2vw] py-1 text-md sc1:text-sm">
+    <div className="dark:bg-[#0F0E0E] outline-none  border-none bg-white dark:text-white text-black sticky z-10 top-0 w-[100%] font-light shadow-sm dark:shadow-none">
+      <div className="flex justify-between items-center w-full px-[2vw] py-1 text-md sc1:text-sm">
       <div className="w-[30%] flex items-center justify-start font-bold text-2xl text-white">
 
                 <Image src="/Images/Group 2.png" width={150} height={150} alt="logo" />
         </div>
-        <div className="hidden sc1:flex gap-20">
+        <div className="hidden sc1:flex sc0:gap-[2rem] gap-[5%]">
           {names.map((name)=>{
             return(
               <Link key={name} href={`${name}`}>
@@ -36,7 +36,7 @@ const Navbar = () => {
             )
           })}
         </div>
-        <div className="flex gap-[2vw] items-center">
+        <div className="flex gap-[1.5rem] items-center">
           <div className="hidden sc1:block"><ToggleButton darkMode={darkMode} setDarkMode={setDarkMode}/></div>
           <div className="w-16 h-10 bg-[#383838] rounded-lg px-2 py-2 flex items-center justify-between" onClick={()=>setOpen(true)}>
               <Image src={`/networks/${selectedNetwork.split(" ")[0].toLowerCase()}.svg`} width={30} height={100} alt="networks"/>
