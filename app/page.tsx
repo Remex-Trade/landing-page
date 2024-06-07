@@ -346,7 +346,7 @@ export default function Home() {
             >
               <div
                 id="card1"
-                className="bg-[#131A2A] shadow-lg  shadow-[#3335480A] w-[80%]  md:w-[25rem] sc1:w-[25rem] sc2:w-[27rem] sc3:w-[20%] rounded-lg flex justify-center items-center"
+                className="bg-[#131A2A] shadow-lg  shadow-[#3335480A] w-[80%]  md:w-[25rem] sc1:w-[25rem] sc2:w-[27rem] rounded-lg flex justify-center items-center"
               >
                 <div
                   id="text"
@@ -374,11 +374,11 @@ export default function Home() {
               </div>
               <div
                 id="card2"
-                className="bg-[#131A2A] shadow-sc1 shadow-[#3335480A] w-[80%] md:w-[25rem] rounded-lg rounded-sc1 flex justify-center items-center md:w-[40%] sc1:w-[25rem] sc3:w-[20%] sc2:w-[27rem]"
+                className="bg-[#131A2A] shadow-lg  shadow-[#3335480A] w-[80%]  md:w-[25rem] sc1:w-[25rem] sc2:w-[27rem] rounded-lg flex justify-center items-center"
               >
                 <div
                   id="text"
-                  className="flex flex-col items-center  gap-[1rem] px-6 py-4 h-full w-2/3 sc1:px-6 sc1:py-10"
+                  className="flex flex-col items-center px-4 gap-[1rem] py-4 h-full w-2/3 sc1:px-6 sc1:py-10"
                 >
                   <div id="heading" className="text-[1rem] md:text-md sc2:text-xl">
                     Trusted Collateral, Trustless settlement
