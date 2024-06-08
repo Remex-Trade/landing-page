@@ -152,12 +152,12 @@ const page = () => {
             <span>Available 0.0 {toToken}</span>
           </div>
           <div className="w-full flex items-center  border border-[#647186] rounded-lg h-[95%]">
-            <div className="border-r border-[#647186] h-full  flex items-start py-2 justify-start w-[30%] cursor-pointer" onClick={
+            <div className="border-r border-[#647186] h-full  flex items-start py-2 justify-start w-[50%] md:w-[30%] cursor-pointer" onClick={
               ()=>{
                 setOpenTokens(true);
                 setType("to");  
               } }>
-              <div className="w-full h-full flex justify-between px-4 items-center text-[#647186] gap-20 lg:gap-0">
+              <div className="w-full  h-full flex justify-between px-4 items-center text-[#647186] gap-10 md:gap-0">
                 <div className="flex gap-2 items-center">
                   <Image
                     src={`${tokens.filter((p)=>p.name===toToken).map((e)=>e.image)}`}

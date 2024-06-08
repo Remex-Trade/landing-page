@@ -7,9 +7,9 @@ const page = () => {
   const [inputVal, setInputVal] = useState(0);
   return (
     <div className="w-full h-screen flex flex-col items-center py-10 justify-start bg-[#120E1B] gap-5">
-      <div className="text-5xl font-bold flex gap-2" id="heading1">
+      <div className="md:text-5xl text-2xl font-bold flex gap-2" id="heading1">
         <span>GNS Pool</span>
-        <div className="w-fit rounded-lg bg-[#120E1B] border border-purple-700 text-purple-700  text-sm flex items-center justify-center px-4 gap-2">
+        <div className="w-fit rounded-lg bg-[#120E1B] border border-purple-700 text-purple-700  text-[0.9rem] md:text-sm flex items-center justify-center px-1 md:px-4 gap-2">
           <svg
             width="19"
             height="18"
@@ -63,32 +63,32 @@ const page = () => {
       </div>
       <div
         id="heading2"
-        className="flex gap-8 w-full items-center justify-center"
+        className="flex flex-col md:flex-row gap-2 md:gap-8 w-full md:w-[60%] items-center justify-center px-4 md:text-center"
       >
-        <div className="flex flex-col gap-2 ">
-          <span className="text-sm underline underline-dotted text-gray-200">
+        <div className="flex flex-row md:flex-col gap-2 justify-between w-full md:justify-center">
+          <span className="text-sm underline underline-dotted text-gray-200 ">
             TVL
           </span>
           <span className="text-white font-bold text-lg">$88,076,435</span>
         </div>
-        <div className="flex flex-col gap-2 ">
+        <div className="flex flex-row md:flex-col gap-2 justify-between w-full md:justify-center">
           <span className="text-sm underline underline-dotted text-gray-200">
-            TVL
+            GNS Price
           </span>
-          <span className="text-white font-bold text-lg">$88,076,435</span>
+          <span className="text-white font-bold text-lg">$3.35</span>
         </div>
-        <div className="flex flex-col gap-2 ">
-          <span className="text-sm underline underline-dotted text-gray-200">
-            TVL
+        <div className="flex flex-row md:flex-col gap-2  justify-between w-full md:justify-center">
+          <span className="text-sm underline underline-dotted text-gray-200 ">
+            Market Cap
           </span>
-          <span className="text-white font-bold text-lg">$88,076,435</span>
+          <span className="text-white font-bold text-lg">$113,215,375</span>
         </div>
       </div>
-      <div id="boxes" className="flex gap-8 w-[60%] mt-10 h-fit">
-        <div id="box1set" className="flex gap-5 w-full flex-col h-full">
+      <div id="boxes" className="flex gap-4 md:gap-8 w-full md:w-[90%] sc1:w-[60%] mt-10 h-fit flex-col md:flex-row px-1">
+        <div id="box1set" className="flex gap-0 md:gap-5 w-full flex-col h-full">
           <div
             id="box12"
-            className="bg-[#21212d] border border-[#161221] rounded-xl px-8 py-4 w-full flex flex-col gap-2 h-full"
+            className="bg-[#21212d] border border-[#161221] rounded-t-lg md:rounded-xl px-8 py-4 w-full flex flex-col gap-2 h-full"
           >
             <span className="text-white text-xl font-bold">Your Stake</span>
             <div className="flex justify-between w-full text-gray-400 text-sm">
@@ -110,7 +110,7 @@ const page = () => {
           </div>
           <div
             id="box11"
-            className="bg-[#21212d] border border-[#161221] rounded-xl px-8 py-4 w-full flex flex-col gap-2 h-full"
+            className="bg-[#21212d] border border-[#161221] rounded-b-lg md:rounded-xl px-8 py-4 w-full flex flex-col gap-2 h-full"
           >
             <span className="text-white text-xl font-bold">
               Pending Rewards ($0.00)
@@ -210,7 +210,7 @@ const page = () => {
               </div>
               <div
                 id="input"
-                className="flex w-full justify-between items-center"
+                className="flex w-full justify-between items-center pr-4"
               >
                 <input
                   type="text"
