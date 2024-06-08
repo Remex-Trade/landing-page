@@ -14,7 +14,7 @@ import { IoMenu } from "react-icons/io5";
 const Navbar = () => {
   const {darkMode,setDarkMode} = useContext(theme);
   const [selected,setSelected] = useState("Trade");
-  const names = ["Trade","Referral","Leaderboard","Portfolio"]
+  const names = ["Trade","Referral","Leaderboard","Portfolio","Swap","Stake"]
   const networks = ["openBNB","Manta Pacific","BNB"]
   const [open,setOpen] = useState(false)
   const [menuOpen,setMenuOpen] = useState(false);

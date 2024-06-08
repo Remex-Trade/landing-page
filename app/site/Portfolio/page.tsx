@@ -5,6 +5,7 @@ import { useAccount } from "wagmi";
 import WalletsProvider from "../../_Components/Wallet";
 import Image from "next/image";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import OverviewChart from "../../_Components/OverviewChart"
 
 const page = () => {
   const { address } = useAccount();
@@ -173,8 +174,8 @@ const page = () => {
       )}
       {selected === "Overview" &&(
         <>
-            <div className="w-ful flex items-center gap-10 justify-center my-10">
-                <div className="flex flex-col gap-6 w-[40%]">
+            <div className="w-ful flex items-center gap-10 justify-center my-10 h-[80%]">
+                <div className="flex flex-col gap-6 w-[40%] h-full">
                     <span>Portfolio Details</span>
                 <div className="w-full rounded-xl border border-zinc-800 flex-col">
                     <div className="py-8 px-10 flex flex-col gap-3 border-b border-b-zinc-800">
@@ -200,10 +201,13 @@ const page = () => {
                     </div>
                 </div>
                 </div>
-                <div className="flex flex-col gap-6 w-full ">
+                <div className="flex flex-col gap-6 w-full h-[100%]">
                 <span>Live PnL Chart</span>
-                <div className="w-full rounded-xl border border-zinc-800 flex-col">
-
+                <div className="w-full rounded-xl border border-zinc-800 flex-col h-[60vh]">
+                  <div className="flex flex-col gap-3 mx-3 my-5">
+                      <div className="text-sm text-gray-200  mx-10">Cummulative PnL</div>
+                  </div>
+                  <OverviewChart/>
                 </div>
                 </div>
             </div>
