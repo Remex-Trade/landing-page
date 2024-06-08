@@ -16,19 +16,19 @@ const page = () => {
       <div className=" text-5xl py-8 items-center">Portfolio</div>
       <div className="flex w-full border-b border-b-zinc-800 gap-10 ">
         <button
-          className={`text-sm text-neutral-300 py-3  ${selected==="Position" && 'border-b border-b-[#3B1A91]'}`}
+          className={`text-sm text-neutral-400 py-3  ${selected==="Position" && 'border-b-2 border-b-[#3B1A91]'} text-white`}
           onClick={() => setSelected("Position")}
         >
           Position & Activity
         </button>
         <button
-          className={`text-sm text-neutral-300 py-3    ${selected==="Overview" && 'border-b border-b-[#3B1A91]'}`}
+          className={`text-sm text-neutral-400 py-3    ${selected==="Overview" && 'border-b-2 border-b-[#3B1A91]'} text-white`}
           onClick={() => setSelected("Overview")}
         >
           Overview
         </button>
         <button
-          className={`text-sm text-neutral-300 py-3  ${selected==="Stats" && 'border-b border-b-[#3B1A91]'}`}
+          className={`text-sm text-neutral-400 py-3  ${selected==="Stats" && 'border-b-2 border-b-[#3B1A91]'} text-white`}
           onClick={() => setSelected("Stats")}
         >
           Stats and Insight

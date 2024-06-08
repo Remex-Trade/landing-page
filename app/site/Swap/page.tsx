@@ -98,7 +98,7 @@ const page = () => {
         <div className='text-5xl font mt-24'>
             Swap Tokens
         </div>
-      <div className="flex flex-col md:flex-row gap-4 my-20 md:gap-5 w-full md:w-[90%] items-center justify-center h-[40rem] md:h-[20rem] relative z-10">       
+      <div className="flex flex-col sc0:flex-row gap-4 my-20 md:gap-5 w-full md:w-[90%] items-center justify-center h-[40rem] md:h-[20rem] relative z-10">       
         <div
           id="swap-box"
           className="bg-[#21212d] w-full lg:w-[45%] py-10 px-4 lg:px-10 flex flex-col gap-4 h-full rounded-xl"

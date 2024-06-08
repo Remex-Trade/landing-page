@@ -30,7 +30,7 @@ const Navbar = () => {
         <div className="hidden sc1:flex sc0:gap-[2rem] gap-[5%]">
           {names.map((name)=>{
             return(
-              <Link key={name} href={`${name}`}>
+              <Link key={name} href={`/site/${name}`}>
                 <div className={`dark:text-white text-black flex gap-2 items-center dark:hover:bg-[#373636] font-bold hover:bg-neutral-200 rounded-lg px-3 py-1 ${selected===name && 'dark:bg-[#373636] bg-neutral-300 '}`} onClick={()=>setSelected(name)}>{name==="Airdrop" && <FaFire color="orange"/>}{name}</div>
               </Link>
             )
