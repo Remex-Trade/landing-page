@@ -13,10 +13,10 @@ type Props = { setTradeData: SetTradeDataWithKey; tradeData: TradeData };
 
 export default function ActionButton({ tradeData }: Props) {
   const { isDisconnected } = useAccount();
-  const { data: daiAllowance } = useGetDaiAllowance();
+  const { data: daiAllowance, queryKey} = useGetDaiAllowance();
   const { data: daiBalance } = useGetDaiBalance();
   const { mutate: handleApprove, isPending: isHandleApproveLoading } =
-    useHandleApprove();
+    useHandleApprove(queryKey);
   const { mutate: handleTrade, isPending: isHandleTradeLoading } =
     useHandleTrade();
   const isApproved = useMemo(() => {

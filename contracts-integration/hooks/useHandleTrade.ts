@@ -1,5 +1,5 @@
 import { useAccount } from "wagmi";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { QueryKey, useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { TradeData } from "../../components/trade/types";
 import {
@@ -24,6 +24,7 @@ export const useHandleTrade = () => {
       );
       const buy = tradeData.longOrShort === "Long";
       const isMarket = tradeData.tradeType === "Market";
+      const isTpSl = tradeData.isTpSl
       const openPrice = isMarket
         ? Number(latestTokenPrice)
         : Number(tradeData.openPrice);
@@ -35,12 +36,12 @@ export const useHandleTrade = () => {
         tradeData.longOrShort
       );
 
-      const stopLoss = getSlValue(
+      const stopLoss = isTpSl ?  getSlValue(
         openPrice,
         Number(tradeData.stopLoss),
         Number(tradeData.leverage),
         tradeData.longOrShort
-      );
+      ) : 0;
 
       const type =
         tradeData.tradeType === "Limit"

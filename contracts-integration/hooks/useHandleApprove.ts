@@ -2,10 +2,10 @@ import { ethers } from "ethers";
 import { DAI_TOKEN_ADDRESS, STORAGE_ADDRESS } from "../address";
 import { erc20Abi, maxUint256 } from "viem";
 import { useChainId } from "wagmi";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { QueryKey, useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-export const useHandleApprove = () => {
+export const useHandleApprove = (invalidateKeys: QueryKey) => {
   const chainId = useChainId();
   const queryClient = useQueryClient();
   return useMutation({
@@ -24,7 +24,7 @@ export const useHandleApprove = () => {
     onSuccess: async () => {
       toast.success("Approved successfully");
       return await queryClient.invalidateQueries({
-        queryKey: ["daiAllowance", "daiBalance"],
+        queryKey: invalidateKeys,
       });
     },
    
