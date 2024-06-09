@@ -8,7 +8,7 @@ const page = () => {
   return (
     <div className="w-full h-screen flex flex-col items-center py-10 justify-start bg-[#120E1B] gap-5">
       <div className="md:text-5xl text-2xl font-bold flex gap-2" id="heading1">
-        <span>GNS Pool</span>
+        <span>REMEX Pool</span>
         <div className="w-fit rounded-lg bg-[#120E1B] border border-purple-700 text-purple-700  text-[0.9rem] md:text-sm flex items-center justify-center px-1 md:px-4 gap-2">
           <svg
             width="19"
@@ -73,7 +73,7 @@ const page = () => {
         </div>
         <div className="flex flex-row md:flex-col gap-2 justify-between w-full md:justify-center">
           <span className="text-sm underline underline-dotted text-gray-200">
-            GNS Price
+              REMEX Price
           </span>
           <span className="text-white font-bold text-lg">$3.35</span>
         </div>
@@ -166,9 +166,9 @@ const page = () => {
           </div>
           <div className="text-sm text-gray-400 flex flex-col gap-1">
             <span>
-              Stake your GNS to earn a share of protocol revenue in DAI, WETH
+              Stake your REMEX to earn a share of protocol revenue in DAI, WETH
               and USDC. Approximately 60% of all fees are currently directed to
-              the GNS staking pool.
+              the REMEX staking pool.
             </span>
             <span>
               Rewards are accrued on the contract and must be claimed. You will
@@ -218,7 +218,7 @@ const page = () => {
                   value={inputVal}
                   onChange={(e) => setInputVal(+e.target.value)}
                 />
-                <span className="text-lg">GNS</span>
+                <span className="text-lg">REMEX</span>
               </div>
             </div>
             <div className="w-full flex items-center justify-end mt-5">
