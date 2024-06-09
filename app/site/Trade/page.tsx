@@ -18,6 +18,8 @@ import {fetchChartStats} from "../../../contracts-integration/utils"
 import WalletsProvider from '../../_Components/Wallet';
 import TradingViewWidget from '../../_Components/TradeView';
 import TradeAdjustSidebar from '../../../components/trade/trade-adjust-sidebar';
+import TradeDetailsTable from '@/components/trade-details-table';
+import BottomDetails from '@/components/BottomDetails';
 
 type chartData={
     funding: any;
@@ -378,11 +380,12 @@ const [chartStats, setChartStats] = useState<chartData>()
                   </div>
                 </div>
               </div>
+              {/* <BottomDetails /> */}
               <div
                 id="middle-bottom"
-                className="pb-10 pt-3 hidden sc1:flex sc1:py-0  flex-col gap-1 justify-center dark:bg-[#0F0E0E] bg-white dark:border-[#2C2D2D] shadow-lg border-[1px] w-full sc1:h-full h-fit"
+                className="pb-10 pt-3 hidden sc1:flex sc1:py-0  flex-col gap-1  dark:bg-[#0F0E0E] bg-white dark:border-[#2C2D2D] shadow-lg border-[1px] w-full sc1:h-full h-fit"
               >
-                <MiddleBottom />
+                <TradeDetailsTable />
               </div>
               <div className=" w-full flex justify-center items-center h-full my-10 flex-col sc1:hidden ">
                 <RightOrder

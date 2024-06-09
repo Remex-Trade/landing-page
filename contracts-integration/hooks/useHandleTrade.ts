@@ -80,9 +80,9 @@ export const useHandleTrade = () => {
     },
     onSuccess: async () => {
       toast.success("Trade opened successfully.");
-      //   return await queryClient.invalidateQueries({
-      //     queryKey: ["daiAllowance", "daiBalance"],
-      //   });
+        return await queryClient.invalidateQueries({
+          queryKey: ["userTradesData"],
+        });
     },
 
     onError: (error) => {
