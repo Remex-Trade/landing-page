@@ -4,7 +4,7 @@ import { FaBox } from "react-icons/fa";
 import { DataTable } from "../data-table";
 import useGetUserTrades from "@/contracts-integration/hooks/useGetUserTrades";
 import { openTradeColumn } from "./openTradeColumn";
-import { openLimitColumns } from "./openLimitCOlumns";
+import { openLimitColumns } from "./openLimitColumns";
 
 const tabs = [
   {
@@ -50,7 +50,7 @@ const TradeDetailsTable = () => {
             ))}
 
           {selected === 1 &&
-            (data.openLimitCount > 0 ? (
+            (data?.openLimitCount > 0 ? (
               <DataTable
                 noDataMessage="Your Perp positions will appear here"
                 columns={openLimitColumns}
