@@ -12,6 +12,7 @@
     "@apollo/client": "^3.9.10",
     "@metamask/sdk": "^0.18.3",
     "@pythnetwork/pyth-evm-js": "^1.39.0",
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
     "@rainbow-me/rainbowkit": "^2.0.5",

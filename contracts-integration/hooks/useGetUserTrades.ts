@@ -39,17 +39,9 @@ export type FormattedOpenLimitOrders = {
   pairIndex: string
 };
 
-  // [
-  //   "Type",
-  //   "Pair",
-  //   "Size",
-  //   "Leverage",
-  //   "Collateral",
-  //   "Trigger Price",
-  //   "Execution Price",
-  //   "SL/TP",
-  //   "Close",
-  // ]
+function formatPriceFromBigNumber(price: BigInt) {
+  return Number(formatUnits(price.toString(), "10")).toFixed(2)
+}
 
 const handleGetUserInfo = async (address: string, chainId: number) => {
   const openTradesCount = await getOpenTradesCount(address, chainId, 0);
@@ -74,10 +66,10 @@ const handleGetUserInfo = async (address: string, chainId: number) => {
         size: trade.leverage.valueOf() * trade.leverage.valueOf() + "DAI",
         leverage: trade.leverage.toString() + "x",
         collateral: formatEther(trade.positionSizeDai.toString()) + "DAI",
-        openPrice: formatUnits(trade.openPrice.toString(), "10"),
+        openPrice: formatPriceFromBigNumber(trade.openPrice),
         price: "-",
-        sl: formatUnits(trade.sl.toString(), "10"),
-        tp: formatUnits(trade.tp.toString(), "10"),
+        sl: formatPriceFromBigNumber(trade.sl),
+        tp: formatPriceFromBigNumber(trade.tp),
         index: trade.index.toString(),
         pairIndex: trade.pairIndex.toString()
       };
@@ -92,14 +84,14 @@ const handleGetUserInfo = async (address: string, chainId: number) => {
         size: trade.leverage.valueOf() * trade.leverage.valueOf() + "DAI",
         leverage: trade.leverage.toString() + "x",
         collateral: formatEther(trade.positionSizeDai.toString()) + "DAI",
-        openPrice: formatUnits(trade.openPrice.toString(), "10"),
+        openPrice: formatPriceFromBigNumber(trade.openPrice),
         price: "-",
-        sl: formatUnits(trade.sl.toString(), "10"),
-        tp: formatUnits(trade.tp.toString(), "10"),
+        sl: formatPriceFromBigNumber(trade.sl),
+        tp: formatPriceFromBigNumber(trade.tp),
         index: trade.index.toString(),
         pairIndex: trade.pairIndex.toString(),
-        minPrice: formatUnits(trade.minPrice.toString(), "10"),
-        maxPrice: formatUnits(trade.maxPrice.toString(), "10"),
+        minPrice: formatPriceFromBigNumber(trade.minPrice),
+        maxPrice: formatPriceFromBigNumber(trade.maxPrice),
       };
     }
   );

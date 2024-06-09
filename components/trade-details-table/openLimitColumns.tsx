@@ -6,6 +6,7 @@ import { FormattedOpenLimitOrders } from "@/contracts-integration/hooks/useGetUs
 import { Button } from "@/components/ui/button";
 import { LoaderCircle, X } from "lucide-react";
 import { useHandleCloseTrade } from "@/contracts-integration/hooks/useHandleCloseTrade";
+import UpdateSlPl from "./updateSlPl";
 
 export const openLimitColumns: ColumnDef<FormattedOpenLimitOrders>[] = [
   {
@@ -50,9 +51,20 @@ export const openLimitColumns: ColumnDef<FormattedOpenLimitOrders>[] = [
   },
   {
     accessorKey: "sl",
+
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="SL/TP" />
     ),
+    cell: ({ row }) => {
+      return (
+        <UpdateSlPl trade={row.original}>
+          <div className="flex flex-col gap-1 cursor-pointer">
+            <span>SL: {row.original.sl}</span>
+            <span>TP: {row.original.tp}</span>
+          </div>
+        </UpdateSlPl>
+      );
+    },
   },
   {
     accessorKey: "close",
