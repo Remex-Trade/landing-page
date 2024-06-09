@@ -77,15 +77,15 @@ export default function Home() {
     <>
       <main className="max-w-[100vw] overflow-hidden">
         <AnimatePresence>
-          <div className="w-[100vw] h-[100vh] relative ">
+          <div className="w-[100vw] h-[100vh] relative">
             <Image src="/Images/cubes (1).png" fill objectFit="cover" alt="Backdrop" className="hidden sc1:flex"/>
 
-            <div className="w-[100vw] h-[100vh] absolute">
+            <div className="w-[100vw] h-[100vw] absolute">
               <Image src="/Images/Effect.png" fill alt="Backdrop" />
             </div>
             <div
               id="nav"
-              className="w-[100vw] flex justify-center items-center p-[1vw] gap-[30%] bg-[rgb(10,7,12)] bg-opacity-25 fixed top-0 z-50 backdrop-blur"
+              className="w-[100%] flex justify-center items-center p-[1%] gap-[30%] bg-[rgb(10,7,12)] bg-opacity-25 fixed top-0 z-50 backdrop-blur"
             >
               <div className="font-extrabold text-3xl flex items-center justify-center gap-0">
                 <Image src="/Images/Group 2.png" width={150} height={150} alt="logo" />
@@ -98,15 +98,15 @@ export default function Home() {
                   <div>Docs</div>
                 </div>
                 <Link href="/site/Trade">
-                <button className="w-[30vw] h-full mt-4 sc1:mt-0 text-sm sc2:text-lg sc1:w-full sc1:h-[2.5vw] sc1:px-6 sc1:py-1 rounded-3xl bg-[#371D8A] text-[#FFFFFF] hover:bg-transparent hover:border-2 hover:border-[#371D8A] hover:text-[#371D8A] px-2 py-2">
+                  <button className="w-[8rem] md:w-[9rem] h-[10%] text-sm sc1:text-md sc1:w-[100%] rounded-3xl bg-[#371D8A] text-[#FFFFFF] hover:bg-transparent hover:border-2 hover:border-[#371D8A] hover:text-[#371D8A] px-5 py-2">
                     Launch App
                   </button>
                 </Link>
               </div>
             </div>
 
-            <div className="w-[100vw] h-[100vh] pl-[10vw] absolute flex flex-col sc1:pl-[10vw] pr-[1vw] absolute top-64 z-0 font-bold sc1:font-normal sc1:top-72  sc1:pr-[10vw] sc1:top-72 sc1:items-start sc1:w-[80%] sc2:w-[70%] md:w-[80%]">
-              <h1 className="text-4xl mb-[2vw] md:text-5xl font-plusJakarta flex flex-col gap-4 w-full  items-start sc1:text-6xl sc2:text-6xl font-bold">
+            <div className="w-full h-full pl-[10%] md:pl-[15%] pt-[5%] sc0:pl-[10%] sc1:pl-[5%] sc2:pl-[8%] sc2:pt-[3%] sc1:h-screen flex flex-col relative justify-center z-0 font-bold sc1:font-normal md:w-[90%] sc1:w-[90%] sc2:w-[70%]">
+              <h1 className="text-2xl sc0:text-5xl mb-[2vw] md:text-4xl font-plusJakarta flex flex-col gap-4 w-fit items-start sc1:text-5xl sc2:text-6xl font-bold">
                 <div>
                   Trade{" "}
                   <span className="text-[#7950AE] font-bold">
@@ -116,18 +116,18 @@ export default function Home() {
                 </div>
                 <div>like never before</div>
               </h1>
-              <p className=" font-plusJakarta text-md font-thin w-[80%] self-start text-[#918FA3] sc1:text-2xl  sc1:font-extralight sc1:pl-0">
+              <p className="w-[95%] sc0:w-[80%] sc0:text-xl sc1:w-[70%] font-plusJakarta text-md font-thin self-start text-[#918FA3] sc1:text-xl sc2:text-2xl sc1:font-extralight sc1:pl-0">
                 Remex lets you trade all your favourite assets at lightning
                 speed without compromising security.
               </p>
-              <div className="flex gap-[5%] items-start mt-[15%] w-[100vw] md:w-[80%] sc1:w-[100%] sc1:gap-[2.5vw] sc1:mt-[2.5vw]">
+              <div className="flex gap-[5%] items-start mt-[3rem] w-[100vw] md:w-[80%] sc1:w-[100%] sc1:gap-[2.5vw] sc0:mt-[3rem] sc1:mt-[3rem] sc2:mt-[7%]">
                 <Link href="/site/Trade">
-                  <button className="w-[40vw] md:w-[20vw] h-[10%] text-sm sc1:text-lg sc1:w-[100%] sc1:px-6 sc1:py-2 rounded-3xl bg-[#371D8A] text-[#FFFFFF] hover:bg-transparent hover:border-2 hover:border-[#371D8A] hover:text-[#371D8A] px-2 py-2">
+                  <button className="w-[7rem] md:w-[9rem] h-[10%] text-sm sc1:text-lg sc1:w-[100%] sc1:px-6 sc1:py-2 rounded-3xl bg-[#371D8A] text-[#FFFFFF] hover:bg-transparent hover:border-2 hover:border-[#371D8A] hover:text-[#371D8A] px-2 py-2">
                     Launch App
                   </button>
                 </Link>
                 <Link href="/site/Trade">
-                  <button className="w-[40vw] md:w-[20vw] h-[10%] text-sm sc1:text-lg sc1:w-[100%] sc1:px-6 sc1:py-2 rounded-3xl bg-transparent text-[#371D8A] border-2 border-[#371D8A] hover:bg-violet-800 hover:text-white px-2 py-2">
+                  <button className="w-[7rem] md:w-[9rem] h-[10%] text-sm sc1:text-lg sc1:w-[100%] sc1:px-6 sc1:py-2 rounded-3xl bg-transparent text-[#371D8A] border-2 border-[#371D8A] hover:bg-violet-800 hover:text-white px-2 py-2">
                     Learn more
                   </button>
                 </Link>
@@ -141,7 +141,7 @@ export default function Home() {
                 id="ellipse"
                 className="w-[40vw] h-[40vw] absolute z-[0] rounded-full bg-gradient-to-b from-[#FF0A6C26] to-[#2D27FF26] -right-60 blur"
               ></div>
-              <div className="flex gap-[2vw] w-fit ml-[3vw] relative z-[2]">
+              <div className="flex gap-[2vw] w-full ml-[3vw] relative z-[2]">
                 {data.map((p) => {
                   return (
                     <motion.div
@@ -156,7 +156,7 @@ export default function Home() {
                         repeatDelay: 0,
                       }}
                       id="cards"
-                      className="flex  gap-[2vw] bg-[#0D0F14] w-[70vw] md:w-[40vw] sc2:w-[30vw] h-[4vw] items-center justify-center mt-[2vw] rounded-xl py-9 px-4 sc1:py-11 sc1:px-8 shadow-sc1 shadow-black"
+                      className="flex gap-[2vw] bg-[#0D0F14] w-[18rem] md:w-[19rem] sc1:w-[24rem] h-[4vw] items-center justify-center mt-[2vw] rounded-xl py-9 px-4 sc1:py-11 sc1:px-8 shadow-sc1 shadow-black"
                     >
                       <div
                         id="Image"
@@ -172,7 +172,7 @@ export default function Home() {
                           className="rounded-full"
                         />
                       </div>
-                      <div id="name" className="flex flex-col ">
+                      <div id="name" className="flex flex-col text-[0.8rem] sc1:text-lg">
                         <p>{p.pair}</p>
                         <p>{p.pair}</p>
                       </div>
@@ -219,7 +219,7 @@ export default function Home() {
                         repeatDelay: 0,
                       }}
                       id="cards"
-                      className="flex  gap-[2vw] bg-[#0D0F14] w-[70vw] md:w-[40vw] sc2:w-[30vw] h-[4vw] items-center justify-center mt-[2vw] rounded-xl py-9 px-4 sc1:py-11 sc1:px-8 shadow-sc1 shadow-black"
+                      className="flex gap-[2vw] bg-[#0D0F14] w-[18rem] md:w-[19rem] sc1:w-[24rem] h-[4vw] items-center justify-center mt-[2vw] rounded-xl py-9 px-4 sc1:py-11 sc1:px-8 shadow-sc1 shadow-black"
                     >
                       <div
                         id="Image"
@@ -279,7 +279,7 @@ export default function Home() {
                         repeatDelay: 0,
                       }}
                       id="cards"
-                      className="flex  gap-[2vw] bg-[#0D0F14] w-[70vw] md:w-[40vw] sc2:w-[30vw] h-[4vw] items-center justify-center mt-[2vw] rounded-xl py-9 px-4 sc1:py-11 sc1:px-8 shadow-sc1 shadow-black"
+                      className="flex gap-[2vw] bg-[#0D0F14] w-[18rem] md:w-[19rem] sc1:w-[24rem] h-[4vw] items-center justify-center mt-[2vw] rounded-xl py-9 px-4 sc1:py-11 sc1:px-8 shadow-sc1 shadow-black"
                     >
                       <div
                         id="Image"
@@ -328,34 +328,34 @@ export default function Home() {
 
             <div
               id="title button"
-              className="w-full flex flex-col gap-8 justify-center items-center mt-20"
+              className="w-full flex flex-col gap-8 justify-center items-center mt-10"
             >
               <div className="w-fit h-full p-[0.1rem] bg-gradient-to-b from-[#9D4EFE] to-[#371d8a] rounded-full">
                 <div className="w-full bg-black h-full rounded-full px-14 text-lg py-2 text-[#9D4EFE]">
                   The Remex Trade
                 </div>
               </div>
-              <div id="section2 heading" className="text-xl font-bold mb-[10%] sc1:text-6xl sc1:mb-0">
+              <div id="section2 heading" className="text-lg md:text-2xl font-bold md:mb-[0.5rem] sc1:text-3xl">
                 Scalable leverage for everyone
               </div>
             </div>
 
             <div
               id="static cards"
-              className="w-full h-[30vh] sc2:h-[35vh]  flex items-center justify-center gap-8 sc1:gap-6 mt-24 flex-col sc1:flex-row"
+              className="w-full h-[30%] sc2:h-[35%] flex items-center justify-center gap-8 sc1:gap-6 flex-col sc1:flex-row"
             >
               <div
                 id="card1"
-                className="bg-[#131A2A] shadow-sc1  shadow-[#3335480A] max-w-[85%] md:max-w-[60%] sc2:max-w-[35%] h-full rounded-sc1 flex justify-center items-center sc1:max-w-[45%]"
+                className="bg-[#131A2A] shadow-lg  shadow-[#3335480A] w-[80%]  md:w-[25rem] sc1:w-[25rem] sc2:w-[27rem] rounded-lg flex justify-center items-center"
               >
                 <div
                   id="text"
-                  className="flex flex-col items-center justify-between px-6 py-4 h-full w-2/3  sc1:px-6 sc1:py-10"
+                  className="flex flex-col items-center px-4 gap-[1rem] py-4 h-full w-2/3 sc1:px-6 sc1:py-10"
                 >
-                  <div id="heading" className="text-md md:text-lg sc1:text-xl">
+                  <div id="heading" className="text-[1rem] md:text-md sc2:text-xl">
                     Maximize your potential across crypto and RWAs
                   </div>
-                  <div id="textInside" className="text-[0.7rem] md:text-[0.8rem] sc1:text-[0.9rem] text-gray-500">
+                  <div id="textInside" className="text-[0.7rem] md:text-[0.8rem] sc2:text-[0.9rem] text-gray-500">
                     Our infrastructure provides traders access to upto 100x
                     leverage for major cryptocurrencies, forex and commodities
                     pairs.
@@ -374,16 +374,16 @@ export default function Home() {
               </div>
               <div
                 id="card2"
-                className="bg-[#131A2A] shadow-sc1  shadow-[#3335480A] max-w-[85%] sc2:max-w-[35%]  md:max-w-[60%] h-full rounded-sc1 flex justify-center items-center sc1:max-w-[45%]"
+                className="bg-[#131A2A] shadow-lg  shadow-[#3335480A] w-[80%]  md:w-[25rem] sc1:w-[25rem] sc2:w-[27rem] rounded-lg flex justify-center items-center"
               >
                 <div
                   id="text"
-                  className="flex flex-col items-center justify-between px-6 py-4 h-full w-2/3 sc1:px-6 sc1:py-10"
+                  className="flex flex-col items-center px-4 gap-[1rem] py-4 h-full w-2/3 sc1:px-6 sc1:py-10"
                 >
-                  <div id="heading" className="text-md  md:text-lg sc1:text-xl">
+                  <div id="heading" className="text-[1rem] md:text-md sc2:text-xl">
                     Trusted Collateral, Trustless settlement
                   </div>
-                  <div id="textInside" className="text-[0.7rem] md:text-[0.8rem] sc1:text-[0.9rem] text-gray-500">
+                  <div id="textInside" className="text-[0.7rem] md:text-[0.8rem] sc2:text-[0.9rem] text-gray-500">
                     All transactions are settled onchain, and powered by
                     Circle’s USDC, the most trusted digital dollar in the world
                   </div>
@@ -402,7 +402,7 @@ export default function Home() {
             </div>
             <div
               id="animated cards"
-              className="w-full h-[135vh] relative flex flex-col items-center px-14 py-20 justify-center gap-8 mt-20 sc1:flex-row sc1:h-[40vh] sc2:w-[80%] sc1:my-28 "
+              className="w-full h-full relative flex flex-col items-center px-5 py-5 justify-center gap-[1rem] mt-10 sc0:flex-row sc1:w-[98%] sc2:w-[80%] sc1:my-16 "
             >
               <motion.div
                 //  initial={{width:"40%",height:"35vh"}}
@@ -413,13 +413,13 @@ export default function Home() {
                  }}
                  transition={{ ease: "linear", duration: 0.2 }}
                  id="card1"
-                className="max-w-[100%] md:w-[70%] relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 sc1:py-12 gap-4 flex-col border-[#1B2236] h-[40vh] bg-[#0D111C] sc1:w-2/5 sc1:h-[35vh] sc2:w-[30%]"
+                className="w-[15rem] sc1:h-[13rem] sc0:w-[20rem] md:w-[20rem] sc0:h-[18rem] relative z-1 rounded-2xl border flex justify-start items-start px-4 py-4 sc1:py-5 gap-4 flex-col border-[#1B2236] bg-[#0D111C] sc1:w-[27rem] sc2:w-[20rem]"
               >
-                <div className="text-xl font-bold text-white flex flex-col sc1:text-2xl">
+                <div className="text-xl font-bold text-white flex flex-col sc0:text-lg sc1:text-xl">
                   <span>Cefi Frontend,</span>
                   <span>Defi Frontend,</span>
                 </div>
-                <div className="text-sm text-gray-500 sc1:text-md">
+                <div className="text-sm text-gray-500 sc0:text-xs sc1:text-md">
                   <span>
                     CEX like experience with fully onchain execution, settlement
                     and self-custody
@@ -436,16 +436,15 @@ export default function Home() {
                  }}
                  transition={{ ease: "linear", duration: 0.2}}
                  id="card2"
-                className="max-w-[100%] md:w-[70%] relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 sc1:py-12 gap-4 flex-col border-[#1B2236] h-[40vh] bg-[#0D111C] sc1:w-2/5 sc1:h-[35vh] sc2:w-[30%]"
+                className="w-[15rem] sc0:w-[20rem] sc0:h-[18rem] md:w-[20rem] relative z-1 rounded-2xl border flex justify-start items-start px-4 py-4 sc1:py-5 gap-4 flex-col border-[#1B2236] bg-[#0D111C] sc1:w-[27rem]  sc1:h-[13rem] sc2:w-[20rem]"
               >
-                <div className="text-xl font-bold text-white flex flex-col sc1:text-2xl">
+                <div className="text-xl font-bold text-white flex flex-col sc0:text-lg  sc1:text-xl">
                   <span>The most advanced market making vaults in DeFi,</span>
                 </div>
-                <div className="text-sm text-gray-500 sc1:text-md">
+                <div className="text-sm text-gray-500 sc0:text-xs sc1:text-md">
                   <span>
                     Our USDC vaults offer liquidity providers a structured way
-                    to earn real yields, while allowing them to control their
-                    risk and time exposure to traders
+                    to earn real yields with controlled risk and time exposure to traders
                   </span>
                 </div>
               </motion.div>
@@ -458,12 +457,12 @@ export default function Home() {
                  }}
                  transition={{ ease: "linear", duration: 0.2 }}
                  id="card3"
-                className="max-w-[100%] md:w-[70%] relative z-1 rounded-2xl border flex justify-start items-start px-8 py-10 sc1:py-12 gap-4 flex-col border-[#1B2236] h-[40vh] bg-[#0D111C] sc1:w-2/5 sc1:h-[35vh] sc2:w-[30%]"
+                className="w-[15rem] sc0:w-[20rem] sc0:h-[18rem] md:w-[20rem] relative z-1 rounded-2xl border flex justify-start items-start px-4 py-4 sc1:py-5 gap-4 flex-col border-[#1B2236] bg-[#0D111C] sc1:w-[27rem]  sc1:h-[13rem] sc2:w-[20rem]"
               >
-                <div className="text-xl font-bold text-white flex sc1:text-2xl">
+                <div className="text-xl font-bold text-white flex sc0:text-lg sc1:text-xl">
                   <span>World class security - Powered by the Fantom Network</span>
                 </div>
-                <div className="text-sm text-gray-500 sc1:text-md">
+                <div className="text-sm text-gray-500 sc0:text-xs sc1:text-md">
                   <span>
                     We’re building on the world’s most performant blockchains
                     secured by Ethereum
@@ -503,7 +502,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col">
-              <div className="flex w-[100vw] h-[70vh] relative z-10 flex mt-[2vw]">
+              <div className=" w-[100vw] h-[70vh] relative z-10 flex mt-[2vw]">
                 <div className="flex flex-col gap-[1vw] w-[60%] z-0 overflow-hidden absolute h-full items-center justify-center sc1:w-[60%]">
                   <motion.div
                     className="flex gap-[1vw] flex-nowrap "
@@ -643,9 +642,9 @@ export default function Home() {
                     />
                   </motion.div>
                 </div>
-                <div className="ml-[40vw] flex h-full items-center justify-start">
+                <div className="sc2:ml-[40vw] ml-56 flex h-full items-center justify-start">
                   <div className=" flex flex-col gap-[2vw] h-[90%] w-[90vw] sc1:w-[80vw] items-center justify-center px-32 absolute z-20  h-[30vh] blur-[40px] sc1:blur-[120px] bg-[#1C162B] rounded-full  p-[1vw] "></div>
-                  <div className=" flex flex-col gap-[4vw] h-[70%] w-[70vw] sc1:w-[70vw] sc2:w-[50vw] items-start justify-center right-0 px-0 absolute z-30  h-[70vh]  sc1:px-32 pl-10 rounded-full bg-opacity-15 p-[1vw] ">
+                  <div className=" flex flex-col gap-[4vw] h-[70%] w-[70vw] sc1:w-[70vw] sc2:w-[50vw] items-start justify-center right-0 px-0 absolute z-30  h-[70vh]  sc1:pl-32 sc1:pr-10 pl-10 rounded-full bg-opacity-15 p-[1vw] ">
                     <h1 className="text-xl font-bold md:text-3xl sc1:text-5xl">
                       The Best pricing across CeFi and DeFi
                     </h1>
@@ -661,11 +660,11 @@ export default function Home() {
             </div>
             <div
               id="StackedImageSection"
-              className="w-full h-[100vh] bg-[url('/Images/landingpagesection3.png')] bg-no-repeat bg-cover py-10 hidden sc1:hidden sc2:flex"
+              className="w-full h-[100vh] bg-[url('/Images/landingpagesection3.png')] bg-no-repeat bg-cover py-10 hidden sc1:flex"
             >
               <div
                 id="textContent"
-                className="w-[70%] sc1:w-[100%] flex justify-center gap-4 pl-32 pr-12 flex-col"
+                className="w-[70%] sc1:w-[50rem] flex justify-center  sc1:gap-1 sc1:pl-[3rem] sc2:pl-[4rem] sc2:gap-1 flex-col"
               >
                 <div
                   id="heading"
@@ -674,7 +673,7 @@ export default function Home() {
                   <span className="text-[#9C4EFE] font-bold">Manage</span>
                   <span>Your Trading Account</span>
                 </div>
-                <div id="points" className="flex flex-col w-[50%] gap-8 my-10">
+                <div id="points" className="flex flex-col sc1:w-[90%] sc2:w-[70%] sc1:gap-4 sc2:gap-8 sc1:my-6 sc2:my-10">
                   <div id="point1" className="flex gap-10">
                     <div className="w-[25%] flex items-start">
                       <svg
@@ -824,6 +823,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div id="point3" className="flex gap-10">
+                  <div className="w-[25%] flex items-start">
                     <svg
                       width="200"
                       height="78"
@@ -861,7 +861,7 @@ export default function Home() {
                         </clipPath>
                       </defs>
                     </svg>
-
+                    </div>
                     <div className="flex flex-col">
                       <span className="font-bold text-lg">
                         Manage Multiple Accounts
@@ -882,7 +882,7 @@ export default function Home() {
 
               <div
                 id="stackedImages"
-                className="w-[50%] h-[100vh] flex justify-center h-full items-center"
+                className="w-[45%] h-[100vh] sc1:hidden sc2:flex justify-center h-full items-center"
               >
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Image
@@ -890,31 +890,31 @@ export default function Home() {
                     width={750}
                     height={100}
                     alt="panel"
-                    className="absolute z-[10] bottom-56  right-20 shadow-2xl"
+                    className="absolute z-[10] bottom-[6rem]  right-20 shadow-2xl"
                   />
                   <Image
                     src="/Images/panel.png"
                     width={750}
                     height={100}
                     alt="panel"
-                    className="absolute z-[5] bottom-48 right-32"
+                    className="absolute z-[5] bottom-[4.5rem] right-32"
                   />
                   <Image
                     src="/Images/panel.png"
                     width={750}
                     height={100}
                     alt="panel"
-                    className="absolute z-[1] bottom-40 right-40"
+                    className="absolute z-[1] bottom-[3rem] right-40"
                   />
                 </div>
               </div>
             </div>
-            <div id="partnersSection" className="w-full mb-52">
+            <div id="partnersSection" className="w-full mb-[10rem]">
               <div
                 id="Strokeparteners"
                 className="w-full flex items-start relative justify-start"
               >
-                <div className="text-7xl sc1:text-9xl w-full self-start font-extrabold px-8 sc1:px-56">
+                <div className="text-7xl sc1:text-9xl w-full self-start font-extrabold px-[1rem] sc2:px-56">
                   Partners
                 </div>
                 <div className="absolute z-1 w-full h-[3vh] sc1:h-[2vh] top-10 sc1:top-24 blur bg-[#16121D]"></div>
@@ -986,7 +986,7 @@ export default function Home() {
                 className="w-full flex gap-4  flex-col items-center justify-center "
               >
                 <span className="font-bold text-4xl text-[#4735A3]">FAQs</span>
-                <span className="text-white text-3xl">
+                <span className="text-white text-xl sc1:text-3xl">
                   Why choose remex trade
                 </span>
               </div>

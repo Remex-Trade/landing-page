@@ -15,7 +15,7 @@ const RightOrder = ({
   const options = ["Market", "Limit", "Conditional"];
   return (
     <>
-      <div className="flex w-full md:w-[60%] sc1:w-full h-100 sticky top-0 text-sm min-[450px]:w-[60%]">
+      <div className="flex w-full sc1:w-full h-100 sticky top-0 text-sm">
         {buttons.map((button) => {
           return (
             <button
@@ -35,7 +35,7 @@ const RightOrder = ({
           );
         })}
       </div>
-      <div className="flex items-center justify-between sticky top-12 dark:bg-[#0F0E0E]  bg-white text-black h-31 px-4 w-full md:w-[60%] sc1:w-full text-[0.85rem] h-100 dark:text-[#4F4F4F] gap-6  min-[450px]:w-[60%]">
+      <div className="flex items-center justify-between sticky top-12 dark:bg-[#0F0E0E]  bg-white text-black h-31 px-4 w-full sc1:w-full text-[0.85rem] h-100 dark:text-[#4F4F4F] gap-6">
         <div className="flex items-center gap-2 py-2 w-full justify-center">
           {options.map((option) => {
             return (
