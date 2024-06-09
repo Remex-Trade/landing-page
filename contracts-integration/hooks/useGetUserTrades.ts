@@ -23,6 +23,33 @@ export type FormattedOpenTrades = {
   index: string,
   pairIndex: string
 };
+export type FormattedOpenLimitOrders = {
+  type: LongShort;
+  pair: string;
+  size: string;
+  leverage: string;
+  collateral: string;
+  openPrice: string;
+  price: string;
+  minPrice: string;
+  maxPrice: string;
+  sl: string;
+  tp: string;
+  index: string,
+  pairIndex: string
+};
+
+  // [
+  //   "Type",
+  //   "Pair",
+  //   "Size",
+  //   "Leverage",
+  //   "Collateral",
+  //   "Trigger Price",
+  //   "Execution Price",
+  //   "SL/TP",
+  //   "Close",
+  // ]
 
 const handleGetUserInfo = async (address: string, chainId: number) => {
   const openTradesCount = await getOpenTradesCount(address, chainId, 0);
@@ -57,12 +84,33 @@ const handleGetUserInfo = async (address: string, chainId: number) => {
     }
   );
 
+  const formattedLimitOrders: FormattedOpenLimitOrders[] = openLimitResult.map(
+    (trade) => {
+      return {
+        type: trade.buy ? "Long" : "Short",
+        pair: "BTC/USD",
+        size: trade.leverage.valueOf() * trade.leverage.valueOf() + "DAI",
+        leverage: trade.leverage.toString() + "x",
+        collateral: formatEther(trade.positionSizeDai.toString()) + "DAI",
+        openPrice: formatUnits(trade.openPrice.toString(), "10"),
+        price: "-",
+        sl: formatUnits(trade.sl.toString(), "10"),
+        tp: formatUnits(trade.tp.toString(), "10"),
+        index: trade.index.toString(),
+        pairIndex: trade.pairIndex.toString(),
+        minPrice: formatUnits(trade.minPrice.toString(), "10"),
+        maxPrice: formatUnits(trade.maxPrice.toString(), "10"),
+      };
+    }
+  );
+
   return {
     openTrades: openTradesResult,
     openLimitOrders: openLimitResult,
     openTradesCount,
     openLimitCount,
-    formattedOpenTrades
+    formattedOpenTrades,
+    formattedLimitOrders
   };
 };
 

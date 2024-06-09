@@ -2,12 +2,12 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from "../data-table/DataTableColumnHeader";
-import { FormattedOpenTrades } from "@/contracts-integration/hooks/useGetUserTrades";
+import { FormattedOpenLimitOrders } from "@/contracts-integration/hooks/useGetUserTrades";
 import { Button } from "@/components/ui/button";
 import { LoaderCircle, X } from "lucide-react";
 import { useHandleCloseTrade } from "@/contracts-integration/hooks/useHandleCloseTrade";
 
-export const openTradeColumn: ColumnDef<FormattedOpenTrades>[] = [
+export const openLimitColumns: ColumnDef<FormattedOpenLimitOrders>[] = [
   {
     accessorKey: "type",
     header: ({ column }) => (
@@ -37,15 +37,15 @@ export const openTradeColumn: ColumnDef<FormattedOpenTrades>[] = [
     ),
   },
   {
-    accessorKey: "openPrice",
+    accessorKey: "minPrice",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Open Price" />
+      <DataTableColumnHeader column={column} title="Min Price" />
     ),
   },
   {
-    accessorKey: "price",
+    accessorKey: "maxPrice",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Price" />
+      <DataTableColumnHeader column={column} title="Max Price" />
     ),
   },
   {
@@ -58,7 +58,7 @@ export const openTradeColumn: ColumnDef<FormattedOpenTrades>[] = [
     accessorKey: "close",
     header: "Close",
     cell: ({ row }) => {
-      const closeMutation = useHandleCloseTrade("Market");
+      const closeMutation = useHandleCloseTrade("Limit");
 
       return closeMutation.isPending ? (
         <LoaderCircle className="h-4 w-4 animate-spin" />

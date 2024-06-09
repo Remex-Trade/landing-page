@@ -4,6 +4,7 @@ import { FaBox } from "react-icons/fa";
 import { DataTable } from "../data-table";
 import useGetUserTrades from "@/contracts-integration/hooks/useGetUserTrades";
 import { openTradeColumn } from "./openTradeColumn";
+import { openLimitColumns } from "./openLimitCOlumns";
 
 const tabs = [
   {
@@ -45,10 +46,18 @@ const TradeDetailsTable = () => {
                 data={data.formattedOpenTrades}
               />
             ) : (
-              <div className="w-full h-full flex flex-col gap-3 items-center justify-center">
-                <FaBox size={75} className="text-neutral-400" />
-                <span className="text-neutral-400">No data</span>
-              </div>
+              <NoDataBox />
+            ))}
+
+          {selected === 1 &&
+            (data.openLimitCount > 0 ? (
+              <DataTable
+                noDataMessage="Your Perp positions will appear here"
+                columns={openLimitColumns}
+                data={data.formattedLimitOrders}
+              />
+            ) : (
+              <NoDataBox />
             ))}
 
           {/* <Image src={"/Images/middlebottom.svg"} width={128} height={128} alt="nodata" className="backdrop-grayscale-0 backdrop-grayscale opacity-10" style={{color:"transparent"}}/> */}
@@ -57,5 +66,14 @@ const TradeDetailsTable = () => {
     </>
   );
 };
+
+function NoDataBox() {
+  return (
+    <div className="w-full h-full flex flex-col gap-3 items-center justify-center">
+      <FaBox size={75} className="text-neutral-400" />
+      <span className="text-neutral-400">No data</span>
+    </div>
+  );
+}
 
 export default memo(TradeDetailsTable);
