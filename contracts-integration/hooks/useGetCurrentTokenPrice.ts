@@ -1,10 +1,11 @@
-import { useContext } from "react";
-import userContext from "../../app/_context/userContext";
 import { usePriceStore } from "../../store/priceStore";
+import { useSelectedTokenStore } from "@/store/tokenStore";
 
 export const useGetCurrentTokenPrice = () => {
-  const { data } = useContext(userContext);
+  const pair = useSelectedTokenStore(state => state.pair)
   const latestPrice = usePriceStore((state) => state.latestPrice);
-  const latestTokenPrice = latestPrice[data.token];
+
+  if (!pair || !latestPrice) return "-";
+  const latestTokenPrice = latestPrice[pair.token];
   return latestTokenPrice;
 };

@@ -21,6 +21,8 @@ import TradeAdjustSidebar from '../../../components/trade/trade-adjust-sidebar';
 import TradeDetailsTable from '@/components/trade-details-table';
 import TokenSelect from '@/components/trade/token-select';
 import useGetPairs from '@/contracts-integration/hooks/useGetPairs';
+import { useSelectedTokenStore } from '@/store/tokenStore';
+import { LoaderCircle } from 'lucide-react';
 
 type chartData={
     funding: any;
@@ -42,7 +44,12 @@ const page = () => {
   const [option,setOption] = useState("Long");
   const [selectCrypto,setSelectCrypto] = useState(false);
   const [isRightOrder,setIsRightOrder] = useState(true);
-  const percentageChange = last24HourChange[data.token] || "-"
+  const selectedPair = useSelectedTokenStore(state => state.pair)
+  const setSelectedPair = useSelectedTokenStore(state => state.setSelectedPair)
+  const tokenName = selectedPair?.token || ""
+  const percentageChange = last24HourChange[tokenName] || "-"
+  const {data: pairs} = useGetPairs();
+
 
 const [chartStats, setChartStats] = useState<chartData>()
 
@@ -122,6 +129,18 @@ const [chartStats, setChartStats] = useState<chartData>()
   useEffect(() => {
     fetchChartStats("0xf36abcb2b8c9cc51f6c57a7bc49a9d2f072aebc2").then(data => setChartStats(data)).catch(err => console.log(err))
   }, [])
+
+  useEffect(() => {
+    if (!selectedPair && pairs) {
+      setSelectedPair(pairs[0])
+    }
+  }, [selectedPair, pairs])
+
+  if (!selectedPair) return <div className='h-screen w-full flex justify-center items-center'>
+            <LoaderCircle className="h-16 w-16 animate-spin" />
+  </div>
+
+// if (!data.token) return null
   return (
     <>
       {/* {showPopup &&
@@ -151,15 +170,13 @@ const [chartStats, setChartStats] = useState<chartData>()
           <div onClick={()=>setIsRightOrder(!isRightOrder)} className="w-full relative z-30 h-full hidden sc1:flex justify-between items-center py-4 px-4 border border-[#2C2D2D] bg-[#0F0E0F]">
             <div className="flex gap-4 items-center">
             <Image
-                      src={`/Images/${data.token
-                        .split("/")[0]
-                        .toLowerCase()}.png`}
+                      src={selectedPair?.icon}
                       width={30}
                       height={30}
                       alt="cryptoImage"
                       className="rounded-full h-100 w-100"
                     />
-              <span className="text-lg">{data.token}</span>
+              <span className="text-lg">{tokenName}</span>
             </div>
             <div className="flex gap-2 items-center">
               <span className="text-sm text-slate-300">All Markets</span>
@@ -244,9 +261,7 @@ const [chartStats, setChartStats] = useState<chartData>()
                     <div className="flex w-full justify-between items-center">
                       <div className="flex gap-2 w-full items-center">
                       <Image
-                      src={`/Images/${data.token
-                        .split("/")[0]
-                        .toLowerCase()}.png`}
+                      src={selectedPair?.icon}
                       width={30}
                       height={30}
                       alt="cryptoImage"
@@ -255,7 +270,7 @@ const [chartStats, setChartStats] = useState<chartData>()
                         <div className="flex flex-col sc1:flex-row gap-1 sc1:justify-between sc1:w-[200%] h-full sc1:border-r sc1:border-r-[#2C2D2D] px-4 py-2">
                           
                           <span className="text-green-600 sc1:h-full   sc1:text-xl sc1:text-white hidden sc1:flex  font-bold text-[0.9rem]">
-                          {"$"+Math.round(latestPrice[data.token] * 10) / 10}
+                          {"$"+Math.round(latestPrice[tokenName] * 10) / 10}
                           </span>
                           <span
                         className={
@@ -273,7 +288,7 @@ const [chartStats, setChartStats] = useState<chartData>()
                       </div>
                       <div className="sc1:hidden flex flex-col">
                         <span className="text-white font-bold text-[1rem] sc1:text-[0.7rem]">
-                        {"$"+Math.round(latestPrice[data.token] * 10) / 10}
+                        {"$"+Math.round(latestPrice[tokenName] * 10) / 10}
                         </span>
                         {/* <span className={percentageChange.includes("+") ?  'text-[#0cf3c4]' : "text-red-500"}>{percentageChange}</span> */}
                       </div>

@@ -4,10 +4,11 @@ import { CiStar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
 import Image from "next/image";
 import { FaX } from "react-icons/fa6";
-import useGetPairs from "@/contracts-integration/hooks/useGetPairs";
+import useGetPairs, { Pair } from "@/contracts-integration/hooks/useGetPairs";
 import userContext from "@/app/_context/userContext";
 import { usePriceStore } from "@/store/priceStore";
 import { FormattedPair, TOKEN_TYPE_OPTIONS, formatPairs } from "./helper";
+import { useSelectedTokenStore } from "@/store/tokenStore";
 
 const TokenSelect = ({
   setSelectOption,
@@ -17,10 +18,10 @@ const TokenSelect = ({
   const [FavArr, setFavArr] = useState([]);
   const [search, setSearch] = useState("");
   const { data, setData } = useContext(userContext);
+  const setSelectedPair = useSelectedTokenStore(state => state.setSelectedPair)
   const latestPrice = usePriceStore((state) => state.latestPrice);
   const last24HourChange = usePriceStore((state) => state.last24HourChange);
   const { data: pairs } = useGetPairs();
-  const formattedPairs = useMemo(() => formatPairs(pairs), [pairs]);
 
   const searchPair = (e) => {
     setSearch(e.target.value.toUpperCase());
@@ -77,11 +78,12 @@ const TokenSelect = ({
         </div>
         <div className="overflow-y-auto">
           <div className={Favorites ? "hidden" : "flex flex-col mb-3"}>
-            {formattedPairs.map((pair) => {
+            {pairs.map((pair) => {
               return (
                 <TokenCard
                   onClick={() => {
-                    setData({ ...data, token: pair.name });
+                    setSelectedPair(pair)
+                    // setData({ ...data, token: pair.token, pairIndex: pair.id });
                     setSelectOption(false);
                     setIsRightOrder(true);
                   }}
@@ -95,8 +97,8 @@ const TokenSelect = ({
                     );
                   }}
                   pair={pair}
-                  price={formatPrice(latestPrice[pair.name])}
-                  change={last24HourChange?.[pair.name] ?? "-"}
+                  price={formatPrice(latestPrice[pair.token])}
+                  change={last24HourChange?.[pair.token] ?? "-"}
                 />
               );
             })}
@@ -120,7 +122,7 @@ function TokenCard({
   isFavorite: boolean;
   onAddToFavorites: () => void;
   onRemoveFromFavorites: () => void;
-  pair: FormattedPair;
+  pair: Pair;
   price: string;
   change: string;
 }) {
@@ -154,8 +156,8 @@ function TokenCard({
             alt="sidebar1"
           />
           <div className="w-fit text-white font-bold h-full flex flex-col items-start text-center text-[1rem]">
-            <span>{pair.name}</span>
-            <span className="text-[0.6rem] text-slate-300">Bitcoin to USD</span>
+            <span>{pair.token}</span>
+            <span className="text-[0.6rem] text-slate-300">{pair.from} to {pair.to}</span>
           </div>
         </div>
       </div>

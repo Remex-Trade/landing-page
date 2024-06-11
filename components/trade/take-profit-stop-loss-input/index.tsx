@@ -5,6 +5,7 @@ import { usePriceStore } from "../../../store/priceStore";
 import userContext from "../../../app/_context/userContext";
 import { stopLossOptions } from "../../../constants/trade";
 import { getSlValue, getTpValue } from "./helper";
+import { useGetCurrentTokenPrice } from "@/contracts-integration/hooks/useGetCurrentTokenPrice";
 
 type Props = { setTradeData: SetTradeDataWithKey; tradeData: TradeData };
 export default function TakeProfitStopLossInput({
@@ -12,8 +13,7 @@ export default function TakeProfitStopLossInput({
   tradeData,
 }: Props) {
   const { data } = useContext(userContext);
-  const latestPrice = usePriceStore((state) => state.latestPrice);
-  const latestTokenPrice = latestPrice[data.token];
+  const latestTokenPrice = useGetCurrentTokenPrice()
   const takeProfitValue = useMemo(() => {
     const tradePrice = Number(
       tradeData.tradeType === "Market" ? latestTokenPrice : tradeData.openPrice

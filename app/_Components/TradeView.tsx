@@ -1,6 +1,7 @@
 // TradingViewWidget.jsx
 import React, { useContext, useEffect, useRef } from "react";
 import userContext from "../_context/userContext";
+import { useSelectedTokenStore } from "@/store/tokenStore";
 // import "./TradingView.css";
 
 let tvScriptLoadingPromise;
@@ -8,6 +9,8 @@ let tvScriptLoadingPromise;
 export default function TradingViewWidget() { // Declare the extended Window type globally
     const {data} = useContext(userContext);
 const onLoadScriptRef = useRef<()=>void|undefined>();
+const selectedPair = useSelectedTokenStore(state => state.pair);
+const tokenName = selectedPair?.token || "";
  
 useEffect(() => {
 onLoadScriptRef.current = createWidget;
@@ -36,9 +39,9 @@ if (document.getElementById("tradingview") && "TradingView" in window) {
 new (window.TradingView as any).widget({
 // custom_css_url: "/TradingView.css",
 autosize: true,
-symbol: `PYTH:${data.token.replace("/","")}`,
+symbol: `PYTH:${tokenName.replace("/","")}`,
 interval: "D",
-timezone: "Etc/UTC",
+// timezone: "Etc/UTC",
 theme: "dark",
 overrides: {
     "paneProperties.backgroundGradientStartColor": "#020024",
@@ -63,7 +66,7 @@ container_id: "tradingview",
 }
 }
  
-}, [data.token]);
+}, [tokenName]);
  
 return (
  

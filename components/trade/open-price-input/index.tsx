@@ -1,17 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { SetTradeDataWithKey, TradeData } from "../types";
-import userContext from "../../../app/_context/userContext";
-import { usePriceStore } from "../../../store/priceStore";
+import { useGetCurrentTokenPrice } from "@/contracts-integration/hooks/useGetCurrentTokenPrice";
 
 type Props = { setTradeData: SetTradeDataWithKey; tradeData: TradeData };
 
 export default function OpenPriceInput({ setTradeData, tradeData }: Props) {
-  const { data } = useContext(userContext);
-  const latestPrice = usePriceStore((state) => state.latestPrice);
-  const latestTokenPrice = latestPrice[data.token]?.toFixed?.(2)
+  const latestTokenPrice = useGetCurrentTokenPrice()?.toFixed?.(2);
   useEffect(() => {
     setTradeData("openPrice", String(latestTokenPrice));
-  }, [])
+  }, []);
   return (
     <div className="w-full flex flex-col">
       <div className="w-full flex rounded-xl text-slate-300 text-[0.9rem] sc1:text-[0.8rem] justify-between items-center">

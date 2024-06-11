@@ -25,6 +25,7 @@ const layout = ({ children }) => {
   const [user, setUser] = useState({});
   const [data, setData] = useState({
     token: "BTC/USD",
+    pairIndex: 0,
     leverage: 0,
     orderDetails: {},
   });
