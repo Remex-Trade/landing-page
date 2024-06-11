@@ -17,3 +17,7 @@ export const STAKE_TOKEN_ADDRESS = {
 export const STAKING_ADDRESS = {
   4002: "0xb475Ff4D23c2129ebc05286ffc378c13A6035dc7",
 };
+
+export const PAIR_STORAGE_ADDRESS = {
+  4002: "0x8dA9E4ABb867af8aB33C0D8671ca3Da3af1C3B5f",
+};

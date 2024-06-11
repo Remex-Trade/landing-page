@@ -19,7 +19,8 @@ import WalletsProvider from '../../_Components/Wallet';
 import TradingViewWidget from '../../_Components/TradeView';
 import TradeAdjustSidebar from '../../../components/trade/trade-adjust-sidebar';
 import TradeDetailsTable from '@/components/trade-details-table';
-import BottomDetails from '@/components/BottomDetails';
+import TokenSelect from '@/components/trade/token-select';
+import useGetPairs from '@/contracts-integration/hooks/useGetPairs';
 
 type chartData={
     funding: any;
@@ -41,7 +42,7 @@ const page = () => {
   const [option,setOption] = useState("Long");
   const [selectCrypto,setSelectCrypto] = useState(false);
   const [isRightOrder,setIsRightOrder] = useState(true);
-const percentageChange = last24HourChange[data.token] || "-"
+  const percentageChange = last24HourChange[data.token] || "-"
 
 const [chartStats, setChartStats] = useState<chartData>()
 
@@ -101,6 +102,7 @@ const [chartStats, setChartStats] = useState<chartData>()
     }, 60 * 1000);
     return () => clearInterval(interval);
   }, []);
+
   useEffect(() => {
     const connection = new EvmPriceServiceConnection(
       "https://hermes.pyth.network"
@@ -178,7 +180,8 @@ const [chartStats, setChartStats] = useState<chartData>()
           <div className="w-[100vw] h-[100vh] absolute z-20">
           <div className="absolute w-full h-full bg-black opacity-90 blur"></div>
           <div className="absolute w-[25%] h-full z-30">
-            <Sidebar getShow={getShow} setSelectOption={setSelectCrypto} isRightOrder={isRightOrder} setIsRightOrder={setIsRightOrder}/>
+            <TokenSelect setSelectOption={setSelectCrypto} setIsRightOrder={setIsRightOrder}/>
+            {/* <Sidebar getShow={getShow} setSelectOption={setSelectCrypto} isRightOrder={isRightOrder} setIsRightOrder={setIsRightOrder}/> */}
           </div>
         </div>
           }
@@ -380,7 +383,6 @@ const [chartStats, setChartStats] = useState<chartData>()
                   </div>
                 </div>
               </div>
-              {/* <BottomDetails /> */}
               <div
                 id="middle-bottom"
                 className="pb-10 pt-3 hidden sc1:flex sc1:py-0  flex-col gap-1  dark:bg-[#0F0E0E] bg-white dark:border-[#2C2D2D] shadow-lg border-[1px] w-full sc1:h-full h-fit"

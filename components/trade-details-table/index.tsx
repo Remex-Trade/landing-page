@@ -20,7 +20,7 @@ const tabs = [
 const TradeDetailsTable = () => {
   const [selected, setSelected] = useState<(typeof tabs)[number]["value"]>(0);
   const { data } = useGetUserTrades();
-  console.log("useGetUserTrades", data);
+
   return (
     <>
       <div className="sc1:flex flex-col hidden w-full h-full">
