@@ -9,6 +9,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { LongShort } from "@/constants/trade";
 import { formatUnits, formatEther } from "ethers/lib/utils";
+import { usePriceStore } from "@/store/priceStore";
 
 export type FormattedOpenTrades = {
   type: LongShort;
@@ -58,6 +59,8 @@ const handleGetUserInfo = async (address: string, chainId: number) => {
     })
   );
 
+  const latestPrice = usePriceStore((state) => state.latestPrice);
+
   const formattedOpenTrades: FormattedOpenTrades[] = openTradesResult.map(
     (trade) => {
       return {
@@ -67,7 +70,7 @@ const handleGetUserInfo = async (address: string, chainId: number) => {
         leverage: trade.leverage.toString() + "x",
         collateral: formatEther(trade.positionSizeDai.toString()) + "DAI",
         openPrice: formatPriceFromBigNumber(trade.openPrice),
-        price: "-",
+        price: latestPrice["BTC/USD"],
         sl: formatPriceFromBigNumber(trade.sl),
         tp: formatPriceFromBigNumber(trade.tp),
         index: trade.index.toString(),

@@ -10,11 +10,13 @@ import { openTrade } from "../writeMethods";
 import { getOpenLimitOrdersCount, getOpenTradesCount } from "../readMethods";
 import { useGetCurrentTokenPrice } from "./useGetCurrentTokenPrice";
 import { tradeContractErrors } from "../../constants/trade";
+import { useSelectedTokenStore } from "@/store/tokenStore";
 
 export const useHandleTrade = () => {
   const { address, chainId } = useAccount();
   const latestTokenPrice = useGetCurrentTokenPrice();
   const queryClient = useQueryClient();
+  const selectedToken = useSelectedTokenStore(state => state.pair)
   return useMutation({
     mutationFn: async (tradeData: TradeData) => {
       console.log(
@@ -60,7 +62,7 @@ export const useHandleTrade = () => {
       console.log("Index:", index);
 
       const config = {
-        pairIndex: 0,
+        pairIndex: selectedToken.pairIndex,
         buy,
         daiToken: tradeData.daiToken,
         index,
