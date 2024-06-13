@@ -1,10 +1,34 @@
 "use client";
+import useGetStakeAllowance from "@/contracts-integration/hooks/stake/useGetStakeAllowance";
+import useGetStakeBalance from "@/contracts-integration/hooks/stake/useGetStakeBalance";
+import { useHandleApprove } from "@/contracts-integration/hooks/stake/useHandleApprove";
+import { useHandleStakeToken } from "@/contracts-integration/hooks/stake/useHandleStakeToken";
+import { useHandleUnstakeToken } from "@/contracts-integration/hooks/stake/useHandleUnstakeToken";
+import { ConnectKitButton } from "connectkit";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
+import { parseEther } from "viem";
+import { useAccount } from "wagmi";
 
 const page = () => {
   const [selectedButton, setSelectedButton] = useState("stake");
-  const [inputVal, setInputVal] = useState(0);
+  const [inputVal, setInputVal] = useState("0");
+  const { isDisconnected } = useAccount();
+  const { data: stakeAllowance } = useGetStakeAllowance();
+  const { data: stakeBalance } = useGetStakeBalance();
+    const { mutate: handleApprove, isPending: isHandleApproveLoading } =
+    useHandleApprove();
+  const { mutate: stakeToken, isPending: isStaking } = useHandleStakeToken();
+  const { mutate: unstakeToken, isPending: isUnstaking } = useHandleUnstakeToken();
+  const isApproved = useMemo(() => {
+    if (
+      stakeAllowance > BigInt(0) &&
+      stakeAllowance >= parseEther(inputVal || "0")
+    )
+      return true;
+    return false;
+  }, [inputVal, stakeAllowance]);
+
   return (
     <div className="w-full h-screen flex flex-col items-center py-10 justify-start bg-[#120E1B] gap-5">
       <div className="md:text-5xl text-2xl font-bold flex gap-2" id="heading1">
@@ -73,7 +97,7 @@ const page = () => {
         </div>
         <div className="flex flex-row md:flex-col gap-2 justify-between w-full md:justify-center">
           <span className="text-sm underline underline-dotted text-gray-200">
-              REMEX Price
+            REMEX Price
           </span>
           <span className="text-white font-bold text-lg">$3.35</span>
         </div>
@@ -84,8 +108,14 @@ const page = () => {
           <span className="text-white font-bold text-lg">$113,215,375</span>
         </div>
       </div>
-      <div id="boxes" className="flex gap-4 md:gap-8 w-full md:w-[90%] sc1:w-[60%] mt-10 h-fit flex-col md:flex-row px-1">
-        <div id="box1set" className="flex gap-0 md:gap-5 w-full flex-col h-full">
+      <div
+        id="boxes"
+        className="flex gap-4 md:gap-8 w-full md:w-[90%] sc1:w-[60%] mt-10 h-fit flex-col md:flex-row px-1"
+      >
+        <div
+          id="box1set"
+          className="flex gap-0 md:gap-5 w-full flex-col h-full"
+        >
           <div
             id="box12"
             className="bg-[#21212d] border border-[#161221] rounded-t-lg md:rounded-xl px-8 py-4 w-full flex flex-col gap-2 h-full"
@@ -213,18 +243,45 @@ const page = () => {
                 className="flex w-full justify-between items-center pr-4"
               >
                 <input
-                  type="text"
+                  type="number"
                   className="bg-transparent text-lg text-white outline-none"
                   value={inputVal}
-                  onChange={(e) => setInputVal(+e.target.value)}
+                  onChange={(e) => setInputVal(e.target.value)}
                 />
                 <span className="text-lg">REMEX</span>
               </div>
             </div>
             <div className="w-full flex items-center justify-end mt-5">
-              <button className="bg-[#3B1A91] text-white px-4 py-2 rounded-md">
+              {isDisconnected ? (
+                <ConnectKitButton />
+              ) : isApproved ? (
+                <button
+                onClick={() => {
+                  selectedButton === "stake"
+                    ? stakeToken(inputVal)
+                    : unstakeToken(inputVal);
+                }}
+                  className="bg-[#3B1A91] text-white px-4 py-2 rounded-md"
+                  disabled={isStaking}
+                >
+                  {isStaking
+                    ? "Loading..."
+                    : selectedButton === "stake"
+                    ? "Stake"
+                    : "Unstake"}
+                </button>
+              ) : (
+                <button
+                  onClick={() => handleApprove()}
+                  disabled={isHandleApproveLoading}
+                  className="bg-[#3B1A91] text-white px-4 py-2 rounded-md"
+                >
+                  {isHandleApproveLoading ? "Loading..." : "Approve"}
+                </button>
+              )}
+              {/* <button className="bg-[#3B1A91] text-white px-4 py-2 rounded-md">
                 Approve
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
