@@ -59,8 +59,6 @@ const handleGetUserInfo = async (address: string, chainId: number) => {
     })
   );
 
-  const latestPrice = usePriceStore((state) => state.latestPrice);
-
   const formattedOpenTrades: FormattedOpenTrades[] = openTradesResult.map(
     (trade) => {
       return {
@@ -70,7 +68,7 @@ const handleGetUserInfo = async (address: string, chainId: number) => {
         leverage: trade.leverage.toString() + "x",
         collateral: formatEther(trade.positionSizeDai.toString()) + "DAI",
         openPrice: formatPriceFromBigNumber(trade.openPrice),
-        price: latestPrice["BTC/USD"],
+        price: "-",
         sl: formatPriceFromBigNumber(trade.sl),
         tp: formatPriceFromBigNumber(trade.tp),
         index: trade.index.toString(),
@@ -78,7 +76,6 @@ const handleGetUserInfo = async (address: string, chainId: number) => {
       };
     }
   );
-  console.log("trade", openTradesCount, openLimitCount, formattedOpenTrades);
 
   const formattedLimitOrders: FormattedOpenLimitOrders[] = openLimitResult.map(
     (trade) => {
@@ -100,6 +97,7 @@ const handleGetUserInfo = async (address: string, chainId: number) => {
     }
   );
 
+  
   return {
     openTrades: openTradesResult,
     openLimitOrders: openLimitResult,
