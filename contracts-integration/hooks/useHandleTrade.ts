@@ -19,11 +19,6 @@ export const useHandleTrade = () => {
   const selectedToken = useSelectedTokenStore((state) => state.pair);
   return useMutation({
     mutationFn: async (tradeData: TradeData) => {
-      console.log(
-        "Executing useHandleTrade mutationFn",
-        tradeData,
-        latestTokenPrice
-      );
       const buy = tradeData.longOrShort === "Long";
       const isMarket = tradeData.tradeType === "Market";
       const isTpSl = tradeData.isTpSl;
@@ -61,8 +56,6 @@ export const useHandleTrade = () => {
         index = await getOpenLimitOrdersCount(address, chainId, 0);
       }
 
-      console.log("Index:", index);
-
       const config = {
         pairIndex: selectedToken.pairIndex,
         buy,
@@ -79,7 +72,14 @@ export const useHandleTrade = () => {
         referral: "0x0000000000000000000000000000000000000000",
         type: type,
       } as const;
-      console.log("indec", selectedToken.pairIndex);
+
+      console.log(
+        "Executing useHandleTrade mutationFn",
+        tradeData,
+        latestTokenPrice,
+        config
+      );
+
       await openTrade(address, chainId, config);
     },
     onSuccess: async () => {

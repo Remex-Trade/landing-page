@@ -21,8 +21,8 @@ export type FormattedOpenTrades = {
   price: string;
   sl: string;
   tp: string;
-  index: string,
-  pairIndex: string
+  index: string;
+  pairIndex: string;
 };
 export type FormattedOpenLimitOrders = {
   type: LongShort;
@@ -36,12 +36,12 @@ export type FormattedOpenLimitOrders = {
   maxPrice: string;
   sl: string;
   tp: string;
-  index: string,
-  pairIndex: string
+  index: string;
+  pairIndex: string;
 };
 
 function formatPriceFromBigNumber(price: BigInt) {
-  return Number(formatUnits(price.toString(), "10")).toFixed(2)
+  return Number(formatUnits(price.toString(), "10")).toFixed(2);
 }
 
 const handleGetUserInfo = async (address: string, chainId: number) => {
@@ -74,10 +74,11 @@ const handleGetUserInfo = async (address: string, chainId: number) => {
         sl: formatPriceFromBigNumber(trade.sl),
         tp: formatPriceFromBigNumber(trade.tp),
         index: trade.index.toString(),
-        pairIndex: trade.pairIndex.toString()
+        pairIndex: trade.pairIndex.toString(),
       };
     }
   );
+  console.log("trade", openTradesCount, openLimitCount, formattedOpenTrades);
 
   const formattedLimitOrders: FormattedOpenLimitOrders[] = openLimitResult.map(
     (trade) => {
@@ -105,15 +106,15 @@ const handleGetUserInfo = async (address: string, chainId: number) => {
     openTradesCount,
     openLimitCount,
     formattedOpenTrades,
-    formattedLimitOrders
+    formattedLimitOrders,
   };
 };
 
 export default function useGetUserTrades() {
   const { chainId, address } = useAccount();
-
+  console.log("id", chainId, address);
   return useQuery({
     queryKey: ["userTradesData"],
-    queryFn: async () => handleGetUserInfo(address, chainId),
+    queryFn: async () => await handleGetUserInfo(address, chainId),
   });
 }

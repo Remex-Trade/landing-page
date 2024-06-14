@@ -26,6 +26,23 @@ export const getAllowance = async (address: string, chainId: number) => {
 };
 
 /**
+ * Gets the balance for a specified address to spend the staking token.
+ *
+ * @param {string} address - The address to check the balance for.
+ * @param {number} chainId - The chain ID where the contract is deployed.
+ * @returns {Promise<bigint>} - The balance amount.
+ */
+export const getBalance = async (address: string, chainId: number) => {
+  const data = await readContract(config, {
+    abi: erc20Abi,
+    address: STAKE_TOKEN_ADDRESS[chainId],
+    functionName: "balanceOf",
+    args: [address as any],
+  });
+
+  return data;
+};
+/**
  * Gets the pending reward in DAI for a specified address.
  *
  * @param {string} address - The address to check the pending reward for.
