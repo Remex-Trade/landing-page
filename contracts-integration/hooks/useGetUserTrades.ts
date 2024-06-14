@@ -10,6 +10,8 @@ import { useQuery } from "@tanstack/react-query";
 import { LongShort } from "@/constants/trade";
 import { formatUnits, formatEther } from "ethers/lib/utils";
 import { usePriceStore } from "@/store/priceStore";
+import { useSelectedTokenStore } from "@/store/tokenStore";
+import { Pair } from "./useGetPairs";
 
 export type FormattedOpenTrades = {
   type: LongShort;
@@ -44,18 +46,23 @@ function formatPriceFromBigNumber(price: BigInt) {
   return Number(formatUnits(price.toString(), "10")).toFixed(2);
 }
 
-const handleGetUserInfo = async (address: string, chainId: number) => {
-  const openTradesCount = await getOpenTradesCount(address, chainId, 0);
-  const openLimitCount = await getOpenLimitOrdersCount(address, chainId, 0);
+const handleGetUserInfo = async (
+  address: string,
+  chainId: number,
+  pair: Pair
+) => {
+  const pairIndex = pair.pairIndex;
+  const openTradesCount = await getOpenTradesCount(address, chainId, pairIndex);
+  const openLimitCount = await getOpenLimitOrdersCount(address, chainId, pairIndex);
   const openTradesResult = await Promise.all(
     Array.from({ length: openTradesCount }).map(async (_, i) => {
-      return await getOpenTrades(address, chainId, 0, i);
+      return await getOpenTrades(address, chainId, pairIndex, i);
     })
   );
 
   const openLimitResult = await Promise.all(
     Array.from({ length: openLimitCount }).map(async (_, i) => {
-      return await getOpenLimitOrders(address, chainId, 0, i);
+      return await getOpenLimitOrders(address, chainId, pairIndex, i);
     })
   );
 
@@ -63,7 +70,7 @@ const handleGetUserInfo = async (address: string, chainId: number) => {
     (trade) => {
       return {
         type: trade.buy ? "Long" : "Short",
-        pair: "BTC/USD",
+        pair: pair.token,
         size: trade.leverage.valueOf() * trade.leverage.valueOf() + "DAI",
         leverage: trade.leverage.toString() + "x",
         collateral: formatEther(trade.positionSizeDai.toString()) + "DAI",
@@ -81,7 +88,7 @@ const handleGetUserInfo = async (address: string, chainId: number) => {
     (trade) => {
       return {
         type: trade.buy ? "Long" : "Short",
-        pair: "BTC/USD",
+        pair: pair.token,
         size: trade.leverage.valueOf() * trade.leverage.valueOf() + "DAI",
         leverage: trade.leverage.toString() + "x",
         collateral: formatEther(trade.positionSizeDai.toString()) + "DAI",
@@ -97,10 +104,7 @@ const handleGetUserInfo = async (address: string, chainId: number) => {
     }
   );
 
-  
   return {
-    openTrades: openTradesResult,
-    openLimitOrders: openLimitResult,
     openTradesCount,
     openLimitCount,
     formattedOpenTrades,
@@ -110,9 +114,42 @@ const handleGetUserInfo = async (address: string, chainId: number) => {
 
 export default function useGetUserTrades() {
   const { chainId, address } = useAccount();
-  console.log("id", chainId, address);
+  const allPairs = useSelectedTokenStore((state) => state.allPairs);
   return useQuery({
-    queryKey: ["userTradesData"],
-    queryFn: async () => await handleGetUserInfo(address, chainId),
+    queryKey: ["userTradesData", chainId, address],
+    gcTime: 1000 * 10,
+    staleTime: 1000 * 10,
+    queryFn: async () => {
+      const data = await Promise.all(
+        allPairs.map(async (pair) => {
+          return await handleGetUserInfo(address, chainId, pair);
+        })
+      );
+
+      const combinedData = data.reduce(
+        (acc, curr) => {
+          return {
+            openTradesCount: acc.openTradesCount + curr.openTradesCount,
+            openLimitCount: acc.openLimitCount + curr.openLimitCount,
+            formattedOpenTrades: [
+              ...acc.formattedOpenTrades,
+              ...curr.formattedOpenTrades,
+            ],
+            formattedLimitOrders: [
+              ...acc.formattedLimitOrders,
+              ...curr.formattedLimitOrders,
+            ],
+          };
+        },
+        {
+          openTradesCount: 0,
+          openLimitCount: 0,
+          formattedOpenTrades: [],
+          formattedLimitOrders: [],
+        }
+      );
+
+      return combinedData;
+    },
   });
 }
