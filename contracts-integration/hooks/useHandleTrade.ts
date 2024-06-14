@@ -16,7 +16,7 @@ export const useHandleTrade = () => {
   const { address, chainId } = useAccount();
   const latestTokenPrice = useGetCurrentTokenPrice();
   const queryClient = useQueryClient();
-  const selectedToken = useSelectedTokenStore(state => state.pair)
+  const selectedToken = useSelectedTokenStore((state) => state.pair);
   return useMutation({
     mutationFn: async (tradeData: TradeData) => {
       console.log(
@@ -26,7 +26,7 @@ export const useHandleTrade = () => {
       );
       const buy = tradeData.longOrShort === "Long";
       const isMarket = tradeData.tradeType === "Market";
-      const isTpSl = tradeData.isTpSl
+      const isTpSl = tradeData.isTpSl;
       const openPrice = isMarket
         ? Number(latestTokenPrice)
         : Number(tradeData.openPrice);
@@ -38,12 +38,14 @@ export const useHandleTrade = () => {
         tradeData.longOrShort
       );
 
-      const stopLoss = isTpSl ?  getSlValue(
-        openPrice,
-        Number(tradeData.stopLoss),
-        Number(tradeData.leverage),
-        tradeData.longOrShort
-      ) : 0;
+      const stopLoss = isTpSl
+        ? getSlValue(
+            openPrice,
+            Number(tradeData.stopLoss),
+            Number(tradeData.leverage),
+            tradeData.longOrShort
+          )
+        : 0;
 
       const type =
         tradeData.tradeType === "Limit"
@@ -77,14 +79,14 @@ export const useHandleTrade = () => {
         referral: "0x0000000000000000000000000000000000000000",
         type: type,
       } as const;
-
+      console.log("indec", selectedToken.pairIndex);
       await openTrade(address, chainId, config);
     },
     onSuccess: async () => {
       toast.success("Trade opened successfully.");
-        return await queryClient.invalidateQueries({
-          queryKey: ["userTradesData"],
-        });
+      return await queryClient.invalidateQueries({
+        queryKey: ["userTradesData"],
+      });
     },
 
     onError: (error) => {

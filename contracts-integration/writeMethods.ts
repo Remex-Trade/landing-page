@@ -35,7 +35,11 @@ interface ITrade {
  *   - slippageP: The slippage percentage.
  *   - referral: The referral code.
  */
-export const openTrade = async (address: string, chainId: number, trade: ITrade) => {
+export const openTrade = async (
+  address: string,
+  chainId: number,
+  trade: ITrade
+) => {
   console.log(trade);
   const contract = getTradingContract(chainId);
   const tx = await contract.openTrade(
@@ -55,6 +59,7 @@ export const openTrade = async (address: string, chainId: number, trade: ITrade)
     trade.slippageP,
     trade.referral
   );
+  console.log("pairIndex", trade.pairIndex);
   await tx.wait();
 };
 
