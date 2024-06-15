@@ -20,7 +20,6 @@ export const getOpenTradesCount = async (address: string, chainId: number, pairI
     address: STORAGE_ADDRESS[chainId],
     functionName: "openTradesCount",
     args: [address as any, BigInt(pairIndex)],
-    chainId: 4002
   });
 
   return Number(data.toString());
@@ -47,7 +46,6 @@ export const getOpenLimitOrdersCount = async (
     address: STORAGE_ADDRESS[chainId],
     functionName: "openLimitOrdersCount",
     args: [address as any, BigInt(pairIndex)],
-    chainId: 4002
   });
   return Number(data.toString());
 };
@@ -76,7 +74,12 @@ export const getOpenTrades = async (
     address: STORAGE_ADDRESS[chainId],
     functionName: "openTrades",
     args: [address as any, BigInt(pairIndex), BigInt(index)],
-    chainId: 4002
+  });
+  const tradeInfo = await readContract(config, {
+    abi: storageABI,
+    address: STORAGE_ADDRESS[chainId],
+    functionName: "openTradesInfo",
+    args: [address as any, BigInt(pairIndex), BigInt(index)],
   });
 
   const formattedData = {
@@ -90,6 +93,7 @@ export const getOpenTrades = async (
     leverage: data[7],
     tp: data[8],
     sl: data[9],
+    isClosed: tradeInfo[5],
   };
 
   return formattedData;
@@ -119,7 +123,6 @@ export const getOpenLimitOrders = async (
     address: STORAGE_ADDRESS[chainId],
     functionName: "getOpenLimitOrder",
     args: [address as any, BigInt(pairIndex), BigInt(index)],
-    chainId: 4002
   });
   console.log(data);
   const formattedData = { ...data, positionSizeDai: data.positionSize, openPrice: data.minPrice };

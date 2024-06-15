@@ -3,7 +3,7 @@ import { useChainId } from "wagmi";
 import { getPairs } from "../pairsMethods";
 import { useSelectedTokenStore } from "@/store/tokenStore";
 
-export type Pair = ReturnType<typeof useGetPairs>["data"][number]
+export type Pair = ReturnType<typeof useGetPairs>["data"][number];
 
 export default function useGetPairs() {
   const chainId = useChainId();
@@ -14,7 +14,7 @@ export default function useGetPairs() {
     queryFn: async () => {
       const pairs = await getPairs(chainId);
 
-      const formattedPairs =  pairs.map((pair) => {
+      const formattedPairs = pairs.map((pair) => {
         return {
           ...pair,
           id: pair.pairIndex,

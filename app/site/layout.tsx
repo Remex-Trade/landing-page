@@ -3,19 +3,33 @@ import React, { useState } from "react";
 import Navbar from "../_Components/Navbar";
 import theme from "../_context/theme";
 import userContext from "../_context/userContext";
-import { fantom, fantomTestnet } from "wagmi/chains";
+import { Chain, fantom, fantomTestnet } from "wagmi/chains";
 import { createConfig, http, WagmiProvider } from "wagmi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import NextTopLoader from "nextjs-toploader";
 import { Web3Provider } from "../providers";
 
-const config = createConfig({
-  chains: [fantomTestnet],
+const amoy: Chain = {
+  id: 80002,
+  name: "Amoy",
+  // network: "Polygon Amoy", // Add the network property
+  nativeCurrency: { name: "AMOY", symbol: "AMOY", decimals: 18 },
+  rpcUrls: {
+    default: { http: ["https://rpc-amoy.polygon.technology/"] },
+    public: { http: ["https://rpc-amoy.polygon.technology"] },
+  },
+  blockExplorers: {
+    default: { name: "", url: "https://amoy.polygonscan.com/" },
+  },
+};
 
+const config = createConfig({
+  chains: [fantomTestnet, amoy],
   transports: {
     [fantomTestnet.id]: http(),
+    [amoy.id]: http(),
   },
-  ssr: true
+  ssr: true,
 });
 
 const queryClient = new QueryClient();

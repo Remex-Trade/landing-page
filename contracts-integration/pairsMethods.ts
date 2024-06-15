@@ -14,7 +14,10 @@ export const getPairs = async (chainId: number) => {
     abi: pairStorageABI,
     address: PAIR_STORAGE_ADDRESS[chainId],
     functionName: "pairsCount",
+    chainId: chainId as any,
   });
+
+  console.log("GETPAIRS", chainId, data.toString());
 
   const pairsCount = Number(data.toString());
 
@@ -24,13 +27,14 @@ export const getPairs = async (chainId: number) => {
       address: PAIR_STORAGE_ADDRESS[chainId],
       functionName: "pairs",
       args: [BigInt(i)],
+      chainId: chainId as any,
     });
   });
 
   const pairsData = await Promise.all(pairsPromise);
 
   console.log(pairsData);
-const formattedData = pairsData.map((d, index) => {
+  const formattedData = pairsData.map((d, index) => {
     return {
       from: d[0],
       to: d[1],

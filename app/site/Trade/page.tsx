@@ -1,124 +1,113 @@
-"use client"
-import React, { useContext, useState, useEffect } from 'react';
+"use client";
+import React, { useContext, useState, useEffect } from "react";
 import { FaBox, FaChevronDown, FaFire } from "react-icons/fa";
 import Image from "next/image";
-import Sidebar from "../../_Components/Sidebar"
+import Sidebar from "../../_Components/Sidebar";
 import MiddleBottom from "../../_Components/MiddleBottom";
 import RightOrder from "../../_Components/RightOrder";
 import Chart from "../../_Components/Chart";
 import Popup from "../../_Components/Popup";
-import {motion,AnimatePresence} from 'framer-motion';
+import { motion, AnimatePresence } from "framer-motion";
 import { RxHamburgerMenu } from "react-icons/rx";
-import userContext from '../../_context/userContext';
-import {EvmPriceServiceConnection} from "@pythnetwork/pyth-evm-js"
+import userContext from "../../_context/userContext";
+import { EvmPriceServiceConnection } from "@pythnetwork/pyth-evm-js";
 
 import { idToToken, priceIds } from "../../../helpers/price";
-import {usePriceStore} from "../../../store/priceStore"
-import {fetchChartStats} from "../../../contracts-integration/utils"
-import WalletsProvider from '../../_Components/Wallet';
-import TradingViewWidget from '../../_Components/TradeView';
-import TradeAdjustSidebar from '../../../components/trade/trade-adjust-sidebar';
-import TradeDetailsTable from '@/components/trade-details-table';
-import TokenSelect from '@/components/trade/token-select';
-import useGetPairs from '@/contracts-integration/hooks/useGetPairs';
-import { useSelectedTokenStore } from '@/store/tokenStore';
-import { LoaderCircle } from 'lucide-react';
+import { usePriceStore } from "../../../store/priceStore";
+import { fetchChartStats } from "../../../contracts-integration/utils";
+import WalletsProvider from "../../_Components/Wallet";
+import TradingViewWidget from "../../_Components/TradeView";
+import TradeAdjustSidebar from "../../../components/trade/trade-adjust-sidebar";
+import TradeDetailsTable from "@/components/trade-details-table";
+import TokenSelect from "@/components/trade/token-select";
+import useGetPairs from "@/contracts-integration/hooks/useGetPairs";
+import { useSelectedTokenStore } from "@/store/tokenStore";
+import { LoaderCircle } from "lucide-react";
 
-type chartData={
-    funding: any;
-    borrowingRate: any;
-    openInterestS: any;
-    openInterestL?: any;
-    volume24h: any;
-}
+type chartData = {
+  funding: any;
+  borrowingRate: any;
+  openInterestS: any;
+  openInterestL?: any;
+  volume24h: any;
+};
 
 const page = () => {
-  const [show,setShow]=useState(true);
-  const[showPopup, setShowPopup] = useState(false);
-  const {data,setData,user} = useContext(userContext);
-  const setLatestPrice = usePriceStore((state) => state.setLatestPrice)
-  const latestPrice = usePriceStore(state  => state.latestPrice)
-  const last24HourChange = usePriceStore(state  => state.last24HourChange)
-  const setLast24HourPrice = usePriceStore((state) => state.setLast24HourPrice)
-  const [showOption,setShowOption] = useState("close");
-  const [option,setOption] = useState("Long");
-  const [selectCrypto,setSelectCrypto] = useState(false);
-  const [isRightOrder,setIsRightOrder] = useState(true);
-  const selectedPair = useSelectedTokenStore(state => state.pair)
-  const setSelectedPair = useSelectedTokenStore(state => state.setSelectedPair)
-  const tokenName = selectedPair?.token || ""
-  const percentageChange = last24HourChange[tokenName] || "-"
-  const {data: pairs} = useGetPairs();
+  const [show, setShow] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
+  const { data, setData, user } = useContext(userContext);
+  const setLatestPrice = usePriceStore((state) => state.setLatestPrice);
+  const latestPrice = usePriceStore((state) => state.latestPrice);
+  const last24HourChange = usePriceStore((state) => state.last24HourChange);
+  const setLast24HourPrice = usePriceStore((state) => state.setLast24HourPrice);
+  const [showOption, setShowOption] = useState("close");
+  const [option, setOption] = useState("Long");
+  const [selectCrypto, setSelectCrypto] = useState(false);
+  const [isRightOrder, setIsRightOrder] = useState(true);
+  const selectedPair = useSelectedTokenStore((state) => state.pair);
+  const setSelectedPair = useSelectedTokenStore((state) => state.setSelectedPair);
+  const tokenName = selectedPair?.token || "";
+  const percentageChange = last24HourChange[tokenName] || "-";
+  const { data: pairs } = useGetPairs();
 
+  const [chartStats, setChartStats] = useState<chartData>();
 
-const [chartStats, setChartStats] = useState<chartData>()
-
- 
   const handleClose = () => {
     setShowPopup(false);
   };
   const handleShow = () => {
     setShowPopup(true);
   };
-  const getShow=(data)=>{
-      setShow(data)
-  }
+  const getShow = (data) => {
+    setShow(data);
+  };
   async function getLastDayData() {
-    const connection = new EvmPriceServiceConnection(
-      "https://hermes.pyth.network"
-    );
+    const connection = new EvmPriceServiceConnection("https://hermes.pyth.network");
 
-    const now = (Date.now() / 1000);
+    const now = Date.now() / 1000;
     const timeThreshold = now - 24 * 60 * 60;
 
     const requests = Object.values(priceIds).map(async (priceId) => {
-      const last24HourPrice = await connection.getPriceFeed(
-        priceId,
-        timeThreshold
-      );
+      const last24HourPrice = await connection.getPriceFeed(priceId, timeThreshold);
 
       return last24HourPrice;
-    })
+    });
 
     return Promise.all(requests)
-    .then((chunks) => {
-      const prices = {}
-      chunks.forEach((chunk) => {
-        const price = chunk.getPriceUnchecked()
-        
-        if (price) {
-          const token = idToToken["0x" + chunk.id]
-          prices[token] = price.getPriceAsNumberUnchecked();
-        }
+      .then((chunks) => {
+        const prices = {};
+        chunks.forEach((chunk) => {
+          const price = chunk.getPriceUnchecked();
+
+          if (price) {
+            const token = idToToken["0x" + chunk.id];
+            prices[token] = price.getPriceAsNumberUnchecked();
+          }
+        });
+        setLast24HourPrice(prices);
+        return chunks;
       })
-      setLast24HourPrice(prices)
-      return chunks;
-    })
-    .catch((err) => {
-   
-      console.error(err);
-    });
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   useEffect(() => {
-    
-    getLastDayData()
+    getLastDayData();
 
     const interval = setInterval(() => {
-      getLastDayData()
+      getLastDayData();
     }, 60 * 1000);
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    const connection = new EvmPriceServiceConnection(
-      "https://hermes.pyth.network"
-    );
+    const connection = new EvmPriceServiceConnection("https://hermes.pyth.network");
 
-    connection.subscribePriceFeedUpdates( Object.values(priceIds), (priceFeed) => {
+    connection.subscribePriceFeedUpdates(Object.values(priceIds), (priceFeed) => {
       const updatedPrice = priceFeed.getPriceNoOlderThan(60);
       if (updatedPrice) {
-        setLatestPrice(priceFeed.id, updatedPrice.getPriceAsNumberUnchecked())
+        setLatestPrice(priceFeed.id, updatedPrice.getPriceAsNumberUnchecked());
       }
     });
 
@@ -126,21 +115,26 @@ const [chartStats, setChartStats] = useState<chartData>()
       connection.closeWebSocket();
     };
   }, []);
-  useEffect(() => {
-    fetchChartStats("0xf36abcb2b8c9cc51f6c57a7bc49a9d2f072aebc2").then(data => setChartStats(data)).catch(err => console.log(err))
-  }, [])
+  // useEffect(() => {
+  //   fetchChartStats("0xf36abcb2b8c9cc51f6c57a7bc49a9d2f072aebc2")
+  //     .then((data) => setChartStats(data))
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   useEffect(() => {
     if (!selectedPair && pairs) {
-      setSelectedPair(pairs[0])
+      setSelectedPair(pairs[0]);
     }
-  }, [selectedPair, pairs])
+  }, [selectedPair, pairs]);
 
-  if (!selectedPair) return <div className='h-screen w-full flex justify-center items-center'>
-            <LoaderCircle className="h-16 w-16 animate-spin" />
-  </div>
+  if (!selectedPair)
+    return (
+      <div className="h-screen w-full flex justify-center items-center">
+        <LoaderCircle className="h-16 w-16 animate-spin" />
+      </div>
+    );
 
-// if (!data.token) return null
+  // if (!data.token) return null
   return (
     <>
       {/* {showPopup &&
@@ -167,15 +161,18 @@ const [chartStats, setChartStats] = useState<chartData>()
           id="right-order"
           className="h-full hidden sc1:flex sc1:flex-col w-full md:w-[60%]  sc1:w-[35%] sc2:w-[25%] items-start"
         >
-          <div onClick={()=>setIsRightOrder(!isRightOrder)} className="w-full relative z-30 h-full hidden sc1:flex justify-between items-center py-4 px-4 border border-[#2C2D2D] bg-[#0F0E0F]">
+          <div
+            onClick={() => setIsRightOrder(!isRightOrder)}
+            className="w-full relative z-30 h-full hidden sc1:flex justify-between items-center py-4 px-4 border border-[#2C2D2D] bg-[#0F0E0F]"
+          >
             <div className="flex gap-4 items-center">
-            <Image
-                      src={selectedPair?.icon}
-                      width={30}
-                      height={30}
-                      alt="cryptoImage"
-                      className="rounded-full h-100 w-100"
-                    />
+              <Image
+                src={selectedPair?.icon}
+                width={30}
+                height={30}
+                alt="cryptoImage"
+                className="rounded-full h-100 w-100"
+              />
               <span className="text-lg">{tokenName}</span>
             </div>
             <div className="flex gap-2 items-center">
@@ -183,27 +180,26 @@ const [chartStats, setChartStats] = useState<chartData>()
               <FaChevronDown size={10} />
             </div>
           </div>
-          {isRightOrder?
-          <div className=" overflow-y-auto text-sm  dark:bg-[#0F0E0E]  dark:border-[#2C2D2D] shadow-lg  border-[1px] h-full w-full ">
-          {/* <RightOrder
+          {isRightOrder ? (
+            <div className=" overflow-y-auto text-sm  dark:bg-[#0F0E0E]  dark:border-[#2C2D2D] shadow-lg  border-[1px] h-full w-full ">
+              {/* <RightOrder
             showPopup={showPopup}
             setShowPopup={setShowPopup}
             setShowOption={setShowOption}
             showOption={showOption}
             option={option}
           /> */}
-          <TradeAdjustSidebar />
-        </div>:
-          <div className="w-[100vw] h-[100vh] absolute z-20">
-          <div className="absolute w-full h-full bg-black opacity-90 blur"></div>
-          <div className="absolute w-[25%] h-full z-30">
-            <TokenSelect setSelectOption={setSelectCrypto} setIsRightOrder={setIsRightOrder}/>
-            {/* <Sidebar getShow={getShow} setSelectOption={setSelectCrypto} isRightOrder={isRightOrder} setIsRightOrder={setIsRightOrder}/> */}
-          </div>
-        </div>
-          }
-          
-          
+              <TradeAdjustSidebar />
+            </div>
+          ) : (
+            <div className="w-[100vw] h-[100vh] absolute z-20">
+              <div className="absolute w-full h-full bg-black opacity-90 blur"></div>
+              <div className="absolute w-[25%] h-full z-30">
+                <TokenSelect setSelectOption={setSelectCrypto} setIsRightOrder={setIsRightOrder} />
+                {/* <Sidebar getShow={getShow} setSelectOption={setSelectCrypto} isRightOrder={isRightOrder} setIsRightOrder={setIsRightOrder}/> */}
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="w-full sc1:w-[75%] h-full sc1:h-[100vh] ">
@@ -238,7 +234,12 @@ const [chartStats, setChartStats] = useState<chartData>()
                 transition={{ duration: 0.1, ease: "linear" }}
                 className="absolute z-50 w-[100vw] h-[100vh] sc1:hidden "
               >
-                <Sidebar getShow={getShow} setSelectOption={setSelectCrypto} isRightOrder={isRightOrder} setIsRightOrder={setIsRightOrder}/>
+                <Sidebar
+                  getShow={getShow}
+                  setSelectOption={setSelectCrypto}
+                  isRightOrder={isRightOrder}
+                  setIsRightOrder={setIsRightOrder}
+                />
               </motion.div>
             )}
           </AnimatePresence>
@@ -257,30 +258,28 @@ const [chartStats, setChartStats] = useState<chartData>()
                     className="flex gap-4 w-full sc1:w-fit items-center"
                     onClick={() => setSelectCrypto(true)}
                   >
-                    
                     <div className="flex w-full justify-between items-center">
                       <div className="flex gap-2 w-full items-center">
-                      <Image
-                      src={selectedPair?.icon}
-                      width={30}
-                      height={30}
-                      alt="cryptoImage"
-                      className="rounded-full h-100 w-100 flex sc1:hidden"
-                    />
+                        <Image
+                          src={selectedPair?.icon}
+                          width={30}
+                          height={30}
+                          alt="cryptoImage"
+                          className="rounded-full h-100 w-100 flex sc1:hidden"
+                        />
                         <div className="flex flex-col sc1:flex-row gap-1 sc1:justify-between sc1:w-[200%] h-full sc1:border-r sc1:border-r-[#2C2D2D] px-4 py-2">
-                          
                           <span className="text-green-600 sc1:h-full   sc1:text-xl sc1:text-white hidden sc1:flex  font-bold text-[0.9rem]">
-                          {"$"+Math.round(latestPrice[tokenName] * 10) / 10}
+                            {"$" + Math.round(latestPrice[tokenName] * 10) / 10}
                           </span>
                           <span
-                        className={
-                          percentageChange.includes("+")
-                            ? "text-[#0cf3c4] text-lg hidden sc1:flex"
-                            : "text-red-500 text-lg hidden sc1:flex"
-                        }
-                      >
-                        {percentageChange}
-                      </span>
+                            className={
+                              percentageChange.includes("+")
+                                ? "text-[#0cf3c4] text-lg hidden sc1:flex"
+                                : "text-red-500 text-lg hidden sc1:flex"
+                            }
+                          >
+                            {percentageChange}
+                          </span>
                         </div>
                         <div className="sc1:hidden">
                           <FaChevronDown size={10} />
@@ -288,7 +287,7 @@ const [chartStats, setChartStats] = useState<chartData>()
                       </div>
                       <div className="sc1:hidden flex flex-col">
                         <span className="text-white font-bold text-[1rem] sc1:text-[0.7rem]">
-                        {"$"+Math.round(latestPrice[tokenName] * 10) / 10}
+                          {"$" + Math.round(latestPrice[tokenName] * 10) / 10}
                         </span>
                         {/* <span className={percentageChange.includes("+") ?  'text-[#0cf3c4]' : "text-red-500"}>{percentageChange}</span> */}
                       </div>
@@ -329,7 +328,7 @@ const [chartStats, setChartStats] = useState<chartData>()
                     </div>
                     <div className="flex flex-col gap-1 sc1:gap-0 h-[90%] sc1:border-r sc1:border-r-[#2c2d2d] px-4">
                       <span className="text-black text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 dark:text-white  ">
-                      Margin Fee:Shorts
+                        Margin Fee:Shorts
                       </span>
                       <span className="text-[0.7rem] sc1:text-lg sc1:text-white">
                         {chartStats?.openInterestS ?? "-"}
@@ -337,21 +336,15 @@ const [chartStats, setChartStats] = useState<chartData>()
                     </div>
                   </div>
                 </div>
-                <div className='w-full h-[60vh]'>
+                <div className="w-full h-[60vh]">
                   {/* <Chart show={show} /> */}
-                  <TradingViewWidget/>
+                  <TradingViewWidget />
                 </div>
                 <div className="w-full gap-4 flex sc1:hidden my-4 justify-center sc1:gap-6">
                   <div className=" gap-1 hidden sc1:flex">
-                    <span className="text-black  dark:text-white ">
-                      24h Change
-                    </span>
+                    <span className="text-black  dark:text-white ">24h Change</span>
                     <span
-                      className={
-                        percentageChange.includes("+")
-                          ? "text-[#0cf3c4]"
-                          : "text-red-500"
-                      }
+                      className={percentageChange.includes("+") ? "text-[#0cf3c4]" : "text-red-500"}
                     >
                       {percentageChange}
                     </span>
@@ -360,17 +353,13 @@ const [chartStats, setChartStats] = useState<chartData>()
                     <span className="text-black text-[0.72rem] sc1:text-[0.7rem] dark:text-white  underline">
                       Open Interest(I)
                     </span>
-                    <span className="text-[0.7rem]">
-                      {chartStats?.openInterestS ?? "-"}
-                    </span>
+                    <span className="text-[0.7rem]">{chartStats?.openInterestS ?? "-"}</span>
                   </div>
                   <div className="flex flex-col gap-1 py-2">
                     <span className="text-black text-[0.72rem] sc1:text-[0.7rem]  dark:text-white underline">
                       Open Interest(II)
                     </span>
-                    <span className="text-[0.7rem]">
-                      {chartStats?.openInterestL ?? "-"}
-                    </span>
+                    <span className="text-[0.7rem]">{chartStats?.openInterestL ?? "-"}</span>
                   </div>
                   <div className="flex flex-col gap-1 py-2">
                     <span className="text-black text-[0.72rem] sc1:text-[0.7rem] dark:text-white underline">
@@ -392,9 +381,7 @@ const [chartStats, setChartStats] = useState<chartData>()
                     <span className="text-black text-[0.72rem] sc1:text-[0.7rem]  dark:text-white">
                       24h volume(USD)
                     </span>
-                    <span className="text-[0.7rem]">
-                      {chartStats?.volume24h ?? "-"}
-                    </span>
+                    <span className="text-[0.7rem]">{chartStats?.volume24h ?? "-"}</span>
                   </div>
                 </div>
               </div>
