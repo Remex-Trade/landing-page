@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Navbar from "../_Components/Navbar";
 import theme from "../_context/theme";
 import userContext from "../_context/userContext";
-import { Chain, fantom, fantomTestnet } from "wagmi/chains";
+import { Chain, fantom, fantomTestnet, polygonAmoy } from "wagmi/chains";
 import { createConfig, http, WagmiProvider } from "wagmi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import NextTopLoader from "nextjs-toploader";
@@ -24,10 +24,10 @@ const amoy: Chain = {
 };
 
 const config = createConfig({
-  chains: [fantomTestnet, amoy],
+  chains: [fantomTestnet, polygonAmoy],
   transports: {
     [fantomTestnet.id]: http(),
-    [amoy.id]: http(),
+    [polygonAmoy.id]: http(),
   },
   ssr: true,
 });
