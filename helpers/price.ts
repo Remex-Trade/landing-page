@@ -15,6 +15,8 @@ export const priceIds = {
     "0x8ac0c70fff57e9aefdf5edf44b51d62c2d433653cbb2cf5cc06bb115af04d221",
   "USDT/USD":
     "0x2b89b9dc8fdf9f34709a5b106b472f0f39bb6ca9ce04b0fd7f2e971688e2e53b",
+  "EUR/USD":
+    "0xa995d00bb36a63cef7fd2c287dc105fc8f3d93779f062f09551b0af3e81ec30b",
 };
 
 export const idToToken = Object.entries(priceIds).reduce((acc, item) => {

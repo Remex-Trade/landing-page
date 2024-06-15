@@ -64,7 +64,7 @@ const page = () => {
   async function getLastDayData() {
     const connection = new EvmPriceServiceConnection("https://hermes.pyth.network");
 
-    const now = Date.now() / 1000;
+    const now =Math.round(Date.now() / 1000);
     const timeThreshold = now - 24 * 60 * 60;
 
     const requests = Object.values(priceIds).map(async (priceId) => {
@@ -82,6 +82,10 @@ const page = () => {
           if (price) {
             const token = idToToken["0x" + chunk.id];
             prices[token] = price.getPriceAsNumberUnchecked();
+
+            if (token === "EUR/USD"){
+              setLatestPrice(chunk.id, price.getPriceAsNumberUnchecked());
+            }
           }
         });
         setLast24HourPrice(prices);
@@ -124,6 +128,10 @@ const page = () => {
   useEffect(() => {
     if (!selectedPair && pairs) {
       setSelectedPair(pairs[0]);
+    } else{
+      if (pairs && !pairs.some(pair => pair.token === selectedPair.token)){
+        setSelectedPair(pairs[0]);
+      }
     }
   }, [selectedPair, pairs]);
 
