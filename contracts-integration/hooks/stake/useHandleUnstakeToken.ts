@@ -12,9 +12,9 @@ export const useHandleUnstakeToken = () => {
     },
     onSuccess: async () => {
       toast.success("Token unstaked successfully");
-      //   return await queryClient.invalidateQueries({
-      //     queryKey: ["stakeBalance", "stakeAllowance", chainId, address],
-      //   });
+      return await queryClient.invalidateQueries({
+        queryKey: ["stakeBalance"],
+      });
     },
 
     onError: (error) => {

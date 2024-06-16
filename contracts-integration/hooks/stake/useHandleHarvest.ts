@@ -1,21 +1,23 @@
 import { useAccount } from "wagmi";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { stakeTokens } from "@/contracts-integration/stakingMethods";
+import { approveStakeToken, harvest } from "@/contracts-integration/stakingMethods";
 
-export const useHandleStakeToken = () => {
+export const useHandleHarvest = () => {
   const { chainId, address } = useAccount();
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async (amount: string) => {
-      await stakeTokens(address, chainId, amount);
+    mutationFn: async () => {
+      await harvest(address, chainId);
     },
     onSuccess: async () => {
-      toast.success("Tokens staked successfully");
+      toast.success("Harvested successfully");
       return await queryClient.invalidateQueries({
-        queryKey: ["stakeBalance"],
+        queryKey: ["pendingReward"],
       });
     },
+
+    
 
     onError: (error) => {
       console.log(error, error.message);

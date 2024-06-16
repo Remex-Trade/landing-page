@@ -1,13 +1,16 @@
 "use client";
+import useGetPendingReward from "@/contracts-integration/hooks/stake/useGetPendingReward";
 import useGetStakeAllowance from "@/contracts-integration/hooks/stake/useGetStakeAllowance";
 import useGetStakeBalance from "@/contracts-integration/hooks/stake/useGetStakeBalance";
+import useGetUserStakeInfo from "@/contracts-integration/hooks/stake/useGetUserStakeInfo";
 import { useHandleApprove } from "@/contracts-integration/hooks/stake/useHandleApprove";
+import { useHandleHarvest } from "@/contracts-integration/hooks/stake/useHandleHarvest";
 import { useHandleStakeToken } from "@/contracts-integration/hooks/stake/useHandleStakeToken";
 import { useHandleUnstakeToken } from "@/contracts-integration/hooks/stake/useHandleUnstakeToken";
 import { ConnectKitButton } from "connectkit";
 import Image from "next/image";
 import React, { useMemo, useState } from "react";
-import { parseEther } from "viem";
+import { formatEther, parseEther } from "viem";
 import { useAccount } from "wagmi";
 
 const page = () => {
@@ -16,6 +19,12 @@ const page = () => {
   const { isDisconnected } = useAccount();
   const { data: stakeAllowance } = useGetStakeAllowance();
   const { data: stakeBalance } = useGetStakeBalance();
+  const { data: userStakeInfo } = useGetUserStakeInfo();
+  const { data: pendingRewardDai } = useGetPendingReward();
+  const { mutate: handleHarvest, isPending: isHarvesting } =
+    useHandleHarvest();
+  
+    console.log("userStakeInfo", userStakeInfo)
     const { mutate: handleApprove, isPending: isHandleApproveLoading } =
     useHandleApprove();
   const { mutate: stakeToken, isPending: isStaking } = useHandleStakeToken();
@@ -123,29 +132,29 @@ const page = () => {
             <span className="text-white text-xl font-bold">Your Stake</span>
             <div className="flex justify-between w-full text-gray-400 text-sm">
               <span>Staked</span>
-              <span>0</span>
+              <span>{ userStakeInfo?.stakedTokens}</span>
             </div>
             <div className="flex justify-between w-full text-gray-400 text-sm">
               <span>APR</span>
               <span>0.00%</span>
             </div>
-            <div className="w-full flex items-center justify-end mt-5">
+            {/* <div className="w-full flex items-center justify-end mt-5">
               <button
                 className="text-sm rounded-md px-2 py-1 bg-gray-500 text-white"
                 disabled
               >
                 Harvest
               </button>
-            </div>
+            </div> */}
           </div>
           <div
             id="box11"
             className="bg-[#21212d] border border-[#161221] rounded-b-lg md:rounded-xl px-8 py-4 w-full flex flex-col gap-2 h-full"
           >
             <span className="text-white text-xl font-bold">
-              Pending Rewards ($0.00)
+              Pending Rewards 
             </span>
-            <div className="flex justify-between w-full text-gray-400 text-sm">
+            {/* <div className="flex justify-between w-full text-gray-400 text-sm">
               <span>FTM</span>
               <div className="flex gap-2">
                 <span className="text-white">0</span>
@@ -170,12 +179,12 @@ const page = () => {
                   className="rounded-full"
                 />
               </div>
-            </div>
+            </div> */}
 
             <div className="flex justify-between w-full text-gray-400 text-sm">
               <span>DAI</span>
               <div className="flex gap-2">
-                <span className="text-white">0</span>
+                <span className="text-white">{pendingRewardDai}</span>
                 <Image
                   src="/Images/crypto/dai.svg"
                   width={20}
@@ -184,6 +193,16 @@ const page = () => {
                   className="rounded-full"
                 />
               </div>
+            </div>
+
+            <div className="w-full flex items-center justify-end mt-5">
+              <button
+                className="text-sm rounded-md px-2 py-1 bg-gray-500 text-white"
+                // disabled
+                onClick={() => handleHarvest()}
+              >
+                Harvest
+              </button>
             </div>
           </div>
         </div>
@@ -236,7 +255,7 @@ const page = () => {
                 className="text-gray-400 gap-2 w-full flex text-[0.8rem] justify-between items-center"
               >
                 <span>Amount</span>
-                <span className="">0</span>
+                <span className="">{formatEther(stakeBalance)}</span>
               </div>
               <div
                 id="input"
@@ -246,9 +265,9 @@ const page = () => {
                   type="number"
                   className="bg-transparent text-lg text-white outline-none"
                   value={inputVal}
-                  onChange={(e) => setInputVal(e.target.value)}
+                  onChange={(e) => setInputVal(String(+e.target.value))}
                 />
-                <span className="text-lg">REMEX</span>
+                <span className="text-lg">MKT</span>
               </div>
             </div>
             <div className="w-full flex items-center justify-end mt-5">
