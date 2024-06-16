@@ -10,10 +10,10 @@ import NextTopLoader from "nextjs-toploader";
 import { Web3Provider } from "../providers";
 import { createStorage } from 'wagmi'
 
-const storage = createStorage({
-  key: 'my-wagmi-app-key', 
-  storage: localStorage,
-})
+// const storage = createStorage({
+//   key: 'my-wagmi-app-key', 
+//   storage: window.localStorage,
+// })
 
 const amoy: Chain = {
   id: 80002,
@@ -36,7 +36,6 @@ const config = createConfig({
     [polygonAmoy.id]: http(),
   },
   ssr: true,
-  storage
 });
 
 const queryClient = new QueryClient();
