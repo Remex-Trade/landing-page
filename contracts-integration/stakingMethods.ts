@@ -111,3 +111,19 @@ export const harvest = async (address: string, chainId: number) => {
   const tx = await contract.harvest();
   await tx.wait();
 };
+
+export const getUserStakeInfo = async (address: string, chainId: number) => {
+  const data = await readContract(config, {
+    abi: stakingABI,
+    address: STAKING_ADDRESS[chainId],
+    functionName: "users",
+    args: [address as any],
+  });
+
+  return {
+    stakedTokens: parseEther(data[0].toString()),
+    debtDai: parseEther(data[1].toString()),
+    totalBoostTokens: parseEther(data[2].toString()),
+    harvestedRewardsDai: parseEther(data[3].toString()),
+  };
+};

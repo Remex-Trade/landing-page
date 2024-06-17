@@ -2,10 +2,7 @@ import { useAccount } from "wagmi";
 import { QueryKey, useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { TradeData } from "../../components/trade/types";
-import {
-  getSlValue,
-  getTpValue,
-} from "../../components/trade/take-profit-stop-loss-input/helper";
+import { getSlValue, getTpValue } from "../../components/trade/take-profit-stop-loss-input/helper";
 import { openTrade } from "../writeMethods";
 import { getOpenLimitOrdersCount, getOpenTradesCount } from "../readMethods";
 import { useGetCurrentTokenPrice } from "./useGetCurrentTokenPrice";
@@ -22,9 +19,7 @@ export const useHandleTrade = () => {
       const buy = tradeData.longOrShort === "Long";
       const isMarket = tradeData.tradeType === "Market";
       const isTpSl = tradeData.isTpSl;
-      const openPrice = isMarket
-        ? Number(latestTokenPrice)
-        : Number(tradeData.openPrice);
+      const openPrice = isMarket ? Number(latestTokenPrice) : Number(tradeData.openPrice);
 
       const takeProfit = getTpValue(
         openPrice,
@@ -43,11 +38,7 @@ export const useHandleTrade = () => {
         : 0;
 
       const type =
-        tradeData.tradeType === "Limit"
-          ? "1"
-          : tradeData.tradeType === "Conditional"
-          ? "2"
-          : "0";
+        tradeData.tradeType === "Limit" ? "1" : tradeData.tradeType === "Conditional" ? "2" : "0";
 
       let index = 0;
       if (isMarket) {
@@ -56,6 +47,7 @@ export const useHandleTrade = () => {
         index = await getOpenLimitOrdersCount(address, chainId, 0);
       }
 
+      console.log("openPrice", openPrice);
       const config = {
         pairIndex: selectedToken.pairIndex,
         buy,
@@ -66,19 +58,12 @@ export const useHandleTrade = () => {
         openPrice: Math.round(openPrice * 10 ** 10).toString(),
         stopLoss: Math.round(stopLoss * 10 ** 10).toString(),
         takeProfit: Math.round(takeProfit * 10 ** 10).toString(),
-        slippageP: Math.round(
-          Number(tradeData.slippageP) * 10 ** 10
-        ).toString(),
+        slippageP: Math.round(Number(tradeData.slippageP) * 10 ** 10).toString(),
         referral: "0x0000000000000000000000000000000000000000",
         type: type,
       } as const;
 
-      console.log(
-        "Executing useHandleTrade mutationFn",
-        tradeData,
-        latestTokenPrice,
-        config
-      );
+      console.log("Executing useHandleTrade mutationFn", tradeData, latestTokenPrice, config);
 
       await openTrade(address, chainId, config);
     },
