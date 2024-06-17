@@ -1,6 +1,6 @@
 import { readContract } from "@wagmi/core";
 import { parseEther } from "ethers/lib/utils";
-import { erc20Abi, maxUint256 } from "viem";
+import { erc20Abi, formatEther, maxUint256 } from "viem";
 
 import { config } from "../helpers/coreConfig";
 import { STAKE_TOKEN_ADDRESS, STAKING_ADDRESS } from "./address";
@@ -59,6 +59,21 @@ export const getPendingRewardDai = async (address: string, chainId: number) => {
   return data;
 };
 
+export const getUserStakeInfo = async (address: string, chainId: number) => {
+  const data = await readContract(config, {
+    abi: stakingABI,
+    address: STAKING_ADDRESS[chainId],
+    functionName: "users",
+    args: [address as any],
+  });
+
+  return {
+    stakedTokens: formatEther(data[0]),
+    debtDai: formatEther(data[1]),
+    totalBoostTokens: formatEther(data[2]),
+    harvestedRewardsDai: formatEther(data[3]),
+  };
+};
 /**
  * Approves the staking contract to spend the maximum amount of the staking token.
  *

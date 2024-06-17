@@ -400,13 +400,14 @@ const page = () => {
                 <TradeDetailsTable />
               </div>
               <div className=" w-[100%] flex justify-center items-center h-full my-10 flex-col sc1:hidden ">
-                <RightOrder
+                {/* <RightOrder
                   showPopup={showPopup}
                   setShowPopup={setShowPopup}
                   setShowOption={setShowOption}
                   showOption={showOption}
                   option={option}
-                />
+                /> */}
+                <TradeAdjustSidebar />
               </div>
             </div>
             {/* {user.length>0 ?

@@ -27,20 +27,20 @@ import { walletConnect } from "wagmi/connectors";
 //     },
 //   })
 
-const config = createConfig({
-  chains: [polygonMumbai],
-  // connectors: [
-  //     walletConnect({
-  //       projectId: 'de79ccb05a7f1f12b1b9333a5dd5bbfa',
-  //     }),
-  //   ],
+// const config = createConfig({
+//   chains: [polygonMumbai],
+//   // connectors: [
+//   //     walletConnect({
+//   //       projectId: 'de79ccb05a7f1f12b1b9333a5dd5bbfa',
+//   //     }),
+//   //   ],
 
-  transports: {
-    [polygonMumbai.id]: http(
-      "https://polygon-mumbai.g.alchemy.com/v2/Jl0asyFZmfuW_3WWuq4lVrjZmU2k2nom"
-    ),
-  },
-});
+//   transports: {
+//     [polygonMumbai.id]: http(
+//       "https://polygon-mumbai.g.alchemy.com/v2/Jl0asyFZmfuW_3WWuq4lVrjZmU2k2nom"
+//     ),
+//   },
+// });
 
 // const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
 // const projectId = `85a616505f219621a73d1af8a208fd14`;

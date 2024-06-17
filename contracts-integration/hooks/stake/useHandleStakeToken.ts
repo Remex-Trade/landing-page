@@ -12,9 +12,13 @@ export const useHandleStakeToken = () => {
     },
     onSuccess: async () => {
       toast.success("Tokens staked successfully");
-      //   return await queryClient.invalidateQueries({
-      //     queryKey: ["stakeBalance", "stakeAllowance", chainId, address],
-      //   });
+      await queryClient.invalidateQueries({
+        queryKey: ["stakeBalance"],
+      });
+
+      return await queryClient.invalidateQueries({
+        queryKey: ["userStakeInfo"],
+      });
     },
 
     onError: (error) => {

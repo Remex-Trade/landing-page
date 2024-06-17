@@ -8,6 +8,17 @@ import { createConfig, http, WagmiProvider } from "wagmi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import NextTopLoader from "nextjs-toploader";
 import { Web3Provider } from "../providers";
+import { createStorage } from 'wagmi'
+
+let storage;
+
+if (typeof window !== "undefined") {
+  storage = createStorage({
+    key: 'my-wagmi-app-key', 
+    storage: window.localStorage,
+  })
+}
+
 
 const amoy: Chain = {
   id: 80002,
@@ -30,6 +41,7 @@ const config = createConfig({
     [polygonAmoy.id]: http(),
   },
   ssr: true,
+  storage
 });
 
 const queryClient = new QueryClient();
