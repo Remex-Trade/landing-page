@@ -14,9 +14,9 @@ import { IoMenu } from "react-icons/io5";
 const Navbar = () => {
   const {darkMode,setDarkMode} = useContext(theme);
   const [selected,setSelected] = useState("Trade");
-  const names = ["Trade","Referral","Leaderboard","Portfolio","Swap","Stake"]
+  const names = ["Trade","Referral","Leaderboard","Portfolio","Swap","Stake","Vault"]
   const networks = ["openBNB","Manta Pacific","BNB"]
-  const [open,setOpen] = useState(false)
+  const [open,setOpen] = useState(false)//;
   const [menuOpen,setMenuOpen] = useState(false);
   const [selectedNetwork,setSelectedNetwork] = useState("openBNB");
   return (
@@ -27,7 +27,7 @@ const Navbar = () => {
 
                 <Image src="/Images/Group 2.png" width={150} height={150} alt="logo" />
         </div>
-        <div className="hidden sc1:flex sc0:gap-[2rem] gap-[5%]">
+        <div className="hidden md:flex sc0:gap-[2rem] gap-[5%]">
           {names.map((name)=>{
             return(
               <Link key={name} href={`/site/${name}`}>
