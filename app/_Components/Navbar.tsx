@@ -48,7 +48,7 @@ const Navbar = () => {
                 return (
                   <>
                     <div
-                      className={`dark:text-white text-black flex flex-col gap-2 items-center justify-center dark:hover:bg-[#373636] font-bold hover:bg-neutral-200 rounded-lg px-3 py-1 ${
+                      className={`dark:text-white cursor-pointer text-black flex flex-col gap-2 items-center justify-center dark:hover:bg-[#373636] font-bold hover:bg-neutral-200 rounded-lg px-3 py-1 h-full ${
                         selected === name && "dark:bg-[#373636] bg-neutral-300"
                       }`}
                     >
