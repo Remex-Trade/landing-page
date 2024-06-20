@@ -6,7 +6,7 @@ import {
   FormattedOpenLimitOrders,
   FormattedOpenTrades,
 } from "./useGetUserTrades";
-import { TradeType } from "@/constants/trade";
+import { TradeType, handleUpdateTradeErrorDisplay } from "@/constants/trade";
 
 export const useHandleCloseTrade = (tradeType: TradeType) => {
   const { address, chainId } = useAccount();
@@ -39,12 +39,7 @@ export const useHandleCloseTrade = (tradeType: TradeType) => {
     },
 
     onError: (error) => {
-      console.log(error, error.message);
-      const errorMessage =
-        error.message?.split("(")[0] ||
-        error.message ||
-        "Something went wrong!";
-      toast.error(errorMessage);
+      handleUpdateTradeErrorDisplay(error);
     },
   });
 };

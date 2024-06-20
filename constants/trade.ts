@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 export const longShortOption = ["Long", "Short"] as const;
 export const tradeTypes = ["Market", "Limit", "Conditional"] as const;
 export type TradeType = (typeof tradeTypes)[number];
@@ -23,3 +25,22 @@ export const tradeContractErrors = {
   WRONG_TP: "Take profit must be above/below open price for buy/sell orders",
   WRONG_SL: "Stop loss must be below/above open price for buy/sell orders",
 };
+
+export const updateTradeErrors = {
+  ALREADY_BEING_CLOSED: "Trade is already closed",
+  NO_TRADE: "leverage is 0",
+  LIMIT_TIMELOCK: "you can only close or update trade info after 30 blocks from the  openTrade execution",
+}
+
+export function handleUpdateTradeErrorDisplay(error: Error) {
+  console.error(error);
+  let errorMessage =
+    error.message?.split("(")[0] || error.message || "Something went wrong!";
+
+  Object.entries(updateTradeErrors).forEach(([key, value]) => {
+    if (error["message"].includes(key)) {
+      errorMessage = value;
+    }
+  });
+  toast.error(errorMessage);
+}

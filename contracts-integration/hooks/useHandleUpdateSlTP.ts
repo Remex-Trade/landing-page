@@ -6,6 +6,7 @@ import {
   FormattedOpenLimitOrders,
   FormattedOpenTrades,
 } from "./useGetUserTrades";
+import { handleUpdateTradeErrorDisplay } from "@/constants/trade";
 
 export const useHandleUpdateSLTP = () => {
   const { address, chainId } = useAccount();
@@ -45,13 +46,8 @@ export const useHandleUpdateSLTP = () => {
       });
     },
 
-    onError: (error) => {
-      console.log(error, error.message);
-      const errorMessage =
-        error.message?.split("(")[0] ||
-        error.message ||
-        "Something went wrong!";
-      toast.error(errorMessage);
+    onError: (error) => {      
+      handleUpdateTradeErrorDisplay(error);
     },
   });
 };
