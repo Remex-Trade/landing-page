@@ -21,7 +21,7 @@ const UpdateSlPl = ({
   trade: FormattedOpenTrades | FormattedOpenLimitOrders;
   children: React.ReactNode
 }) => {
-  console.log("trade", trade);
+  // console.log("trade", trade);
   const handleUpdateSLTPMutation = useHandleUpdateSLTP();
   const loading = handleUpdateSLTPMutation.isPending;
   const [inputs, setInputs] = useState({

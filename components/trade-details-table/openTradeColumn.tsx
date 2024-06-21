@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { LoaderCircle, X } from "lucide-react";
 import { useHandleCloseTrade } from "@/contracts-integration/hooks/useHandleCloseTrade";
 import UpdateSlPl from "./updateSlPl";
+import { usePriceStore } from "@/store/priceStore";
+import { formatPrice } from "./helper";
 
 export const openTradeColumn: ColumnDef<FormattedOpenTrades>[] = [
   {
@@ -48,6 +50,14 @@ export const openTradeColumn: ColumnDef<FormattedOpenTrades>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Price" />
     ),
+    cell: ({ row }) => {
+      const price = usePriceStore((state) => state.latestPrice);
+      const pair = row.original.pair;
+      if (pair && price && price[pair]){
+        return formatPrice(price[pair])
+      }
+      return "-"
+    }, 
   },
   {
     accessorKey: "sl",
