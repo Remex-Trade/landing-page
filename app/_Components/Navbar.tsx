@@ -22,6 +22,7 @@ const Navbar = () => {
     "Leaderboard",
     "Portfolio",
     "Stake",
+    "Stats",
     "Vault",
     "Docs",
     "More",
@@ -33,8 +34,8 @@ const Navbar = () => {
   return (
     <>
       <div className="dark:bg-[#0F0E0E] outline-none  border-none bg-white dark:text-white text-black sticky z-10 top-0 w-[100%] font-light shadow-sm dark:shadow-none">
-        <div className="flex justify-between gap-8 items-center w-full px-[2vw] py-1 text-md sc1:text-sm">
-          <div className="w-[10%] flex items-center justify-start font-bold text-2xl text-white">
+        <div className="flex justify-between gap-3 sc0:gap-8 items-center w-full px-[2vw] py-1 text-md sc1:text-sm">
+          <div className="w-[30%]  sc0:w-[10%] flex items-center justify-start font-bold text-2xl text-white">
             <Image
               src="/Images/Group 2.png"
               width={150}
@@ -42,7 +43,7 @@ const Navbar = () => {
               alt="logo"
             />
           </div>
-          <div className="hidden md:flex sc0:gap-[2rem] gap-[2%]">
+          <div className="hidden min-[1300px]:flex sc1:gap-[2rem] gap-[2%]">
             {names.map((name) => {
               if (name === "More" || name === "Docs") {
                 return (
@@ -149,7 +150,7 @@ const Navbar = () => {
             <div className="hidden sc1:block">
               <ToggleButton darkMode={darkMode} setDarkMode={setDarkMode} />
             </div>
-            <div
+            {/* <div
               className="w-16 h-10 bg-[#383838] rounded-lg px-2 py-2 flex items-center justify-between"
               onClick={() => setOpen(true)}
             >
@@ -162,13 +163,13 @@ const Navbar = () => {
                 alt="networks"
               />
               <FaChevronDown color="white" size={10} />
-            </div>
+            </div> */}
             <div>
               <div className="flex">
                 <WalletsProvider />
               </div>
             </div>
-            <div className="w-10 h-full sc1:hidden flex">
+            <div className="w-10 h-full flex sc4:hidden">
               {menuOpen ? (
                 <IoIosClose size={30} onClick={() => setMenuOpen(false)} />
               ) : (

@@ -11,7 +11,7 @@ import VaultInput from "../../../_Components/VaultInput";
 const page = () => {
     const options = ["Deposit","Withdraw","Lock","Unlock"]; //all top options
     const [selectedOption,setSelectedOption]= useState("Deposit"); //state for top options
-    const [tranche,setTranche] = useState("junior"); //flag to check tranche type
+    const [tranche,setTranche] = useState("senior"); //flag to check tranche type
     //row-1 blocks data
     const [data,setData] = useState({
       balance:435000,
@@ -86,7 +86,7 @@ const page = () => {
           </Link>
         </div>
         <div id="heading" className="text-white font-bold text-5xl">
-          Junior Tranche
+          Senior Tranche
         </div>
         <div id="heading-text-content" className="text-md text-gray-500">
           Our higher risk vault, currently receiving ~65% of fees and trader

@@ -10,6 +10,7 @@ module.exports = {
       "md":"620px",
       "sc0":"750px",
       "sc1":"990px",
+      "sc4":"1300px",
       "sc2":"1440px",
       "sc3":"2560px"
     },

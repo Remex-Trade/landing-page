@@ -11,24 +11,25 @@ const page = () => {
   const { address } = useAccount();
   const [selected, setSelected] = useState("Position");
   const [dropdown,setDropdown] = useState(false);
+  const [position , setPosition] = useState("All");
   return (
-    <div className="w-full h-full px-32 py-16 bg-[#101115] min-h-screen">
+    <div className="w-full h-full px-4 sc0:px-20 sc1:px-32 py-16 bg-[#101115] min-h-screen">
       <div className=" text-5xl py-8 items-center">Portfolio</div>
       <div className="flex w-full border-b border-b-zinc-800 gap-10 ">
         <button
-          className={`text-sm text-neutral-400 py-3  ${selected==="Position" && 'border-b-2 border-b-[#3B1A91]'} text-white`}
+          className={`text-[0.7rem] sc0:text-sm text-neutral-400 py-1 sc0:py-3  ${selected==="Position" && 'border-b-2 border-b-[#3B1A91]'} text-white`}
           onClick={() => setSelected("Position")}
         >
           Position & Activity
         </button>
         <button
-          className={`text-sm text-neutral-400 py-3    ${selected==="Overview" && 'border-b-2 border-b-[#3B1A91]'} text-white`}
+          className={`text-[0.7rem] sc0:text-sm text-neutral-400 py-1 sc0:py-3    ${selected==="Overview" && 'border-b-2 border-b-[#3B1A91]'} text-white`}
           onClick={() => setSelected("Overview")}
         >
           Overview
         </button>
         <button
-          className={`text-sm text-neutral-400 py-3  ${selected==="Stats" && 'border-b-2 border-b-[#3B1A91]'} text-white`}
+          className={`text-[0.7rem] sc0:text-sm text-neutral-400 py-1 sc0:py-3   ${selected==="Stats" && 'border-b-2 border-b-[#3B1A91]'} text-white`}
           onClick={() => setSelected("Stats")}
         >
           Stats and Insight
@@ -39,13 +40,13 @@ const page = () => {
           <div className="flex flex-col gap-8 my-10">
             <span>Position & Activities</span>
             <div className="flex border-b border-b-zinc-800">
-              <button className="px-6 py-2 border border-gray-800 text-zinc-700 focus:bg-black focus:text-white text-sm">
+              <button className={`px-3 sc0:px-6 py-1 sc0:py-2 border border-gray-800 text-[0.8rem] sc0:text-sm ${position==="All" ? "text-white bg-black":"text-zinc-700"} `} onClick={()=>setPosition("All")}>
                 All Positions
               </button>
-              <button className="px-6 py-2 border border-gray-800 text-zinc-700 focus:bg-black focus:text-white text-sm">
+              <button className={`px-3 sc0:px-6 py-1 sc0:py-2 border border-gray-800 text-[0.8rem] sc0:text-sm ${position==="Activity" ? "text-white bg-black":'text-zinc-700'} `} onClick={()=>setPosition("Activity")}>
                 Activity
               </button>
-              <button className="px-6 py-2 border border-gray-800 text-zinc-700 focus:bg-black focus:text-white text-sm">
+              <button className={`px-3 sc0:px-6 py-1 sc0:py-2 border border-gray-800 text-[0.8rem] sc0:text-sm ${position==="Highlights" ? "text-white bg-black":"text-zinc-700"}`} onClick={()=>setPosition("Highlights")}>
                 Highlights
               </button>
             </div>
@@ -56,7 +57,7 @@ const page = () => {
             </div>
           ) : (
             <>
-              <div className="flex border-b border-b-zinc-800 w-full justify-between">
+              <div className="border-b border-b-zinc-800 w-full justify-between hidden sc1:flex">
                 <button className="px-6 py-2 text-zinc-600 text-sm">
                   Pair
                 </button>
@@ -83,8 +84,8 @@ const page = () => {
                 <Image
                   className="grayscale opacity-10"
                   src="/transaction.svg"
-                  width={150}
-                  height={150}
+                  width={100}
+                  height={100}
                   alt="No transaction"
                 />
                 <span className="text-gray-800">No transactions</span>
@@ -99,7 +100,7 @@ const page = () => {
           <div className="my-2">
             <span className="text-gray-500">Portfolio Stats</span>
           </div>
-          <div className="border border-gray-800 rounded-xl flex px-8 py-10  w-full justify-center gap-20 items-center">
+          <div className="border border-gray-800 rounded-xl flex sc4:flex-row flex-col px-8 py-10  w-full justify-center gap-20 items-center">
             <div className="flex w-full items-center gap-2">
                 <div className="w-fit h-fit rounded-full border border-gray-800 bg-gray-900 p-1 flex items-center justify-center">
                 <Image src="/Images/stats/shield.svg" width={30} height={30} alt="shield"/>
@@ -152,7 +153,7 @@ const page = () => {
             <div className="text-md text-gray-500">
                 <span>Asset Stats</span>
             </div>
-            <div className="flex gap-6">
+            <div className="flex gap-6 sc4:flex-row flex-col">
                 <div className="bg-[rgb(16,17,21)] rounded-2xl border border-zinc-800 text-xl font-bold w-full">
                     <div className="p-10 border-b border-b-zinc-800">Trade By Asset</div>
                     <div className="p-10 border-b border-b-zinc-800"></div>
@@ -174,8 +175,8 @@ const page = () => {
       )}
       {selected === "Overview" &&(
         <>
-            <div className="w-ful flex items-center gap-10 justify-center my-10 h-[80%]">
-                <div className="flex flex-col gap-6 w-[40%] h-full">
+            <div className="w-ful flex flex-col sc1:flex-row items-center gap-10 justify-center my-10 h-[80%]">
+                <div className="flex flex-col gap-6 w-full sc1:w-[40%] h-full">
                     <span>Portfolio Details</span>
                 <div className="w-full rounded-xl border border-zinc-800 flex-col">
                     <div className="py-8 px-10 flex flex-col gap-3 border-b border-b-zinc-800">
@@ -201,7 +202,7 @@ const page = () => {
                     </div>
                 </div>
                 </div>
-                <div className="flex flex-col gap-6 w-full h-[100%]">
+                <div className="flex flex-col gap-6 w-full h-full">
                 <span>Live PnL Chart</span>
                 <div className="w-full rounded-xl border border-zinc-800 flex-col h-[60vh]">
                   <div className="flex flex-col gap-3 mx-3 my-5">
