@@ -50,8 +50,8 @@ const handleGetUserInfo = async (address: string, chainId: number, pair: Pair) =
   const pairIndex = pair.pairIndex;
   const openTradesCount = await getOpenTradesCount(address, chainId, pairIndex);
   console.log("openTradesCount", openTradesCount);
-  const openLimitCount = await getOpenLimitOrdersCount(address, chainId, pairIndex);
-  console.log("openLimitCount", openLimitCount);
+  // const openLimitCount = await getOpenLimitOrdersCount(address, chainId, pairIndex);
+  // console.log("openLimitCount", openLimitCount);
   const openTradesResult = await Promise.all(
     Array.from({ length: openTradesCount }).map(async (_, i) => {
       return await getOpenTrades(address, chainId, pairIndex, i);
@@ -59,11 +59,13 @@ const handleGetUserInfo = async (address: string, chainId: number, pair: Pair) =
   );
   console.log("openTradesResult", openTradesResult);
 
-  const openLimitResult = await Promise.all(
-    Array.from({ length: openLimitCount }).map(async (_, i) => {
-      return await getOpenLimitOrders(address, chainId, pairIndex, i);
-    })
-  );
+  // const openLimitResult = await Promise.all(
+  //   Array.from({ length: openLimitCount }).map(async (_, i) => {
+  //     return await getOpenLimitOrders(address, chainId, pairIndex, i);
+  //   })
+  // );
+
+  const openLimitResult = await getOpenLimitOrders(address, chainId, pairIndex);
 
   console.log("openLimitResult", openLimitResult);
 
@@ -86,30 +88,27 @@ const handleGetUserInfo = async (address: string, chainId: number, pair: Pair) =
       };
     });
 
-  const formattedLimitOrders: FormattedOpenLimitOrders[] = openLimitResult
-    .filter((f) => f)
-    .map((trade) => {
-      return {
-        type: trade.buy ? "Long" : "Short",
-        pair: pair.token,
-        size:
-          Number(trade.leverage) * Number(formatEther(trade.positionSizeDai.toString())) + "DAI",
-        leverage: trade.leverage.toString() + "x",
-        collateral: formatEther(trade.positionSizeDai.toString()) + "DAI",
-        openPrice: formatPriceFromBigNumber(trade.openPrice),
-        price: "-",
-        sl: formatPriceFromBigNumber(trade.sl),
-        tp: formatPriceFromBigNumber(trade.tp),
-        index: trade.index.toString(),
-        pairIndex: trade.pairIndex.toString(),
-        minPrice: formatPriceFromBigNumber(trade.minPrice),
-        maxPrice: formatPriceFromBigNumber(trade.maxPrice),
-      };
-    });
+  const formattedLimitOrders: FormattedOpenLimitOrders[] = openLimitResult.map((trade) => {
+    return {
+      type: trade.buy ? "Long" : "Short",
+      pair: pair.token,
+      size: Number(trade.leverage) * Number(formatEther(trade.positionSizeDai.toString())) + "DAI",
+      leverage: trade.leverage.toString() + "x",
+      collateral: formatEther(trade.positionSizeDai.toString()) + "DAI",
+      openPrice: formatPriceFromBigNumber(trade.openPrice),
+      price: "-",
+      sl: formatPriceFromBigNumber(trade.sl),
+      tp: formatPriceFromBigNumber(trade.tp),
+      index: trade.index.toString(),
+      pairIndex: trade.pairIndex.toString(),
+      minPrice: formatPriceFromBigNumber(trade.minPrice),
+      maxPrice: formatPriceFromBigNumber(trade.maxPrice),
+    };
+  });
 
   return {
     openTradesCount,
-    openLimitCount,
+    openLimitCount: formattedLimitOrders.length,
     formattedOpenTrades,
     formattedLimitOrders,
   };

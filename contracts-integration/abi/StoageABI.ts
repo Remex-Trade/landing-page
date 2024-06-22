@@ -428,6 +428,35 @@ export const storageABI = [
     type: "function",
   },
   {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_trader",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_pairIndex",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_index",
+        type: "uint256",
+      },
+    ],
+    name: "getOpenLimitOrderClosed",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "getOpenLimitOrders",
     outputs: [
@@ -694,24 +723,6 @@ export const storageABI = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "_nftId",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
-      },
-    ],
-    name: "increaseNftRewards",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
         internalType: "address",
         name: "_referral",
         type: "address",
@@ -831,21 +842,13 @@ export const storageABI = [
         name: "",
         type: "uint256",
       },
-    ],
-    name: "nftLastSuccess",
-    outputs: [
       {
         internalType: "uint256",
         name: "",
         type: "uint256",
       },
     ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "nftRewards",
+    name: "openInterestDai",
     outputs: [
       {
         internalType: "uint256",
@@ -859,6 +862,11 @@ export const storageABI = [
   {
     inputs: [
       {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+      {
         internalType: "uint256",
         name: "",
         type: "uint256",
@@ -869,12 +877,12 @@ export const storageABI = [
         type: "uint256",
       },
     ],
-    name: "openInterestDai",
+    name: "openLimitOrderClosed",
     outputs: [
       {
-        internalType: "uint256",
+        internalType: "bool",
         name: "",
-        type: "uint256",
+        type: "bool",
       },
     ],
     stateMutability: "view",
@@ -1450,50 +1458,6 @@ export const storageABI = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    name: "reqID_pendingNftOrder",
-    outputs: [
-      {
-        internalType: "address",
-        name: "nftHolder",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "nftId",
-        type: "uint256",
-      },
-      {
-        internalType: "address",
-        name: "trader",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "pairIndex",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "index",
-        type: "uint256",
-      },
-      {
-        internalType: "enum GFarmTradingStorageV5.LimitOrder",
-        name: "orderType",
-        type: "uint8",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
         internalType: "address",
         name: "_callbacks",
         type: "address",
@@ -1921,56 +1885,6 @@ export const storageABI = [
   {
     inputs: [
       {
-        components: [
-          {
-            internalType: "address",
-            name: "nftHolder",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "nftId",
-            type: "uint256",
-          },
-          {
-            internalType: "address",
-            name: "trader",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "pairIndex",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "index",
-            type: "uint256",
-          },
-          {
-            internalType: "enum GFarmTradingStorageV5.LimitOrder",
-            name: "orderType",
-            type: "uint8",
-          },
-        ],
-        internalType: "struct GFarmTradingStorageV5.PendingNftOrder",
-        name: "_nftOrder",
-        type: "tuple",
-      },
-      {
-        internalType: "uint256",
-        name: "_orderId",
-        type: "uint256",
-      },
-    ],
-    name: "storePendingNftOrder",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
         internalType: "address",
         name: "_trader",
         type: "address",
@@ -2303,19 +2217,6 @@ export const storageABI = [
       },
     ],
     name: "unregisterPendingMarketOrder",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_order",
-        type: "uint256",
-      },
-    ],
-    name: "unregisterPendingNftOrder",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",

@@ -121,27 +121,20 @@ export const getOpenTrades = async (
  * @param index - The index of the pair count.
  * @returns The list of open limit orders.
  */
-export const getOpenLimitOrders = async (
-  address: string,
-  chainId: number,
-  pairIndex: number,
-  index: number
-) => {
-  try {
-    console.log("index", index);
-    const contract = getStorageContract(chainId);
-    const data = await contract.getOpenLimitOrder(address, pairIndex, index);
-    console.log("getOpenLimitOrder:", data);
+export const getOpenLimitOrders = async (address: string, chainId: number, pairIndex: number) => {
+  const contract = getStorageContract(chainId);
+  const data = await contract.getOpenLimitOrders();
+  console.log("getOpenLimitOrder:", data);
 
-    // const data = await readContract(config, {
-    //   abi: storageABI,
-    //   address: STORAGE_ADDRESS[chainId],
-    //   functionName: "getOpenLimitOrder",
-    //   args: [address as any, BigInt(pairIndex), BigInt(index)],
-    // });
-    const formattedData = { ...data, positionSizeDai: data.positionSize, openPrice: data.minPrice };
-    return formattedData;
-  } catch (error) {
-    return null;
-  }
+  const userData = data.filter((d) => d.trader.toLowerCase() === address.toLowerCase());
+
+  const filteredData = await Promise.all(
+    userData.map(async (d) => {
+      const isClosed = await contract.getOpenLimitOrderClosed(address, pairIndex, d.index);
+      return { ...d, isClosed };
+    })
+  );
+
+  console.log(filteredData.filter((f) => !f.isClosed));
+  return filteredData.filter((f) => !f.isClosed);
 };
