@@ -127,17 +127,21 @@ export const getOpenLimitOrders = async (
   pairIndex: number,
   index: number
 ) => {
-  const contract = getStorageContract(chainId);
-  const data = await contract.getOpenLimitOrder(address, pairIndex, index);
-  console.log("getOpenLimitOrder:", data);
+  try {
+    console.log("index", index);
+    const contract = getStorageContract(chainId);
+    const data = await contract.getOpenLimitOrder(address, pairIndex, index);
+    console.log("getOpenLimitOrder:", data);
 
-  // const data = await readContract(config, {
-  //   abi: storageABI,
-  //   address: STORAGE_ADDRESS[chainId],
-  //   functionName: "getOpenLimitOrder",
-  //   args: [address as any, BigInt(pairIndex), BigInt(index)],
-  // });
-  console.log(data);
-  const formattedData = { ...data, positionSizeDai: data.positionSize, openPrice: data.minPrice };
-  return formattedData;
+    // const data = await readContract(config, {
+    //   abi: storageABI,
+    //   address: STORAGE_ADDRESS[chainId],
+    //   functionName: "getOpenLimitOrder",
+    //   args: [address as any, BigInt(pairIndex), BigInt(index)],
+    // });
+    const formattedData = { ...data, positionSizeDai: data.positionSize, openPrice: data.minPrice };
+    return formattedData;
+  } catch (error) {
+    return null;
+  }
 };
