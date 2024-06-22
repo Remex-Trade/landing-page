@@ -12,17 +12,22 @@ import { config } from "../helpers/coreConfig";
  * @param pairIndex - The index of the trading pair.
  */
 export const getOpenTradesCount = async (address: string, chainId: number, pairIndex: number) => {
-  // const contract = getStorageContract(chainId);
-  // const data = await contract.openTradesCount(address, pairIndex);
-  // console.log(data);
-  const data = await readContract(config, {
-    abi: storageABI,
-    address: STORAGE_ADDRESS[chainId],
-    functionName: "openTradesCount",
-    args: [address as any, BigInt(pairIndex)],
-  });
+  try {
+    // const data = await readContract(config, {
+    //   abi: storageABI,
+    //   address: STORAGE_ADDRESS[chainId],
+    //   functionName: "openTradesCount",
+    //   args: [address as any, BigInt(pairIndex)],
+    // });
+    const contract = getStorageContract(chainId);
+    const data = await contract.openTradesCount(address, pairIndex);
+    console.log(data.toString());
+    return Number(data.toString());
+  } catch (error) {
+    console.log(error);
 
-  return Number(data.toString());
+    return 0;
+  }
 };
 
 /**
@@ -38,16 +43,21 @@ export const getOpenLimitOrdersCount = async (
   chainId: number,
   pairIndex: number
 ) => {
-  // const contract = getStorageContract(chainId);
-  // const data = await contract.openLimitOrdersCount(address, pairIndex);
-  // console.log("Open Limit Orders:", data);
-  const data = await readContract(config, {
-    abi: storageABI,
-    address: STORAGE_ADDRESS[chainId],
-    functionName: "openLimitOrdersCount",
-    args: [address as any, BigInt(pairIndex)],
-  });
-  return Number(data.toString());
+  try {
+    // const data = await readContract(config, {
+    //   abi: storageABI,
+    //   address: STORAGE_ADDRESS[chainId],
+    //   functionName: "openLimitOrdersCount",
+    //   args: [address as any, BigInt(pairIndex)],
+    // });
+    const contract = getStorageContract(chainId);
+    const data = await contract.openLimitOrdersCount(address, pairIndex);
+    console.log("Open Limit Orders:", data);
+    return Number(data.toString());
+  } catch (error) {
+    console.log(error);
+    return 0;
+  }
 };
 
 /**
@@ -65,22 +75,25 @@ export const getOpenTrades = async (
   pairIndex: number,
   index: number
 ) => {
-  // const contract = getStorageContract(chainId);
-  // const data = await contract.openTrades(address, pairIndex, index);
-  // console.log("Open Trade Orders:", data);
+  const contract = getStorageContract(chainId);
+  const data = await contract.openTrades(address, pairIndex, index);
+  console.log("Open Trade Orders:", data);
 
-  const data = await readContract(config, {
-    abi: storageABI,
-    address: STORAGE_ADDRESS[chainId],
-    functionName: "openTrades",
-    args: [address as any, BigInt(pairIndex), BigInt(index)],
-  });
-  const tradeInfo = await readContract(config, {
-    abi: storageABI,
-    address: STORAGE_ADDRESS[chainId],
-    functionName: "openTradesInfo",
-    args: [address as any, BigInt(pairIndex), BigInt(index)],
-  });
+  // const data = await readContract(config, {
+  //   abi: storageABI,
+  //   address: STORAGE_ADDRESS[chainId],
+  //   functionName: "openTrades",
+  //   args: [address as any, BigInt(pairIndex), BigInt(index)],
+  // });
+  // const tradeInfo = await readContract(config, {
+  //   abi: storageABI,
+  //   address: STORAGE_ADDRESS[chainId],
+  //   functionName: "openTradesInfo",
+  //   args: [address as any, BigInt(pairIndex), BigInt(index)],
+  // });
+
+  const tradeInfo = await contract.openTradesInfo(address, pairIndex, index);
+  console.log("Open Trade Orders:", tradeInfo);
 
   const formattedData = {
     trader: data[0],
@@ -114,16 +127,16 @@ export const getOpenLimitOrders = async (
   pairIndex: number,
   index: number
 ) => {
-  // const contract = getStorageContract(chainId);
-  // const data = await contract.getOpenLimitOrder(address, pairIndex, index);
-  // console.log("getOpenLimitOrder:", data);
+  const contract = getStorageContract(chainId);
+  const data = await contract.getOpenLimitOrder(address, pairIndex, index);
+  console.log("getOpenLimitOrder:", data);
 
-  const data = await readContract(config, {
-    abi: storageABI,
-    address: STORAGE_ADDRESS[chainId],
-    functionName: "getOpenLimitOrder",
-    args: [address as any, BigInt(pairIndex), BigInt(index)],
-  });
+  // const data = await readContract(config, {
+  //   abi: storageABI,
+  //   address: STORAGE_ADDRESS[chainId],
+  //   functionName: "getOpenLimitOrder",
+  //   args: [address as any, BigInt(pairIndex), BigInt(index)],
+  // });
   console.log(data);
   const formattedData = { ...data, positionSizeDai: data.positionSize, openPrice: data.minPrice };
   return formattedData;
