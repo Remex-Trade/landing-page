@@ -45,14 +45,14 @@ export const getOpenLimitOrdersCount = async (
   pairIndex: number
 ) => {
   try {
-    // const data = await readContract(config, {
-    //   abi: storageABI,
-    //   address: STORAGE_ADDRESS[chainId],
-    //   functionName: "openLimitOrdersCount",
-    //   args: [address as any, BigInt(pairIndex)],
-    // });
-    const contract = getStorageContract(chainId);
-    const data = await contract.openLimitOrdersCount(address, pairIndex);
+    const data = await readContract(config, {
+      abi: storageABI,
+      address: STORAGE_ADDRESS[chainId],
+      functionName: "openLimitOrdersCount",
+      args: [address as any, BigInt(pairIndex)],
+    });
+    // const contract = getStorageContract(chainId);
+    // const data = await contract.openLimitOrdersCount(address, pairIndex);
     console.log("Open Limit Orders:", data);
     return Number(data.toString());
   } catch (error) {
@@ -122,23 +122,34 @@ export const getOpenTrades = async (
  * @param index - The index of the pair count.
  * @returns The list of open limit orders.
  */
-export const getOpenLimitOrders = async (address: string, chainId: number, pairIndex: number) => {
-  const contract = getStorageContract(chainId);
-  const data = await contract.getOpenLimitOrders();
-  console.log("getOpenLimitOrder:", data);
+export const getOpenLimitOrders = async (
+  address: string,
+  chainId: number,
+  pairIndex: number,
+  index: number
+) => {
+  try {
+    const data = await readContract(config, {
+      abi: storageABI,
+      address: STORAGE_ADDRESS[chainId],
+      functionName: "getOpenLimitOrderData",
+      args: [address as any, BigInt(pairIndex), BigInt(index)],
+    });
+    const openLimitOrderClosed = await readContract(config, {
+      abi: storageABI,
+      address: STORAGE_ADDRESS[chainId],
+      functionName: "getOpenLimitOrderClosed",
+      args: [address as any, BigInt(pairIndex), BigInt(index)],
+    });
 
-  const userData = data.filter((d) => d.trader.toLowerCase() === address.toLowerCase());
-
-  const filteredData = await Promise.all(
-    userData.map(async (d) => {
-      const isClosed = await contract.getOpenLimitOrderClosed(address, pairIndex, d.index);
-      return { ...d, isClosed };
-    })
-  );
-
-  const result = filteredData
-    .filter((f) => !f.isClosed)
-    .map((d) => ({ ...d, index: d.index.toString() }));
-
-  return _.uniqBy(result, "index");
+    const formattedData = {
+      ...data,
+      positionSizeDai: data.positionSize,
+      openPrice: data.minPrice,
+      isClosed: openLimitOrderClosed,
+    };
+    return formattedData;
+  } catch (error) {
+    return null;
+  }
 };

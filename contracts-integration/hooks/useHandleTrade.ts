@@ -19,7 +19,7 @@ export const useHandleTrade = () => {
       const buy = tradeData.longOrShort === "Long";
       const isMarket = tradeData.tradeType === "Market";
       const isTpSl = tradeData.isTpSl;
-      const openPrice = isMarket ? Number(latestTokenPrice) : Number(tradeData.openPrice);
+      const openPrice = isMarket ? Number(latestTokenPrice || 0) : Number(tradeData.openPrice || 0);
 
       const takeProfit = getTpValue(
         openPrice,

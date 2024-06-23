@@ -1,9 +1,16 @@
 import { ethers } from "ethers";
-import { STAKE_TOKEN_ADDRESS, STAKING_ADDRESS, STORAGE_ADDRESS, TRADING_ADDRESS } from "./address";
+import {
+  PAIR_STORAGE_ADDRESS,
+  STAKE_TOKEN_ADDRESS,
+  STAKING_ADDRESS,
+  STORAGE_ADDRESS,
+  TRADING_ADDRESS,
+} from "./address";
 import { GnsTradingABI } from "./abi/GnsTradingABI";
 import { storageABI } from "./abi/StoageABI";
 import { stakingABI } from "./abi/stakingABI";
 import { erc20Abi } from "viem";
+import { pairStorageABI } from "./abi/pairStorageABI";
 
 export const getTradingContract = (chainId: number) => {
   if (!window["ethereum"]) return undefined;

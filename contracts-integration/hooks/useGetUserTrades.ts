@@ -55,24 +55,19 @@ const handleGetUserInfo = async (address: string, chainId: number, pair: Pair) =
   const pairIndex = pair.pairIndex;
   const openTradesCount = await getOpenTradesCount(address, chainId, pairIndex);
   console.log("openTradesCount", openTradesCount);
-  // const openLimitCount = await getOpenLimitOrdersCount(address, chainId, pairIndex);
-  // console.log("openLimitCount", openLimitCount);
+  const openLimitCount = await getOpenLimitOrdersCount(address, chainId, pairIndex);
+  console.log("openLimitCount", openLimitCount);
   const openTradesResult = await Promise.all(
     Array.from({ length: openTradesCount }).map(async (_, i) => {
       return await getOpenTrades(address, chainId, pairIndex, i);
     })
   );
-  console.log("openTradesResult", openTradesResult);
 
-  // const openLimitResult = await Promise.all(
-  //   Array.from({ length: openLimitCount }).map(async (_, i) => {
-  //     return await getOpenLimitOrders(address, chainId, pairIndex, i);
-  //   })
-  // );
-
-  const openLimitResult = await getOpenLimitOrders(address, chainId, pairIndex);
-
-  console.log("openLimitResult", openLimitResult);
+  const openLimitResult = await Promise.all(
+    Array.from({ length: openLimitCount }).map(async (_, i) => {
+      return await getOpenLimitOrders(address, chainId, pairIndex, i);
+    })
+  );
 
   const formattedOpenTrades: FormattedOpenTrades[] = openTradesResult
     .filter((f) => !f.isClosed)
@@ -94,7 +89,7 @@ const handleGetUserInfo = async (address: string, chainId: number, pair: Pair) =
     });
 
   const formattedLimitOrders: FormattedOpenLimitOrders[] = openLimitResult
-    .filter((f) => !f.isClosed)
+    .filter((f) => f && !f.isClosed)
     .map((trade) => {
       return {
         type: trade.buy ? "Long" : "Short",

@@ -457,6 +457,97 @@ export const storageABI = [
     type: "function",
   },
   {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_trader",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_pairIndex",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_index",
+        type: "uint256",
+      },
+    ],
+    name: "getOpenLimitOrderData",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "address",
+            name: "trader",
+            type: "address",
+          },
+          {
+            internalType: "uint256",
+            name: "pairIndex",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "index",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "positionSize",
+            type: "uint256",
+          },
+          {
+            internalType: "bool",
+            name: "buy",
+            type: "bool",
+          },
+          {
+            internalType: "uint256",
+            name: "leverage",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "tp",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "sl",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "minPrice",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "maxPrice",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "block",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "tokenId",
+            type: "uint256",
+          },
+        ],
+        internalType: "struct GFarmTradingStorageV5.OpenLimitOrder",
+        name: "",
+        type: "tuple",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "getOpenLimitOrders",
     outputs: [
@@ -883,6 +974,90 @@ export const storageABI = [
         internalType: "bool",
         name: "",
         type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "openLimitOrderData",
+    outputs: [
+      {
+        internalType: "address",
+        name: "trader",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "pairIndex",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "index",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "positionSize",
+        type: "uint256",
+      },
+      {
+        internalType: "bool",
+        name: "buy",
+        type: "bool",
+      },
+      {
+        internalType: "uint256",
+        name: "leverage",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "tp",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "sl",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "minPrice",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "maxPrice",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "block",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
       },
     ],
     stateMutability: "view",
