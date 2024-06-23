@@ -142,3 +142,19 @@ export const updateSl = async (
   const tx = await contract.updateSl(pairIndex, index, _newSl);
   await tx.wait();
 };
+
+
+export const updateOpenLimitOrder=async(
+  address: string,
+  chainId: number,
+  pairIndex: number,
+  index: number,
+  _newPrice: string,
+  _newSl: string,
+  _newTp: string
+  ) => {
+  const contract = getTradingContract(chainId);
+  const tx = await contract.updateOpenLimitOrder(pairIndex, index, _newPrice,_newTp,_newSl);
+  await tx.wait();
+}
+ 
