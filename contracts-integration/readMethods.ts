@@ -3,6 +3,7 @@ import { storageABI } from "./abi/StoageABI";
 import { STORAGE_ADDRESS } from "./address";
 import { readContract } from "@wagmi/core";
 import { config } from "../helpers/coreConfig";
+import _ from "lodash";
 
 /**
  * Get Open Trades Count on trading contract.
@@ -135,6 +136,9 @@ export const getOpenLimitOrders = async (address: string, chainId: number, pairI
     })
   );
 
-  console.log(filteredData.filter((f) => !f.isClosed));
-  return filteredData.filter((f) => !f.isClosed);
+  const result = filteredData
+    .filter((f) => !f.isClosed)
+    .map((d) => ({ ...d, index: d.index.toString() }));
+
+  return _.uniqBy(result, "index");
 };

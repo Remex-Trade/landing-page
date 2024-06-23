@@ -12,6 +12,7 @@ import { formatUnits, formatEther } from "ethers/lib/utils";
 import { usePriceStore } from "@/store/priceStore";
 import { useSelectedTokenStore } from "@/store/tokenStore";
 import { Pair } from "./useGetPairs";
+import { BigNumberish } from "ethers";
 
 export type FormattedOpenTrades = {
   type: LongShort;
@@ -44,6 +45,10 @@ export type FormattedOpenLimitOrders = {
 
 function formatPriceFromBigNumber(price: BigInt) {
   return Number(formatUnits(price.toString(), "10")).toFixed(2);
+}
+
+function formatPrice(price: BigNumberish) {
+  return Number(formatUnits(price, "10")).toFixed(2);
 }
 
 const handleGetUserInfo = async (address: string, chainId: number, pair: Pair) => {
@@ -88,29 +93,31 @@ const handleGetUserInfo = async (address: string, chainId: number, pair: Pair) =
       };
     });
 
-  const formattedLimitOrders: FormattedOpenLimitOrders[] = openLimitResult.map((trade) => {
-    return {
-      type: trade.buy ? "Long" : "Short",
-      pair: pair.token,
-      size: Number(trade.leverage) * Number(formatEther(trade.positionSizeDai.toString())) + "DAI",
-      leverage: trade.leverage.toString() + "x",
-      collateral: formatEther(trade.positionSizeDai.toString()) + "DAI",
-      openPrice: formatPriceFromBigNumber(trade.openPrice),
-      price: "-",
-      sl: formatPriceFromBigNumber(trade.sl),
-      tp: formatPriceFromBigNumber(trade.tp),
-      index: trade.index.toString(),
-      pairIndex: trade.pairIndex.toString(),
-      minPrice: formatPriceFromBigNumber(trade.minPrice),
-      maxPrice: formatPriceFromBigNumber(trade.maxPrice),
-    };
-  });
+  const formattedLimitOrders: FormattedOpenLimitOrders[] = openLimitResult
+    .filter((f) => !f.isClosed)
+    .map((trade) => {
+      return {
+        type: trade.buy ? "Long" : "Short",
+        pair: pair.token,
+        size: Number(trade.leverage.toString()) * Number(formatEther(trade.positionSize)) + "DAI",
+        leverage: trade.leverage.toString() + "x",
+        collateral: formatEther(trade.positionSize) + "DAI",
+        openPrice: formatPrice(trade.openPrice || "0"),
+        price: "-",
+        sl: formatPrice(trade.sl),
+        tp: formatPrice(trade.tp),
+        index: trade.index.toString(),
+        pairIndex: trade.pairIndex.toString(),
+        minPrice: formatPrice(trade.minPrice),
+        maxPrice: formatPrice(trade.maxPrice),
+      };
+    });
 
   return {
     openTradesCount,
     openLimitCount: formattedLimitOrders.length,
     formattedOpenTrades,
-    formattedLimitOrders,
+    formattedLimitOrders: formattedLimitOrders,
   };
 };
 
