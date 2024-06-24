@@ -153,6 +153,16 @@ export const updateOpenLimitOrder=async(
   _newSl: string,
   _newTp: string
   ) => {
+
+    console.log("Updating Open Limit Order",
+      address,
+      chainId,
+      pairIndex,
+      index,
+      _newPrice,
+      _newSl,
+      _newTp
+  );
   const contract = getTradingContract(chainId);
   const tx = await contract.updateOpenLimitOrder(pairIndex, index, _newPrice,_newTp,_newSl);
   await tx.wait();

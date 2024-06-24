@@ -21,7 +21,7 @@ const TradeDetailsTable = () => {
   const [selected, setSelected] = useState<(typeof tabs)[number]["value"]>(0);
   const { data, error, isError } = useGetUserTrades();
 
-  console.log("error", error, isError);
+  // console.log("error", error, isError);
 
   return (
     <>

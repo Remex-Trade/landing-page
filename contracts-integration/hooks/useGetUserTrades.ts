@@ -7,7 +7,7 @@ import {
   getOpenTradesCount,
 } from "../readMethods";
 import { useQuery } from "@tanstack/react-query";
-import { LongShort } from "@/constants/trade";
+import { LongShort, TradeType } from "@/constants/trade";
 import { formatUnits, formatEther } from "ethers/lib/utils";
 import { usePriceStore } from "@/store/priceStore";
 import { useSelectedTokenStore } from "@/store/tokenStore";
@@ -26,6 +26,7 @@ export type FormattedOpenTrades = {
   tp: string;
   index: string;
   pairIndex: string;
+  tradeType: TradeType;
 };
 export type FormattedOpenLimitOrders = {
   type: LongShort;
@@ -41,6 +42,7 @@ export type FormattedOpenLimitOrders = {
   tp: string;
   index: string;
   pairIndex: string;
+  tradeType: TradeType
 };
 
 function formatPriceFromBigNumber(price: BigInt) {
@@ -54,9 +56,9 @@ function formatPrice(price: BigNumberish) {
 const handleGetUserInfo = async (address: string, chainId: number, pair: Pair) => {
   const pairIndex = pair.pairIndex;
   const openTradesCount = await getOpenTradesCount(address, chainId, pairIndex);
-  console.log("openTradesCount", openTradesCount);
+  // console.log("openTradesCount", openTradesCount);
   const openLimitCount = await getOpenLimitOrdersCount(address, chainId, pairIndex);
-  console.log("openLimitCount", openLimitCount);
+  // console.log("openLimitCount", openLimitCount);
   const openTradesResult = await Promise.all(
     Array.from({ length: openTradesCount }).map(async (_, i) => {
       return await getOpenTrades(address, chainId, pairIndex, i);
@@ -85,6 +87,7 @@ const handleGetUserInfo = async (address: string, chainId: number, pair: Pair) =
         tp: formatPriceFromBigNumber(trade.tp),
         index: trade.index.toString(),
         pairIndex: trade.pairIndex.toString(),
+        tradeType: "Market"
       };
     });
 
@@ -105,6 +108,7 @@ const handleGetUserInfo = async (address: string, chainId: number, pair: Pair) =
         pairIndex: trade.pairIndex.toString(),
         minPrice: formatPrice(trade.minPrice),
         maxPrice: formatPrice(trade.maxPrice),
+        tradeType: "Limit"
       };
     });
 

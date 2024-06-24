@@ -22,7 +22,7 @@ export const getOpenTradesCount = async (address: string, chainId: number, pairI
     // });
     const contract = getStorageContract(chainId);
     const data = await contract.openTradesCount(address, pairIndex);
-    console.log(data.toString());
+    // console.log(data.toString());
     return Number(data.toString());
   } catch (error) {
     console.log(error);
@@ -53,7 +53,7 @@ export const getOpenLimitOrdersCount = async (
     });
     // const contract = getStorageContract(chainId);
     // const data = await contract.openLimitOrdersCount(address, pairIndex);
-    console.log("Open Limit Orders:", data);
+    // console.log("Open Limit Orders:", data);
     return Number(data.toString());
   } catch (error) {
     console.log(error);
@@ -78,7 +78,7 @@ export const getOpenTrades = async (
 ) => {
   const contract = getStorageContract(chainId);
   const data = await contract.openTrades(address, pairIndex, index);
-  console.log("Open Trade Orders:", data);
+  // console.log("Open Trade Orders:", data);
 
   // const data = await readContract(config, {
   //   abi: storageABI,
@@ -94,7 +94,7 @@ export const getOpenTrades = async (
   // });
 
   const tradeInfo = await contract.openTradesInfo(address, pairIndex, index);
-  console.log("Open Trade Orders:", tradeInfo);
+  // console.log("Open Trade Orders:", tradeInfo);
 
   const formattedData = {
     trader: data[0],

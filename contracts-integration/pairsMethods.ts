@@ -17,7 +17,7 @@ export const getPairs = async (chainId: number) => {
     chainId: chainId as any,
   });
 
-  console.log("GETPAIRS", chainId, data.toString());
+  // console.log("GETPAIRS", chainId, data.toString());
 
   const pairsCount = Number(data.toString());
 
@@ -33,7 +33,7 @@ export const getPairs = async (chainId: number) => {
 
   const pairsData = await Promise.all(pairsPromise);
 
-  console.log(pairsData);
+  // console.log(pairsData);
   const formattedData = pairsData.map((d, index) => {
     return {
       from: d[0],
