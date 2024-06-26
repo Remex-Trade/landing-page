@@ -62,8 +62,12 @@ const Navbar = () => {
                           </DropdownMenuTrigger>
                           {name==="Docs" && 
                           <DropdownMenuContent>
+                            <Link href="/site/docs/tos">
                             <DropdownMenuItem>Terms Of Services</DropdownMenuItem>
+                            </Link>
+                            <Link href="/site/docs/privacy">
                             <DropdownMenuItem>Privacy</DropdownMenuItem>
+                            </Link>
                           </DropdownMenuContent>
                           }
                           {name==="More" && 
