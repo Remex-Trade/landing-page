@@ -67,14 +67,24 @@ module.exports = {
             "100%": {
               borderColor: "white"
             }  
-          }
+          },
+          "accordion-down": {
+            from: { height: "0" },
+            to: { height: "var(--radix-accordion-content-height)" },
+          },
+          "accordion-up": {
+            from: { height: "var(--radix-accordion-content-height)" },
+            to: { height: "0" },
+          },
       },
       animation:{
         'infinite-scroll': 'infinite-scroll 15s linear infinite',
         'infinite-scroll-reverse': 'infinite-scroll-reverse 15s linear infinite',
         move: 'move 1s ease-in-out  ',
         float : 'float 5s infinite ease-in-out',
-        typing: "typing 2s steps(20) infinite alternate, blink .7s infinite"
+        typing: "typing 2s steps(20) infinite alternate, blink .7s infinite",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       }
     },
   },
