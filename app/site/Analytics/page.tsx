@@ -1,9 +1,32 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import LineCharts from "../../_Components/LineCharts";
 import ChartBlock from "../../_Components/ChartBlock";
 
-const page = () => {
+interface dataType{
+    totalValue:"12.8M",
+    totalTraders:"12.11K",
+    juniorTrancheTvl:"7.47M",
+    totalTradedVolume:"701.93M",
+    openInterest:"4M",
+    seniorTrancheTvl:"4.99M"
+}
+
+const page = () => { 
+  const [data,setData] = useState<dataType>({
+    totalValue:"12.8M",
+    totalTraders:"12.11K",
+    juniorTrancheTvl:"7.47M",
+    totalTradedVolume:"701.93M",
+    openInterest:"4M",
+    seniorTrancheTvl:"4.99M"
+  })
+
+  const changeData = (key:string,value:string)=>{
+    setData((prev)=>{
+      return {...prev,[key]:value}
+      })
+  }
   return (
     <div className="w-full h-full flex flex-col py-20 items-center justify-center bg-[#111114]">
       <div id="page-content" className="w-[90%] sc0:w-[90%]">
@@ -16,48 +39,48 @@ const page = () => {
         <div id="blocks" className="w-full flex flex-col gap-3 mt-10">
           <div
             id="blocks-row-1"
-            className="flex gap-3 items-center justify-center"
+            className="flex gap-3 items-center justify-center md:flex-row flex-col"
           >
-            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col">
+            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
               <span className="text-gray-500 text-lg font-bold">
                 Total Value Locked
               </span>
-              <span className="text-white text-3xl font-bold">$12M</span>
+              <span className="text-white text-3xl font-bold">${data.totalValue}</span>
             </div>
-            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col">
+            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
               <span className="text-gray-500 text-lg font-bold">
-                Total Value Locked
+                Total Traders
               </span>
-              <span className="text-white text-3xl font-bold">$12M</span>
+              <span className="text-white text-3xl font-bold">{data.totalTraders}</span>
             </div>
-            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col">
+            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
               <span className="text-gray-500 text-lg font-bold">
-                Total Value Locked
+                Junior Tranche TVL
               </span>
-              <span className="text-white text-3xl font-bold">$12M</span>
+              <span className="text-white text-3xl font-bold">${data.juniorTrancheTvl}</span>
             </div>
           </div>
           <div
             id="blocks-row-2"
-            className="flex gap-3 items-center justify-center"
+            className="flex gap-3 items-center justify-center flex-col md:flex-row"
           >
-            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col">
+            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
               <span className="text-gray-500 text-lg font-bold">
-                Total Value Locked
+                Total Traded Value
               </span>
-              <span className="text-white text-3xl font-bold">$12M</span>
+              <span className="text-white text-3xl font-bold">${data.totalTradedVolume}</span>
             </div>
-            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col">
+            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
               <span className="text-gray-500 text-lg font-bold">
-                Total Value Locked
+                Open Interest
               </span>
-              <span className="text-white text-3xl font-bold">$12M</span>
+              <span className="text-white text-3xl font-bold">${data.openInterest}</span>
             </div>
-            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col">
+            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
               <span className="text-gray-500 text-lg font-bold">
-                Total Value Locked
+                Senior Tranche TVL
               </span>
-              <span className="text-white text-3xl font-bold">$12M</span>
+              <span className="text-white text-3xl font-bold">${data.seniorTrancheTvl}</span>
             </div>
           </div>
         </div>
@@ -65,7 +88,7 @@ const page = () => {
           id="line-charts"
           className="w-full flex-col flex gap-8 my-10 items-center justify-center"
         >
-          <div id="chart-row1" className="flex w-full gap-10 justify-between">
+          <div id="chart-row1" className="flex sc1:flex-row flex-col w-full gap-10 justify-between">
             <div
               id="chart-1"
               className="border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full h-[15rem]"
@@ -88,7 +111,7 @@ const page = () => {
               <LineCharts />
             </div>
           </div>
-          <div id="chart-row2" className="flex w-full gap-10 justify-between">
+          <div id="chart-row2" className="flex w-full gap-10 justify-between flex-col sc1:flex-row">
             <div
               id="chart-1"
               className="border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full h-[15rem]"
@@ -109,7 +132,7 @@ const page = () => {
             </div>
           </div>
         </div>
-        <div id="chart-info" className="grid grid-cols-1 sc0:grid-cols-2 gap-10">
+        <div id="chart-info" className="grid grid-cols-1 sc1:grid-cols-2 gap-10">
             <div id="chart">
                 <ChartBlock title="Trades Count" text="120.09k" type="Composed"/>
             </div>

@@ -22,7 +22,7 @@ const page = () => {
         exposure to 60% of all protocol fees generated from counter-trading,
         trading fees, and early vault unlocks. Please invest responsibly
       </div>
-      <div id="Cards" className="flex w-full gap-10 my-8">
+      <div id="Cards" className="flex w-full gap-10 my-8 sc4:flex-row flex-col">
         <Link href="/site/Vault/junior" className="w-full ">
             <div id="card1" className="bg-[#0c0f11] rounded-xl w-full border-[0.2px] py-6 px-10 border-gray-800 relative flex flex-col gap-3 hover:border-white transition duration-5000">
                 <Image src="/Images/gradients/gradient1.png" width={250} height={250} alt="background"  className="absolute right-0 top-1"/>
@@ -75,6 +75,7 @@ const page = () => {
                 </div>
             </div>
             </Link>
+          <Link href="/site/Vault/senior" className="w-full">
             <div id="card2" className="bg-[#0c0f11] rounded-xl w-full border-[0.2px] py-6 px-10 border-gray-800 flex flex-col gap-3 relative hover:border-white transition duration-500">
               <Image src="/Images/gradients/gradient2.png" width={250} height={250} alt="background"  className="absolute right-0 top-1"/>
                 
@@ -126,6 +127,7 @@ const page = () => {
                     </div>
                 </div>
             </div>
+          </Link>
       </div>
     </div>
     </div>
