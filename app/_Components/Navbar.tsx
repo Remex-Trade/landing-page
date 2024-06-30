@@ -106,7 +106,7 @@ const Navbar = () => {
                 return (
                   <div onClick={()=>setSelected(name)}>
                     <DropdownMenu>
-                          <DropdownMenuTrigger  className={`outline-none text-black dark:text-white font-bold flex gap-1 items-center dark:hover:bg-[#373636] bg-none rounded-lg px-3 py-1 ${selected===name&&"bg-[#373636]"} m-0`}>{name}
+                          <DropdownMenuTrigger  className={`outline-none text-black dark:text-white font-bold flex gap-1 items-center dark:hover:bg-[#373636] bg-none rounded-lg px-3 py-1 ${selected===name&&"bg-[#d4d4d4] dark:bg-[#373636]"} m-0`}>{name}
                             <FaCaretDown  className="text-sm text-gray-500"/>
                           </DropdownMenuTrigger>
                           {name==="Docs" && 

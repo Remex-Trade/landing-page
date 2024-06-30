@@ -2,7 +2,7 @@ import React from 'react';
 
 const page= ()=>{
     return(
-        <div className='flex flex-col p-[1rem] items-center justify-center gap-[2rem]'>
+        <div className='flex flex-col p-[1rem] items-center justify-center gap-[2rem] dark:text-white text-black bg-white dark:bg-black'>
             <div className='flex flex-col items-center justify-center gap-[1rem] p-[1rem]'>
                 <h1 className='text-2xl md:text-4xl font-bold'>TERMS OF SERVICE</h1>
                 <h4 className='text-md'>Last Revised: 03.25.2024</h4>
