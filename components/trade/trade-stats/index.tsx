@@ -39,7 +39,7 @@ export default function TradeStats({ setTradeData, tradeData }: Props) {
       </div>
       <div className="flex w-full text-[12px] text-gray-400 items-center justify-between">
         <span className="decoration-dotted underline font-bold">Slippage</span>
-        <div className="flex w-1/5 gap-2 bg-[#2c2d2d]  rounded-md px-2 py-1">
+        <div className="flex w-1/5 gap-2 bg-[#d4d4d4] font-bold text-black dark:text-white dark:bg-[#2c2d2d]  rounded-md px-2 py-1">
           <input
             // type="number"
             className="bg-transparent outline-none w-full"

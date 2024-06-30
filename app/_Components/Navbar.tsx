@@ -35,6 +35,48 @@ const Navbar = () => {
     "Docs",
     "More",
   ];
+  const [trigger,setTrigger] = useState({state:false,link:"Docs"});
+  const subLinks = [{
+    name: "Earn",
+    subLinks: [
+      {
+        name: "Vault",
+        link: "/site/Vault",
+        },
+        {
+          name: "Stake",
+          link: "/site/Stake",
+          },
+        {
+          name: "Referral",
+          link: "/site/Referral",
+          },]
+  },
+{
+    name: "Docs",
+    subLinks: [
+      {
+        name: "Privacy",
+        link: "/site/docs/privacy",
+        },
+        {
+          name: "Terms Of service",
+          link: "/site/docs/tos",
+          },]
+  },
+  {
+    name: "More",
+    subLinks: [
+      {
+        name: "Analytics",
+        link: "/site/Analytics",
+        },
+        {
+          name: "Swap",
+          link: "/site/Swap",
+          }]
+  },
+]
   const networks = ["openBNB", "Manta Pacific", "BNB"];
   const [open, setOpen] = useState(false); //;
   const [menuOpen, setMenuOpen] = useState(false);
@@ -44,24 +86,31 @@ const Navbar = () => {
       <div className="dark:bg-[#0F0E0E] outline-none  border-none bg-white dark:text-white text-black sticky z-10 top-0 w-[100%] font-light shadow-sm dark:shadow-none">
         <div className="flex  gap-3 sc0:gap-8 items-center w-full px-[2vw] py-1 text-md sc1:text-sm">
           <div className="w-[20%]   flex items-center justify-start font-bold text-2xl text-white">
+            {darkMode?
             <Image
               src="/Images/Group 2.png"
               width={150}
               height={150}
               alt="logo"
-            />
+            />:
+            <Image
+              src="/Images/logodark.png"
+              width={150}
+              height={150}
+              alt="logo"
+            />}
           </div>
-          <div className="hidden min-[1300px]:flex  gap-2">
+          <div className="hidden sc1:flex  gap-2 dark:text-white text-black">
             {names.map((name) => {
               if (name === "More" || name === "Docs"||name==="Earn"||name==="Stats") {
                 return (
                   <div onClick={()=>setSelected(name)}>
                     <DropdownMenu>
-                          <DropdownMenuTrigger  className={`outline-none text-white font-bold flex gap-1 items-center dark:hover:bg-[#373636] bg-none rounded-lg px-3 py-1 ${selected===name&&"bg-[#373636]"} m-0`}>{name}
+                          <DropdownMenuTrigger  className={`outline-none text-black dark:text-white font-bold flex gap-1 items-center dark:hover:bg-[#373636] bg-none rounded-lg px-3 py-1 ${selected===name&&"bg-[#373636]"} m-0`}>{name}
                             <FaCaretDown  className="text-sm text-gray-500"/>
                           </DropdownMenuTrigger>
                           {name==="Docs" && 
-                          <DropdownMenuContent>
+                          <DropdownMenuContent className={`${darkMode?"border-gray-600 text-white bg-[#0c0f11]":"border-gray-300 font-bold text-black bg-[#F6F6F8]"}`}>
                             <Link href="/site/docs/tos">
                             <DropdownMenuItem>Terms Of Services</DropdownMenuItem>
                             </Link>
@@ -71,7 +120,7 @@ const Navbar = () => {
                           </DropdownMenuContent>
                           }
                           {name==="More" && 
-                          <DropdownMenuContent>
+                          <DropdownMenuContent className={`${darkMode?"border-gray-600 text-white bg-[#0c0f11]":"border-gray-300 font-bold text-black bg-[#F6F6F8]"}`}>
                             <Link href="/site/Analytics">
                             <DropdownMenuItem>Analytics</DropdownMenuItem>
                             </Link>
@@ -81,7 +130,8 @@ const Navbar = () => {
                           </DropdownMenuContent>
                           }
                           {name==="Earn" && 
-                          <DropdownMenuContent>
+                          <DropdownMenuContent className={`${darkMode?"border-gray-600 text-white bg-[#0c0f11]":"border-gray-300 font-bold text-black bg-[#F6F6F8]"}`}>
+
                             <Link href="/site/Vault">
                             <DropdownMenuItem>Vault</DropdownMenuItem>
                             </Link>
@@ -94,7 +144,7 @@ const Navbar = () => {
                           </DropdownMenuContent>
                           }
                           {name==="Stats" && 
-                          <DropdownMenuContent>
+                          <DropdownMenuContent className={`${darkMode?"border-gray-600 text-white bg-[#0c0f11]":"border-gray-300 font-bold text-black bg-[#F6F6F8]"}`}>
                             <Link href="/site/Stats">
                             <DropdownMenuItem>Overview</DropdownMenuItem>
                             </Link>
@@ -147,7 +197,7 @@ const Navbar = () => {
                 <WalletsProvider />
               </div>
             </div>
-            <div className="w-10 h-full flex sc4:hidden">
+            <div className="w-10 h-full flex sc1:hidden">
               {menuOpen ? (
                 <IoIosClose size={30} onClick={() => setMenuOpen(false)} />
               ) : (
@@ -213,19 +263,63 @@ const Navbar = () => {
       </AnimatePresence>
       {menuOpen && (
         <div className="h-[95vh] w-full absolute z-50 right-0 bg-black flex flex-col gap-10 py-12 items-center">
-          <div className="w-full">
+          <div className="w-full flex flex-col ">
             {names.map((name) => {
               return (
                 <>
+                {["Earn","Docs","More"].includes(name) ? 
+                  <div
+                    className="flex flex-col justify-between w-full h-fit py-4 px-8 text-lg items-center border-b border-b-[#2D2D2C] bg-[#090a0a]"
+                    onClick={() => setTrigger({state:!trigger.state,link:name})}
+                  >
+                    <div className="flex w-full justify-between">
+                    {name}
+                    <FaChevronRight size={10} color="white" />
+                    </div>
+                    {(trigger.state==true && trigger.link===name) &&
+                      <motion.div
+                      className="flex flex-col gap-2 w-full"
+                      initial={{y:-10,opacity:0}}
+                      animate={{y:0,opacity:1}}
+                      exit={{opacity:0}}
+                      transition={{duration:0.5}}>
+                        {subLinks.map((sublink)=>{
+                          return(
+                            <>
+                              {sublink.name===name &&
+                                sublink.subLinks.map((link)=>{
+                                  return (
+                                    <>
+                                    <Link key={link.name} href={`${link.link}`} className="w-full">
+                                      <div
+                                        className="flex justify-between w-full h-fit py-4 px-16 text-lg items-center border-b border-b-[#2D2D2C]"
+                                        onClick={() => setMenuOpen(false)}
+                                      >
+                                        {link.name}
+                                      </div>
+                                      </Link>
+                                    </>
+                                  );
+                                })
+                              }
+                            </>
+                          )
+                        })}
+                      </motion.div>
+                    }
+                  </div>
+                :
+                
                   <Link key={name} href={`${name}`}>
                     <div
-                      className="flex justify-between w-full h-fit py-4 px-8 text-lg items-center border-b border-b-[#2D2D2C] bg-[#141515]"
+                      className="flex justify-between w-full h-fit py-4 px-8 text-lg items-center border-b border-b-[#2D2D2C] bg-[#090a0a]"
                       onClick={() => setMenuOpen(false)}
                     >
                       {name}
                       <FaChevronRight size={10} color="white" />
                     </div>
                   </Link>
+                  }
                 </>
               );
             })}

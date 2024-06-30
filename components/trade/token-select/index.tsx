@@ -67,8 +67,8 @@ const TokenSelect = ({
             <div
               className={`bg-black border border-[#2c2d2d] rounded-lg px-4 py-1 cursor-pointer ${
                 tokenType === option
-                  ? "text-white bg-zinc-900"
-                  : "text-zinc-500"
+                  ? "dark:text-white text-black border-none bg-[#d4d4d4] dark:bg-zinc-900 font-bold"
+                  : "text-zinc-500 bg-[#d4d4d4] dark:bg-black border-none font-bold"
               }`}
               onClick={() => setTokenType(option)}
             >
@@ -155,7 +155,7 @@ function TokenCard({
             height={32}
             alt="sidebar1"
           />
-          <div className="w-fit text-white font-bold h-full flex flex-col items-start text-center text-[1rem]">
+          <div className="w-fit text-black dark:text-white font-bold h-full flex flex-col items-start text-center text-[1rem]">
             <span>{pair.token}</span>
             <span className="text-[0.6rem] text-slate-300">{pair.from} to {pair.to}</span>
           </div>

@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useRef } from "react";
 import userContext from "../_context/userContext";
 import { useSelectedTokenStore } from "@/store/tokenStore";
+import theme from "../_context/theme";
 // import "./TradingView.css";
 
 let tvScriptLoadingPromise;
@@ -11,7 +12,7 @@ export default function TradingViewWidget() { // Declare the extended Window typ
 const onLoadScriptRef = useRef<()=>void|undefined>();
 const selectedPair = useSelectedTokenStore(state => state.pair);
 const tokenName = selectedPair?.token || "";
- 
+ const {darkMode} = useContext(theme);
 useEffect(() => {
 onLoadScriptRef.current = createWidget;
  
@@ -41,8 +42,7 @@ new (window.TradingView as any).widget({
 autosize: true,
 symbol: `PYTH:${tokenName.replace("/","")}`,
 interval: "D",
-// timezone: "Etc/UTC",
-theme: "dark",
+theme: darkMode?`dark`:`light`,
 overrides: {
     "paneProperties.backgroundGradientStartColor": "#020024",
         "paneProperties.backgroundGradientEndColor": "#4f485e",
@@ -66,7 +66,7 @@ container_id: "tradingview",
 }
 }
  
-}, [tokenName]);
+}, [tokenName,darkMode]);
  
 return (
  

@@ -10,7 +10,7 @@ import CollatoralInput from "../collateral-input";
 import ActionButton from "../action-button";
 import TradeStats from "../trade-stats";
 
-const TradeAdjustSidebar = () => {
+const   TradeAdjustSidebar = () => {
   const [tradeData, setTradeData] = useState<TradeData>(defaultTradeData);
 
   function setTradeDataWithKey<K extends keyof TradeData>(

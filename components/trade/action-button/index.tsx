@@ -51,7 +51,7 @@ export default function ActionButton({ tradeData }: Props) {
           <button
             onClick={() => handleApprove()}
             disabled={isHandleApproveLoading}
-            className={`rounded-lg px-20 py-2 text-lg text-slate-100  font-bold border-2 border-slate-100 dark:border-slate-800 `}
+            className={`rounded-lg px-20 py-2 text-lg bg-[#3B1A91] text-white dark:text-slate-100  font-bold border-2 border-slate-100 dark:border-slate-800 `}
           >
             {isHandleApproveLoading ? "Loading..." : "Approve"}
           </button>

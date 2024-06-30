@@ -82,16 +82,16 @@ export default function TakeProfitStopLossInput({
             <p className="text-sm text-gray-600 dark:text-white">Take Profit</p>
             <div className="flex gap-2 justify-between">
               <div className="flex gap-4 w-full text-[0.8rem]">
-                <div className="flex gap-2 w-1/5  bg-[#2c2d2d] rounded-md px-2 py-1">
+                <div className="flex gap-2 w-1/5 bg-[#d4d4d4] dark:bg-[#2c2d2d] rounded-md px-2 py-1">
                   <input
                     type="number"
-                    className="bg-transparent w-full outline-none"
+                    className="bg-transparent w-full outline-none text-black dark:text-white"
                     value={tradeData.takeProfit}
                     onChange={(e) => setTradeData("takeProfit", e.target.value)}
                   />
-                  <span className="text-white">%</span>
+                  <span className="text-black dark:text-white">%</span>
                 </div>
-                <div className="flex w-3/5 gap-2 bg-[#2c2d2d]  rounded-md px-2 py-1">
+                <div className="flex w-3/5 gap-2 bg-[#d4d4d4] dark:bg-[#2c2d2d] text-black dark:text-white  rounded-md px-2 py-1">
                   <input
                     // type="number"
                     className="bg-transparent outline-none w-full"
@@ -106,7 +106,7 @@ export default function TakeProfitStopLossInput({
           <div className="flex flex-col justify-start gap-1">
             <p className="text-sm dark:text-white text-gray-600">Stop Loss</p>
             <div className="flex gap-2">
-              {stopLossOptions.map((item) => {
+              {/* {stopLossOptions.map((item) => {
                 return (
                   <button
                     onClick={() => setTradeData("stopLoss", item.value)}
@@ -119,10 +119,30 @@ export default function TakeProfitStopLossInput({
                     {item.label}
                   </button>
                 );
-              })}
-              <button className="px-2 py-1 rounded-lg text-[12px] bg-[#F7F8F8] text-gray-600 dark:bg-[#262626] dark:text-gray-500">
+              })} */}
+              <div className="flex gap-4 w-full text-[0.8rem]">
+                <div className="flex gap-2 w-1/5  bg-[#d4d4d4] text-black dark:text-white dark:bg-[#2c2d2d] rounded-md px-2 py-1">
+                  <input
+                    type="number"
+                    className="bg-transparent w-full outline-none"
+                    value={tradeData.stopLoss}
+                    onChange={(e) => setTradeData("stopLoss", e.target.value)}
+                  />
+                  <span className="text-black dark:text-white">%</span>
+                </div>
+                <div className="flex w-3/5 gap-2 bg-[#d4d4d4] text-black dark:text-white dark:bg-[#2c2d2d]  rounded-md px-2 py-1">
+                  <input
+                    // type="number"
+                    className="bg-transparent outline-none w-full"
+                    value={stopLossValue}
+                    disabled
+                  />
+                  <span>USD</span>
+                </div>
+              </div>
+              {/* <button className="px-2 py-1 rounded-lg text-[12px] bg-[#F7F8F8] text-gray-600 dark:bg-[#262626] dark:text-gray-500">
                 {stopLossValue}
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

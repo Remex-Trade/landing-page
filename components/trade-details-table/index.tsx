@@ -30,8 +30,8 @@ const TradeDetailsTable = () => {
           {tabs.map((tab) => (
             <button
               key={tab.value}
-              className={`px-6 py-3 focus:bg-black focus:text-white text-slate-400 border border-[#2c2d2d] ${
-                selected === tab.value && "bg-black text-white"
+              className={`px-6 py-3  border dark:border-[#2c2d2d] border-[#d4d4d4] ${
+                selected === tab.value ? "bg-[#d4d4d4] dark:bg-black text-black dark:text-white":"text-slate-400"
               }`}
               onClick={() => setSelected(tab.value)}
             >
