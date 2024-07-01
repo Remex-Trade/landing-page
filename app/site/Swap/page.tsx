@@ -42,12 +42,12 @@ const page = () => {
     name:'BNB',
     wallet:'0x308...254ca'
   }]
-
+  const [swapValue,setSwapValue] = useState(0.0);
   const [selectedToken,setSelectedToken]= useState('FTM');
   const [toToken,setToToken] = useState("ETH");
   const [type,setType] = useState("from");
   return (
-    <div className="w-full h-screen  flex px-4 lg:px-12 flex-col items-center justify-start overflow-x-hidden bg-[#120E1B]">
+    <div className="w-full h-screen  flex px-4 lg:px-12 flex-col items-center justify-start overflow-x-hidden bg-[#F8FAFC] dark:bg-[#120E1B]">
         {openTokens&& 
             <>
           <div className='bg-black w-full h-screen absolute z-40 opacity-55'></div>
@@ -95,19 +95,19 @@ const page = () => {
             </>
         }
         
-        <div className='text-5xl font mt-24'>
+        <div className='text-5xl font mt-24 dark:text-white text-black font-bold'>
             Swap Tokens
         </div>
       <div className="flex flex-col sc0:flex-row gap-4 my-20 md:gap-5 w-full md:w-[90%] items-center justify-center h-[40rem] md:h-[20rem] relative z-10">       
         <div
           id="swap-box"
-          className="bg-[#21212d] w-full lg:w-[45%] py-10 px-4 lg:px-10 flex flex-col gap-4 h-full rounded-xl"
+          className="bg-white shadow-md dark:bg-[#21212d] w-full lg:w-[45%] py-10 px-4 lg:px-10 flex flex-col gap-4 h-full rounded-xl"
         >
-          <div className="flex justify-between w-full text-[#647186]">
+          <div className="flex justify-between w-full font-bold text-gray-500 dark:text-[#647186]">
             <span>Swap</span>
             <span>Available 0.0 {selectedToken}</span>
           </div>
-          <div className="w-full flex items-center  border border-[#647186] rounded-lg h-[95%]">
+          <div className="w-full flex items-center  border border-gray-300 dark:border-[#647186] rounded-lg h-[95%]">
             <div className="border-r border-[#647186] h-full  flex items-start py-2 justify-start w-[50%] md:w-[30%] cursor-pointer" onClick={()=>{
               setOpenTokens(true)
               setType("from");
@@ -129,12 +129,13 @@ const page = () => {
             <input
               type="text"
               value={"0.0"}
-              className="bg-transparent px-4 select-none border-none outline-none text-slate-100"
+              className="bg-transparent px-4 select-none border-none outline-none text-black font-bold dark:text-slate-100"
+              onChange={(e)=>setSwapValue(Number(e.target.value))}
             />
           </div>
          
           <div className='flex items-center justify-center w-full gap-2'>
-              <hr className='w-[50%] border  border-[#121B2C] border-1'/>
+              <hr className='w-[50%] border border-gray-300 dark:border-[#121B2C] border-1'/>
               <div className=" h-fit">
                 <Image
                   src="/Images/swap.png"
@@ -144,21 +145,21 @@ const page = () => {
                   className="rounded-sm my-4 relative"
                 />
               </div>
-              <hr  className='w-[50%] border  border-[#121B2C]'/>
+              <hr  className='w-[50%] border  border-gray-300 dark:border-[#121B2C]'/>
           </div>
 
-          <div className="flex justify-between w-full text-[#647186]">
+          <div className="flex justify-between w-full text-gray-800 font-bold dark:text-[#647186]">
             <span>For</span>
             <span>Available 0.0 {toToken}</span>
           </div>
-          <div className="w-full flex items-center  border border-[#647186] rounded-lg h-[95%]">
+          <div className="w-full flex items-center  border border-gray-300 dark:border-[#647186] rounded-lg h-[95%]">
             <div className="border-r border-[#647186] h-full  flex items-start py-2 justify-start w-[50%] md:w-[30%] cursor-pointer" onClick={
               ()=>{
                 setOpenTokens(true);
                 setType("to");  
               } }>
               <div className="w-full  h-full flex justify-between px-4 items-center text-[#647186] gap-10 md:gap-0">
-                <div className="flex gap-2 items-center">
+                <div className="flex gap-2 items-center ">
                   <Image
                     src={`${tokens.filter((p)=>p.name===toToken).map((e)=>e.image)}`}
                     width={25}
@@ -174,39 +175,39 @@ const page = () => {
             <input
               type="text"
               value={"0.0"}
-              className="bg-transparent select-none px-4 border-none outline-none text-slate-100"
+              className="bg-transparent select-none px-4 border-none outline-none text-black font-bold dark:text-slate-100"
             />
           </div>
         </div>
-        <div className="bg-[#21212d] w-full lg:w-[37%] h-full flex flex-col gap-10 py-4 px-4 lg:py-7 lg:px-12 rounded-xl">
-          <div className='text-2xl' >Swap</div>
-          <div className="flex flex-col">
+        <div className="dark:bg-[#21212d] bg-white shadow-md w-full lg:w-[37%] h-full flex flex-col gap-10 py-4 px-4 lg:py-7 lg:px-12 rounded-xl">
+          <div className='text-2xl text-black dark:text-white' >Swap</div>
+          <div className="flex flex-col text-black dark:text-white">
             <div className="flex gap-4">
-              <div className="bg-[#0F172B] text-white rounded-full py-1 px-1 flex justify-center text-[0.7rem] h-6 w-6">
+              <div className="dark:bg-[#0F172B] bg-[#d4d4d4] text-black dark:text-white rounded-full py-1 px-1 flex justify-center text-[0.7rem] h-6 w-6">
                 1
               </div>
-              <div className="text-sm text-neutral-00">
+              <div className="text-sm text-black dark:text-white">
                 Start by selecting the token to Swap from and the amount you want to
                 exchange
               </div>
             </div>
           </div>
           <div className="flex flex-col">
-            <div className="flex gap-4">
-              <div className="bg-[#0F172B] text-white rounded-full py-1 px-1 flex justify-center text-[0.7rem] h-6 w-6">
+            <div className="flex gap-4"> 
+              <div className="dark:bg-[#0F172B] bg-[#d4d4d4] text-black dark:text-white rounded-full py-1 px-1 flex justify-center text-[0.7rem] h-6 w-6">
                 2
               </div>
-              <div className="text-sm text-white">
+              <div className="text-sm text-black dark:text-white">
               Pick the token you want to exchange for
               </div>
             </div>
           </div>
           <div className="flex flex-col">
             <div className="flex gap-4">
-              <div className="bg-[#0F172B] text-white rounded-full py-1 px-1 flex justify-center text-[0.7rem] h-6 w-6">
+              <div className="dark:bg-[#0F172B] bg-[#d4d4d4] text-black dark:text-white rounded-full py-1 px-1 flex justify-center text-[0.7rem] h-6 w-6">
                 3
               </div>
-              <div className="text-sm text-white">
+              <div className="text-sm text-black dark:text-white">
               The quote will be ready in a moment!
               </div>
             </div>

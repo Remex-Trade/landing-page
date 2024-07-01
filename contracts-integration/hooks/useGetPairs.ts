@@ -18,7 +18,7 @@ export default function useGetPairs() {
         return {
           ...pair,
           id: pair.pairIndex,
-          icon: `/Images/${pair.from.toLowerCase()}.png`,
+          icon: `/Images/crypto/${pair.from.toLowerCase()}.png`,
           token: `${pair.from}/${pair.to}`,
         };
       });

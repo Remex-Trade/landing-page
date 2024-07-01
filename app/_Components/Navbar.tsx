@@ -1,7 +1,7 @@
 "use client";
 import React, { useContext, useState } from "react";
 import Link from "next/link";
-import { FaChevronDown, FaChevronRight, FaFire } from "react-icons/fa";
+import { FaCaretDown, FaChevronDown, FaChevronRight, FaFire } from "react-icons/fa";
 import { CiWallet } from "react-icons/ci";
 import ToggleButton from "./ToggleButton";
 import theme from "../_context/theme";
@@ -10,6 +10,17 @@ import Image from "next/image";
 import { IoIosClose } from "react-icons/io";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoMenu } from "react-icons/io5";
+import { MdOutlineWbSunny } from "react-icons/md";
+import { MdSunny } from "react-icons/md";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./Dropdown"
 
 const Navbar = () => {
   const { darkMode, setDarkMode } = useContext(theme);
@@ -18,14 +29,54 @@ const Navbar = () => {
   const [selected, setSelected] = useState("Trade");
   const names = [
     "Trade",
-    "Referral",
-    "Leaderboard",
     "Portfolio",
-    "Stake",
-    "Vault",
+    "Stats",
+    "Earn",
     "Docs",
     "More",
   ];
+  const [trigger,setTrigger] = useState({state:false,link:"Docs"});
+  const subLinks = [{
+    name: "Earn",
+    subLinks: [
+      {
+        name: "Vault",
+        link: "/site/Vault",
+        },
+        {
+          name: "Stake",
+          link: "/site/Stake",
+          },
+        {
+          name: "Referral",
+          link: "/site/Referral",
+          },]
+  },
+{
+    name: "Docs",
+    subLinks: [
+      {
+        name: "Privacy",
+        link: "/site/docs/privacy",
+        },
+        {
+          name: "Terms Of service",
+          link: "/site/docs/tos",
+          },]
+  },
+  {
+    name: "More",
+    subLinks: [
+      {
+        name: "Analytics",
+        link: "/site/Analytics",
+        },
+        {
+          name: "Swap",
+          link: "/site/Swap",
+          }]
+  },
+]
   const networks = ["openBNB", "Manta Pacific", "BNB"];
   const [open, setOpen] = useState(false); //;
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,100 +84,78 @@ const Navbar = () => {
   return (
     <>
       <div className="dark:bg-[#0F0E0E] outline-none  border-none bg-white dark:text-white text-black sticky z-10 top-0 w-[100%] font-light shadow-sm dark:shadow-none">
-        <div className="flex justify-between gap-8 items-center w-full px-[2vw] py-1 text-md sc1:text-sm">
-          <div className="w-[10%] flex items-center justify-start font-bold text-2xl text-white">
+        <div className="flex  gap-3 sc0:gap-8 items-center w-full px-[2vw] py-1 text-md sc1:text-sm">
+          <div className="w-[20%]   flex items-center justify-start font-bold text-2xl text-white">
+            {darkMode?
             <Image
               src="/Images/Group 2.png"
               width={150}
               height={150}
               alt="logo"
-            />
+            />:
+            <Image
+              src="/Images/logodark.png"
+              width={150}
+              height={150}
+              alt="logo"
+            />}
           </div>
-          <div className="hidden md:flex sc0:gap-[2rem] gap-[2%]">
+          <div className="hidden sc1:flex  gap-2 dark:text-white text-black">
             {names.map((name) => {
-              if (name === "More" || name === "Docs") {
+              if (name === "More" || name === "Docs"||name==="Earn"||name==="Stats") {
                 return (
-                  <>
-                    <div
-                      className={`dark:text-white cursor-pointer text-black flex flex-col gap-2 items-center justify-center dark:hover:bg-[#373636] font-bold hover:bg-neutral-200 rounded-lg px-3 py-1 h-full ${
-                        selected === name && "dark:bg-[#373636] bg-neutral-300"
-                      }`}
-                    >
-                      <div
-                        className="flex gap-2 items-center justify-center"
-                        onClick={() => {
-                          setSelected(name);
-                          setOpenState(!openstate);
-                          setMenuOpenState(name);
-                        }}
-                      >
-                        {name}
-                        <FaChevronDown size={10} className="text-gray-300" />
-                      </div>
-                      <div className="flex cursor-pointer">
-                      {openstate && (
-                        <>
-                          {(menuOpenState === "Docs" && name==="Docs") && (
-                          <motion.div
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
-                          className="absolute top-10 w-40 bg-white dark:bg-[#0c0f11]
-                      rounded-lg shadow-md p-2 z-100"
-                        >
-                          <ul className="flex flex-col gap-2">
-                            <li
-                              className="text-md text-gray-600 dark:text-gray-300 hover:text-black dark
-                          :hover:text-white transition duration-300 ease-in-out"
-                            >
-                              <Link href="/site/docs/privacy" onClick={()=>setOpenState(false)}>
-                              Privacy Policy
-                              </Link>
-                            </li>
-                            <li
-                              className="text-md text-gray-600 dark:text-gray-300 hover:text-black dark
-                          :hover:text-white transition duration-300 ease-in-out"
-                            >
-                              <Link href="/site/docs/tos" onClick={()=>setOpenState(false)}>
-                              Terms Of Service
-                              </Link>
-                            </li>
-                          </ul>
-                        </motion.div>
-                          )}
-                          {(menuOpenState === "More" && name==="More")&&(
-                            <motion.div
-                              initial={{ opacity: 0, y: -10 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: -10 }}
-                              className="absolute top-10 w-40 bg-white dark:bg-[#0c0f11]
-                          rounded-lg shadow-md p-2 z-100"
-                            >
-                              <ul className="flex flex-col gap-2">
-                                <li
-                                  className="text-md text-gray-600 dark:text-gray-300 hover:text-black dark
-                              :hover:text-white transition duration-300 ease-in-out"
-                                >
-                                  <Link href="/site/Stake" onClick={()=>setOpenState(false)}>
-                                  Stake
-                                  </Link>
-                                </li>
-                                <li
-                                  className="text-md text-gray-600 dark:text-gray-300 hover:text-black dark
-                              :hover:text-white transition duration-300 ease-in-out"
-                                > 
-                                <Link href="/site/Analytics">
-                                  Analytics
-                                  </Link>
-                                </li>
-                              </ul>
-                            </motion.div>
-                          )}
-                        </>
-                      )}
-                      </div>
-                    </div>
-                  </>
+                  <div onClick={()=>setSelected(name)}>
+                    <DropdownMenu>
+                          <DropdownMenuTrigger  className={`outline-none text-black dark:text-white font-bold flex gap-1 items-center dark:hover:bg-[#373636] bg-none rounded-lg px-3 py-1 ${selected===name&&"bg-[#d4d4d4] dark:bg-[#373636]"} m-0`}>{name}
+                            <FaCaretDown  className="text-sm text-gray-500"/>
+                          </DropdownMenuTrigger>
+                          {name==="Docs" && 
+                          <DropdownMenuContent className={`${darkMode?"border-gray-600 text-white bg-[#0c0f11]":"border-gray-300 font-bold text-black bg-[#F6F6F8]"}`}>
+                            <Link href="/site/docs/tos">
+                            <DropdownMenuItem>Terms Of Services</DropdownMenuItem>
+                            </Link>
+                            <Link href="/site/docs/privacy">
+                            <DropdownMenuItem>Privacy</DropdownMenuItem>
+                            </Link>
+                          </DropdownMenuContent>
+                          }
+                          {name==="More" && 
+                          <DropdownMenuContent className={`${darkMode?"border-gray-600 text-white bg-[#0c0f11]":"border-gray-300 font-bold text-black bg-[#F6F6F8]"}`}>
+                            <Link href="/site/Analytics">
+                            <DropdownMenuItem>Analytics</DropdownMenuItem>
+                            </Link>
+                            <Link href="/site/Swap">
+                            <DropdownMenuItem>Swap</DropdownMenuItem>
+                            </Link>
+                          </DropdownMenuContent>
+                          }
+                          {name==="Earn" && 
+                          <DropdownMenuContent className={`${darkMode?"border-gray-600 text-white bg-[#0c0f11]":"border-gray-300 font-bold text-black bg-[#F6F6F8]"}`}>
+
+                            <Link href="/site/Vault">
+                            <DropdownMenuItem>Vault</DropdownMenuItem>
+                            </Link>
+                            <Link href="/site/Stake">
+                            <DropdownMenuItem>Stake</DropdownMenuItem>
+                            </Link>
+                            <Link href="/site/Referral">
+                            <DropdownMenuItem>Referral</DropdownMenuItem>
+                            </Link>
+                          </DropdownMenuContent>
+                          }
+                          {name==="Stats" && 
+                          <DropdownMenuContent className={`${darkMode?"border-gray-600 text-white bg-[#0c0f11]":"border-gray-300 font-bold text-black bg-[#F6F6F8]"}`}>
+                            <Link href="/site/Stats">
+                            <DropdownMenuItem>Overview</DropdownMenuItem>
+                            </Link>
+                            <Link href="/site/Leaderboard">
+                            <DropdownMenuItem>Leaderboard</DropdownMenuItem>
+                            </Link>
+                          </DropdownMenuContent>
+                          }
+                    </DropdownMenu>
+                  </div>
+                    // </div>
                 );
               } else {
                 return (
@@ -145,11 +174,11 @@ const Navbar = () => {
               }
             })}
           </div>
-          <div className="flex gap-[1.5rem] items-center">
+          <div className="flex gap-[1.5rem] items-center w-full justify-end">
             <div className="hidden sc1:block">
               <ToggleButton darkMode={darkMode} setDarkMode={setDarkMode} />
             </div>
-            <div
+            {/* <div
               className="w-16 h-10 bg-[#383838] rounded-lg px-2 py-2 flex items-center justify-between"
               onClick={() => setOpen(true)}
             >
@@ -162,13 +191,13 @@ const Navbar = () => {
                 alt="networks"
               />
               <FaChevronDown color="white" size={10} />
-            </div>
+            </div> */}
             <div>
               <div className="flex">
                 <WalletsProvider />
               </div>
             </div>
-            <div className="w-10 h-full sc1:hidden flex">
+            <div className="w-10 h-full flex sc1:hidden">
               {menuOpen ? (
                 <IoIosClose size={30} onClick={() => setMenuOpen(false)} />
               ) : (
@@ -234,19 +263,63 @@ const Navbar = () => {
       </AnimatePresence>
       {menuOpen && (
         <div className="h-[95vh] w-full absolute z-50 right-0 bg-black flex flex-col gap-10 py-12 items-center">
-          <div className="w-full">
+          <div className="w-full flex flex-col ">
             {names.map((name) => {
               return (
                 <>
+                {["Earn","Docs","More"].includes(name) ? 
+                  <div
+                    className="flex flex-col justify-between w-full h-fit py-4 px-8 text-lg items-center border-b border-b-[#2D2D2C] bg-[#090a0a]"
+                    onClick={() => setTrigger({state:!trigger.state,link:name})}
+                  >
+                    <div className="flex w-full justify-between">
+                    {name}
+                    <FaChevronRight size={10} color="white" />
+                    </div>
+                    {(trigger.state==true && trigger.link===name) &&
+                      <motion.div
+                      className="flex flex-col gap-2 w-full"
+                      initial={{y:-10,opacity:0}}
+                      animate={{y:0,opacity:1}}
+                      exit={{opacity:0}}
+                      transition={{duration:0.5}}>
+                        {subLinks.map((sublink)=>{
+                          return(
+                            <>
+                              {sublink.name===name &&
+                                sublink.subLinks.map((link)=>{
+                                  return (
+                                    <>
+                                    <Link key={link.name} href={`${link.link}`} className="w-full">
+                                      <div
+                                        className="flex justify-between w-full h-fit py-4 px-16 text-lg items-center border-b border-b-[#2D2D2C]"
+                                        onClick={() => setMenuOpen(false)}
+                                      >
+                                        {link.name}
+                                      </div>
+                                      </Link>
+                                    </>
+                                  );
+                                })
+                              }
+                            </>
+                          )
+                        })}
+                      </motion.div>
+                    }
+                  </div>
+                :
+                
                   <Link key={name} href={`${name}`}>
                     <div
-                      className="flex justify-between w-full h-fit py-4 px-8 text-lg items-center border-b border-b-[#2D2D2C] bg-[#141515]"
+                      className="flex justify-between w-full h-fit py-4 px-8 text-lg items-center border-b border-b-[#2D2D2C] bg-[#090a0a]"
                       onClick={() => setMenuOpen(false)}
                     >
                       {name}
                       <FaChevronRight size={10} color="white" />
                     </div>
                   </Link>
+                  }
                 </>
               );
             })}

@@ -12,6 +12,7 @@ module.exports = {
       "md":"620px",
       "sc0":"750px",
       "sc1":"990px",
+      "sc4":"1300px",
       "sc2":"1440px",
       "sc3":"2560px"
     },
@@ -124,7 +125,15 @@ module.exports = {
             "100%": {
               borderColor: "white"
             }  
-          }
+          },
+          "accordion-down": {
+            from: { height: "0" },
+            to: { height: "var(--radix-accordion-content-height)" },
+          },
+          "accordion-up": {
+            from: { height: "var(--radix-accordion-content-height)" },
+            to: { height: "0" },
+          },
       },
       animation:{
         'infinite-scroll': 'infinite-scroll 15s linear infinite',

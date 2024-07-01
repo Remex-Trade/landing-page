@@ -163,15 +163,15 @@ const page = () => {
           </div>
       </div>} */}
       {/* </div> */}
-
-      <div className="w-full h-full flex items-start">
+      
+      <div className="w-full h-full flex items-start bg-white dark:bg-black">
         <div
           id="right-order"
           className="h-full hidden sc1:flex sc1:flex-col w-full md:w-[60%]  sc1:w-[35%] sc2:w-[25%] items-start"
         >
           <div
             onClick={() => setIsRightOrder(!isRightOrder)}
-            className="w-full relative z-30 h-full hidden sc1:flex justify-between items-center py-4 px-4 border border-[#2C2D2D] bg-[#0F0E0F]"
+            className="w-full relative z-30 h-full hidden sc1:flex justify-between items-center py-4 px-4 border-2 dark:border bg-white border-[#D4D4D4] dark:border-[#2C2D2D] dark:bg-[#0F0E0F] text-black dark:text-white"
           >
             <div className="flex gap-4 items-center">
               <Image
@@ -181,15 +181,15 @@ const page = () => {
                 alt="cryptoImage"
                 className="rounded-full h-100 w-100"
               />
-              <span className="text-lg">{tokenName}</span>
+              <span className="text-lg font-bold">{tokenName}</span>
             </div>
             <div className="flex gap-2 items-center">
-              <span className="text-sm text-slate-300">All Markets</span>
+              <span className="text-sm text-black dark:text-slate-300 ">All Markets</span>
               <FaChevronDown size={10} />
             </div>
           </div>
           {isRightOrder ? (
-            <div className=" overflow-y-auto text-sm  dark:bg-[#0F0E0E]  dark:border-[#2C2D2D] shadow-lg  border-[1px] h-full w-full ">
+            <div className=" overflow-y-auto text-sm  dark:bg-[#0F0E0E]  dark:border-[#2C2D2D] shadow-lg  border-2 border-[#D4D4D4] dark:border-[1px] h-full w-full ">
               {/* <RightOrder
             showPopup={showPopup}
             setShowPopup={setShowPopup}
@@ -259,7 +259,7 @@ const page = () => {
             >
               <div
                 id="middle-top"
-                className=" w-full  flex sc1:gap-2 flex-col bg-white text-black dark:text-white dark:bg-[#0F0E0E] dark:border-[#2C2D2D]  dark:border-[1px] shadow-md h-full"
+                className=" w-full  flex sc1:gap-2 flex-col border-2 border-[#d4d4d4] bg-white text-black dark:text-white dark:bg-[#0F0E0E] dark:border-[#2C2D2D]  dark:border-[1px] shadow-md h-full"
               >
                 <div className="w-full h-[10%] sc1:border-b sc1:border-b-[#2C2D2D] sc1:h-[20%] px-8 py-4 sc1:px-0 sc1:py-0 flex flex-col sc1:flex-row sc1:gap-2 gap-2  text-[0.7rem] justify-start items-start sc1:items-center">
                   <div
@@ -276,7 +276,7 @@ const page = () => {
                           className="rounded-full h-100 w-100 flex sc1:hidden"
                         />
                         <div className="flex flex-col sc1:flex-row gap-1 sc1:justify-between sc1:w-[200%] h-full sc1:border-r sc1:border-r-[#2C2D2D] px-4 py-2">
-                          <span className="text-green-600 sc1:h-full   sc1:text-xl sc1:text-white hidden sc1:flex  font-bold text-[0.9rem]">
+                          <span className="text-green-600 sc1:h-full   sc1:text-xl sc1:dark:text-white sc1:text-black  hidden sc1:flex  font-bold text-[0.9rem]">
                             {"$" + Math.round(latestPrice[tokenName] * 10) / 10}
                           </span>
                           <span
@@ -294,7 +294,7 @@ const page = () => {
                         </div>
                       </div>
                       <div className="sc1:hidden flex flex-col">
-                        <span className="text-white font-bold text-[1rem] sc1:text-[0.7rem]">
+                        <span className="text-black dark:text-white font-bold text-[1rem] sc1:text-[0.7rem]">
                           {"$" + Math.round(latestPrice[tokenName] * 10) / 10}
                         </span>
                         {/* <span className={percentageChange.includes("+") ?  'text-[#0cf3c4]' : "text-red-500"}>{percentageChange}</span> */}
@@ -303,15 +303,15 @@ const page = () => {
                   </div>
                   <div className="w-full gap-4 sc1:flex hidden  sc1:gap-0 text-lg">
                     <div className="flex flex-col gap-1 sc1:gap-0 h-[90%] sc1:border-r sc1:border-r-[#2c2d2d] px-4">
-                      <span className="text-black text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 dark:text-white  ">
+                      <span className="text-black font-bold text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 dark:text-white  ">
                         Open Interest(L)
                       </span>
-                      <span className="text-[0.7rem] sc1:text-lg sc1:text-white">
+                      <span className="text-[0.7rem] sc1:text-lg sc1:dark:text-white sc1:text-black font-bold">
                         {chartStats?.openInterestS ?? "-"}
                       </span>
                     </div>
                     <div className="flex flex-col gap-1 sc1:gap-0 h-[90%] sc1:border-r sc1:border-r-[#2c2d2d] px-4">
-                      <span className="text-black text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 dark:text-white  ">
+                      <span className="text-black text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 sc1:font-bold dark:text-white  ">
                         Open Interest(S)
                       </span>
                       <span className="text-[0.7rem] sc1:text-lg sc1:text-white">
@@ -319,7 +319,7 @@ const page = () => {
                       </span>
                     </div>
                     <div className="flex flex-col gap-1 sc1:gap-0 h-[90%] sc1:border-r sc1:border-r-[#2c2d2d] px-4">
-                      <span className="text-black text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 dark:text-white  ">
+                      <span className="text-black text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 dark:text-white  sc1:font-bold">
                         Market Sentiment
                       </span>
                       <span className="text-[0.7rem] sc1:text-lg sc1:text-white">
@@ -327,7 +327,7 @@ const page = () => {
                       </span>
                     </div>
                     <div className="flex flex-col gap-1 sc1:gap-0 h-[90%] sc1:border-r sc1:border-r-[#2c2d2d] px-4">
-                      <span className="text-black text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 dark:text-white  ">
+                      <span className="text-black text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 dark:text-white  sc1:font-bold">
                         Margin Fee:Longs
                       </span>
                       <span className="text-[0.7rem] sc1:text-lg sc1:text-white">
@@ -335,7 +335,7 @@ const page = () => {
                       </span>
                     </div>
                     <div className="flex flex-col gap-1 sc1:gap-0 h-[90%] sc1:border-r sc1:border-r-[#2c2d2d] px-4">
-                      <span className="text-black text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 dark:text-white  ">
+                      <span className="text-black text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 dark:text-white sc1:font-bold">
                         Margin Fee:Shorts
                       </span>
                       <span className="text-[0.7rem] sc1:text-lg sc1:text-white">
@@ -395,7 +395,7 @@ const page = () => {
               </div>
               <div
                 id="middle-bottom"
-                className="pb-10 pt-3 hidden sc1:flex sc1:py-0  flex-col gap-1  dark:bg-[#0F0E0E] bg-white dark:border-[#2C2D2D] shadow-lg border-[1px] w-full sc1:h-full h-fit"
+                className="pb-10 pt-3 hidden sc1:flex sc1:py-0  flex-col gap-1  dark:bg-[#0F0E0E] bg-white dark:border-[#2C2D2D] shadow-lg border-2 border-[#d4d4d4] dark:border-[1px] w-full sc1:h-full h-fit"
               >
                 <TradeDetailsTable />
               </div>

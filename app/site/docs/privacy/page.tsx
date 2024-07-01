@@ -1,7 +1,7 @@
 import React from 'react';
 const page=()=>{
     return(
-        <div className='flex flex-col p-[2rem] items-center justify-center gap-[2rem]'>
+        <div className='flex flex-col p-[2rem] items-center justify-center gap-[2rem] dark:text-white text-black dark:bg-black bg-white'>
             <div className='flex flex-col items-center justify-center gap-[1rem] p-[1rem]'>
                 <h1 className='text-2xl md:text-4xl font-bold'>PRIVACY POLICY</h1>
                 <h4 className='text-md'>Last Revised: 03.25.2024</h4>

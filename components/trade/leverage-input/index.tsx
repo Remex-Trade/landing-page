@@ -12,14 +12,14 @@ export default function LeverageInput({ tradeData, setTradeData }: Props) {
     <div className="flex justify-center w-full gap-4">
       <div className="flex flex-col justify-center w-full gap-2 ">
         <div className="w-full flex items-center justify-between">
-          <span className="text-sm text-slate-200">Leverage</span>
-          <div className="w-[30%] rounded-md border-[1px] justify-center items-center flex dark:border-gray-800 h-10 dark:bg-black bg-[#F7F8F7] dark:text-white text-gray-700">
+          <span className="text-sm text-black dark:text-slate-200">Leverage</span>
+          <div className="w-[30%] font-bold rounded-md border-[1px] justify-center items-center flex dark:border-gray-800 h-10 dark:bg-black bg-[#d4d4d4] dark:text-white text-black">
             {`${tradeData.leverage}x`}
           </div>
         </div>
-        <div className="w-[90%] flex justify-between relative items-center h-3 rounded-lg mt-2 dark:bg-black border border-[#2c2d2d] bg-[#F7F7F8] text-gray-500 dark:text-white">
+        <div className="w-[90%] flex justify-between relative items-center h-3 rounded-lg mt-2 dark:bg-black border dark:border-[#2c2d2d] bg-[#d4d4d4] text-gray-500 dark:text-white">
           <input
-            className="slider z-10 relative transitiion duration-2"
+            className="slider z-10 relative transitiion duration-2 "
             id="slider"
             type="range"
             step="1"
@@ -37,7 +37,7 @@ export default function LeverageInput({ tradeData, setTradeData }: Props) {
             ))}
           </div>
           <div
-            className={`absolute z-0 dark:bg-gradient-to-r dark:from-[#2ACCF6] dark:to-[#6EFECF] h-2 rounded-lg`}
+            className={`absolute z-0 bg-gradient-to-r from-[#2ACCF6] to-[#6EFECF] h-2 rounded-lg`}
             style={{
               width: `${
                 ((Number(tradeData.leverage) - MIN_LEVERAGE) / MAX_LEVERAGE) *
