@@ -39,7 +39,7 @@ const page = () => {
       remexFee:2.2
     })
     const {juniorTrancheData, seniorTrancheData} = useContext(trancheContext);
-    const tranchedata = tranche==="junior"?juniorTrancheData:seniorTrancheData; //variable for getting data from context
+    const tranchedata = tranche==="senior"?seniorTrancheData:juniorTrancheData; //variable for getting data from context
     const [isLoading,setIsLoading] = useState(false);
     const handleDeposit = ()=>{
       //logic for deposit
@@ -71,24 +71,24 @@ const page = () => {
       })
     }
   return (
-    <div className="w-full h-full py-12 flex items-center justify-center bg-[#0C0F11]">
+    <div className="w-full h-full py-12 flex items-center justify-center bg-[#F8FAFC] dark:bg-[#0C0F11]">
       <div
         id="page-content"
         className="w-[80%] sc0:w-[90%] sc1:w-[70%] flex flex-col gap-4"
       >
         <div
           id="back-button"
-          className="text-md text-gray-500 flex gap-2 items-center hover:underline"
+          className="text-md text-gray-800 dark:text-gray-500 flex gap-2 items-center hover:underline"
         >
           <Link href="/site/Vault" className="flex gap-2"> 
           <FaArrowLeft />
           <span>Back to Vault</span>
           </Link>
         </div>
-        <div id="heading" className="text-white font-bold text-5xl">
+        <div id="heading" className="dark:text-white  text-black font-bold text-5xl">
           Senior Tranche
         </div>
-        <div id="heading-text-content" className="text-md text-gray-500">
+        <div id="heading-text-content" className="text-md text-gray-700 dark:text-gray-500">
           Our higher risk vault, currently receiving ~65% of fees and trader
           PnL. Investing in this tranche gives you jvUSDC, a yield-bearing
           ERC-20 representing your ownership in the vault.
@@ -97,7 +97,7 @@ const page = () => {
           <div id="card-row-1" className="flex gap-6 sc0:flex-row flex-col">
             <div
               id="card-r1"
-              className="bg-[#0c0f11] rounded-xl w-full border-[0.2px] py-6 px-6 border-gray-800 relative flex flex-col gap-3"
+              className=" bg-white shadow-lg dark:bg-[#0c0f11] rounded-xl w-full dark:border-[0.2px] py-6 px-6 dark:border-gray-800 relative flex flex-col gap-3"
             >
               <div id="icon">
                 <svg
@@ -159,16 +159,16 @@ const page = () => {
                   </defs>
                 </svg>
               </div>
-              <div id="card-heading" className="text-2xl text-gray-500">
+              <div id="card-heading" className="text-2xl text-gray-700 dark:text-gray-500">
                 Vault Balance
               </div>
-              <div id="card-text" className="text-white text-sm">
+              <div id="card-text" className="dark:text-white text-black text-sm">
                 ${data.balance} {/* not sure what value should be here */}
               </div>
             </div>
             <div
               id="card-r2"
-              className="bg-[#0c0f11] rounded-xl w-full border-[0.2px] py-6 px-6 border-gray-800 relative flex flex-col gap-3"
+              className="bg-white shadow-lg dark:bg-[#0c0f11] rounded-xl w-full dark:border-[0.2px] py-6 px-6 border-gray-800 relative flex flex-col gap-3"
             >
               <div id="icon">
                 <svg
@@ -230,16 +230,16 @@ const page = () => {
                   </defs>
                 </svg>
               </div>
-              <div id="card-heading" className="text-2xl text-gray-500">
+              <div id="card-heading" className="text-2xl text-gray-700 dark:text-gray-500">
                 All-Time Fees
               </div>
-              <div id="card-text" className="text-white text-sm">
+              <div id="card-text" className="dark:text-white text-black text-sm">
                 ${data.fees} {/*not sure about the value to be added*/}
               </div>
             </div>
             <div
               id="card-r3"
-              className="bg-[#0c0f11] rounded-xl w-full border-[0.2px] py-6 px-6 border-gray-800 relative flex flex-col gap-3"
+              className="dark:bg-[#0c0f11] bg-white shadow-lg rounded-xl w-full dark:border-[0.2px] py-6 px-6 border-gray-800 relative flex flex-col gap-3"
             >
               <div id="icon">
                 <svg
@@ -298,25 +298,25 @@ const page = () => {
                   </defs>
                 </svg>
               </div>
-              <div id="card-content" className="text-[0.9rem] gap-2 flex  text-gray-500">
+              <div id="card-content" className="text-[0.9rem] gap-2 flex text-gray-700  dark:text-gray-500">
                 <div className="flex items-start w-fit justify-center gap-1 flex-col">
                     <div id="heading" className='items-center flex gap-1'>Base APY <MdInfo/></div>
-                    <span className="text-white text-xl">{tranchedata.base}%</span>
+                    <span className="dark:text-white text-black text-xl">{tranchedata.base}%</span>
                 </div>
                 <div className="flex items-start w-fit justify-center gap-1 flex-col">
                     <div id="heading" className='items-center flex gap-1'>Locked APR Boost <MdInfo/></div>
-                    <span className="text-white text-xl">{tranchedata.apr}%</span>
+                    <span className="dark:text-white text-black text-xl">{tranchedata.apr}%</span>
                 </div>
               </div>
               
             </div>
           </div>
           <div id="card-row-2" className="flex gap-6 sc0:flex-row flex-col">
-            <div id="card-r1" className="bg-[#0c0f11] rounded-xl w-full border-[0.2px] px-5 border-gray-800 relative flex flex-col gap-3">
-                <div id="options" className="w-full border-b-[0.1px] border-gray-800 flex justify-between text-sm">
+            <div id="card-r1" className="dark:bg-[#0c0f11] bg-white shadow-lg rounded-xl w-full dark:border-[0.2px] px-5 border-gray-800 relative flex flex-col gap-3">
+                <div id="options" className="w-full border-b-[0.1px] border-gray-200 dark:border-gray-800 flex justify-between text-sm">
                     {options.map((option)=>{
                         return(                            
-                            <button className={`${option===selectedOption?"text-white border-b-2  h-full border-[#dcaaf8]":"text-gray-500"} py-2`}
+                            <button className={`${option===selectedOption?"dark:text-white text-black border-b-2 font-bold h-full  border-[#cb81f5] dark:border-[#dcaaf8]":"text-gray-500"} py-2`}
                                 onClick={()=>setSelectedOption(option)}
                             >{option}</button>
                         )
@@ -325,7 +325,7 @@ const page = () => {
                 <div id="card-content" className="px-6 pt-6 pb-8 flex flex-col gap-6">
                   {selectedOption==="Deposit" &&
                   <>
-                    <div id="deposit" className="flex justify-between text-gray-500 text-lg">
+                    <div id="deposit" className="flex justify-between text-gray-700 dark:text-gray-500 text-lg">
                         <span>Deposit Amount</span>
                         <div id="amount" className="flex gap-1 items-center">
                             <MdWallet/>
@@ -337,19 +337,19 @@ const page = () => {
                     <VaultInput data={depositData} setData={setDepositData} type="deposit" image={"/Images/crypto/coin.png"}/>
                     <div id="card-info" className="flex flex-col gap-4 text-md font-bold">
                       <div className="flex justify-between">
-                        <span className="text-gray-500">Receive</span>
-                        <span className="text-white" >{depositData.receive} jvUSDC</span>
+                        <span className="dark:text-gray-500 text-gray-700">Receive</span>
+                        <span className="dark:text-white text-black" >{depositData.receive} jvUSDC</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-500">Est. Deposit Fee:</span>
-                        <span className="text-white" >{depositData.estfees} USDC</span>
+                        <span className="dark:text-gray-500 text-gray-700">Est. Deposit Fee:</span>
+                        <span className="dark:text-white text-black" >{depositData.estfees} USDC</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-500">Est. APY:</span>
+                        <span className="dark:text-gray-500 text-gray-700">Est. APY:</span>
                         <span className="text-green-500" >{depositData.estapy}%</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-500">Est. Annual Yeild</span>
+                        <span className="dark:text-gray-500 text-gray-700">Est. Annual Yeild</span>
                         <span className="text-green-500" >{depositData.yield  } USDC</span>
                       </div>
                     </div>
@@ -360,7 +360,7 @@ const page = () => {
                  }
                   {selectedOption==="Withdraw" &&
                   <>
-                    <div id="withdraw" className="flex justify-between text-gray-500 text-lg">
+                    <div id="withdraw" className="flex justify-between text-gray-700 dark:text-gray-500 text-lg">
                         <span>Withdraw Amount</span>
                         <div id="amount" className="flex gap-1 items-center">
                             <MdWallet/>
@@ -372,11 +372,11 @@ const page = () => {
                     <VaultInput data={withdrawData} setData={setWithdrawData} type="withdraw" image={"/Images/crypto/coin.png"}/>
                     <div id="card-info" className="flex flex-col gap-4 text-md font-bold">
                       <div className="flex justify-between">
-                        <span className="text-gray-500">Receive</span>
-                        <span className="text-white" >{withdrawData.receive} jvUSDC</span>
+                        <span className="dark:text-gray-500 text-gray-700">Receive</span>
+                        <span className="dark:text-white text-black" >{withdrawData.receive} jvUSDC</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-500">Withdrawal Fees:</span>
+                        <span className="dark:text-gray-500 text-gray-700">Withdrawal Fees:</span>
                         <span className="text-white" >{withdrawData.widthdrawfees} USDC</span>
                       </div>
                     </div>
@@ -387,7 +387,7 @@ const page = () => {
                  }
                   {selectedOption==="Lock" &&
                   <>
-                    <div id="Lock" className="flex justify-between text-gray-500 text-lg">
+                    <div id="Lock" className="flex justify-between dark:text-gray-500 text-gray-700 text-lg">
                         <span>Amount to Lock</span>
                         <div id="amount" className="flex gap-1 items-center">
                             <MdWallet/>
@@ -401,12 +401,12 @@ const page = () => {
           <div className="flex justify-center w-full gap-4">
             <div className="flex flex-col justify-center w-full gap-2 ">
               <div className="w-full flex items-center justify-between">
-                <span className="text-sm text-slate-200">Select Lock Duration</span>
-            <div className="w-[30%] rounded-md border-[1px] justify-center items-center flex dark:border-gray-800 h-10 dark:bg-black bg-[#F7F8F7] dark:text-white text-gray-700">
+                <span className="text-sm text-gray-600 dark:text-slate-200">Select Lock Duration</span>
+            <div className="w-[30%] rounded-md dark:  border-[1px] justify-center items-center flex dark:border-gray-800 h-10 dark:bg-black bg-[#d4d4d4] dark:text-white text-gray-700">
               {`${lockData.duration} days`}
             </div>
             </div>
-              <div className="w-[90%] flex justify-between relative items-center h-3 rounded-lg mt-2 dark:bg-black border border-[#2c2d2d] bg-[#F7F7F8] text-gray-500 dark:text-white">
+              <div className="w-full flex justify-between relative items-center h-3 rounded-lg mt-2 dark:bg-black dark:border border-[#2c2d2d] bg-[#d4d4d4] dark:text-gray-500 text-gray-700 ">
                 <input
                   className="slider z-10 relative transitiion duration-2"
                   id="slider"
@@ -424,11 +424,11 @@ const page = () => {
                   <div className=" h-full"><div className="rounded-full bg-gray-400 w-1 h-1 "></div></div>  
                 </div>
                 <div
-                  className={`absolute z-0 dark:bg-gradient-to-r dark:from-[#2ACCF6] dark:to-[#6EFECF] h-2 rounded-lg`}
+                  className={`absolute z-0 bg-gradient-to-r from-[#2ACCF6] to-[#6EFECF] h-2 rounded-lg`}
                   style={{ width: `${(lockData.duration-14)/(180-14) *100}%` ,maxWidth:'100%'}}
                 ></div>
               </div>
-              <div className="w-[95%] text-[0.7rem] mb-5 text-gray-500 flex h-fit justify-between">
+              <div className="w-full text-[0.7rem] mb-5 dark:text-gray-500 text-gray-700 flex h-fit justify-between">
                 <span className="">14 days</span>
                 <span className="">3 months</span>
                 <span className="">6 months</span>
@@ -439,16 +439,16 @@ const page = () => {
           </div>
                     <div id="card-info" className="flex flex-col gap-4 text-md font-bold">
                       <div className="flex justify-between">
-                        <span className="text-gray-500">Fee APR</span>
+                        <span className="dark:text-gray-500 text-gray-700">Fee APR</span>
                         <span className="text-green-500" >{lockData.feeAPR}% fee APR</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-500">Est. Annual Yeild:</span>
-                        <span className="text-white" >{lockData.annualYeild} USDC</span>
+                        <span className="dark:text-gray-500 text-gray-700">Est. Annual Yeild:</span>
+                        <span className="dark:text-white text-black" >{lockData.annualYeild} USDC</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-500">Remex Fee and XP Boost:</span>
-                        <span className="text-white" >{lockData.remexFee} X</span>
+                        <span className="dark:text-gray-500 text-gray-700">Remex Fee and XP Boost:</span>
+                        <span className="dark:text-white text-black" >{lockData.remexFee} X</span>
                       </div>
                     </div>
                     <div id="cta-button">
@@ -458,26 +458,26 @@ const page = () => {
                  }
               </div>
             </div>
-            <div id="card-r2" className="bg-[#0c0f11] h-fit rounded-xl w-full border-[0.2px] px-8 py-5  border-gray-800 relative flex flex-col gap-3">
-                <div id="card-heading" className="text-white text-2xl py-5 border-b-[0.2px] border-b-gray-800">
+            <div id="card-r2" className="dark:bg-[#0c0f11] bg-white shadow-lg h-fit rounded-xl w-full dark:border-[0.2px] px-8 py-5  border-gray-800 relative flex flex-col gap-3">
+                <div id="card-heading" className="dark:text-white text-black text-2xl py-5 dark:border-b-[0.2px] border-b-gray-800">
                     Vault Portfolio Stats
                 </div>
                 <div className="flex flex-col gap-4">
                     <div className="flex justify-between">
-                      <span className="text-gray-500">Unlocked Deposit</span>
-                      <span>0 USDC</span>
+                      <span className="dark:text-gray-500 text-gray-700 font-bold">Unlocked Deposit</span>
+                      <span className="text-black dark:text-white">0 USDC</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-500">Locked Deposit</span>
-                      <span>0.00 USDC</span>
+                      <span className="dark:text-gray-500 text-gray-700 font-bold">Locked Deposit</span>
+                      <span className="text-black dark:text-white">0.00 USDC</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-500">Current Earnings</span>
-                      <span>0.00 USDC</span>
+                      <span className="dark:text-gray-500 text-gray-700 font-bold">Current Earnings</span>
+                      <span className="text-black dark:text-white">0.00 USDC</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-500">Total Shares</span>
-                      <span>0.00 jvUSDC</span>
+                      <span className="dark:text-gray-500 text-gray-700 font-bold">Total Shares</span>
+                      <span className="text-black dark:text-white">0.00 jvUSDC</span>
                     </div>
                 </div>
 
