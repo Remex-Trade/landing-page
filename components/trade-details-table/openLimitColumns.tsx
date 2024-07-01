@@ -11,9 +11,7 @@ import UpdateSlPl from "./updateSlPl";
 export const openLimitColumns: ColumnDef<FormattedOpenLimitOrders>[] = [
   {
     accessorKey: "type",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Type" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Type" />,
   },
   {
     accessorKey: "pair",
@@ -21,40 +19,28 @@ export const openLimitColumns: ColumnDef<FormattedOpenLimitOrders>[] = [
   },
   {
     accessorKey: "size",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Size" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Size" />,
   },
   {
     accessorKey: "leverage",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Leverage" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Leverage" />,
   },
   {
     accessorKey: "collateral",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Collateral" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Collateral" />,
   },
   {
     accessorKey: "minPrice",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Min Price" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Min Price" />,
   },
   {
     accessorKey: "maxPrice",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Max Price" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Max Price" />,
   },
   {
     accessorKey: "sl",
 
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="SL/TP" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="SL/TP" />,
     cell: ({ row }) => {
       return (
         <UpdateSlPl trade={row.original}>

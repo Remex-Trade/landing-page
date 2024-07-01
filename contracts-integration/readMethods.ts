@@ -4,6 +4,7 @@ import { STORAGE_ADDRESS } from "./address";
 import { readContract } from "@wagmi/core";
 import { config } from "../helpers/coreConfig";
 import _ from "lodash";
+import { formatEther } from "ethers/lib/utils";
 
 /**
  * Get Open Trades Count on trading contract.
@@ -152,4 +153,15 @@ export const getOpenLimitOrders = async (
   } catch (error) {
     return null;
   }
+};
+
+export const getUserStorageBalance = async (address: string, chainId: number) => {
+  const balance = await readContract(config, {
+    abi: storageABI,
+    address: STORAGE_ADDRESS[chainId],
+    functionName: "balance",
+    args: [address as any],
+  });
+
+  return formatEther(balance);
 };

@@ -13,9 +13,7 @@ import { formatPrice } from "./helper";
 export const openTradeColumn: ColumnDef<FormattedOpenTrades>[] = [
   {
     accessorKey: "type",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Type" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Type" />,
   },
   {
     accessorKey: "pair",
@@ -23,41 +21,31 @@ export const openTradeColumn: ColumnDef<FormattedOpenTrades>[] = [
   },
   {
     accessorKey: "size",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Size" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Size" />,
   },
   {
     accessorKey: "leverage",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Leverage" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Leverage" />,
   },
   {
     accessorKey: "collateral",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Collateral" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Collateral" />,
   },
   {
     accessorKey: "openPrice",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Open Price" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Open Price" />,
   },
   {
     accessorKey: "price",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Price" />
-    ),
+    header: ({ column }) => <DataTableColumnHeader column={column} title="Price" />,
     cell: ({ row }) => {
       const price = usePriceStore((state) => state.latestPrice);
       const pair = row.original.pair;
-      if (pair && price && price[pair]){
-        return formatPrice(price[pair])
+      if (pair && price && price[pair]) {
+        return formatPrice(price[pair]);
       }
-      return "-"
-    }, 
+      return "-";
+    },
   },
   {
     accessorKey: "sl",

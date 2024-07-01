@@ -1,4 +1,4 @@
-import { getTradingContract } from "./contracts";
+import { getStorageContract, getTradingContract } from "./contracts";
 import { parseEther } from "ethers/lib/utils";
 
 interface ITrade {
@@ -35,11 +35,7 @@ interface ITrade {
  *   - slippageP: The slippage percentage.
  *   - referral: The referral code.
  */
-export const openTrade = async (
-  address: string,
-  chainId: number,
-  trade: ITrade
-) => {
+export const openTrade = async (address: string, chainId: number, trade: ITrade) => {
   console.log(trade);
   const contract = getTradingContract(chainId);
   const tx = await contract.openTrade(
@@ -143,8 +139,7 @@ export const updateSl = async (
   await tx.wait();
 };
 
-
-export const updateOpenLimitOrder=async(
+export const updateOpenLimitOrder = async (
   address: string,
   chainId: number,
   pairIndex: number,
@@ -152,19 +147,24 @@ export const updateOpenLimitOrder=async(
   _newPrice: string,
   _newSl: string,
   _newTp: string
-  ) => {
-
-    console.log("Updating Open Limit Order",
-      address,
-      chainId,
-      pairIndex,
-      index,
-      _newPrice,
-      _newSl,
-      _newTp
+) => {
+  console.log(
+    "Updating Open Limit Order",
+    address,
+    chainId,
+    pairIndex,
+    index,
+    _newPrice,
+    _newSl,
+    _newTp
   );
   const contract = getTradingContract(chainId);
-  const tx = await contract.updateOpenLimitOrder(pairIndex, index, _newPrice,_newTp,_newSl);
+  const tx = await contract.updateOpenLimitOrder(pairIndex, index, _newPrice, _newTp, _newSl);
   await tx.wait();
-}
- 
+};
+
+export const withdraw = async (address: string, chainId: number) => {
+  const contract = getStorageContract(chainId);
+  const tx = await contract.withdraw();
+  await tx.wait();
+};
