@@ -13,3 +13,17 @@ export function formatPrice(price) {
 
   return price.toFixed(decimalDigits);
 }
+
+export function getNetPnl(
+  entry_price: number,
+  exit_price: number,
+  position_size: number,
+  fee_rate: number
+) {
+  const gross_pnl = position_size * (exit_price - entry_price);
+  const buying_fee = entry_price * position_size * fee_rate;
+  const selling_fee = exit_price * position_size * fee_rate;
+  const total_fees = buying_fee + selling_fee;
+  const netPnL = gross_pnl - total_fees;
+  return netPnL;
+}
