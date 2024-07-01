@@ -39,10 +39,10 @@ const page = () => {
   }, [inputVal, stakeAllowance]);
 
   return (
-    <div className="w-full h-screen flex flex-col items-center py-10 justify-start bg-[#120E1B] gap-5">
-      <div className="md:text-5xl text-2xl font-bold flex gap-2" id="heading1">
-        <span>REMEX Pool</span>
-        <div className="w-fit rounded-lg bg-[#120E1B] border border-purple-700 text-purple-700  text-[0.9rem] md:text-sm flex items-center justify-center px-1 md:px-4 gap-2">
+    <div className="w-full h-screen flex flex-col items-center py-10 justify-start bg-[#F8FAFC] dark:bg-[#120E1B] gap-5">
+      <div className="md:text-5xl text-2xl font-bold flex gap-2 " id="heading1">
+        <span className="text-black dark:text-white">REMEX Pool</span>
+        <div className="w-fit rounded-lg bg-none dark:bg-[#120E1B] border-2 dark:border border-purple-700 text-purple-700  text-[0.9rem] md:text-sm flex items-center justify-center px-1 md:px-4 gap-2">
           <svg
             width="19"
             height="18"
@@ -99,22 +99,22 @@ const page = () => {
         className="flex flex-col md:flex-row gap-2 md:gap-8 w-full md:w-[60%] items-center justify-center px-4 md:text-center"
       >
         <div className="flex flex-row md:flex-col gap-2 justify-between w-full md:justify-center">
-          <span className="text-sm underline underline-dotted text-gray-200 ">
+          <span className="text-sm underline underline-dotted dark:text-gray-200 text-black ">
             TVL
           </span>
-          <span className="text-white font-bold text-lg">$88,076,435</span>
+          <span className="dark:text-white text-black font-bold text-lg">$88,076,435</span>
         </div>
         <div className="flex flex-row md:flex-col gap-2 justify-between w-full md:justify-center">
-          <span className="text-sm underline underline-dotted text-gray-200">
+          <span className="text-sm underline underline-dotted dark:text-gray-200 text-black">
             REMEX Price
           </span>
-          <span className="text-white font-bold text-lg">$3.35</span>
+          <span className="dark:text-white text-black font-bold text-lg">$3.35</span>
         </div>
         <div className="flex flex-row md:flex-col gap-2  justify-between w-full md:justify-center">
-          <span className="text-sm underline underline-dotted text-gray-200 ">
+          <span className="text-sm underline underline-dotted dark:text-gray-200 text-black ">
             Market Cap
           </span>
-          <span className="text-white font-bold text-lg">$113,215,375</span>
+          <span className="dark:text-white text-black font-bold text-lg">$113,215,375</span>
         </div>
       </div>
       <div
@@ -127,14 +127,14 @@ const page = () => {
         >
           <div
             id="box12"
-            className="bg-[#21212d] border border-[#161221] rounded-t-lg md:rounded-xl px-8 py-4 w-full flex flex-col gap-2 h-full"
+            className="dark:bg-[#21212d] bg-white shadow-md dark:border dark:border-[#161221] rounded-t-lg md:rounded-xl px-8 py-4 w-full flex flex-col gap-2 h-full"
           >
-            <span className="text-white text-xl font-bold">Your Stake</span>
-            <div className="flex justify-between w-full text-gray-400 text-sm">
+            <span className="dark:text-white text-black text-xl font-bold">Your Stake</span>
+            <div className="flex justify-between w-full text-gray-600 dark:text-gray-400 text-sm">
               <span>Staked</span>
               <span>{ userStakeInfo?.stakedTokens}</span>
             </div>
-            <div className="flex justify-between w-full text-gray-400 text-sm">
+            <div className="flex justify-between w-full text-gray-600 dark:text-gray-400 text-sm">
               <span>APR</span>
               <span>0.00%</span>
             </div>
@@ -149,9 +149,9 @@ const page = () => {
           </div>
           <div
             id="box11"
-            className="bg-[#21212d] border border-[#161221] rounded-b-lg md:rounded-xl px-8 py-4 w-full flex flex-col gap-2 h-full"
+            className="dark:bg-[#21212d] bg-white shadow-md dark:border dark:border-[#161221] rounded-b-lg md:rounded-xl px-8 py-4 w-full flex flex-col gap-2 h-full"
           >
-            <span className="text-white text-xl font-bold">
+            <span className="dark:text-white text-black text-xl font-bold">
               Pending Rewards 
             </span>
             {/* <div className="flex justify-between w-full text-gray-400 text-sm">
@@ -181,10 +181,10 @@ const page = () => {
               </div>
             </div> */}
 
-            <div className="flex justify-between w-full text-gray-400 text-sm">
+            <div className="flex justify-between w-full text-gray-600 dark:text-gray-400 text-sm">
               <span>DAI</span>
               <div className="flex gap-2">
-                <span className="text-white">{pendingRewardDai}</span>
+                <span className="dark:text-white text-black">{pendingRewardDai}</span>
                 <Image
                   src="/Images/crypto/dai.svg"
                   width={20}
@@ -197,7 +197,7 @@ const page = () => {
 
             <div className="w-full flex items-center justify-end mt-5">
               <button
-                className="text-sm rounded-md px-2 py-1 bg-gray-500 text-white"
+                className="text-sm rounded-md px-2 py-1 bg-[#3B1A91] dark:bg-gray-500 text-white"
                 // disabled
                 onClick={() => handleHarvest()}
               >
@@ -208,12 +208,12 @@ const page = () => {
         </div>
         <div
           id="box2set"
-          className="bg-[#21212d] border border-[#161221] rounded-xl px-8 py-4 w-full flex flex-col gap-2"
+          className="dark:bg-[#21212d] bg-white shadow-md dark:border dark:border-[#161221] rounded-xl px-8 py-4 w-full flex flex-col gap-2"
         >
-          <div className="text-xl text-white font-bold">
+          <div className="text-xl text-black dark:text-white font-bold">
             <span>Stake</span>
           </div>
-          <div className="text-sm text-gray-400 flex flex-col gap-1">
+          <div className="text-sm text-gray-600 dark:text-gray-400 flex flex-col gap-1">
             <span>
               Stake your REMEX to earn a share of protocol revenue in DAI, WETH
               and USDC. Approximately 60% of all fees are currently directed to
@@ -225,10 +225,10 @@ const page = () => {
             </span>
           </div>
           <div className="w-full flex items-center justify-center gap-1 text-sm  rounded-sm">
-            <div className="text-sm flex items-center justify-center w-fit rounded-md bg-black">
+            <div className="text-sm flex items-center justify-center w-fit rounded-md bg-neutral-100 dark:bg-black dark:text-white text-black">
               <button
-                className={`px-4 py-2 rounded-md border border-black ${
-                  selectedButton === "stake" ? "bg-[#21212d]" : "bg-black"
+                className={`px-4 py-2 rounded-md dark:border dark:border-black ${
+                  selectedButton === "stake" && "bg-[#d4d4d4] shadow-sm font-bold dark:bg-[#21212d]"
                 } `}
                 onClick={() => {
                   setSelectedButton("stake");
@@ -237,8 +237,8 @@ const page = () => {
                 Stake
               </button>
               <button
-                className={`px-4 py-2 rounded-md border border-black ${
-                  selectedButton === "unstake" ? "bg-[#21212d]" : "bg-black"
+                className={`px-4 py-2 rounded-md dark:border dark:border-black ${
+                  selectedButton === "unstake" && "bg-[#d4d4d4] shadow-sm font-bold dark:bg-[#21212d]" 
                 }`}
                 onClick={() => {
                   setSelectedButton("unstake");
@@ -249,10 +249,10 @@ const page = () => {
             </div>
           </div>
           <div className="w-full flex items-center justify-center flex-col">
-            <div className=" flex flex-col w-full rounded-lg bg-[#191B23] border border-black px-4 py-2">
+            <div className=" flex flex-col w-full rounded-lg bg-[#d4d4d4] shadow-sm dark:bg-[#191B23] dark:border dark:border-black px-4 py-2">
               <div
                 id="text"
-                className="text-gray-400 gap-2 w-full flex text-[0.8rem] justify-between items-center"
+                className="text-gray-600 dark:text-gray-400 gap-2 w-full flex text-[0.8rem] justify-between items-center font-bold"
               >
                 <span>Amount</span>
                 <span className="">{formatEther(stakeBalance)}</span>
@@ -263,11 +263,11 @@ const page = () => {
               >
                 <input
                   type="number"
-                  className="bg-transparent text-lg text-white outline-none"
+                  className="bg-transparent text-lg text-black font-bold dark:text-white outline-none"
                   value={inputVal}
                   onChange={(e) => setInputVal(String(+e.target.value))}
                 />
-                <span className="text-lg">MKT</span>
+                <span className="text-lg text-black dark:text-white">MKT</span>
               </div>
             </div>
             <div className="w-full flex items-center justify-end mt-5">

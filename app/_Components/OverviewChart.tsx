@@ -51,7 +51,7 @@ const data = [
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width={500}
-          height={300}
+          height={200}
           data={data}
           margin={{
             top: 5,
@@ -60,12 +60,10 @@ const data = [
             bottom: 5,
           }}
         >
-          <CartesianGrid strokeDasharray="2 1"  stroke='#121912' />
           <XAxis dataKey="name" stroke='#474952'/>
           <YAxis stroke='#474952'/>
           <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="pv" stroke="#1EC55E" activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="pv" stroke="#1EC55E" activeDot={{ r: 4 }} />
         </LineChart>
       </ResponsiveContainer>
     );

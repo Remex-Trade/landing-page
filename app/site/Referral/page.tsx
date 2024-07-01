@@ -28,10 +28,10 @@ const page = () => {
     setUser(null);
   }
   return (
-    <div>
+    <div className="w-full h-full bg-[#f8fafc] dark:bg-black">
       <div
         id="heading"
-        className="bg-[#141515] w-[100vw] h-full py-16  gap-10 flex items-center justify-center flex-col sc1:flex-row"
+        className="dark:bg-[#141515] bg-[#e5e7e7] w-[100vw] h-full py-16  gap-10 flex items-center justify-center flex-col sc1:flex-row"
       >
         <div className="flex items-start flex-col gap-6 p-10 sc1:p-0">
           <div className="">
@@ -40,22 +40,22 @@ const page = () => {
               alt="Profile Picture"
               height={200}
               width={200}
-              className="w-[30vw] h-[30vw] sc1:w-[20vw] sc1:h-[10vw]"
+              className="w-[30vw] h-[30vw] sc1:w-[20vw] sc1:h-[10vw] dark:flex hidden"
             />
           </div>
           <div className="flex flex-col text-4xl font-black ">
-            <span className="bg-gradient-to-tr from-[#39A2FA] via-[#33CBE2] to-[#37F6C9] text-transparent bg-clip-text">
+            <span className="dark:bg-gradient-to-tr dark:from-[#39A2FA] dark:via-[#33CBE2] dark:to-[#37F6C9] dark:text-transparent bg-clip-text text-black">
               Refer Friends
             </span>
-            <span className="bg-gradient-to-tr from-[#39A2FA] via-[#33CBE2] to-[#37F6C9] text-transparent bg-clip-text">
+            <span className="dark:bg-gradient-to-tr dark:from-[#39A2FA] dark:via-[#33CBE2] dark:to-[#37F6C9] dark:text-transparent bg-clip-text text-black">
               Earn Together
             </span>
           </div>
-          <div className="text-sm font-light">
+          <div className="text-sm font-light text-gray-600 dark:text-white">
             <span>
               Get up to 30% rebate when you invite friends to Remex!{" "}
             </span>
-            <Link href="#" className="text-blue-400 hover:underline">
+            <Link href="#" className="dark:text-blue-400 text-blue-800 hover:underline">
               View Rules
             </Link>
           </div>
@@ -68,18 +68,18 @@ const page = () => {
           </div>
         </div>
         {user && (
-          <div className="bg-[#262626] rounded-xl sc1:w-[30%] sc2:w-[25%] md:w-[60%] w-[90%]">
-            <div className="px-4 py-4 text-center border-b-2 border-b-[#373636]">
+          <div className="dark:bg-[#262626] shadow-xl bg-white rounded-xl sc1:w-[30%] sc2:w-[25%] md:w-[60%] w-[90%]">
+            <div className="px-4 py-4 text-center border-b-2 border-b-[#d4d4d4] dark:border-b-[#373636] text-black dark:text-white">
               Create Invitation Code and Get up to 30% Referral Commission
             </div>
             <div id="referral code" className="p-8 flex gap-4 flex-col">
               <input
                 type="text"
-                className="px-4 py-4 bg-[#373636] rounded-xl w-full focus:border focus:border-blue-500 outline-none"
+                className="px-4 py-4 bg-[#d4d4d4] text-black dark:text-white dark:bg-[#373636] rounded-xl w-full focus:border focus:border-blue-500 outline-none"
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
               />
-              <p className="text-[0.7rem] px-4 text-gray-300 text-left">
+              <p className="text-[0.7rem] px-4 text-gray-600 dark:text-gray-300 text-left">
                 Generate referral codes using only lowercase letters and numbers
                 (no uppercase letters and symbols), up to 20 characters long and
                 can be created only once.
@@ -96,8 +96,8 @@ const page = () => {
           <div className="flex text-[0.7em] md:text-[0.9rem] sc1:text-lg justify-start border-b-[2px] border-b-[#141515] items-center w-[90%] sc1:w-1/2 gap-5 sc1:gap-10 text-gray-600 font-bold">
             <Link href="#Dashboard">
             <button
-              className={`hover:text-white ${
-                selected == 0 && "border-b-2 border-b-white h-full text-white"
+              className={`hover:dark:text-white hover:text-black ${
+                selected == 0 && "border-b-2 border-b-black text-black dark:border-b-white h-full dark:text-white"
               }`}
               onClick={() => {
                 setSelected(0);
@@ -110,9 +110,8 @@ const page = () => {
               <>
               <Link href="#Referrals"  >
                 <button
-                  className={`hover:text-white ${
-                    selected == 2 &&
-                    "border-b-2 border-b-white h-full text-white"
+                  className={`hover:dark:text-white hover:text-black ${
+                    selected == 2 && "border-b-2 border-b-black text-black dark:border-b-white h-full dark:text-white"
                   }`}
                   onClick={() => {
                     setSelected(2);
@@ -123,9 +122,8 @@ const page = () => {
                 </Link>
                 <Link href="#Commission"  >
                 <button
-                  className={`hover:text-white ${
-                    selected == 3 &&
-                    "border-b-2 border-b-white h-full text-white"
+                  className={`hover:dark:text-white hover:text-black ${
+                    selected == 3 && "border-b-2 border-b-black text-black dark:border-b-white h-full dark:text-white"
                   }`}
                   onClick={() => {
                     setSelected(3);
@@ -138,8 +136,8 @@ const page = () => {
             )}
             <Link href="#Leaderboard" >
             <button
-              className={`hover:text-white ${
-                selected == 1 && "border-b-2 border-b-white h-full text-white"
+              className={`hover:dark:text-white hover:text-black ${
+                selected == 1 && "border-b-2 border-b-black text-black dark:border-b-white h-full dark:text-white"
               }`}
               onClick={() => {
                 setSelected(1);
@@ -149,24 +147,24 @@ const page = () => {
             </button>
             </Link>
           </div>
-          <div className="sc1:w-[40rem] md:w-[90%] w-[90%]  md:px-4 my-8">
+          <div className="sc1:w-1/2 sc0:w-[70%] w-[90%]  md:px-4 my-8">
             <div className="flex justify-start flex-col items-start gap-8 w-full">
-              <div id="Dashboard" className="text-2xl font-bold  flex items-center gap-4">
+              <div id="Dashboard" className="text-2xl font-bold  flex items-center gap-4 dark:text-white text-black">
                 {" "}
                 <CiWallet color="#3B1A91" size={40} />
                 Dashboard
               </div>
-              <div className="w-full h-full bg-[#141515] flex flex-col sc1:flex-row items-center justify-center p-8 rounded-xl">
+              <div className="w-full h-full bg-white shadow-md dark:bg-[#141515] flex flex-col sc1:flex-row items-center justify-center p-8 rounded-xl">
                 {user ? 
                   <div className="flex items-start justify-center w-full flex-col gap-6">
                     <div className="flex items-start justify-center w-full flex-col gap-6">
-                      <span className="text-sm underline decoration-dashed">
+                      <span className="text-sm underline decoration-dashed dark:text-white text-black">
                         Pending
                       </span>
-                      <span className="text-4xl font-bold">$0.0000</span>
+                      <span className="text-4xl font-bold dark:text-white text-black">$0.0000</span>
                     </div>
                     <div className="flex gap-4 sc1:flex-row flex-col w-full md:w-[50%]">  
-                      <div className="rounded-xl bg-[#262626] gap-4 px-4 py-3 flex justify-between">
+                      <div className="rounded-xl bg-[#d4d4d4] dark:bg-[#262626] gap-4 px-4 py-3 flex justify-between">
                         <Image
                           src="/Images/crypto/ftm.png"
                           height={35}
@@ -175,27 +173,27 @@ const page = () => {
                           className="rounded-full"
                         />
                         <div className="flex flex-col justify-center items-start">
-                          <span className="font-bold text-sm text-white">
+                          <span className="font-bold text-sm dark:text-white text-black">
                             $0.0000
                           </span>
-                          <span className="text-sm text-gray-300 ">FTM</span>
+                          <span className="text-sm text-gray-600 dark:text-gray-300 ">FTM</span>
                         </div>
                         <button
                           disabled
-                          className="rounded-xl border border-gray-500 text-sm text-gray-500 px-3"
+                          className="rounded-xl border border-gray-700 dark:border-gray-500 text-sm text-gray-700 dark:text-gray-500 px-3"
                         >
                           Claim
                         </button>
                       </div>
                     </div>
-                    <div className="w-full flex flex-col sc1:flex-row ">
+                    <div className="w-full flex dark:text-white text-black flex-col sc1:flex-row ">
                       <div className="flex gap-4">
                         <span className="text-sm font-bold">Claimed</span>
                         <span className="text-sm font-bold">$0.0000</span>
                         <span className="text-sm font-bold text-gray-600  sc1:flex hidden">
                           {"("}
                         </span>
-                        <span className="text-sm font-bold text-gray-600 gap-2 sc1:flex hidden">
+                        <span className="text-sm font-bold text-gray-800 dark:text-gray-600 gap-2 sc1:flex hidden">
                           <Image
                             src="/Images/crypto/ftm.png"
                             width={20}
@@ -222,15 +220,15 @@ const page = () => {
           </div>
           {user && (
             <>
-              <div id="Referrals" className=" sc1:w-1/2 md:w-[70%]  px-4 sc1:px-4  my-10">
+              <div id="Referrals" className=" sc1:w-1/2 sc0:w-[70%] w-[90%]  px-4 sc1:px-4  my-10">
                 <div className="flex justify-start w-full  flex-col items-start gap-8">
-                  <div className="text-2xl font-bold  flex items-center gap-4">
+                  <div className="text-2xl font-bold  flex items-center gap-4 dark:text-white text-black">
                     <IoPeopleOutline color="gold" size={40} />
                 Referral
                   </div>
-                  <div className="w-full  h-full bg-[#141515] flex flex-col items-center justify-center py-8 rounded-xl">
-                    <div className="bg-[#262626] rounded-xl w-[90%] md:w-[70%] sc1:w-[70%] sc2:w-[60%]">
-                      <div className="px-4 py-4 text-center border-b-2 border-b-[#373636]">
+                  <div className="w-full  h-full bg-[#e4e2e2] shadow-md dark:bg-[#141515] flex flex-col items-center justify-center py-8 rounded-xl">
+                    <div className="bg-white shadow-md dark:bg-[#262626] text-black dark:text-white rounded-xl w-[90%] md:w-[70%] sc1:w-[70%] sc2:w-[60%]">
+                      <div className="px-4 py-4 text-center border-b-2 border-b-[#d4d4d4] dark:border-b-[#353232] font-bold dark:font-normal">
                         Create Invitation Code and Get up to 30% Referral
                         Commission
                       </div>
@@ -240,11 +238,11 @@ const page = () => {
                       >
                         <input
                           type="text"
-                          className="px-4 py-4 bg-[#373636] rounded-xl w-full focus:border focus:border-blue-500 outline-none"
-                          value={code}
+                          className="px-4 py-4 bg-[#d4d4d4] dark:bg-[#373636] rounded-xl w-full outline-none text-black dark:text-white"
+                          value={code} 
                           onChange={(e) => setCode(e.target.value)}
                         />
-                        <p className="text-[0.7rem] px-2 md:px-4 text-gray-300 text-left">
+                        <p className="text-[0.7rem] px-2 md:px-4 text-black dark:text-gray-300 text-left">
                           Generate referral codes using only lowercase letters
                           and numbers (no uppercase letters and symbols), up to
                           20 characters long and can be created only once.
@@ -257,15 +255,15 @@ const page = () => {
                   </div>
                 </div>
               </div>
-              <div id="Commission" className="sc1:w-1/2 md:w-[70%] w-full px-4 md:my-10 ">
+              <div id="Commission" className="sc1:w-1/2 sc0:w-[70%] w-[90%] px-4 md:my-10 ">
                 <div className="flex justify-start flex-col items-start gap-8 w-full">
-                  <div className="text-2xl font-bold  flex items-center gap-4">
+                  <div className="text-2xl font-bold  flex items-center gap-4 text-black dark:text-white">
                     <RiCoupon3Line color="#3B1A91" size={40} />
                     Commission Rebate
                   </div>
-                  <div className="w-full h-full bg-[#141515] flex flex-col items-center justify-center py-8 rounded-xl">
-                    <div className="bg-[#262626] rounded-xl w-[90%] md:w-[70%] sc2:w-[60%]">
-                      <div className="px-4 py-4 text-center border-b-2 border-b-[#373636]">
+                  <div className="w-full h-full bg-[#e4e2e2] dark:text-white text-black dark:bg-[#141515] flex flex-col items-center justify-center py-8 rounded-xl">
+                    <div className="bg-white dark:bg-[#262626] rounded-xl w-[90%] md:w-[70%] sc2:w-[60%]">
+                      <div className="px-4 py-4 text-center border-b-2 border-b-[#d4d4d4] text-black dark:text-white font-bold dark:font-normal dark:border-b-[#373636]">
                       Bind Invitation Code and Enjoy 5% ~ 20% Fee Rebate
                       </div>
                       <div
@@ -274,11 +272,11 @@ const page = () => {
                       >
                         <input
                           type="text"
-                          className="px-4 py-4 bg-[#373636] rounded-xl w-full focus:border focus:border-blue-500 outline-none"
+                          className="px-4 py-4 bg-[#d4d4d4] text-black dark:text-white dark:bg-[#373636] rounded-xl w-full  outline-none"
                           onChange={(e) => setCode(e.target.value)}
                           placeholder="Enter Referral Code"
                         />
-                        <p className="text-[0.7rem] px-4 text-gray-300 text-left">
+                        <p className="text-[0.7rem] px-4 text-black dark:text-gray-300 text-left">
                         You can use the referrer's invitation code or use Remex invitation Code
                         </p>
                         <button className="bg-[#3B1A91] flex justify-center items-center gap-2 text-white text-md rounded-md px-3 py-2">
@@ -291,18 +289,18 @@ const page = () => {
               </div>
             </>
           )}
-          <div className="sc1:w-[40rem] md:w-[90%] w-[90%] sc1:px-4 m-10 ">
+          <div className="sc1:w-1/2 sc0:w-[70%] w-[90%] sc1:px-4 m-10 ">
             <div className="flex justify-start flex-col items-start gap-8">
-              <div id="Leaderboard" className="text-2xl font-bold  flex items-center gap-4">
+              <div id="Leaderboard" className="text-2xl font-bold  flex items-center gap-4 text-black dark:text-white ">
                 <GoTrophy color="gold" size={40} />
                 Leaderboard
               </div>
-              <div className="w-full h-full bg-[#141515] flex flex-col items-center justify-center py-8 rounded-xl">
-                <div className="w-[95%] md:w-[90%] border-b-[1px] border-b-gray-800 text-gray-400 py-1 flex gap-8">
+              <div className="w-full h-full bg-white shadow-xl dark:bg-[#141515] flex flex-col items-center justify-center py-8 rounded-xl">
+                <div className="w-[95%] md:w-[90%] border-b-[1px] broder-b-gray-700 dark:border-b-gray-800 text-gray-500 dark:text-gray-400 pt-1 flex gap-8">
                   <button
-                    className={`hover:text-white text-sm ${
+                    className={`hover:text-black dark:hover:text-white text-sm ${
                       time == 0 &&
-                      "border-b-2 border-b-white h-full text-white transition  ease-linear"
+                      "border-b-2 border-b-black text-black dark:border-b-white h-full dark:text-white transition  ease-linear"
                     }`}
                     onClick={() => {
                       setTime(0);
@@ -311,9 +309,9 @@ const page = () => {
                     Weekly
                   </button>
                   <button
-                    className={`hover:text-white text-sm ${
+                    className={`hover:text-black dark:hover:text-white text-sm ${
                       time == 1 &&
-                      "border-b-2 border-b-white h-full text-white transition  ease-linear"
+                      "border-b-2 border-b-black text-black dark:border-b-white h-full dark:text-white transition  ease-linear"
                     }`}
                     onClick={() => {
                       setTime(1);
@@ -322,7 +320,7 @@ const page = () => {
                     Total
                   </button>
                 </div>
-                <div className="w-full flex px-2 py-4 text-sm text-gray-400 border-b-[1px] border-b-gray-800">
+                <div className="w-full flex px-2 py-4 text-sm text-gray-800 font-bold dark:text-gray-400 border-b-[1px] border-b-gray-400 dark:border-b-gray-800">
                   <div className="basis-1/4 mr-2 flex justify-center">Rank</div>
                   <div className="basis-3/4 flex justify-center">Traders</div>
                   <div className="basis-3/4 flex justify-center">Trading Invites</div>
@@ -333,12 +331,12 @@ const page = () => {
                       Claim 
                   </div>
                 </div>
-                <div className="w-full  px-2 py-4 text-md text-white border-b-[1px] border-b-gray-800 gap-8">
+                <div className="w-full  px-2 py-4 text-md dark:text-white border-b-[1px] border-b-gray-800 gap-8">
                   {leaderboardData.map((data, index) => {
                     return (
                       <div className="w-full flex flex-col gap-2">
-                        <div className="flex items-center justify-start md:px-4 px-1 py-2 hover:bg-neutral-800 rounded-lg">
-                          <div className="basis-1/4">
+                        <div className="flex items-center justify-start md:px-4 px-1 py-2 hover:bg-[#d4d4d4] dark:hover:bg-neutral-800 rounded-lg">
+                          <div className="basis-1/4 text-black dark:text-white">
                             {index + 1 > 3 ? (
                               index + 1
                             ) : (
@@ -350,10 +348,10 @@ const page = () => {
                               />
                             )}
                           </div>
-                          <div className="basis-3/4 flex justify-center">{data.trader}</div>
-                          <div className="basis-3/4 flex justify-center">{data.tradingInvites}</div>
-                          <div className="basis-3/4 flex justify-center">{data.referral}</div>
-                          <button className="basis-2/4 bg-[#3B1A91] rounded-lg text-white text-sm px-2 py-2 ">Claim</button>
+                          <div className="basis-3/4 flex justify-center text-black dark:text-white">{data.trader}</div>
+                          <div className="basis-3/4 flex justify-center text-black dark:text-white">{data.tradingInvites}</div>
+                          <div className="basis-3/4 flex justify-center text-black dark:text-white">{data.referral}</div>
+                          <button className="basis-2/4 bg-[#3B1A91] rounded-lg text-white text-sm px-2 py-2">Claim</button>
                         </div>
                       </div>
                     );
