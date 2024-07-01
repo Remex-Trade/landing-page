@@ -28,11 +28,11 @@ const page = () => {
       })
   }
   return (
-    <div className="w-full h-full flex flex-col py-20 items-center justify-center bg-[#111114]">
+    <div className="w-full h-full flex flex-col py-20 items-center bg-[#F8FAFC] dark:bg-black justify-center bg-[#111114]">
       <div id="page-content" className="w-[90%] sc0:w-[90%]">
         <div
           id="page-heading"
-          className="w-full flex items-center justify-center font-bold text-white text-5xl"
+          className="w-full flex items-center justify-center font-bold text-black dark:text-white text-5xl"
         >
           Analytics
         </div>
@@ -41,46 +41,46 @@ const page = () => {
             id="blocks-row-1"
             className="flex gap-3 items-center justify-center md:flex-row flex-col"
           >
-            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
+            <div className=" bg-white dark:bg-black dark:border-[2px] shadow-xl border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
               <span className="text-gray-500 text-lg font-bold">
                 Total Value Locked
               </span>
-              <span className="text-white text-3xl font-bold">${data.totalValue}</span>
+              <span className="text-black dark:text-white text-3xl font-bold">${data.totalValue}</span>
             </div>
-            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
+            <div className=" bg-white dark:bg-black dark:border-[2px] shadow-xl border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
               <span className="text-gray-500 text-lg font-bold">
                 Total Traders
               </span>
-              <span className="text-white text-3xl font-bold">{data.totalTraders}</span>
+              <span className="text-black dark:text-white text-3xl font-bold">{data.totalTraders}</span>
             </div>
-            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
+            <div className=" bg-white dark:bg-black dark:border-[2px] shadow-xl border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
               <span className="text-gray-500 text-lg font-bold">
                 Junior Tranche TVL
               </span>
-              <span className="text-white text-3xl font-bold">${data.juniorTrancheTvl}</span>
+              <span className="text-black dark:text-white text-3xl font-bold">${data.juniorTrancheTvl}</span>
             </div>
           </div>
           <div
             id="blocks-row-2"
             className="flex gap-3 items-center justify-center flex-col md:flex-row"
           >
-            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
+            <div className=" bg-white dark:bg-black dark:border-[2px] shadow-xl border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
               <span className="text-gray-500 text-lg font-bold">
                 Total Traded Value
               </span>
-              <span className="text-white text-3xl font-bold">${data.totalTradedVolume}</span>
+              <span className="text-black dark:text-white text-3xl font-bold">${data.totalTradedVolume}</span>
             </div>
-            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
+            <div className=" bg-white dark:bg-black dark:border-[2px] shadow-xl border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
               <span className="text-gray-500 text-lg font-bold">
                 Open Interest
               </span>
-              <span className="text-white text-3xl font-bold">${data.openInterest}</span>
+              <span className="text-black dark:text-white text-3xl font-bold">${data.openInterest}</span>
             </div>
-            <div className=" border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
+            <div className=" bg-white dark:bg-black dark:border-[2px] shadow-xl border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full">
               <span className="text-gray-500 text-lg font-bold">
                 Senior Tranche TVL
               </span>
-              <span className="text-white text-3xl font-bold">${data.seniorTrancheTvl}</span>
+              <span className="text-black dark:text-white text-3xl font-bold">${data.seniorTrancheTvl}</span>
             </div>
           </div>
         </div>
@@ -91,7 +91,7 @@ const page = () => {
           <div id="chart-row1" className="flex sc1:flex-row flex-col w-full gap-10 justify-between">
             <div
               id="chart-1"
-              className="border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full h-[15rem]"
+              className=" bg-white dark:bg-black dark:border-[2px] shadow-xl border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full h-[15rem]"
             >
               <span className="text-gray-500 text-lg font-bold">
                 24h Volume
@@ -102,7 +102,7 @@ const page = () => {
             </div>
             <div
               id="chart-2"
-              className="border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full h-[15rem]"
+              className=" bg-white dark:bg-black dark:border-[2px] shadow-xl border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full h-[15rem]"
             >
               <span className="text-gray-500 text-lg font-bold">
                 24h Trades
@@ -114,7 +114,7 @@ const page = () => {
           <div id="chart-row2" className="flex w-full gap-10 justify-between flex-col sc1:flex-row">
             <div
               id="chart-1"
-              className="border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full h-[15rem]"
+              className=" bg-white dark:bg-black dark:border-[2px] shadow-xl border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full h-[15rem]"
             >
               <span className="text-gray-500 text-lg font-bold">24h Fees</span>
               <span className="text-white text-3xl font-bold">$15.63K</span>
@@ -122,7 +122,7 @@ const page = () => {
             </div>
             <div
               id="chart-2"
-              className="border-[2px] border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full h-[15rem]"
+              className=" bg-white dark:bg-black dark:border-[2px] shadow-xl border-[#181A20] rounded-xl px-8 py-10 flex flex-col w-full h-[15rem]"
             >
               <span className="text-gray-500 text-lg font-bold">
                 24h Realized PnL

@@ -13,23 +13,23 @@ const page = () => {
   const [dropdown,setDropdown] = useState(false);
   const [position , setPosition] = useState("All");
   return (
-    <div className="w-full h-full px-4 sc0:px-20 sc1:px-32 py-16 bg-[#101115] min-h-screen">
-      <div className=" text-5xl py-8 items-center">Portfolio</div>
+    <div className="w-full h-full px-4 sc0:px-20 sc1:px-32 py-16  bg-[#F8FAFC] dark:bg-[#101115] min-h-screen">
+      <div className="text-black dark:text-white text-5xl py-8 items-center">Portfolio</div>
       <div className="flex w-full border-b border-b-zinc-800 gap-10 ">
         <button
-          className={`text-[0.7rem] sc0:text-sm text-neutral-400 py-1 sc0:py-3  ${selected==="Position" && 'border-b-2 border-b-[#3B1A91]'} text-white`}
+          className={`text-[0.7rem] sc0:text-sm text-neutral-400 py-1 sc0:py-3  ${selected==="Position" && 'border-b-2 border-[#3B1A91] dark:border-b-[#3B1A91]'}text-black dark:text-white `}
           onClick={() => setSelected("Position")}
         >
           Position & Activity
         </button>
         <button
-          className={`text-[0.7rem] sc0:text-sm text-neutral-400 py-1 sc0:py-3    ${selected==="Overview" && 'border-b-2 border-b-[#3B1A91]'} text-white`}
+          className={`text-[0.7rem] sc0:text-sm text-neutral-400 py-1 sc0:py-3    ${selected==="Overview" && 'border-b-2 border-[#3B1A91] dark:border-b-[#3B1A91]'}text-black dark:text-white `}
           onClick={() => setSelected("Overview")}
         >
           Overview
         </button>
         <button
-          className={`text-[0.7rem] sc0:text-sm text-neutral-400 py-1 sc0:py-3   ${selected==="Stats" && 'border-b-2 border-b-[#3B1A91]'} text-white`}
+          className={`text-[0.7rem] sc0:text-sm text-neutral-400 py-1 sc0:py-3   ${selected==="Stats" && 'border-b-2 border-[#3B1A91] dark:border-b-[#3B1A91]'}text-black dark:text-white `}
           onClick={() => setSelected("Stats")}
         >
           Stats and Insight
@@ -37,7 +37,7 @@ const page = () => {
       </div>
       {selected === "Position" && (
         <>
-          <div className="flex flex-col gap-8 my-10">
+          <div className="flex flex-col gap-8 my-10 text-black dark:text-white ">
             <span>Position & Activities</span>
             <div className="flex border-b border-b-zinc-800">
               <button className={`px-3 sc0:px-6 py-1 sc0:py-2 border border-gray-800 text-[0.8rem] sc0:text-sm ${position==="All" ? "text-white bg-black":"text-zinc-700"} `} onClick={()=>setPosition("All")}>
@@ -98,7 +98,7 @@ const page = () => {
       {selected === "Stats" && (
         <div  id="portfolio stats"  className="w-full h-full py-6 flex justify-center flex-col ">
           <div className="my-2">
-            <span className="text-gray-500">Portfolio Stats</span>
+            <span className="text-gray-700 dark:text-gray-500">Portfolio Stats</span>
           </div>
           <div className="border border-gray-800 rounded-xl flex sc4:flex-row flex-col px-8 py-10  w-full justify-center gap-20 items-center">
             <div className="flex w-full items-center gap-2">
@@ -109,7 +109,7 @@ const page = () => {
                 <span className="text-gray-500 text-md">
                   Loss Protection Rebate
                 </span>
-                <span className="text-white text-2xl">N/A</span>
+                <span className="text-black dark:text-white text-2xl">N/A</span>
               </div>
             </div>
             <div className="flex  w-full items-center gap-2">
@@ -118,7 +118,7 @@ const page = () => {
                 </div>
               <div className="flex flex-col">
                 <span className="text-gray-500 text-md">Total Trades</span>
-                <span className="text-white text-2xl">N/A</span>
+                <span className="text-black dark:text-white  text-2xl">N/A</span>
               </div>
             </div>
             <div className="flex  w-full items-center gap-2">
@@ -127,7 +127,7 @@ const page = () => {
                 </div>
               <div className="flex flex-col">
                 <span className="text-gray-500 text-md">Average PnL</span>
-                <span className="text-white text-2xl">N/A</span>
+                <span className="text-black dark:text-white  text-2xl">N/A</span>
               </div>
             </div>
             <div className="flex  w-full items-center gap-2">
@@ -136,7 +136,7 @@ const page = () => {
                 </div>
               <div className="flex flex-col">
                 <span className="text-gray-500 text-md">Win Rate</span>
-                <span className="text-white text-2xl">N/A</span>
+                <span className="text-black dark:text-white  text-2xl">N/A</span>
               </div>
             </div>
             <div className="flex  w-full items-center gap-2">
@@ -145,7 +145,7 @@ const page = () => {
                 </div>
               <div className="flex flex-col">
                 <span className="text-gray-500 text-md">Total Fees</span>
-                <span className="text-white text-2xl">N/A</span>
+                <span className="text-black dark:text-white  text-2xl">N/A</span>
               </div>
             </div>
           </div>
@@ -154,18 +154,18 @@ const page = () => {
                 <span>Asset Stats</span>
             </div>
             <div className="flex gap-6 sc4:flex-row flex-col">
-                <div className="bg-[rgb(16,17,21)] rounded-2xl border border-zinc-800 text-xl font-bold w-full">
-                    <div className="p-10 border-b border-b-zinc-800">Trade By Asset</div>
+                <div className="bg-white dark:bg-[rgb(16,17,21)] rounded-2xl shadow-xl dark:border border-zinc-800 text-xl font-bold w-full">
+                    <div className="p-10 text-black dark:text-white   border-b border-b-zinc-800">Trade By Asset</div>
                     <div className="p-10 border-b border-b-zinc-800"></div>
                     <div className="p-10 border-b border-b-zinc-800"></div>
                 </div>
-                <div className="bg-[rgb(16,17,21)] rounded-2xl border border-zinc-800 text-xl font-bold w-full">
-                    <div className="p-10 border-b border-b-zinc-800">Cummulative PnL by asset</div>
+                <div className="bg-white dark:bg-[rgb(16,17,21)] rounded-2xl shadow-xl dark:border border-zinc-800 text-xl font-bold w-full">
+                    <div className="p-10 text-black dark:text-white  border-b border-b-zinc-800">Cummulative PnL by asset</div>
                     <div className="p-10 border-b border-b-zinc-800"></div>
                     <div className="p-10 border-b border-b-zinc-800"></div>
                 </div>
-                <div className="bg-[rgb(16,17,21)] rounded-2xl border border-zinc-800 text-xl font-bold w-full">
-                    <div className="p-10 border-b border-b-zinc-800">Win rate by asset class</div>
+                <div className="bg-white dark:bg-[rgb(16,17,21)] rounded-2xl shadow-xl dark:border border-zinc-800 text-xl font-bold w-full">
+                    <div className="p-10 text-black dark:text-white  border-b border-b-zinc-800">Win rate by asset class</div>
                     <div className="p-10 border-b border-b-zinc-800"></div>
                     <div className="p-10 border-b border-b-zinc-800"></div>
                 </div>
@@ -176,37 +176,37 @@ const page = () => {
       {selected === "Overview" &&(
         <>
             <div className="w-ful flex flex-col sc1:flex-row items-center gap-10 justify-center my-10 h-[80%]">
-                <div className="flex flex-col gap-6 w-full sc1:w-[40%] h-full">
-                    <span>Portfolio Details</span>
+                <div className="flex flex-col gap-6 w-full sc1:w-[40%] h-full text-black dark:text-white">
+                    <span >Portfolio Details</span>
                 <div className="w-full rounded-xl border border-zinc-800 flex-col">
                     <div className="py-8 px-10 flex flex-col gap-3 border-b border-b-zinc-800">
-                        <span className="text-gray-200 text-[0.9rem]">Active portfolio value</span>
+                        <span className="dark:text-gray-200 text-[0.9rem] text-gray-700">Active portfolio value</span>
                         <div className="flex gap-2 text-4xl">
-                            <span className="text-gray-300 font-bold">$</span>
-                            <span className="text-white font-bold">0.000</span>
+                            <span className="text-gray-700 dark:text-gray-300 font-bold">$</span>
+                            <span className=" text-black dark:text-white font-bold">0.000</span>
                             <span className="text-green-500 text-[0.9rem] flex items-center">0.000% <FaChevronUp/></span>
                         </div>
                     </div>
                     <div className="py-8 px-10 flex flex-col gap-3 border-b border-b-zinc-800">
-                        <span className="text-gray-200 text-[0.9rem] px-6 py-3 border border-zinc-800 rounded-xl w-fit flex  items-center gap-2">PnL Today <FaChevronDown/></span>
+                        <span className=" text-gray-500 dark:text-gray-200 text-[0.9rem] px-6 py-3 border border-zinc-800 rounded-xl w-fit flex  items-center gap-2">PnL Today <FaChevronDown/></span>
                         <div className="flex gap-2 text-4xl">
-                            <span className="text-white font-bold">NA</span>
+                            <span className=" text-black dark:text-white font-bold">NA</span>
                             <span className="text-green-500 text-[0.9rem] flex items-center">NaN% <FaChevronUp/></span>
                         </div>
                     </div>
                     <div className="py-8 px-10 flex flex-col gap-3 border-b border-b-zinc-800">
-                        <span className="text-gray-200 text-[0.9rem]">Total Volume</span>
+                        <span className="text-gray-700 dark:text-gray-200 text-[0.9rem]">Total Volume</span>
                         <div className="flex gap-2 text-4xl">
-                            <span className="text-white font-bold">NA</span>
+                            <span className="text-black dark:text-white font-bold">NA</span>
                         </div>
                     </div>
                 </div>
                 </div>
-                <div className="flex flex-col gap-6 w-full h-full">
+                <div className="flex flex-col gap-6 w-full h-full text-black dark:text-white ">
                 <span>Live PnL Chart</span>
                 <div className="w-full rounded-xl border border-zinc-800 flex-col h-[60vh]">
                   <div className="flex flex-col gap-3 mx-3 my-5">
-                      <div className="text-sm text-gray-200  mx-10">Cummulative PnL</div>
+                      <div className="text-sm text-gray-700 dark:text-gray-200  mx-10">Cummulative PnL</div>
                   </div>
                   <OverviewChart/>
                 </div>

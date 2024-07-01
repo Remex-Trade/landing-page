@@ -61,7 +61,7 @@ const ChartBlock = ({title,data,type,text}:{title:string,data?:any,type:string,t
             break;
     }
   return (
-    <div className='w-full h-[35rem] rounded-xl border-[0.2px] border-gray-800 px-6 py-3 flex flex-col gap-6 '>
+    <div className='w-full h-[35rem] rounded-xl  bg-white dark:bg-black dark:border-[2px] shadow-xl  border-gray-800 px-6 py-3 flex flex-col gap-6 '>
         <div id="chart-heading" className='text-gray-500 font-bold text-lg flex justify-between items-center'>
             <span>
                 {title}
