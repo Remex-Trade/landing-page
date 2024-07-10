@@ -23,12 +23,12 @@ const page = () => {
         trading fees, and early vault unlocks. Please invest responsibly
       </div>
       <div id="Cards" className="flex w-full gap-10 my-8 sc4:flex-row flex-col">
-        <Link href="/site/Vault/junior" className="w-full ">
+        <Link href="/site/Vault/tranche" className="w-full ">
             <div id="card1" className="bg-white shadow-md dark:bg-[#0c0f11] rounded-xl w-full dark:border-[0.2px] py-6 px-10 dark:border-gray-800 relative flex flex-col gap-3 hover:border-white transition duration-5000">
                 <Image src="/Images/gradients/gradient1.png" width={250} height={250} alt="background"  className="absolute right-0 top-1"/>
                 <Image src="/Images/crypto/coin.png" width={50} height={50} alt="token"/>
                 <div id="card-headings" className="flex flex-col items-start gap-1"> 
-                  <span id="card-heading" className="text-3xl text-black dark:text-white font-bold">Junior Tranche</span>
+                  <span id="card-heading" className="text-3xl text-black dark:text-white font-bold">Tranche</span>
                   <span id="card-text" className="text-gray-500 text-md">Our higher risk vault. Gets exposure to ~65% of all
                   fees and trader PnL</span>
                 </div>
@@ -75,7 +75,7 @@ const page = () => {
                 </div>
             </div>
             </Link>
-          <Link href="/site/Vault/senior" className="w-full">
+          {/* <Link href="/site/Vault/senior" className="w-full">
             <div id="card2" className="dark:bg-[#0c0f11]  bg-white shadow-md rounded-xl w-full border-[0.2px] py-6 px-10 dark:border-gray-800 flex flex-col gap-3 relative hover:border-white transition duration-500">
               <Image src="/Images/gradients/gradient2.png" width={250} height={250} alt="background"  className="absolute right-0 top-1"/>
                 
@@ -127,7 +127,7 @@ const page = () => {
                     </div>
                 </div>
             </div>
-          </Link>
+          </Link> */}
       </div>
     </div>
     </div>

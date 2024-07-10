@@ -342,6 +342,14 @@ const page = () => {
                         {chartStats?.openInterestS ?? "-"}
                       </span>
                     </div>
+                    <div className="flex flex-col gap-1 sc1:gap-0 h-[90%] sc1:border-r sc1:border-r-[#2c2d2d] px-4">
+                      <span className="text-black text-[0.72rem] sc1:text-[0.7rem] sc1:dark:text-neutral-400 dark:text-white sc1:font-bold">
+                        Borrow Fee
+                      </span>
+                      <span className="text-[0.7rem] sc1:text-lg sc1:text-white">
+                        {chartStats?.openInterestS ?? "-"}
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="w-full h-[60vh]">

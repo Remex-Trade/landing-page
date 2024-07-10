@@ -15,6 +15,10 @@ const tabs = [
     label: "Orders",
     value: 1,
   },
+  {
+    label: "History",
+    value: 2,
+  },
 ] as const;
 
 const TradeDetailsTable = () => {
@@ -26,12 +30,12 @@ const TradeDetailsTable = () => {
   return (
     <>
       <div className="sc1:flex flex-col hidden w-full h-full">
-        <div className="w-full h-fit flex border border-[#2c2d2d]">
+        <div className="w-full h-fit flex">
           {tabs.map((tab) => (
             <button
               key={tab.value}
-              className={`px-6 py-3  border dark:border-[#2c2d2d] border-[#d4d4d4] ${
-                selected === tab.value ? "bg-[#d4d4d4] dark:bg-black text-black dark:text-white":"text-slate-400"
+              className={`px-6 py-3  ${
+                selected === tab.value ? "text-black font-extrabold dark:text-white":"text-slate-800 dark:text-slate-400"
               }`}
               onClick={() => setSelected(tab.value)}
             >
@@ -61,6 +65,16 @@ const TradeDetailsTable = () => {
             ) : (
               <NoDataBox />
             ))}
+          {selected === 2 &&
+            (data?.openLimitCount > 0 ? (
+              <DataTable
+                noDataMessage="Your Perp positions will appear here"
+                columns={openLimitColumns}
+                data={data.formattedLimitOrders}
+              />
+            ) : (
+              <NoDataBox />
+            ))}
 
           {/* <Image src={"/Images/middlebottom.svg"} width={128} height={128} alt="nodata" className="backdrop-grayscale-0 backdrop-grayscale opacity-10" style={{color:"transparent"}}/> */}
         </div>
@@ -71,7 +85,7 @@ const TradeDetailsTable = () => {
 
 function NoDataBox() {
   return (
-    <div className="w-full h-full flex flex-col gap-3 items-center justify-center">
+    <div className="w-full h-full flex flex-col gap-3 items-center justify-center my-2">
       <FaBox size={75} className="text-neutral-400" />
       <span className="text-neutral-400">No data</span>
     </div>
