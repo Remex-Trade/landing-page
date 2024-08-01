@@ -206,62 +206,6 @@ export const GnsTradingABI = [
     inputs: [
       {
         indexed: false,
-        internalType: "address",
-        name: "nftHolder",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "trader",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "pairIndex",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "orderId",
-        type: "uint256",
-      },
-    ],
-    name: "NftOrderInitiated",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "nftHolder",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "trader",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "pairIndex",
-        type: "uint256",
-      },
-    ],
-    name: "NftOrderSameBlock",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
         internalType: "string",
         name: "name",
         type: "string",
@@ -482,6 +426,19 @@ export const GnsTradingABI = [
     type: "event",
   },
   {
+    inputs: [],
+    name: "admin",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "uint256",
@@ -535,6 +492,47 @@ export const GnsTradingABI = [
     name: "done",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "enum StorageInterfaceV5.LimitOrder",
+        name: "_orderType",
+        type: "uint8",
+      },
+      {
+        internalType: "address",
+        name: "_trader",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_pairIndex",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_index",
+        type: "uint256",
+      },
+    ],
+    name: "executeNftOrder",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getTotalUsers",
+    outputs: [
+      {
+        internalType: "address[]",
+        name: "",
+        type: "address[]",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -745,6 +743,25 @@ export const GnsTradingABI = [
     inputs: [
       {
         internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "totalUsers",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
         name: "_pairIndex",
         type: "uint256",
       },
@@ -831,6 +848,25 @@ export const GnsTradingABI = [
     name: "updateTp",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "user",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
 ] as const;
