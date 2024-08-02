@@ -426,19 +426,6 @@ export const GnsTradingABI = [
     type: "event",
   },
   {
-    inputs: [],
-    name: "admin",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [
       {
         internalType: "uint256",
@@ -449,6 +436,11 @@ export const GnsTradingABI = [
         internalType: "uint256",
         name: "_index",
         type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "_address",
+        type: "address",
       },
     ],
     name: "cancelOpenLimitOrder",
@@ -467,6 +459,11 @@ export const GnsTradingABI = [
         internalType: "uint256",
         name: "_index",
         type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "_address",
+        type: "address",
       },
     ],
     name: "closeTradeMarket",
@@ -490,34 +487,6 @@ export const GnsTradingABI = [
   {
     inputs: [],
     name: "done",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "enum StorageInterfaceV5.LimitOrder",
-        name: "_orderType",
-        type: "uint8",
-      },
-      {
-        internalType: "address",
-        name: "_trader",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "_pairIndex",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "_index",
-        type: "uint256",
-      },
-    ],
-    name: "executeNftOrder",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
