@@ -437,11 +437,6 @@ export const GnsTradingABI = [
         name: "_index",
         type: "uint256",
       },
-      {
-        internalType: "address",
-        name: "_address",
-        type: "address",
-      },
     ],
     name: "cancelOpenLimitOrder",
     outputs: [],
@@ -459,11 +454,6 @@ export const GnsTradingABI = [
         internalType: "uint256",
         name: "_index",
         type: "uint256",
-      },
-      {
-        internalType: "address",
-        name: "_address",
-        type: "address",
       },
     ],
     name: "closeTradeMarket",
@@ -487,6 +477,175 @@ export const GnsTradingABI = [
   {
     inputs: [],
     name: "done",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_pairIndex",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_index",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "_address",
+        type: "address",
+      },
+    ],
+    name: "executeCancelOpenLimitOrder",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_pairIndex",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_index",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "_address",
+        type: "address",
+      },
+    ],
+    name: "executeCloseTradeMarket",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        components: [
+          {
+            internalType: "address",
+            name: "trader",
+            type: "address",
+          },
+          {
+            internalType: "uint256",
+            name: "pairIndex",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "index",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "initialPosToken",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "positionSizeDai",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "openPrice",
+            type: "uint256",
+          },
+          {
+            internalType: "bool",
+            name: "buy",
+            type: "bool",
+          },
+          {
+            internalType: "uint256",
+            name: "leverage",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "tp",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "sl",
+            type: "uint256",
+          },
+        ],
+        internalType: "struct StorageInterfaceV5.Trade",
+        name: "t",
+        type: "tuple",
+      },
+      {
+        internalType: "enum GNSTradingV6_1.OpenLimitOrderType",
+        name: "_type",
+        type: "uint8",
+      },
+      {
+        internalType: "uint256",
+        name: "_slippageP",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "_referral",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "_address",
+        type: "address",
+      },
+    ],
+    name: "executeOpenTrade",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "condition",
+        type: "uint256",
+      },
+      {
+        internalType: "enum StorageInterfaceV5.LimitOrder",
+        name: "_orderType",
+        type: "uint8",
+      },
+      {
+        internalType: "address",
+        name: "_trader",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_pairIndex",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_index",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "_address",
+        type: "address",
+      },
+    ],
+    name: "executeOrder",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
