@@ -530,6 +530,34 @@ export const GnsTradingABI = [
   {
     inputs: [
       {
+        internalType: "uint256",
+        name: "condition",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "_trader",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_pairIndex",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_index",
+        type: "uint256",
+      },
+    ],
+    name: "executeLimitOrder",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         components: [
           {
             internalType: "address",
@@ -639,13 +667,8 @@ export const GnsTradingABI = [
         name: "_index",
         type: "uint256",
       },
-      {
-        internalType: "address",
-        name: "_address",
-        type: "address",
-      },
     ],
-    name: "executeOrder",
+    name: "executeTradeOrder",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
