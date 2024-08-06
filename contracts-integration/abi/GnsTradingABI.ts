@@ -530,11 +530,6 @@ export const GnsTradingABI = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "condition",
-        type: "uint256",
-      },
-      {
         internalType: "address",
         name: "_trader",
         type: "address",
