@@ -544,6 +544,11 @@ export const GnsTradingABI = [
         name: "_index",
         type: "uint256",
       },
+      {
+        internalType: "uint256",
+        name: "_openPrice",
+        type: "uint256",
+      },
     ],
     name: "executeLimitOrder",
     outputs: [],
