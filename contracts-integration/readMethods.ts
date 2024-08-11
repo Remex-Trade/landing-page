@@ -15,14 +15,13 @@ import { formatEther } from "ethers/lib/utils";
  */
 export const getOpenTradesCount = async (address: string, chainId: number, pairIndex: number) => {
   try {
-    // const data = await readContract(config, {
-    //   abi: storageABI,
-    //   address: STORAGE_ADDRESS[chainId],
-    //   functionName: "openTradesCount",
-    //   args: [address as any, BigInt(pairIndex)],
-    // });
-    const contract = getStorageContract(chainId);
-    const data = await contract.openTradesCount(address, pairIndex);
+    const data = await readContract(config, {
+      abi: storageABI,
+      address: STORAGE_ADDRESS[chainId],
+      functionName: "openTradesCount",
+      args: [address as any, BigInt(pairIndex)],
+    });
+
     // console.log(data.toString());
     return Number(data.toString());
   } catch (error) {
@@ -77,24 +76,21 @@ export const getOpenTrades = async (
   pairIndex: number,
   index: number
 ) => {
-  const contract = getStorageContract(chainId);
-  const data = await contract.openTrades(address, pairIndex, index);
   // console.log("Open Trade Orders:", data);
 
-  // const data = await readContract(config, {
-  //   abi: storageABI,
-  //   address: STORAGE_ADDRESS[chainId],
-  //   functionName: "openTrades",
-  //   args: [address as any, BigInt(pairIndex), BigInt(index)],
-  // });
-  // const tradeInfo = await readContract(config, {
-  //   abi: storageABI,
-  //   address: STORAGE_ADDRESS[chainId],
-  //   functionName: "openTradesInfo",
-  //   args: [address as any, BigInt(pairIndex), BigInt(index)],
-  // });
+  const data = await readContract(config, {
+    abi: storageABI,
+    address: STORAGE_ADDRESS[chainId],
+    functionName: "openTrades",
+    args: [address as any, BigInt(pairIndex), BigInt(index)],
+  });
+  const tradeInfo = await readContract(config, {
+    abi: storageABI,
+    address: STORAGE_ADDRESS[chainId],
+    functionName: "openTradesInfo",
+    args: [address as any, BigInt(pairIndex), BigInt(index)],
+  });
 
-  const tradeInfo = await contract.openTradesInfo(address, pairIndex, index);
   // console.log("Open Trade Orders:", tradeInfo);
 
   const formattedData = {
@@ -149,6 +145,7 @@ export const getOpenLimitOrders = async (
       openPrice: data.minPrice,
       isClosed: openLimitOrderClosed,
     };
+
     return formattedData;
   } catch (error) {
     return null;
