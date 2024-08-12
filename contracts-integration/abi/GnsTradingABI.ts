@@ -615,11 +615,6 @@ export const GnsTradingABI = [
         type: "tuple",
       },
       {
-        internalType: "enum GNSTradingV6_1.OpenLimitOrderType",
-        name: "_type",
-        type: "uint8",
-      },
-      {
         internalType: "uint256",
         name: "_slippageP",
         type: "uint256",
