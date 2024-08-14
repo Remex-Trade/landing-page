@@ -197,6 +197,12 @@ export const GnsTradingABI = [
         name: "orderId",
         type: "uint256",
       },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "index",
+        type: "uint256",
+      },
     ],
     name: "MarketOrderInitiated",
     type: "event",
